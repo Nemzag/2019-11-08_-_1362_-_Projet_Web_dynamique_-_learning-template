@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Nos cours{% endblock %}
+
+{% block body %}
+    <!-- Banner -->
+    <div class="banner">
+    </div>
+    <!-- End Banner -->
+
+    <main class="container">
+        <!-- Categories -->
+        <section id="courses">
+            <h2 class="my-5">Toutes nos catégories</h2>
+            <div class="row">
+                <!-- FILTERIZER CONTROLS -->
+                <div class="col-md-12 controls-filter">
+                    <ul>
+                        <!-- For filtering controls add -->
+                        <li data-filter="all" class="btn btn-outline-secondary"> All items </li>
+                        <li data-filter="1" class="btn btn-outline-secondary"> Artisanat </li>
+                        <li data-filter="2" class="btn btn-outline-secondary"> Bien être </li>
+                        <li data-filter="3" class="btn btn-outline-secondary"> Informatique </li>
+                        <li data-filter="4" class="btn btn-outline-secondary"> Technique </li>
+                    </ul>
+                </div>
+                <!-- FILTERIZER COURSES -->
+                <div class="col-md-12 filter-container">
+                    <!-- Card -->
+                    <div class="col-md-4 filtr-item" data-category="1" data-sort="value">
+                        <div class="card" style="min-height: 550px !important;">
+                            <div class="card-header">
+                                Section 01
+                            </div>
+                            <div class="card-body">
+                                    <img alt="" src="{{ asset('img/section/1.jpg') }}">
+                                <p class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cum, dicta
+                                    doloremque et ex explicabo fuga fugit in inventore iure molestiae nisi obcaecati
+                                    odio quam quis repellat repellendus vero, voluptas.</p></p>
+                                <a class="btn btn-secondary" href="">Voir cette section...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-4 filtr-item" data-category="2" data-sort="value">
+                        <div class="card" style="min-height: 550px !important;">
+                            <div class="card-header">
+                                Section 02
+                            </div>
+                            <div class="card-body">
+                                <img alt="" src="{{ asset('img/section/2.jpg') }}">
+                                <p class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cum, dicta
+                                    doloremque et ex explicabo fuga fugit in inventore iure molestiae nisi obcaecati
+                                    odio quam quis repellat repellendus vero, voluptas.</p></p>
+                                <a class="btn btn-secondary" href="">Voir cette section...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-4 filtr-item" data-category="1" data-sort="value">
+                        <div class="card" style="min-height: 550px !important;">
+                            <div class="card-header">
+                                Section 03
+                            </div>
+                            <div class="card-body">
+                                <img alt="" src="{{ asset('img/section/3.jpg') }}">
+                                <p class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cum, dicta
+                                    doloremque et ex explicabo fuga fugit in inventore iure molestiae nisi obcaecati
+                                    odio quam quis repellat repellendus vero, voluptas.</p></p>
+                                <a class="btn btn-secondary" href="">Voir cette section...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-4 filtr-item" data-category="3" data-sort="value">
+                        <div class="card" style="min-height: 550px !important;">
+                            <div class="card-header">
+                                Section 04
+                            </div>
+                            <div class="card-body">
+                                <img alt="" src="{{ asset('img/section/4.jpg') }}">
+                                <p class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cum, dicta
+                                    doloremque et ex explicabo fuga fugit in inventore iure molestiae nisi obcaecati
+                                    odio quam quis repellat repellendus vero, voluptas.</p></p>
+                                <a class="btn btn-secondary" href="">Voir cette section...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div class="col-md-4 filtr-item" data-category="1" data-sort="value">
+                        <div class="card" style="min-height: 550px !important;">
+                            <div class="card-header">
+                                Section 05
+                            </div>
+                            <div class="card-body">
+                                <img alt="" src="{{ asset('img/section/5.jpg') }}">
+                                <p class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, cum, dicta
+                                    doloremque et ex explicabo fuga fugit in inventore iure molestiae nisi obcaecati
+                                    odio quam quis repellat repellendus vero, voluptas.</p></p>
+                                <a class="btn btn-secondary" href="">Voir cette section...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- End cards -->
+                </div>
+            </div>
+        </section>
+        <!-- End Categories -->
+    </main>
+{% endblock %}
+{% block javascripts %}
+<script>
+var filterizd = $('.filter-container').filterizr({
+    // options here
+});
+</script>
+{% endblock %}

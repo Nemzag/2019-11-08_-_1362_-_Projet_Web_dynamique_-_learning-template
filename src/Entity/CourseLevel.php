@@ -13,6 +13,8 @@ class CourseLevel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="levelId")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $id;
 
@@ -25,12 +27,6 @@ class CourseLevel
      * @ORM\Column(type="string", length=255)
      */
     private $prerequisite;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="levelId")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $course;
 
     public function getId(): ?int
     {
@@ -57,18 +53,6 @@ class CourseLevel
     public function setPrerequisite(string $prerequisite): self
     {
         $this->prerequisite = $prerequisite;
-
-        return $this;
-    }
-
-    public function getCourse(): ?Course
-    {
-        return $this->course;
-    }
-
-    public function setCourse(?Course $course): self
-    {
-        $this->course = $course;
 
         return $this;
     }

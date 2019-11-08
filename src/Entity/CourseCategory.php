@@ -13,6 +13,8 @@ class CourseCategory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="category_id")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $id;
 
@@ -25,12 +27,6 @@ class CourseCategory
      * @ORM\Column(type="string", length=255)
      */
     private $description;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="categoryId")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $course;
 
     public function getId(): ?int
     {

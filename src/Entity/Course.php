@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,22 +17,12 @@ class Course
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CourseCategory", mappedBy="course")
-     */
-    private $categoryId;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CourseLevel", mappedBy="course")
-     */
-    private $levelId;
-
-    /**
      * @ORM\Column(type="string", length=120)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $smallDescription;
 
@@ -56,12 +44,12 @@ class Course
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_published;
+    private $isPublished;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -83,77 +71,27 @@ class Course
      */
     private $program;
 
-    public function __construct()
-    {
-        $this->categoryId = new ArrayCollection();
-        $this->levelId = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CourseCategory", inversedBy="courses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CourseCategory")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categoryId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CourseLevel")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $levelId;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|CourseCategory[]
-     */
-    public function getCategoryId(): Collection
-    {
-        return $this->categoryId;
-    }
-
-    public function addCategoryId(CourseCategory $categoryId): self
-    {
-        if (!$this->categoryId->contains($categoryId)) {
-            $this->categoryId[] = $categoryId;
-            $categoryId->setCourse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategoryId(CourseCategory $categoryId): self
-    {
-        if ($this->categoryId->contains($categoryId)) {
-            $this->categoryId->removeElement($categoryId);
-            // set the owning side to null (unless already changed)
-            if ($categoryId->getCourse() === $this) {
-                $categoryId->setCourse(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CourseLevel[]
-     */
-    public function getLevelId(): Collection
-    {
-        return $this->levelId;
-    }
-
-    public function addLevelId(CourseLevel $levelId): self
-    {
-        if (!$this->levelId->contains($levelId)) {
-            $this->levelId[] = $levelId;
-            $levelId->setCourse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLevelId(CourseLevel $levelId): self
-    {
-        if ($this->levelId->contains($levelId)) {
-            $this->levelId->removeElement($levelId);
-            // set the owning side to null (unless already changed)
-            if ($levelId->getCourse() === $this) {
-                $levelId->setCourse(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -218,24 +156,24 @@ class Course
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getIsPublished(): ?bool
     {
-        return $this->is_published;
+        return $this->isPublished;
     }
 
-    public function setIsPublished(bool $is_published): self
+    public function setIsPublished(bool $isPublished): self
     {
-        $this->is_published = $is_published;
+        $this->isPublished = $isPublished;
 
         return $this;
     }
@@ -284,6 +222,30 @@ class Course
     public function setProgram(string $program): self
     {
         $this->program = $program;
+
+        return $this;
+    }
+
+    public function getCategoryId(): ?CourseCategory
+    {
+        return $this->category_id;
+    }
+
+    public function setCategoryId(?CourseCategory $category_id): self
+    {
+        $this->category_id = $category_id;
+
+        return $this;
+    }
+
+    public function getLevelId(): ?CourseLevel
+    {
+        return $this->levelId;
+    }
+
+    public function setLevelId(?CourseLevel $levelId): self
+    {
+        $this->levelId = $levelId;
 
         return $this;
     }

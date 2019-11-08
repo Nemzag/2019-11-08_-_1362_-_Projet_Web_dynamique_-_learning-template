@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,8 +15,6 @@ class CourseCategory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="category_id")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $id;
 
@@ -27,6 +27,11 @@ class CourseCategory
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

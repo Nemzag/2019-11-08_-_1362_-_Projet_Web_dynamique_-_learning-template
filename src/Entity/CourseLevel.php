@@ -13,8 +13,6 @@ class CourseLevel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="levelId")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $id;
 

@@ -1,0 +1,69 @@
+﻿/**
+ * Created by PhpStorm.
+ * User: nemzag aka Gazmen Arifi.
+ * Date: 2018-10-03
+ * Time: 23:00
+ */
+
+header {
+    background-color: greenyellow;
+}
+main {
+    background-color: yellow;
+}
+
+footer {
+    background-color: yellowgreen;
+}
+section {
+    background-color: rgba(255, 0, 0, 0.5);;
+}
+
+div {
+    background-color: deeppink;
+}
+
+article {
+    background-color: hotpink;
+}
+
+blockquote {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.border {
+    border: solid 1px purple;
+}
+
+dl {
+    background-color: plum;
+}
+/*
+dt {
+
+}
+
+dd {
+
+}
+*/
+
+p {
+    background-color: rgba(76, 175, 80, 0.5);
+}
+
+/* DETAILS & SUMMARY */
+
+/* LIST */
+
+ul {
+    background-color: rgba(20, 255, 134, 0.5);
+}
+
+ol {
+    background-color: rgba(20, 165, 134, 0.5);
+}
+
+strong {
+    background-color: darkgreen;
+}

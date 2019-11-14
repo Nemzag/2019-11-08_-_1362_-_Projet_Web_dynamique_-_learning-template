@@ -1,0 +1,27 @@
+.toc-list li li li li li li {
+    list-style: lower-greek;
+}
+
+.toc-list li li li li li {
+    list-style: lower-alpha;
+}
+
+.toc-list li li li li {
+    list-style: upper-alpha;
+}
+
+.toc-list li li li {
+    list-style: decimal;
+}
+
+.toc-list li li {
+    list-style: upper-roman;
+}
+
+.toc-list li {
+    list-style: none; /* Don't to count, normally only one H1 is allowed per page. */
+}
+
+.is-collapsible {
+  max-height: 5000px;
+}

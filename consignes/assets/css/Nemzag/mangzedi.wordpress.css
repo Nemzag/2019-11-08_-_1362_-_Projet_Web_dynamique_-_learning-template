@@ -1,0 +1,485 @@
+/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.site-branding {
+	max-width: 1320px;
+	margin-right: auto;
+}
+
+.site-content {
+	max-width: 92%;
+/* 99% */
+}
+
+.single .site-content {
+	max-width: 99%;
+}
+
+div.content-area article {
+	overflow: scroll;
+}
+
+body.single div.content-area article {
+	overflow: visible;
+	margin-right: 0;
+}
+
+body.page-template div.content-area article {
+	overflow: visible;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.single .content-area {
+	float: left;
+	width: 100%;
+}
+
+div.content-area main {
+	margin-left: 0;
+	width: 100%;
+}
+
+.widget-area {
+	float: right;
+	width: 270px;
+	position: relative;
+	margin-left: 50px;
+}
+
+.single .widget-area {
+	margin-right: 50px;
+}
+
+li p {
+	margin-bottom: 0;
+/* 1.6em */
+}
+
+/* TinyMCE */
+/* HTML BASIC TAG */
+body {
+	color: #000000;
+}
+
+div.site-branding h2.site-description {
+	font-family: "Times New Roman", Times, "Libre Baskerville", serif;
+	font-size: 1.5rem;
+}
+
+header h1 a {
+	font-family: "Times New Roman", Times, "Libre Baskerville", serif;
+	font-size: 111%;
+}
+
+main h1.entry-title {
+	font-family: "Times New Roman", Times, "Libre Baskerville", serif;
+	font-size: 35px;
+}
+
+main {
+	font-family: "Roboto Mono", "Courier New", "DejaVu Sans Mono", "Ubuntu Mono", Courier, "Anonymous Pro", monospace;
+}
+
+div.widget-area h2.widget-title {
+	font-family: "Times New Roman", Times, "Libre Baskerville", serif;
+	font-size: 1em;
+}
+
+blockquote {
+	background-color: rgba(0,0,0,0.05);
+	font-variant: small-caps;
+	font-style: normal;
+	margin-left: 4%;
+}
+
+a {
+	color: /*#5e5e5e;*/
+#808080;
+}
+
+/* TITLES */
+.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6 {
+	font-family: "Courier New", Courier, "Anonymous Pro", monospace;
+	font-weight: bold;
+}
+
+/* Added by Nemzag */
+.js-toc {
+	background-color: #272822;
+	color: white;
+	padding: 1em;
+	padding-left: 0;
+	border-radius: 0.3em;
+	line-height: 2em;
+	font-size: 85%;
+}
+
+/* Original C.S.S. */
+.toc {
+	overflow-y: auto;
+	position: relative;
+}
+
+.toc > .toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+.toc > .toc-list li {
+	list-style: none; /* none */
+}
+
+.toc-list {
+	margin: 0;
+	padding-left: 3em; /* 10px */
+}
+
+a.toc-link {
+	color: currentColor;
+	height: 100%;
+	text-decoration: none;
+}
+
+.is-collapsible {
+	max-height: 5000px;
+	overflow: hidden;
+	transition: all 300ms ease-in-out;
+}
+/*
+.is-collapsed {
+    max-height: 0
+}
+*/
+.is-position-fixed {
+	position: fixed !important;
+	top: 0;
+}
+
+.is-active-link {
+	font-weight: 700;
+}
+
+.toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+.is-active-link::before {
+	background-color: #54BC4B;
+}
+
+/* Added by Nemzag */
+
+h6 {
+	list-style: lower-greek;
+}
+
+h5 {
+	list-style: lower-roman;
+}
+
+h4 {
+	list-style: lower-alpha;
+}
+
+h3 {
+	list-style: decimal;
+}
+
+h1 {
+	list-style: upper-alpha;
+}
+
+h1 {
+	list-style: upper-roman; /* none, original*/
+}
+
+/* IMAGE & VIDEO */
+figure img {
+	width: 720px;
+	border: 1px solid rgba(64,64,64,.30);
+	background-color: white;
+}
+
+/* TABLE */
+table {
+	border: 1px double rgba(64,64,64,.20);
+}
+
+table th, table td {
+	border: 1px solid rgba(64,64,64,.30);
+}
+
+table th {
+	font-weight: bold;
+	text-align: center;
+	background: rgba(0,0,0,0.05);
+}
+
+.fifty-percent {
+	width: 50%;
+}
+
+/* TAOCODEX */
+/* nine-column */
+/* ten-column */
+/* eighteen-column */
+.nine-column-nowrap td:nth-child(3),
+.nine-column-nowrap td:nth-child(5),
+.nine-column-nowrap td:nth-child(7),
+.nine-column-nowrap td:nth-child(8),
+.nine-column-nowrap td:nth-child(9),
+.ten-column-nowrap td:nth-child(3),
+.ten-column-nowrap td:nth-child(5),
+.ten-column-nowrap td:nth-child(7),
+.ten-column-nowrap td:nth-child(8),
+.ten-column-nowrap td:nth-child(9),
+.ten-column-nowrap td:nth-child(10),
+.eighteen-column td:nth-child(1),
+.eighteen-column td:nth-child(18),
+.eighteen-column td:nth-child(7),
+.eighteen-column td:nth-child(12),
+.eighteen-column td:nth-child(5),
+.eighteen-column td:nth-child(14),
+.eighteen-column td:nth-child(3),
+.eighteen-column td:nth-child(16) {
+	white-space: nowrap;
+}
+
+.nine-column-nowrap td:nth-child(1),
+.nine-column-nowrap td:nth-child(2),
+.nine-column-nowrap td:nth-child(3),
+.ten-column-nowrap td:nth-child(1),
+.ten-column-nowrap td:nth-child(2),
+.ten-column-nowrap td:nth-child(3),
+.eighteen-column td:nth-child(7),
+.eighteen-column td:nth-child(8),
+.eighteen-column td:nth-child(9),
+.eighteen-column td:nth-child(10),
+.eighteen-column td:nth-child(11),
+.eighteen-column td:nth-child(12) {
+	font-weight: bold;
+}
+
+.nine-column-nowrap td:nth-child(5),
+.ten-column-nowrap td:nth-child(5),
+.eighteen-column td:nth-child(5),
+.eighteen-column td:nth-child(14) {
+/*
+    font-family: Andalus, Aldanaus, serif;
+    font-size: x-large;
+    */
+	font-weight: bold;
+}
+
+.nine-column-nowrap td:nth-child(5),
+.ten-column-nowrap td:nth-child(5),
+.eighteen-column td:nth-child(5),
+.eighteen-column td:nth-child(14) {
+	text-align: right;
+}
+
+.nine-column-nowrap td:nth-child(7),
+.ten-column-nowrap td:nth-child(7),
+.ten-column-nowrap td:nth-child(8),
+.eighteen-column td:nth-child(3),
+.eighteen-column td:nth-child(16) {
+	text-transform: uppercase;
+}
+
+.ten-column-nowrap td:nth-child(8) {
+	font-style: oblique -14deg;
+}
+
+.nine-column-nowrap td:nth-child(8),
+.ten-column-nowrap td:nth-child(9),
+.eighteen-column td:nth-child(2),
+.eighteen-column td:nth-child(17) {
+	font-style: italic;
+}
+
+/* TABLE MY LANGUAGES */
+.table-my-language-six-column {
+	background-color: white;
+	color: black;
+}
+
+.table-my-language-six-column td:nth-child(1),
+.table-my-language-six-column td:nth-child(2),
+.table-my-language-six-column td:nth-child(4) {
+	font-weight: bold;
+}
+
+.table-my-language-six-column td:nth-child(4) {
+	text-align: right;
+}
+
+.table-my-language-six-column td:nth-child(6) {
+	font-style: italic;
+}
+
+/* TABLE COLUMN */
+.two-column th:nth-child(n+2),
+.four-column th:nth-child(n+3),
+.six-column th:nth-child(n+4),
+.eight-column th:nth-child(n+5),
+.ten-column th:nth-child(n+6),
+.twelve-column th:nth-child(n+7),
+.fourteen-column th:nth-child(n+8),
+.sixteen-column th:nth-child(n+9),
+.eighteen-column th:nth-child(n+10),
+.two-column td:nth-child(-n+1),
+.four-column td:nth-child(-n+2),
+.six-column td:nth-child(-n+3),
+.eight-column td:nth-child(-n+4),
+.ten-column td:nth-child(-n+5),
+.twelve-column td:nth-child(-n+6),
+.fourteen-column td:nth-child(-n+7),
+.sixteen-column td:nth-child(-n+8),
+.eighteen-column td:nth-child(-n+9) {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.two-column th:nth-child(-n+1),
+.four-column th:nth-child(-n+2),
+.six-column th:nth-child(-n+3),
+.eight-column th:nth-child(-n+4),
+.ten-column th:nth-child(-n+5),
+.twelve-column th:nth-child(-n+6),
+.fourteen-column th:nth-child(-n+7),
+.sixteen-column th:nth-child(-n+8),
+.eighteen-column th:nth-child(-n+9),
+.two-column td:nth-child(n+2),
+.four-column td:nth-child(n+3),
+.six-column td:nth-child(n+4),
+.eight-column td:nth-child(n+5),
+.ten-column td:nth-child(n+6),
+.twelve-column td:nth-child(n+7),
+.fourteen-column td:nth-child(n+8),
+.sixteen-column td:nth-child(n+9),
+.eighteen-column td:nth-child(n+10) {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.two-column th:nth-child(-n+1),
+.four-column th:nth-child(-n+1),
+.two-column td:nth-child(-n+1),
+.four-column td:nth-child(-n+2) {
+	text-align: right;
+}
+
+.two-column th:nth-child(n+2),
+.four-column th:nth-child(n+4),
+.two-column td:nth-child(n+2),
+.four-column td:nth-child(n+3) {
+	text-align: left;
+}
+
+.four-column th:nth-child(2), .four-column th:nth-child(3) {
+	text-align: center;
+}
+
+.four-column td:nth-child(2), .four-column td:nth-child(3) {
+	font-weight: bold;
+	text-align: center;
+}
+
+.two-column th:nth-child(1),
+.two-column th:nth-child(2),
+.four-column th:nth-child(1), .four-column td:nth-child(1), .four-column th:nth-child(4), .four-column td:nth-child(4) {
+	width: 50%;
+}
+
+/* WP-BIOGRAPHY-RECEPTION */
+.wp-biography-reception {
+	background-color: white;
+}
+
+.wp-biography-reception {
+	background-color: white;
+}
+
+.wp-biography-reception td:nth-child(6), .wp-biography-reception td:nth-child(7), .wp-biography-reception td:nth-child(8) {
+	text-align: right;
+}
+
+/*
+FILES
+*/
+.do-emna-e-pjala-te-mire th {
+	color: white;
+	background-color: black;
+}
+
+.do-emna-e-pjala-te-mire td:nth-child(3), .do-emna-e-pjala-te-mire td:nth-child(4) {
+	text-align: right;
+}
+
+.do-emna-e-pjala-te-mire td:nth-child(3), .do-emna-e-pjala-te-mire td:nth-child(4), .do-emna-e-pjala-te-mire td:nth-child(5), .do-emna-e-pjala-te-mire td:nth-child(6) {
+	font-weight: bold;
+}
+
+.do-emna-e-pjala-te-mire td:nth-child(-n+6) {
+	white-space: nowrap;
+}
+
+/*
+TaoCodex
+*/
+.taocodex_title_genative {
+	font-weight: bold;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.taocodex_title_negative {
+	font-weight: bold;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.taocodex_negative {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+.taocodex_genative {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+/* Position */
+.center {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Responsive */
+@media (min-width: 1200px) {
+	blockquote {
+		width: 70%;
+	}
+}

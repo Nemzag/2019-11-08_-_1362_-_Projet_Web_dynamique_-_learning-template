@@ -1,0 +1,84 @@
+/**
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2019-01-03
+ * Time: 14:03
+ */
+
+/* Added by Nemzag */
+/*
+.toc-list li li li li li li {
+    list-style: lower-greek;
+}
+
+.toc-list li li li li li {
+    list-style: lower-alpha;
+}
+
+.toc-list li li li li {
+    list-style: decimal;
+}
+
+.toc-list li li li {
+    list-style: upper-alpha;
+}
+
+.toc-list li li {
+    list-style: upper-roman;
+}
+
+.toc-list li {
+    list-style: none;  // Don't to count, normally only one H1 is allowed per page.
+}
+*/
+
+
+body {
+    counter-reset : h2;
+}
+
+h2 {
+    counter-reset : h3;
+}
+
+h3 {
+    counter-reset : h4;
+}
+
+h4 {
+    counter-reset : h5;
+}
+
+h5 {
+    counter-reset : h6;
+}
+
+h2:before {
+    content : counter(h2,upper-roman) ". ";
+    counter-increment : h2;
+}
+
+h3:before {
+    content : counter(h2,upper-roman) "." counter(h3,decimal) ". ";
+    counter-increment : h3;
+}
+
+h4:before {
+    content : counter(h2,upper-roman) "." counter(h3,decimal) "." counter(h4,upper-alpha) ". ";
+    counter-increment : h4;
+}
+
+h5:before {
+    content : counter(h2,upper-roman) "." counter(h3,decimal) "." counter(h4,upper-alpha) "." counter(h5,lower-alpha) ". ";
+    counter-increment : h5;
+}
+
+h6:before {
+    content : counter(h2,upper-roman) "." counter(h3,decimal) "." counter(h4,upper-alpha) "." counter(h5,lower-alpha) "." counter(h6,decimal) ". ";
+    counter-increment : h6;
+}
+
+h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before {
+    content : "";
+    counter-increment : none;
+}

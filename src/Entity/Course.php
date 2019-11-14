@@ -75,19 +75,13 @@ class Course
      * @ORM\ManyToOne(targetEntity="App\Entity\CourseCategory", inversedBy="courses")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category_id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CourseCategory")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $categoryId;
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\CourseLevel")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $levelId;
+    private $level;
 
     public function getId(): ?int
     {
@@ -226,26 +220,26 @@ class Course
         return $this;
     }
 
-    public function getCategoryId(): ?CourseCategory
+    public function getCategory(): ?CourseCategory
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategoryId(?CourseCategory $category_id): self
+    public function setCategory(?CourseCategory $category): self
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getLevelId(): ?CourseLevel
+    public function getLevel(): ?CourseLevel
     {
-        return $this->levelId;
+        return $this->level;
     }
 
-    public function setLevelId(?CourseLevel $levelId): self
+    public function setLevel(?CourseLevel $level): self
     {
-        $this->levelId = $levelId;
+        $this->level = $level;
 
         return $this;
     }

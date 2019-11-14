@@ -18,14 +18,56 @@
                     <ul>
                         <!-- For filtering controls add -->
                         <li data-filter="all" class="btn btn-outline-secondary"> All items </li>
+
+                        {# Boucle For #}
+                        {% for category in categories %}
+
+                            <li data-filter="{{ category.id }}" class="btn btn-outline-secondary">{{ category.name}} </li>
+
+                        {% endfor %}
+
+                        {#
                         <li data-filter="1" class="btn btn-outline-secondary"> Artisanat </li>
                         <li data-filter="2" class="btn btn-outline-secondary"> Bien être </li>
                         <li data-filter="3" class="btn btn-outline-secondary"> Informatique </li>
                         <li data-filter="4" class="btn btn-outline-secondary"> Technique </li>
+                        #}
+
                     </ul>
                 </div>
                 <!-- FILTERIZER COURSES -->
                 <div class="col-md-12 filter-container">
+
+                    {# Boucle For #}
+                    {% for course in courses %}
+
+                        <!-- Card -->
+                        <div class="col-md-4 filtr-item" data-category="{{ course.category.id }}" data-sort="value">
+
+                            <div class="card" style="min-height: 550px !important;">
+
+                                <div class="card-header">
+                                    {{ course.name | capitalize }}
+                                </div>
+
+                                <div class="card-body">
+
+                                    <img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.id }}.jpg">
+                                    {#<img alt="{{ course.name }}" src="{{ asset('img/section/1.jpg') }}">#}
+
+                                    <p class="card-text">
+
+                                    <p>{{ course.smallDescription }}</p>
+
+                                    <a class="btn btn-secondary" href="{{ path('home', {{ course.pid:course.id}) }}">Voir cette section...</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    {# Fin de boucle#}
+
+                    {#
                     <!-- Card -->
                     <div class="col-md-4 filtr-item" data-category="1" data-sort="value">
                         <div class="card" style="min-height: 550px !important;">
@@ -110,6 +152,7 @@
                             </div>
                         </div>
                     </div>
+                    #}
 
                 <!-- End cards -->
                 </div>

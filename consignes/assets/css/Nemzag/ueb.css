@@ -1,0 +1,1468 @@
+﻿@charset "utf-8";
+
+/**
+ * Created by PhpStorm.
+ * User: nemzag aka Gazmen Arifi.
+ * Date: 2007-09-30
+ * Time: 14:33
+ */
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanssyriaceastern.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanssyriacwestern.css);
+
+@font-face {
+    /* Latin, Spacing Modifier Letters, Combining Diacritical Marks*/
+    font-family: "Times New Roman";
+    src: local("Times New Roman"), url("../../font's/times.ttf") format("truetype");
+    unicode-range: U+0000-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2B0-02FF, U+2C60-2C7F, U+0300-036F, U+A720-A7FF, U+AB30-AB6F; /*multiple values */
+}
+
+@font-face {
+    /* General Punctuation */
+    font-family: "Times New Roman";
+    /* Define the custom font name */
+    src: local("Times New Roman"), url("../../font's/times.ttf") format("truetype");
+    unicode-range: U+2000-206F; /*multiple values */
+}
+/*
+@font-face {
+    /* I.P.A. Phonetic*/
+/*
+    font-family: "Times New Roman";
+    /* Define the custom font name */
+/*
+    src: local("Times New Roman"), url("../../font's/times.ttf") format("truetype");
+    unicode-range: U+0250-02AF, U+1D00-1D7F, U+1D80-1DBF; /*multiple values */
+/*
+}
+*/
+@font-face {
+    /* Grec*/
+    font-family: "Times New Roman"; /* Define the custom font name */
+    src: local("Times New Roman"), url("../../font's/times.ttf") format("truetype");
+    unicode-range: U+0370-03FF, U+1F00-1FFF; /*multiple values */
+}
+
+@font-face {
+    /* Coptic*/
+    font-family: "Times New Roman", Quivira; /* Define the custom font name */
+    src: local("Times New Roman"), url("../../font's/times.ttf") format("truetype");
+    unicode-range: U+2C80-2CFF, U+102E0-102FF; /*multiple values */
+}
+
+@font-face {
+    /* Devanagari*/
+    font-family: "Chrysanthi Unicode", "Aparajita", "Mangal", "Nirmala UI"; /* Define the custom font name */
+    src: local("Chrysanthi Unicode"), url("../../font's/chrysuni.ttf"), local("Aparajita UI"), local("Nirmala UI"), local("Mangal");
+    unicode-range: U+0900-097F, U+A8E0-A8FF; /*multiple values */
+}
+
+@font-face {
+    /* Mathematical Operator*/
+    font-family: "Arial Unicode MS"; /* Define the custom font name */
+    src: local("Arial Unicode MS");
+    unicode-range: U+2200-22FF; /*multiple values */
+}
+
+@font-face {
+    /* Arab */
+    font-family: Andalus; /* Define the custom font name */
+    src: local(Andalus), local("Andalus Regular"), url("../../font's/andlso.ttf") format("truetype");
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+1EE00-1EEFF; /*multiple values */
+}
+
+@font-face {
+    /* Cyrillic */
+    font-family: "dilyana", "Cyrillic Old Face", "Titus Cyrillic";
+    src: local("dilyana"),
+         local("Dilyana Regular"), url("../../font's/dilyan2.ttf") format("truetype");
+    font-size: xx-large;
+    unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C8F; /*multiple values */
+}
+
+@font-face {
+    /* Hebrew */
+    font-family: "Cardo", serif; /* Define the custom font name */
+    src: local('Cardo'),
+         url("../../font's/Cardo-Regular.ttf") format("opentype"),
+         url('https://fonts.googleapis.com/css?family=Cardo');
+    unicode-range: U+0590-05FF, U+FB1E-FB4F; /*multiple values */
+}
+
+@font-face {
+    /* Shumerian */
+    font-family: "Akkadian", "Aegean", "CuneiformComposite"; /* Define the custom font name */
+    src: local("Akkadian"),
+    url("../../font's/Akkadian.otf") format("opentype"),
+    local("Aegean"),
+    url("../../font's/Aegean.otf") format("opentype"),
+    local("CuneiformComposite"),
+    url("../../font's/CuneiformComposite.ttf") format("truetype");
+    unicode-range: U+12000-123FF, U+12400-1247F; /* multiple values */
+}
+
+@font-face {
+    /* Balinese */
+    font-family: "JG Aksara Bali";
+    src: local("JG Aksara Bali");
+    unicode-range: U+1B00-1B7F;
+}
+
+/*
+.Ancient_Script {font-family: "MPH 2B Damase", Aegean, Andagii, Code2000, Code2001, Code2002;}
+.Arbi {font-family: Andalus; font-size: x-large;}
+.Bold {font-weight: bold;}
+.Bold_Uppercase {font-family: "Palatino Linotype", "charis SIL";}
+.Dilyana {font-family: Dilyana;}
+.Dilyana_Grand {font-size: large; font-family: Dilyana;}
+.Dilyana_Large {font-size: x-large; font-family: Dilyana;}
+.Dingbat_Enorme {font-size: xx-large; font-family: Code2000;}
+.Dingbat_Grand {font-family: code2000; font-size: large;}
+.Dingbat_Large {font-family: Code2000; font-size: x-large;}
+.Ellênikis_Grand1 {font-family: "Palatino Linotype", "charis SIL"; font-size: large;}
+.Ellênikis_Grand1,
+.Ellênikis_Grand11 {font-family: "Palatino Linotype"; font-size: large;}
+.Ellênikis_Normal1 {font-size: medium; font-family: "Palatino Linotype", "charis SIL";}
+.Ellênikis_Normal11 {font-family: "Palatino Linotype";}
+.Ellênikis_Normal11,
+.Ellênikis_Normal12 {font-size: medium; font-family: "Palatino Linotype", "charis SIL";}
+.Ellênikis_Normal2 {font-family: "Palatino Linotype", "charis SIL";}
+.Ellênikis_Normal3 {font-family: "Palatino Linotype"; font-size: medium;}
+.Ellênikis_Normal3 {font-family: "Palatino Linotype";}
+.Ellênikis1 {font-family: "Palatino Linotype", "charis SIL";}
+.Grand1 {font-size: large;}
+.Grand1 {font-size: x-large;}
+.Green {color: #009900;}
+.Green {color: #339900;}
+.Green {color: #390;}
+.Ïaponi {font-size: x-large; font-family: "ms mincho";}
+.Large {font-family: "Times New Roman", Times, serif; font-size: large;}
+.Large {font-family: Dilyana; font-size: x-large;}
+.Large {font-size: large;}
+.Large_Bold {font-family: "Palatino Linotype"; font-size: large;}
+.Large_Bold {font-family: Dilyana; font-size: medium;}
+.Large_Bold,
+.Large_Bold {font-size: medium;}
+.Large {font-family: Akkadian, cuneiformComposite; font-size: large;}
+.Medium {font-family: "Palatino Linotype";}
+.Medium {font-size: medium;}
+.Medium,
+.Medium_Bold_Uppercase {font-family: Dilyana;}
+.Medium_Bold_Uppercase,
+.Medium_Uppercase {font-family: "Times New Roman", Times, serif;}
+.Medium_Uppercase,
+.Obrit_Large {font-family: Cardo; font-size: large;}
+.Obrith {font-family: Cardo; font-size: large;}
+.Obrith_Enorme {font-family: Cardo; font-size: xx-large;}
+.Obrith_Enorme {font-size: xx-large;}
+.Obrith_Grand_Green {color: #090; font-family: cardo; font-size: large;}
+.Obrith_Grand_Green1 {color: #090; font-family: cardo; font-size: large;}
+.Obrith_Grand1 {font-family: Cardo; font-size: large;}
+.Obrith_Grand11 {font-family: Cardo; font-size: large;}
+.Obrith_Large {font-family: Cardo; font-size: x-large;}
+.Obrith_Normal {font-family: Cardo;}
+.Obrith_X_Large {font-family: Cardo; font-size: x-large;}
+.Obrith {font-family: Cardo;}
+.Obrith1 {font-family: Cardo; font-style: normal;}
+.Obrith1 {font-family: Cardo;}
+.Obrith11 {font-size: large; font-family: Cardo;}
+.Orbi_Enorme {font-family: Andalus; font-size: xx-large;}
+.Orbi_Enorme,
+.Orbi_Enorme {font-size: xx-large;}
+.Orbi_Grand {font-family: Andalus; font-size: large;}
+.Orbi_Grand {font-size: large;}
+.Orbi_Grand1 {font-family: Andalus; font-size: large;}
+.Orbi_Grand1 {font-size: large; font-family: Cardo;}
+.Orbi_Large {font-family: Andalus; font-size: x-large;}
+.Orbi_Large_Green,
+.Orbi_Large_Green {color: #090; font-family: andalus;}
+.Orbi_Large_Green1 {color: #090; font-family: andalus; font-size: x-large;}
+.Orbi_Large1 {font-family: Andalus; font-size: x-large;}
+.Orbi_Large11 {font-family: Andalus; font-size: x-large;}
+.Orbi_Normal {font-family: Andalus;}
+.Phonetique {font-weight: bold; color: #990000;}
+.Phonetique,
+.Phonetique {color: #900;}
+.Qin_Grand {font-size: large; font-family: "MS Mincho";}
+.Qin_Grand {font-family: "MS Mincho";}
+.Qin_Grand {font-size: large;}
+.Qin_Large {font-family: "MS Mincho"; font-size: x-large;}
+.Qin_Large {font-family: "MS Mincho";}
+.Qin_Normal {font-family: "MS Mincho";}
+.Rouge1 {color: #FF0000;}
+.Rouge1 {color: red;}
+.Small {font-size: small;
+.Small {font-size: small;}
+.Style1 {color: #FFFFFF;}
+.Style1,
+.Style10 {font-family: Andalus;}
+.style104 {color: #339900; font-family: Cardo; font-size: large;}
+.Style11 {color: #339900; font-weight: bold;}
+.Style11,
+.Style11 {color: #390;}
+.Style110 {font-family: Cardo; font-size: large;}
+.Style110 {color: #7F0D08;}
+.Style111 {font-size: x-large; font-family: Cardo;}
+.Style1111 {font-family: "Arial Unicode MS";}
+.Style112 {font-family: "Arial Unicode MS";}
+.Style113 {font-family: Cardo; font-size: large;}
+.Style114 {font-family: Cardo;}
+.Style115, .Style72 {font-size: x-large;}
+.Style12 {font-size: medium; font-family: "Palatino Linotype", "charis SIL";}
+.Style121 {color: #FFFFFF;}
+.Style121,
+.Style122 {color: #990000;}
+.Style123 {font-family: Andalus; font-size: x-large;}
+.Style123,
+.Style124 {font-size: x-small;}
+.Style125 {font-family: "Palatino Linotype", "charis SIL";}
+.Style125 {font-size: large;}
+.Style13 {color: #FF0000; font-weight: bold;}
+.Style13 {color: red;}
+.Style13 {font-weight: 700;}
+.style130 {color: #FDECB4;}
+.Style131 {color: #FF0000; font-weight: bold;}
+.Style131 {font-size: large;}
+.style133 {font-family: "Times New Roman", Times, serif;}
+.style133 {color: #FDECB4;}
+.Style14 {font-family: Andalus; font-size: x-large;}
+.Style14 {font-size: large; color: #FFFFFF;}
+.Style141 {font-size: large; color: #FFFFFF;}
+.Style141,
+.Style141 {color: #FFF;}
+.style142 {font-family: "Palatino Linotype", "charis SIL";}
+.style142 {font-size: large;}
+.Style1421 {font-size: x-large; font-family: batang;}
+.Style1421 {font-family: batang;}
+.style143 {font-family: Cardo; font-size: large; color: #009900;}
+.style144 {color: #3366FF;}
+.style144 {color: #36F;}
+.style145 {color: #FFFFFF; font-family: "Palatino Linotype";}
+.style145 {color: #FFF; font-family: "Palatino Linotype";}
+.style148 {color: #F90;}
+.style149 {color: #00F;}
+.style149 {font-weight: 700;}
+.Style15 {font-family: Andalus; font-size: x-large;}
+.Style15 {font-size: x-large; font-family: "Arial Unicode MS", Arial, sans-serif;}
+.style150 {font-style: italic; font-size: small;}
+.style151 {color: #336600;}
+.style151 {color: #360;}
+.style152 {color: #FFCC00; font-size: x-large; font-family: Andalus;}
+.Style153 {font-family: Lateef; font-size: xx-large;}
+.Style153 {font-family: Lateef;}
+.Style16 {font-size: xx-large;}
+.Style161 {font-size: large; font-family: Cardo;}
+.Style162 {font-size: xx-small;}
+.Style163 {font-family: Cardo;}
+.style17 {font-family: "Palatino Linotype", "charis SIL";}
+.Style17 {font-size: medium; font-family: "Palatino Linotype", "charis SIL"; font-style: italic;}
+.style171 {font-size: x-large; color: #000; font-family: Andalus;}
+.Style18 {font-family: "Palatino Linotype"; font-size: x-large;}
+.Style18,
+.Style18 {font-family: "Palatino Linotype";}
+.Style181 {font-family: Andalus; font-size: x-large;}
+.Style181 {font-family: Andalus;}
+.Style19 {font-family: Andalus; font-size: xx-large;}
+.Style19 {font-family: Andalus;}
+.Style19 {font-size: xx-large;}
+.Style191 {font-size: medium;}
+.Style2 {font-size: x-small; color: #FFFFFF;}
+.Style2,
+.Style2 {font-size: x-small;}
+.Style20 {color: #009900;} // Green
+.Style20 {color: #090;}
+.Style201 {font-family: Andalus;}
+.Style201 {font-size: large;}
+.Style21 {color: #006600;}
+.Style21 {font-family: Cardo; font-size: large;}
+.Style210 {font-size: x-large;}
+.Style211 {font-size: large;}
+.Style212 {font-size: x-small; color: #FFFFFF;}
+.Style212 {font-size: x-small; color: #FFF;}
+.Style22 {font-size: xx-large; font-family: "MS Mincho";}
+.Style221 {font-size: x-large;}
+.Style221,
+.Style222 {font-family: "Arial Unicode MS", Arial, sans-serif;}
+.Style23 {font-family: Cardo; font-size: x-large;}
+.Style23 {font-size: x-large; font-family: Andalus; color: #990000;}
+.Style24 {font-family: "UKIJ Kufi Uz"; font-size: xx-large;}
+.Style24 {font-family: "UKIJ Kufi Uz";}
+.Style24 {font-size: xx-large;}
+.style25 {color: #FFCC00;}
+.style25 {color: #FC0;}
+.style26 {color: #FFCC00; font-size: large; font-family: Cardo;}
+.Style26 {font-size: small;}
+.Style27 {color: #9D360E;}
+.Style271 {font-family: Andalus; font-size: xx-large;}
+.style28 {color: #FFCC00; font-family: "Times New Roman", Times, serif;}
+.Style281 {font-size: x-large; font-family: Cardo;}
+.Style29 {color: #FFFFFF; font-size: x-small;}
+.Style29,
+.Style29 {color: #FFF;}
+.Style3 {font-family: "Palatino Linotype", "charis SIL"; font-weight: bold;}
+.Style3 {font-family: Andalus; font-size: x-large; color: #FFFFFF;}
+.Style3,
+.Style3 {font-family: Andalus; font-size: x-large;}
+.Style30 {font-size: x-large; font-family: "Microsoft Sans Serif";}
+.style31 {color: #FFCC00; font-family: "MS Mincho"; font-size: large;}
+.Style31 {font-family: "Microsoft Sans Serif"; font-weight: bold;}
+.Style31 {font-family: Andalus; font-size: x-large;}
+.Style31,
+.Style31 {font-size: x-large;}
+.Style311 {font-family: "Palatino Linotype", "charis SIL"; font-size: large;}
+.Style32 {color: #FF0000;}
+.Style32 {color: red;}
+.Style321 {font-size: large;}
+.Style3211 {color: #FF0000;}
+.Style3211 {font-size: large;}
+.Style3211 {color: red; font-size: large;}
+.Style3212 {color: #FF0000;}
+.Style3212 {color: red;}
+.Style322 {font-family: "Arial Unicode MS", Arial, sans-serif;}
+.Style33 {color: #339900;}
+.style33 {font-weight: bold; color: #990000; font-size: x-small;}
+.Style33 {color: #FC0;}
+.Style34 {font-size: xx-large;}
+.Style35 {font-size: large; font-family: Cardo;}
+.Style36 {color: #990000;}
+.style37 {font-family: Andalus; font-size: medium;}
+.Style371 {font-family: Andalus; font-size: x-large;}
+.style38 {font-family: "Palatino Linotype"; font-size: large; color: #FFFFFF;}
+.Style39 {color: #FF0000; font-weight: bold;}
+.Style4 {font-family: Cardo; font-size: large; color: #FFFFFF;}
+.Style4 {font-size: xx-small;}
+.Style4,
+.Style4 {font-family: Cardo;}
+.style40 {color: #0066FF;}
+.style41 {font-family: Cardo; font-size: large; color: #FF0000;}
+.Style41 {font-size: x-large;}
+.Style411 {color: #C6353B; font-weight: bold;}
+.Style411 {color: #C6353B;}
+.style413 {font-size: large; font-family: Mangal;}
+.style414 {font-family: "Traditional Arabic";}
+.style415 {font-family: "Palatino Linotype";}
+.style415 {font-size: medium; font-weight: 700;}
+.style418 {color: #00F;}
+.Style42 {font-family: Andalus; font-size: x-large;}
+.Style42,
+.Style43 {font-family: Cardo; font-size: large;}
+.Style43 {font-family: Cardo;}
+.style433 {font-style: italic; font-size: x-small;}
+.style434 {font-style: italic;}
+.style439 {color: #0099FF;}
+.style44 {font-family: Cardo; font-size: large; color: #990000;}
+.Style44 {font-size: xx-small;}
+.style440 {color: #F00;}
+.style45 {color: #339900; font-family: "Palatino Linotype"; font-size: x-small;}
+.Style46 {font-size: xx-large; font-family: Andalus;}
+.Style46 {font-family: Andalus;}
+.Style46 {font-size: xx-large;}
+.style47 {color: #FF6600;} orange
+.style47 {font-family: "Times New Roman", Times, serif; color: #FF0000;} red
+.style48 {color: #999999;}
+.Style5 {color: #00CCFF; font-weight: bold;}
+.Style5 {font-size: large; color: #FFFFFF;}
+.style51 {font-size: medium;}
+.style52 {color: #990000;}
+.style52 {color: #900;}
+.Style53 {font-family: Cardo; font-size: x-large;}
+.Style54 {font-size: x-small;}
+.style55 {color: #009900; font-weight: bold;}
+.Style55 {color: #000;}
+.style59 {font-family: Andalus;}
+.Style6 {color: #990000; font-weight: bold; font-size: x-small;}
+.Style6 {font-family: "Times New Roman", Times, serif; font-size: large; color: #FFFFFF;}
+.Style6 {color: #FFF;}
+.Style6 {font-family: "Times New Roman", Times, serif;}
+.Style6 {font-size: large;}
+.style60 {font-size: x-large; color: #000;}
+.Style61 {font-family: Andalus; font-size: xx-large;}
+.Style62 {font-size: x-large; font-family: Andalus;}
+.Style62 {font-family: Andalus;}
+.Style62 {font-size: x-large;}
+.Style64 {font-size: large;}
+.style65 {font-size: xx-large; font-family: "microsoft Sans Serif";}
+.Style66 {color: #900; font-size: x-small;}
+.Style7 {color: #339900;}
+.Style7 {color: #390;}
+.Style71 {font-family: "Palatino Linotype", "charis SIL"; font-size: medium;}
+.Style711 {color: #FFFFFF;}
+.Style711 {color: #FFF;}
+.Style72 {font-family: Andalus;}
+.Style8 {font-size: x-large;}
+.Style9 {color: #339900;}
+.Style9 {color: #FF0000;}
+.Style9 {color: red;}
+.Style91 {font-size: large;}
+.Style92 {font-size: large; font-family: "Arial Unicode MS";}
+.Traditional_Arabic {font-family: "traditional Arabic"; font-size: x-large;}
+.Traditional_Arabic {font-size: xx-large;}
+.Vert1 {color: #009900;}
+.Vert1 {color: #339900;}
+.Vert1 {color: #390;}
+.X_Large {font-family: "Times New Roman", Times, serif; font-size: x-large;}
+.X_Large {font-size: x-large;}
+.X_Large_Bold_Uppercase {font-family: "Palatino Linotype"; font-size: x-large;}
+.X_Large_Bold_Uppercase {font-family: "Palatino Linotype";}
+.X_Large_Bold_Uppercase {font-size: x-large;}
+.X_Large {font-family: "Times New Roman", Times, serif;}
+.x-small {font-size: x-small;}
+.XX_Large {font-family: "Palatino Linotype"; font-size: xx-large;}
+.XX_Large {font-family: "Times New Roman", Times, serif; font-size: xx-large;}
+.XX_Large {font-size: xx-large;}
+.XX_Large,
+.XX_Large_Bold {font-family: Dilyana; font-size: xx-large;}
+.XX_Large_Bold {font-family: Dilyana;}
+.XX_Large_Bold {font-size: xx-large;}
+.Xx-small {font-size: xx-small;}
+a: active {color: #777;}
+a: active {color: #999; text-decoration: underline;}
+a: active {color: #999;}
+a: hover {color: #999;}
+a: hover {color: #CCCCCC; text-decoration: none;}
+a: link {color: #666; text-decoration: underline;}
+a: link {color: #666;}
+a: link {color: #888;}
+a: visited {color: #666; text-decoration: underline;}
+a: visited {color: #666;}
+a: visited {color: #888;}
+
+*/
+
+/* Color Variables*/
+:root {
+    --nemzag-bgc-color-primary: #4fc3f7;
+    --nemzaz-bgc-color-secondary: #FFE0B2; /* Material Design Orange‑tone‑5100…   */
+    --nemzaz-bgc-color-tertiary: #fffde7;  /* Material Design Amber‑tone‑25… */
+    --nemzaz-bgc-color-quadrary: #ffebee;  /* Material Design Red‑tone‑50…      */
+
+    /* BlockQuote */
+    --nemzag-blockquote-bgc-color: var(--nemzaz-bgc-color-secondary);
+
+    --nemzag-blockquote-color: #0D47A1;    /* Material Design Blue‑tone‑900…      */
+
+    --nemzag-blockquote-selection-color: var(--nemzag-blockquote-color);
+    --nemzag-blockquote-selection-color-link: #CFD8DC;
+
+    --nemzag-blockquote-border-left-color: #FB8C00;
+}
+
+* {
+    /* font-family: Roboto, sans-serif; */ /* "Courier New", monospace; */
+    /* margin: 0; */
+}
+
+html {
+    font-family: "Times New Roman", "Andalus", "Arial Unicode MS", "Cardo", "Dilyana", "Chrysanthi Unicode", "Nirmala UI", "Aparajita", "Mangal", "Courier New", serif, monospace;
+    line-height: 1.6;
+}
+
+/* html replaced by body */
+body {
+    font-family: "Times New Roman", "Andalus", "Arial Unicode MS", "Cardo", "Dilyana", "Chrysanthi Unicode", "Nirmala UI", "Aparajita", "Mangal", "Courier New", serif, monospace;
+    line-height: 1.6;
+    /* font-size: 125%; ne pas utiliser car deregle l'apparence à cause des styles CSS large x-large normal small small-x utilisé dans le fichier */
+    margin-bottom: 0.8em; /* Like WordPress nuclear theme */
+}
+
+/* <PRE> */
+pre {
+    line-height: 1.14em;
+}
+
+.pre-line pre {
+    white-space: pre-line;
+}
+
+code {
+    background-color: rgba(43, 71, 100, 0.06);
+    border-radius: 5px;
+}
+
+/* SOURCE CODE DISPLAY */
+#source-code {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.8);
+}
+
+#source-code:target {
+    display: block;
+}
+
+#source-code pre {
+    padding: 20px;
+    font: 14px/1.6 Monaco, Courier, MonoSpace;
+    margin: 50px auto;
+    background: rgba(223,239,255,0.7);
+    color: white; width: 80%; height: 80%; overflow: auto; }
+
+#source-code pre a, #source-code pre a span {
+    text-decoration: none;
+    color: #00ccff !important;
+}
+
+#x {
+    position: absolute;
+    top: 30px;
+    left: 10%;
+    margin-left: -41px; }
+
+.button {
+    background: #00ccff;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+/*
+main {
+
+}
+*/
+section {
+    margin-bottom: 1em;
+}
+
+.margin {
+    margin: 0 15%;
+}
+
+/*Arab {
+	font-family: "Andalus";
+	font-size: xx-large;
+	} */
+
+/*Hebr {
+	font-family: 'Cardo', serif;
+	} */
+/*
+a:link {
+    color: #888888;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #777777;
+}
+
+a:hover {
+    color: #616161;
+}
+
+a:active {
+    color: #757575;
+}
+*/
+
+blockquote {
+    background-color: var(--nemzag-blockquote-bgc-color);
+    color: var(--nemzag-blockquote-color);
+    padding: 1em;
+    border-left: 2px solid var(--nemzag-blockquote-border-left-color);
+    border-radius: 1em;
+    margin-right: 0;
+}
+
+blockquote *::selection {
+    background-color: var(--nemzag-blockquote-selection-color);
+    color: white;
+}
+
+blockquote a::selection {
+    background-color: var(--nemzag-blockquote-selection-color);
+    color: #CFD8DC;
+}
+
+.border {
+    border: black solid 1px;
+}
+
+dl {
+    text-align: justify;
+}
+
+dt {
+    padding-top: 1em;
+    font-weight: bold;
+}
+
+dd {
+    padding-top: 0.6em;
+
+}
+
+figure {
+    text-align: center;
+}
+
+fieldset {
+    /* border: 1px solid #808080; */
+    border-radius: 8px;
+    margin-bottom: 1em;
+    min-inline-size: 100%; /* Experimental function in Opera, Chrome, FireFox not Edge. */
+    min-width: 100%;
+}
+.flex {
+    display: flex;
+    margin: 0.8em;
+    padding: 0.8em;
+}
+.larousse dt {
+    font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: justify;
+/*
+    color: #ffffff;
+    border-radius: 3px;
+    padding: 5px;
+*/
+    margin: 0 0 1em 0 ;  /* up, right, down, left */
+}
+
+h1:first-child {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+    margin-bottom: 0.8em; /* Like WordPress nuclear theme */
+}
+
+h2, h3, h4, h5, h6,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0.8em;
+}
+/*
+h1 {
+    background-color: #000000;
+}
+
+h2 {
+    background-color: #000000;
+}
+
+h3 {
+    background-color: #212121;
+}
+
+h4 {
+    background-color: #212121;
+}
+
+h5 {
+    background-color: #424242;
+}
+
+h6 {
+    background-color: #424242;
+}
+*/
+img {
+
+}
+
+img.size-25-percent {
+    height: 25%;
+    width: 25%;
+}
+
+img.size-50-percent {
+    height: 50%;
+    width: 50%;
+}
+
+/* width="281" height="207" */
+
+/* LIST EN GRAS */
+
+/*
+ol {
+    counter-reset: item;
+}
+
+ol > li {
+    text-indent: -2.3em;
+    list-style-type: none;
+    counter-increment: item;
+}
+
+ol > li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 1.3em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
+}
+*/
+
+p {
+    text-align: justify;
+}
+
+p.indent, h3.indent {
+    text-indent: 40px;
+}
+
+/* DETAILS & SUMMARY */
+
+summary.summary-arrow-right {
+    direction: rtl;
+}
+
+/* LIST */
+/*
+ul {
+
+}
+
+ol {
+
+}
+*/
+
+/* 2018‑10‑04 */
+
+ol li li li li li li {
+    list-style: lower-roman;
+}
+
+ol li li li li li {
+    list-style: lower-greek;
+}
+
+ol li li li li {
+    list-style: lower-alpha
+}
+
+ol li li li {
+    list-style: upper-alpha;
+}
+
+ol li li {
+    list-style: upper-roman;
+}
+
+ol li {
+    list-style: decimal;
+}
+
+/* 2018‑10‑04 */
+.centered-list ul, .centered-list ol,
+.centered-list ul li, .centered-list ol li {
+    padding-left: 0;
+    list-style: unset;
+    margin: auto;
+    display: table;
+    text-align: center;
+    list-style: none;
+}
+
+/* TABLE */
+
+table {
+    border: 1px double rgba(64,64,64,.30);
+    /*
+    border: #000000 solid 1px;
+    */
+    margin: auto;
+    border-spacing: 1px; /* cellspacing="1" */
+    border-collapse: collapse; /* slim line */
+    width: 100%;
+    background-color: #fff;
+}
+
+table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f5f5f5; /* rgba(0,0,0,0.05); */
+	border: 1px solid #ddd;
+}
+
+table.no-width {
+    width: auto;
+}
+
+tr, th, td {
+    border: 1px solid #ddd; /* 1px solid rgba(64,64,64,.30); */
+    border-collapse: collapse;
+    padding: 0.4em; /* 5px; */ /* cellpadding="5" */
+}
+
+td {
+    /*
+    background-color: #fff;
+    */
+}
+
+/* 2018-04-30 - tr:hover */
+tr:hover td {
+    color: #2B4764;
+    background-color: rgba(43, 71, 100, 0.06);
+}
+
+table.no-border, .no-border td {
+    border: none;
+}
+
+table.center, .center td, .center p {
+    text-align: center;
+}
+
+table th {
+    vertical-align: top;
+    /*
+    background-color: #000000;
+    */
+    color: #000000;
+}
+
+table td {
+    vertical-align: top;
+}
+
+.pre-line table td {
+    white-space: pre-line;
+}
+
+/* Force Baseline on Boostrap table */
+.baseline th, .baseline td{
+    vertical-align: baseline;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* ANGEL GENIUS */
+
+/* FILE 2007‑02 - ANGENIUS */
+.table-angels-types td:nth-child(1) {
+    text-align: right;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.table-angels-types td:nth-child(2) {
+    text-align: justify;
+}
+.table-angels-types td:nth-child(3) {
+    text-align: right;
+}
+
+/* PHP PROJET */
+
+/* TAOCODEX SIX COLUMN PROJET PHP */
+
+.taocodex-six-column {
+    white-space: wrap;
+}
+.taocodex-six-column td:nth-child(-n+3) {
+    text-align: right;
+}
+
+.taocodex-six-column td:nth-child(n+3) {
+    text-align: left;
+}
+
+.taocodex-six-column td:nth-child(1), .taocodex-six-column th:nth-child(6) {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.taocodex-six-column td:nth-child(2), .taocodex-six-column th:nth-child(5) {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.taocodex-six-column td:nth-child(3), .taocodex-six-column th:nth-child(4) {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+.taocodex-six-column td:nth-child(4), .taocodex-six-column th:nth-child(3) {
+    background-color: #aaaaaa;
+    color: #000000;
+}
+
+.taocodex-six-column td:nth-child(5), .taocodex-six-column th:nth-child(2) {
+    background-color: #cccccc;
+    color: #000000;
+}
+
+.taocodex-six-column td:nth-child(6), .taocodex-six-column th:nth-child(1) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* TAOCODEX FORM SEVEN COLUMN PROJET PHP */
+
+.taocodex-form-seven-column th:nth-child(1) {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.taocodex-form-seven-column th:nth-child(2), .taocodex-form-seven-column th:nth-child(3), .taocodex-form-seven-column th:nth-child(4) {
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.taocodex-form-seven-column th:nth-child(5), .taocodex-form-seven-column th:nth-child(6), .taocodex-form-seven-column th:nth-child(7) {
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.taocodex-form-seven-column td:nth-child(2) {
+    text-align: left;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.taocodex-form-seven-column td:nth-child(3), .taocodex-form-seven-column td:nth-child(4) {
+    text-align: center;
+    background-color: #555555;
+    color: #ffffff;
+}
+
+.taocodex-form-seven-column td:nth-child(5), .taocodex-form-seven-column td:nth-child(6) {
+    text-align: left;
+    background-color: #AAAAAA;
+    color: #000000;
+}
+
+.taocodex-form-seven-column td:nth-child(7) {
+    text-align: left;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.taocodex-form-seven-column th, .taocodex-form-seven-column td {
+    width: 14%;
+}
+
+.taocodex-form-seven-column input, .taocodex-form-seven-column select  {
+    width: 100%;
+}
+
+/* JQUERY MOBILE TWEAK */
+
+.ui-mobile .ui-page-active {
+    display: block;
+    overflow: visible;
+    overflow-x: initial;
+}
+
+legend, .ui-input-text input, .ui-input-search input {
+    text-shadow: initial;
+}
+
+    /* */
+
+.initial {
+    background-color: initial;
+}
+
+.inherit {
+    background-color: inherit;
+}
+
+/* TWELVE COLUMN TABLE VARIANT */
+
+table.twelve-column-variant {
+
+}
+
+table.twelve-column-variant td:nth-child(1) {
+    background-color: #555555;
+}
+
+table.twelve-column-variant td:nth-child(2) {
+    background-color: #444444;
+}
+
+table.twelve-column-variant td:nth-child(3) {
+    background-color: #333333;
+}
+
+table.twelve-column-variant td:nth-child(4) {
+    background-color: #222222;
+}
+
+table.twelve-column-variant td:nth-child(5) {
+    background-color: #111111;
+}
+
+table.twelve-column-variant td:nth-child(6) {
+    background-color: #000000;
+}
+
+table.twelve-column-variant td:nth-child(7) {
+    background-color: #FFFFFF;
+}
+
+table.twelve-column-variant td:nth-child(8) {
+    background-color: #EEEEEE;
+}
+
+table.twelve-column-variant td:nth-child(9) {
+    background-color: #DDDDDD;
+}
+
+table.twelve-column-variant td:nth-child(10) {
+    background-color: #CCCCCC;
+}
+
+table.twelve-column-variant td:nth-child(11) {
+    background-color: #BBBBBB;
+}
+
+table.twelve-column-variant td:nth-child(12) {
+    background-color: #AAAAAA;
+}
+
+/* TRIPLE COLUMN CENTER CENTER LEFT TABLE  */
+
+.triple-column-center-center-left td {
+
+}
+
+table.triple-column-center-center-left td:nth-child(1) {
+    text-align: center;
+}
+
+table.triple-column-center-center-left td:nth-child(2) {
+    text-align: center;
+}
+
+table.triple-column-center-center-left td:nth-child(3) {
+    text-align: left;
+}
+
+/* FOUR COLUMN JUSTIFY TABLE  */
+
+.four-column-justify {
+
+}
+
+table.four-column-justify td:nth-child(n+1) {
+    text-align: justify;
+    background-color: #fff;
+}
+
+table.four-column-justify td:nth-child(n+1) p {
+    text-align: justify;
+    background-color: #fff;
+}
+
+/* WIDTH */
+
+.width-15-pixel {
+    width: 15px;
+}
+
+.width-200-pixel {
+    width: 200px;
+}
+
+.width-350-pixel {
+    width: 350px;
+}
+
+.width-500-pixel {
+    width: 500px;
+}
+
+.width-04-percent {
+    width: 4%;
+}
+
+.width-08-percent {
+    width: 8%;
+}
+
+.width-10-percent {
+    width: 10%;
+}
+
+.width-11-percent {
+    width: 11%;
+}
+
+.width-18-percent {
+    width: 18%;
+}
+
+.width-25-percent {
+    width: 25%;
+}
+
+.width-35-percent {
+    width: 35%;
+}
+
+.width-50-percent {
+    width: 50%;
+}
+
+.width-60-percent {
+    width: 60%;
+}
+
+.width-72-percent {
+    width: 72%;
+}
+
+
+
+/* BACKGROUND-COLOR */
+
+.bgc-white {
+    background-color: #ffffff;
+}
+
+.bgc-gray-EEEEEE {
+    background-color: #EEEEEE;
+}
+
+.bgc-gray-DDDDDD {
+    background-color: #DDDDDD;
+}
+
+.bgc-gray-CCCCCC {
+    background-color: #CCCCCC;
+}
+
+.bgc-gray-BBBBBB {
+    background-color: #BBBBBB;
+}
+
+.bgc-gray-AAAAAA {
+    background-color: #AAAAAA;
+}
+
+.bgc-gray-999999 {
+    background-color: #999999;
+}
+
+.bgc-gray-888888 {
+    background-color: #888888;
+}
+
+.bgc-gray-777777 {
+    background-color: #777777;
+}
+
+.bgc-gray-666666 {
+    background-color: #666666;
+}
+
+.bgc-gray-555555 {
+    background-color: #555555;
+}
+
+.bgc-gray-444444 {
+    background-color: #444444;
+}
+
+.bgc-gray-333333 {
+    background-color: #333333;
+}
+
+.bgc-gray-222222 {
+    background-color: #222222;
+}
+
+.bgc-gray-111111 {
+    background-color: #111111;
+}
+
+.bgc-black {
+    background-color: #000000;
+}
+
+/* Position */
+
+.center {
+    text-align: center;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FONT'S FAMILY */
+
+.arial-unicode-ms {
+    font-family: "Arial Unicode MS", "arial", sans serif;
+}
+
+.balinese {
+    font-family: "JG Aksara Bali", serif;
+}
+
+.courier-new {
+    font-family: "Courier New", monospace;
+}
+
+.myanmar {
+    font-family: MyMyanmar, cursive;
+}
+
+.new-athena-unicode {
+    font-family: "New Athena Unicode", serif;
+    url("../../font's/newathu5_5.ttf") format("truetype");
+}
+
+.code2000 {
+    font-family: Code2000, Code2001, Code2002, serif;
+}
+
+.cyril {
+    font-family: "dilyana", "Cyrillic Old Face", "Titus Cyrillic", serif;
+    url("../../font's/dilyan2.ttf") format("truetype");
+}
+
+.dingbat {
+    font-family: Code2000, serif;
+}
+
+.egoptic { /* pun game between Egyptian & Coptic */
+    font-family: Quivira, serif;
+}
+
+.etruscan {
+    font-family: Aegean, sans-serif;
+}
+
+.khmer {
+    font-family: "Khmer OS Battambang", sans-serif;
+}
+
+.microsoft-sans-serif {
+    font-family: "Microsoft Sans Serif", sans-serif;
+}
+
+.oriya {
+    font-family: Kalinga, sans-serif;
+}
+
+.qin {
+    font-family: "MS Mincho", serif;
+}
+
+.roman {
+    font-family: "Times New Roman", "charis SIL", Times, serif;
+}
+
+.times-new-roman {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.ugaritic {
+    font-family: Aegean, sans-serif;
+    url("../../font's/Aegean.otf") format("opentype");
+}
+
+.urdu {
+    font-family: "Nafees Naskh v2.01", cursive;
+    url("../../font's/Nafees Naskh v2.01.ttf") format("truetype");
+}
+
+/* FONT'S WEIGHT & STYLE */
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/* FONT'S COLOR'S */
+.altan {
+    color: #FC0;
+    /*
+    color: #F90;
+    */
+}
+
+.black {
+    color: black;
+}
+
+.blink {
+    text-decoration: blink;
+}
+
+.blood {
+    color: #CC0000;
+}
+
+.blue {
+    color: blue;
+}
+
+.gold {
+    color: gold;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.white {
+    color: white;
+}
+
+.yellow {
+    color: yellow;
+}
+
+/* INPUT */
+input {
+    font-family: "Courier New", monospace;
+}
+
+input.center {
+    text-align: center;
+}
+
+input.black, textarea.black {
+    background-color: #000000;
+    color: white;
+}
+
+input.darkgray, textarea.darkgray {
+    background-color: #333333;
+    color: white;
+}
+
+input.gray, textarea.gray {
+    background-color: #666666;
+    color: white;
+}
+
+input.grey, textarea.grey {
+    background-color: #999999;
+    color: black;
+}
+
+input.lightgrey, textarea.lightgrey {
+    background-color: #CCCCCC;
+    color: black;
+}
+
+input.white, textarea.white {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.taocodex-form-seven-column textarea:focus, .taocodex-form-seven-column input:focus {
+    background-color: gold;
+}
+
+/*
+.taocodex-form-seven-column select:checked {
+
+}
+*/
+
+.phonetic {
+    color: #990000;
+    font-weight: bold;
+    /*
+    font-family: "Microsoft Sans Serif", sans-serif;
+    */
+    font-family: "Arial Unicode MS", "Arial", sans-serif;
+}
+
+.phonetic-negative {
+    color: #800000;
+    font-weight: bold;
+}
+
+.phonetic-positive {
+    color: #3366ff;
+    font-weight: bold;
+    /*
+    font-family: "Arial Unicode MS", "Arial", sans-serif;
+    */
+}
+
+/* FONT SIZE */
+.xx-large {
+    font-size: xx-large;
+}
+
+.x-large {
+    font-size: x-large;
+}
+
+.large {
+    font-size: large;
+}
+
+.medium {
+    font-size: medium;
+    /*
+    font-weight: bold;
+    text-transform: uppercase; à supprimer
+    */
+}
+
+.small {
+    font-size: small;
+    /* text-transform: uppercase; */
+}
+
+.x-small {
+    font-size: x-small;
+}
+
+.xx-small {
+    font-size: xx-small;
+}

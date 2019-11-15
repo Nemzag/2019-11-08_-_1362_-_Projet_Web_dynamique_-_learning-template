@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,6 +16,13 @@ class HomeController extends AbstractController
      */
     public function home()
     {
-        return $this->render('home/index.html.twig');
+	    $news = $this
+		    ->getDoctrine()
+		    ->getRepository(News::class )
+		    ->findAll();
+
+        return $this->render('home/index.html.twig', [
+	        "news" => $news
+        ]);
     }
 }

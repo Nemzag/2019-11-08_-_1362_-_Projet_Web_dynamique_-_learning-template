@@ -38,7 +38,7 @@ class NewsFixtures extends Fixture
 
 			// Faker Generation
 			$news->setTitle($faker->text($maxNbChars =  255));
-			$news->setImage($i.'.jpg');
+			$news->setImage('0' . $i.'.png');
 			$news->setCreatedAt($faker->dateTime("now"));
 			// $news->setIsPublished(1);
 			$news->setText($faker->paragraphs(8, true));

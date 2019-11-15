@@ -161,7 +161,7 @@ include_once "include/include_main.php";
                 <li>role</li>       <!-- J.S.O.N. obligatoire -->
             </ul>
 
-            <p>Seul les commentaires seront lié au User.</p>
+            <p>Seul les commentaires seront lié au User & au cour, manyToOne.</p>
 
         </fieldset>
     </section>

@@ -52,7 +52,9 @@ class UserFixtures extends fixture
 				$user->setFirstName($faker->firstName($genre));
 				$user->setLastName($faker->lastName);
 				$user->setUserName($user->getFirstName() . $user->getLastName());
-				$user->setEmail($slugify->slugify($user->getFirstName().$user->getLastName()) . "@gmail.com");
+				// $user->setEmail($slugify->slugify($user->getFirstName() . "." . $user->getLastName()) . "@gmail.com");
+				$user->setEmail(($slugify->slugify($user->getFirstName())) . "." . ($slugify->slugify($user->getLastName())) . "@gmail.com");
+				// Double Slugification, car il remplace le "." par "-". Et je ne veux pash.
 				$genre = $genre == 'male' ? 'm' : 'f';
 				$user->setImage('0' . ($i+9). $genre . '.jpg');
 				$user->setPassword('password');

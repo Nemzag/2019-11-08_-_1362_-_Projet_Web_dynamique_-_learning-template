@@ -40,7 +40,8 @@
 
             <div class="row">
                 <div class="col-4">
-                    <img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.id }}.jpg">
+                    {#<img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.id }}.jpg">#}
+                    <img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.image }}">
                 </div>
 
                 <div class="col-1"></div>
@@ -56,13 +57,13 @@
 
                         <p>Durée : {{ course.duration }}</p>
 
-                        <p>Catégorie : {{ category.name }}</p>
+                        <p>Catégorie : {{ course.category.name }}</p>
 
                         <p>Ajouté le : {{ course.createdAt | date('d/m/Y') }}</p>
 
                         <p>Horaire : {{ course.schedule }}</p>
 
-                        <p>Niveau : {{ level.name }}</p>
+                        <p>Niveau : {{ course.level.name }}</p>
 
                     </ul>
 

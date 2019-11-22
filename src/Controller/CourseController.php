@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Course;
 use App\Entity\CourseCategory;
 use App\Entity\CourseLevel;
+
 use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,9 +18,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CourseController extends AbstractController
 {
-    /**
-     * @Route("/courses", name="courses")
-     */
+	/**
+	 * @Route("/courses", name="courses")
+	 * @param CourseCategoryRepository $CourseCategoryRepository
+	 * @param CourseRepository $CourseRepository
+	 * @param CourseLevelRepository $CourseLevelRepository
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
     // public function courses() // Version du prof au départ.
     public function courses(CourseCategoryRepository $CourseCategoryRepository, CourseRepository $CourseRepository, CourseLevelRepository $CourseLevelRepository)
     {

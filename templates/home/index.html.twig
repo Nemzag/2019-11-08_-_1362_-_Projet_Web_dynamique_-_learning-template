@@ -67,11 +67,11 @@
         <div class="section">
             <h2 class="my-5">Nos dernières actualités</h2>
 
-            <div class="row">
+            <div class="row row-flex">
 
                 {% for new in news %}
 
-                   {# {% set new = news.order('createdAt desc') %} #}
+                {# {% set new = news.order('createdAt desc') %} #}
                 <div class="col-md-6">
                     <div class="media my-3 shadow-sm p-3 mb-5 bg-white rounded">
                         <img alt="" class="float-left mr-3" style="width: 2em;" src="{{ path('home')}}img/news/{{ new.image }} ">

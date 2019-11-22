@@ -63,7 +63,7 @@ class User implements UserInterface
 	private $isDisabled;
 
 	/**
-	 * @ORM\Column(type="json")
+	 * @ORM\Column(type="json_array")
 	 */
 	private $role = [];
 
@@ -82,7 +82,7 @@ class User implements UserInterface
 		return $this->id;
 	}
 
-	public function getUsername(): string
+	public function getUsername(): ?string
 		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
 		// Dans le code du prof il ne l'a pash mit.
 	{
@@ -112,33 +112,39 @@ class User implements UserInterface
 	/**
 	 * @return mixed
 	 */
-	public function getFirstName()
+	public function getFirstName(): ?string  // Martin Brognon, l'avait pash moi.
 	{
 		return $this->firstName;
 	}
 
 	/**
 	 * @param mixed $firstName
+	 * @return User
 	 */
-	public function setFirstName($firstName): void
+	public function setFirstName($firstName): self // void, pash le meme que Martin.
 	{
 		$this->firstName = $firstName;
+
+		return $this;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getLastName()
+	public function getLastName(): ?string // Martin Brognon, l'avait pash moi.
 	{
 		return $this->lastName;
 	}
 
 	/**
 	 * @param mixed $lastName
+	 * @return User
 	 */
-	public function setLastName($lastName): void
+	public function setLastName($lastName): self // void, pash le meme que Martin.
 	{
 		$this->lastName = $lastName;
+
+		return $this;
 	}
 
 	public function getPassword(): ?string
@@ -215,7 +221,7 @@ class User implements UserInterface
 	 * and populated in any number of different ways when the user object
 	 * is created.
 	 *
-	 * @return Role[] The user roles
+	 * @return Role|string[] The user roles
 	 */
 	public function getRoles()
 	{

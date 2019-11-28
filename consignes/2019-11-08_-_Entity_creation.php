@@ -116,9 +116,9 @@ include_once "include/include_main.php";
         <p>Lors de la création, j'avais un bug car quand je lançais la création de categoryId / category_id & levelId / category_id, dans l'entité / table Course / course. Je faisais OneToMany dans type alors que il fallait faire ManyToOne</p>
 
         <figure>
-            <a href="../public/img/screen_shot/2019-11-08_-_14h37.png" target="_blank"><img src="../public/img/screen_shot/2019-11-08_-_14h37.png" alt="" style="width: 75%;"></a>
+            <a href="../public/public/img/screen_shot/2019-11-08_-_14h37.png" target="_blank"><img src="../public/public/img/screen_shot/2019-11-08_-_14h37.png" alt="" style="width: 75%;"></a>
 
-            <a href="../public/img/screen_shot/2019-11-08_-_13h48.png" target="_blank"><img src="../public/img/screen_shot/2019-11-08_-_13h48.png" alt="" style="width: 75%;"></a>
+            <a href="../public/public/img/screen_shot/2019-11-08_-_13h48.png" target="_blank"><img src="../public/public/img/screen_shot/2019-11-08_-_13h48.png" alt="" style="width: 75%;"></a>
             <figcaption>Erreur de liaison.</figcaption>
         </figure>
 

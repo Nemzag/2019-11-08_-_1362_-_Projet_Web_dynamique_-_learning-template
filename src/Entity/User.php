@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -17,70 +20,16 @@ class User implements UserInterface
 	 */
 	private $id;
 
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $userName;
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $firstName;
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $lastName;
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $email;
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $password;
-
-	/**
-	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
-	 */
-	public $confirmPassword;
-
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $createdAt;
-
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $updatedAt;
-
-	/**
-	 * @ORM\Column(type="boolean")
-	 */
-	private $isDisabled;
-
-	/**
-	 * @ORM\Column(type="json_array")
-	 */
-	private $role = [];
-
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $image;
-
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $lastLogAt;
-
 	public function getId(): ?int
 	{
 		return $this->id;
 	}
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $userName;
 
 	public function getUsername(): ?string
 		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
@@ -97,17 +46,11 @@ class User implements UserInterface
 		return $this;
 	}
 
-	public function getEmail(): ?string
-	{
-		return $this->email;
-	}
-
-	public function setEmail(string $email): self
-	{
-		$this->email = $email;
-
-		return $this;
-	}
+    // ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $firstName;
 
 	/**
 	 * @return mixed
@@ -128,6 +71,12 @@ class User implements UserInterface
 		return $this;
 	}
 
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $lastName;
+
 	/**
 	 * @return mixed
 	 */
@@ -147,6 +96,31 @@ class User implements UserInterface
 		return $this;
 	}
 
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $email;
+
+	public function getEmail(): ?string
+	{
+		return $this->email;
+	}
+
+	public function setEmail(string $email): self
+	{
+		$this->email = $email;
+
+		return $this;
+	}
+
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $password;
+
 	public function getPassword(): ?string
 	{
 		return $this->password;
@@ -159,6 +133,17 @@ class User implements UserInterface
 		return $this;
 	}
 
+	/**
+	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
+	 */
+	public $confirmPassword;
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $createdAt;
+
 	public function getCreatedAt(): ?\DateTimeInterface
 	{
 		return $this->createdAt;
@@ -170,6 +155,44 @@ class User implements UserInterface
 
 		return $this;
 	}
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $updatedAt;
+
+	/**
+	 * @ORM\Column(type="boolean")
+	 */
+	private $isDisabled;
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="json_array")
+	 */
+	private $role = [];
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $image;
+
+	// ────────────────────────────────────────────────────────────────────────
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $lastLogAt;
+
+	// ────────────────────────────────────────────────────────────────────────
+
+
+
+
+
+
+
 
 	public function getIsDisabled(): ?bool
 	{

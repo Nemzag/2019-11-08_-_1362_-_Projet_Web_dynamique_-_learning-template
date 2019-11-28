@@ -1,0 +1,6 @@
+Admin
+Public
+
+Split de element head header main footer avec affichage unique
+
+Afficher visible et icon pour cacher.

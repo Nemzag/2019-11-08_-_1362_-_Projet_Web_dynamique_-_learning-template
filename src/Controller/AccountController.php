@@ -2,8 +2,8 @@
 /*
  * Created by PhpStorm.
  * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30).
- * Date: 15/11/2019
- * Time: 11:10
+ * Date: 12/11/2019
+ * Time: 14:47
  * Updated:
 */
 
@@ -35,5 +35,12 @@ class AccountController extends AbstractController
 			'error' => $error !== null
 			// si $erreur différent de null
 		]);
+	}
+
+	/**
+	 * @Route("/logout", name="logout")
+	 */
+	public function logout() {
+
 	}
 }

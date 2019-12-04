@@ -10,16 +10,22 @@
 
 namespace App\Controller;
 
-
+use App\Repository\CourseCategoryRepository;
+use App\Repository\CourseLevelRepository;
+use App\Repository\CourseRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin")
+ */
 class AdminController extends AbstractController
 {
 	/**
-	 * @Route("/test", name="test")
+	 * @Route("/", name="admin")
 	 */
 	public function adminHome() {
 
@@ -42,5 +48,29 @@ class AdminController extends AbstractController
 			$request->query->getInt('page', 1), 5);
 		return $this->render('post/index.html.twig', [
 			'posts' => $pagination]);
+	}
+
+	//────────────────────────────────────────────────────────────────────────
+
+	// Affichage de la liste complete de’s cours’s.
+	/**
+	 * @Route("/all-Course", name="all_course")
+	 * @param CourseCategoryRepository $CourseCategoryRepository
+	 * @param CourseRepository $CourseRepository
+	 * @param CourseLevelRepository $CourseLevelRepository
+	 * @return Response
+	 */
+	// public function courses() // Version du prof au départ.
+	public function allCourse(CourseCategoryRepository $CourseCategoryRepository, CourseRepository $CourseRepository, CourseLevelRepository $CourseLevelRepository)
+	{
+		$courses = $CourseRepository->findAll();
+		$categories = $CourseCategoryRepository->findAll();
+		$levels = $CourseLevelRepository->findAll();
+
+		return $this->render('admin/course/all-courses.index.html.twig', [
+			'courses' => $courses,
+			'categories' => $categories,
+			'levels' => $levels
+		]);
 	}
 }

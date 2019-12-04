@@ -1,0 +1,40 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2019-11-27
+ * Time: 20h32
+ * Updated:
+#}
+
+{% include "admin/include/head.html.twig" %}
+
+<body>
+
+<!-- Start Left menu area -->
+{% include "admin/include/aside.html.twig" %}
+<!-- End Header menu area -->
+
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+{% include "admin/include/header.html.twig" %}
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+
+<div class="flex">
+    <main>
+
+        {% block main %}
+
+        {% endblock %}
+
+    </main>
+</div>
+
+{% include "admin/include/footer.html.twig" %}
+
+</div>
+<!-- End Welcome area -->

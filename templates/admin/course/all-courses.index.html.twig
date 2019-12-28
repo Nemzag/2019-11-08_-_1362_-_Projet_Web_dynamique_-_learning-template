@@ -1,52 +1,20 @@
 {% extends 'base_admin.html.twig' %}
 
-
 {% block title %}Admin : Tous le’s cours’s.{% endblock %}
 
-{% block body %}
-    <h1>Course index</h1>
+{% block style %}
+    <style>
+        table.table {
+            width: 99%;
+            margin: 0 auto 0 auto;
+        }
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>SmallDescription</th>
-            <th>FullDescription</th>
-            <th>Duration</th>
-            <th>Price</th>
-            <th>CreatedAt</th>
-            <th>IsPublished</th>
-            <th>Slug</th>
-            <th>Image</th>
-            <th>Schedule</th>
-            <th>Program</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
+        .table > thead > tr > th,
+        .table > thead > tr > td {
+            vertical-align: baseline;
+        }
 
-            <tr>
-                <td>{{ course.id }}</td>
-
-                <td>{{ course.fullDescription }}</td>
-                <td></td>
-                <td>{{ course.createdAt ? course.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
-                <td>{{ course.slug }}</td>
-                <td></td>
-                <td></td>
-                <td>{{ course.program }}</td>
-                <td>
-                    <a href="{{ path('course_show', {'id': course.id}) }}">show</a>
-                    <a href="{{ path('course_edit', {'id': course.id}) }}">edit</a>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-    <a href="{{ path('course_new') }}">Create new</a>
+    </style>
 {% endblock %}
 
 {% block main %}
@@ -58,57 +26,54 @@
 
     <div class="courses-area">
         <div class="container-fluid">
-            <div class="row">
+
+            <p><a href="{{ path('course_new') }}" class="btn btn-warning"><b>Créer un nouveau cours.</b></a></p>
+
+            <table class="table table-bordered table-sm table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 12em;">Image</th>
+                    <th scope="col">Nomination du cours</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Professeur<br>Titulaire</th>
+                    <th scope="col">Nombre de étudiants</th>
+                    <th scope="col" style="width: 9em;">Durée</th>
+                    <th scope="col" style="width: 6em;">Prix</th>
+                    <th scope="col" style="width: 10em;">Action</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">ID</th>
+                </tr>
+                </thead>
+                <tbody>
 
                 {#Affichage 4 cours par ligne en flex.#}
                 {% for course in courses %}
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height: 600px;">
+					<tr>
+						<th scope="row" title="Image"><img src="{{ asset('public/img/section/') }}{{ course.image }}" alt="{{ course.name }}"></th>
 
-                    <div class="courses-inner res-mg-b-30" style="height: 570px;" >
+                        <td title="Nomination du cours"><a href = "{{ path('course_show', {'id': course.id}) }}" target="_blank">{{ course.name }}</a><br>
+                            {{ course.smallDescription }}</td>
 
-                        <div class="courses-title">
+						<td title="Catégories">{{ course.category.name }}</td>  {# categories.name.id #}
 
-                            <a href="#"><img src="{{ asset('public/img/section/') }}{{ course.image }}" alt=""></a>
+						<td title="Professeur Titulaire"></td>
 
-                            <h2>{{ course.name }}</h2>
+                        <td title="Nombre de étudiants"></td>
 
-                        </div>
+						<td title="Durée">{{ course.duration }}<br>
+                            {{ course.schedule }}</td>
 
-                        <div>
+						<td title="Prix" style="text-align: right;">{{ course.price }}&euro;</td>
 
-                            <p>{{ course.smallDescription }}</p>
+						<td title="Action" style="text-align: center;">
+                            <a class="btn btn-info" href="{{ path('course_edit', {'id': course.id}) }}"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>&nbsp;<a class="btn btn-warning" href="">{#{{ course.isPublished ? 'Yes' : 'No' }}#}<i class="fas fa-eye-slash"></i><i class="fas fa-eye"></i></a></td>
 
-                        </div>
+                        <td title="Date de création">{{ course.createdAt ? course.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 
-                        <div class="courses-alaltic">
+                        <td title="Identificateur">{{ course.id }}</td>
 
-                            <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-clock"></i></span>{{ course.schedule }}{# 1 Year #}</span><br>
-
-                            <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-heart"></i></span> 50</span><br>
-
-                            <span class="cr-ic-r"><span class="course-icon"> {{ course.price }} <i class="fa fa-euro"></i></span></span>
-
-                        </div>
-
-                        <div class="course-des">
-                            <p><span><i class="fa fa-clock"></i></span> <b>Duration:</b> {{ course.duration }} {#6 Months#}</p>
-
-                            <p><span><i class="fa fa-clock"></i></span> <b>Professor:</b> Jane Doe</p>
-
-                            <p><span><i class="fa fa-clock"></i></span> <b>Students:</b> 100+</p>
-
-                        </div>
-
-                        <div class="product-buttons">
-
-                            <button type="button" class="button-default cart-btn">Read More</button>
-
-                        </div>
-
-                    </div>
-
-                </div>
+					</tr>
 
                 {% else %}
 
@@ -116,7 +81,9 @@
                         <td colspan="13">no records found</td>
                     </tr>
                 {% endfor %}
-            </div>
+                </tbody>
+            </table>
+
         </div>
     </div>
 {% endblock %}

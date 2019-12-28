@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,32 +25,34 @@ class User implements UserInterface
 	private $id;
 
 	public function getId(): ?int
-	{
-		return $this->id;
-	}
+            	{
+            		return $this->id;
+            	}
 
-	// ────────────────────────────────────────────────────────────────────────
+	//══════════════════════════════════════════════════════════════════════════════════════════════
+
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $userName;
 
 	public function getUsername(): ?string
-		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
-		// Dans le code du prof il ne l'a pash mit.
-	{
-		// return $this->userName;
-		return (string) $this->email;
-	}
+            		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
+            		// Dans le code du prof il ne l'a pash mit.
+            	{
+            		// return $this->userName;
+            		return (string)$this->email;
+            	}
 
 	public function setUserName(string $userName): self
-	{
-		$this->userName = $userName;
+            	{
+            		$this->userName = $userName;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-    // ────────────────────────────────────────────────────────────────────────
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
@@ -56,22 +62,23 @@ class User implements UserInterface
 	 * @return mixed
 	 */
 	public function getFirstName(): ?string  // Martin Brognon, l'avait pash moi.
-	{
-		return $this->firstName;
-	}
+            	{
+            		return $this->firstName;
+            	}
 
 	/**
 	 * @param mixed $firstName
 	 * @return User
 	 */
 	public function setFirstName($firstName): self // void, pash le meme que Martin.
-	{
-		$this->firstName = $firstName;
+            	{
+            		$this->firstName = $firstName;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-	// ────────────────────────────────────────────────────────────────────────
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
@@ -81,82 +88,84 @@ class User implements UserInterface
 	 * @return mixed
 	 */
 	public function getLastName(): ?string // Martin Brognon, l'avait pash moi.
-	{
-		return $this->lastName;
-	}
+            	{
+            		return $this->lastName;
+            	}
 
 	/**
 	 * @param mixed $lastName
 	 * @return User
 	 */
 	public function setLastName($lastName): self // void, pash le meme que Martin.
-	{
-		$this->lastName = $lastName;
+            	{
+            		$this->lastName = $lastName;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-	// ────────────────────────────────────────────────────────────────────────
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $email;
 
 	public function getEmail(): ?string
-	{
-		return $this->email;
-	}
+            	{
+            		return $this->email;
+            	}
 
 	public function setEmail(string $email): self
-	{
-		$this->email = $email;
+            	{
+            		$this->email = $email;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-
-	// ────────────────────────────────────────────────────────────────────────
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $password;
 
 	public function getPassword(): ?string
-	{
-		return $this->password;
-	}
+            	{
+            		return $this->password;
+            	}
 
 	public function setPassword(string $password): self
-	{
-		$this->password = $password;
-
-		return $this;
-	}
+            	{
+            		$this->password = $password;
+            
+            		return $this;
+            	}
 
 	/**
 	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
 	 */
 	public $confirmPassword;
 
-	// ────────────────────────────────────────────────────────────────────────
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
 	private $createdAt;
 
 	public function getCreatedAt(): ?\DateTimeInterface
-	{
-		return $this->createdAt;
-	}
+            	{
+            		return $this->createdAt;
+            	}
 
 	public function setCreatedAt(\DateTimeInterface $createdAt): self
-	{
-		$this->createdAt = $createdAt;
+            	{
+            		$this->createdAt = $createdAt;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-	// ────────────────────────────────────────────────────────────────────────
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
@@ -167,68 +176,24 @@ class User implements UserInterface
 	 */
 	private $isDisabled;
 
-	// ────────────────────────────────────────────────────────────────────────
-	/**
-	 * @ORM\Column(type="json_array")
-	 */
-	private $role = [];
-
-	// ────────────────────────────────────────────────────────────────────────
-	/**
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $image;
-
-	// ────────────────────────────────────────────────────────────────────────
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $lastLogAt;
-
-	// ────────────────────────────────────────────────────────────────────────
-
-
-
-
-
-
-
-
 	public function getIsDisabled(): ?bool
-	{
-		return $this->isDisabled;
-	}
+            	{
+            		return $this->isDisabled;
+            	}
 
 	public function setIsDisabled(bool $isDisabled): self
-	{
-		$this->isDisabled = $isDisabled;
+            	{
+            		$this->isDisabled = $isDisabled;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-	public function getUpdatedAt(): ?\DateTimeInterface
-	{
-		return $this->updatedAt;
-	}
-
-	public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-	{
-		$this->updatedAt = $updatedAt;
-
-		return $this;
-	}
-
-	public function getImage(): ?string
-	{
-		return $this->image;
-	}
-
-	public function setImage(string $image): self
-	{
-		$this->image = $image;
-
-		return $this;
-	}
+	/**
+	 * @ORM\Column(type="json")
+	 */
+	private $role = [];
 
 	/**
 	 * Returns the roles granted to the user.
@@ -247,22 +212,96 @@ class User implements UserInterface
 	 * @return Role|string[] The user roles
 	 */
 	public function getRoles()
-	{
-		// TODO: Implement getRoles() method.
-		return ['ROLE_USER'];
-	}
+            	{
+            		// TODO: Implement getRoles() method.
+            		return [
+            			'ROLE_USER',
+            			'ROLE_PROFESSOR',
+            			'ROLE_ADMIN',
+            			'ROLE_SUPER_ADMIN'];
+            	}
 
 	public function getRole(): ?array
-	{
-		return $this->role;
-	}
+            	{
+            		return $this->role;
+            	}
 
 	public function setRole(array $role): self
-	{
-		$this->role = $role;
+            	{
+            		$this->role = $role;
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	//══════════════════════════════════════════════════════════════════════════════════════════════
+
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private $image;
+
+	public function getImage(): ?string
+            	{
+            		return $this->image;
+            	}
+
+	public function setImage(string $image): self
+            	{
+            		$this->image = $image;
+            
+            		return $this;
+            	}
+
+	//══════════════════════════════════════════════════════════════════════════════════════════════
+
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $lastLogAt;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+	 */
+	private $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="professor")
+     */
+    private $Id;
+
+	public function __construct()
+            	{
+            		$this->comments = new ArrayCollection();
+              $this->Id = new ArrayCollection();
+            	}
+
+	public function getLastLogAt(): ?\DateTimeInterface
+            	{
+            		return $this->lastLogAt;
+            	}
+
+	public function setLastLogAt(\DateTimeInterface $lastLogAt): self
+            	{
+            		$this->lastLogAt = $lastLogAt;
+            
+            		return $this;
+            	}
+
+	//══════════════════════════════════════════════════════════════════════════════════════════════
+
+	public function getUpdatedAt(): ?\DateTimeInterface
+            	{
+            		return $this->updatedAt;
+            	}
+
+	public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+            	{
+            		$this->updatedAt = $updatedAt;
+            
+            		return $this;
+            	}
+
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
 	 * Returns the salt that was originally used to encode the password.
@@ -272,9 +311,9 @@ class User implements UserInterface
 	 * @return string|null The salt
 	 */
 	public function getSalt()
-	{
-		// TODO: Implement getSalt() method.
-	}
+            	{
+            		// TODO: Implement getSalt() method.
+            	}
 
 	/**
 	 * Removes sensitive data from the user.
@@ -283,19 +322,61 @@ class User implements UserInterface
 	 * the plain-text password is stored on this object.
 	 */
 	public function eraseCredentials()
-	{
-		// TODO: Implement eraseCredentials() method.
-	}
+            	{
+            		// TODO: Implement eraseCredentials() method.
+            	}
 
-	public function getLastLogAt(): ?\DateTimeInterface
-	{
-		return $this->lastLogAt;
-	}
+	/**
+	 * @return Collection|Comment[]
+	 */
+	public function getComments(): Collection
+            	{
+            		return $this->comments;
+            	}
 
-	public function setLastLogAt(\DateTimeInterface $lastLogAt): self
-	{
-		$this->lastLogAt = $lastLogAt;
+	public function addComment(Comment $comment): self
+            	{
+            		if (!$this->comments->contains($comment)) {
+            			$this->comments[] = $comment;
+            			$comment->setUser($this);
+            		}
+            
+            		return $this;
+            	}
 
-		return $this;
-	}
+	public function removeComment(Comment $comment): self
+            	{
+            		if ($this->comments->contains($comment)) {
+            			$this->comments->removeElement($comment);
+            			// set the owning side to null (unless already changed)
+            			if ($comment->getUser() === $this) {
+            				$comment->setUser(null);
+            			}
+            		}
+            
+            		return $this;
+            	}
+
+    public function addId(Course $id): self
+    {
+        if (!$this->Id->contains($id)) {
+            $this->Id[] = $id;
+            $id->setProfessor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeId(Course $id): self
+    {
+        if ($this->Id->contains($id)) {
+            $this->Id->removeElement($id);
+            // set the owning side to null (unless already changed)
+            if ($id->getProfessor() === $this) {
+                $id->setProfessor(null);
+            }
+        }
+
+        return $this;
+    }
 }

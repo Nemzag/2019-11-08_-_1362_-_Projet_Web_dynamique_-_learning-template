@@ -40,7 +40,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
     # Rajouter par nos soins. Pash obligatoire.
     # ⚠ Le décalage d'indentation de un tab ou plus peut cause une erreur
@@ -52,5 +52,7 @@ security:
     # Unrecognized options "ROLE_ADMIN, ROLE_SUPER_ADMIN" under "security.access_control.role_hierarchy". Available options are "allow_if", "host", "ips", "methods", "path", "port", "requires_channel", "roles".
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+        ROLE_USER:   ROLE_USER
+        ROLE_PROFESSOR:   [ROLE_USER, ROLE_STUDENT]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_STUDENT, ROLE_PROFESSOR]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN; ROLE_PROFESSOR, ROLE_USER]

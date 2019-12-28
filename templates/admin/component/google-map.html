@@ -4,71 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Course | Kiaalap - Kiaalap Admin Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../../public/admin/dash-board/img/favicon.ico">
-    <!-- Google Fonts
-		============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/owl.carousel.css">
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/owl.theme.css">
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/owl.transitions.css">
-    <!-- animate CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/animate.css">
-    <!-- normalize CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/normalize.css">
-    <!-- meanmenu icon CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/meanmenu.min.css">
-    <!-- main CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/main.css">
-    <!-- dropzone CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/dropzone/dropzone.css">
-    <!-- educate icon CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/educate-custon-icon.css">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/morrisjs/morris.css">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <!-- metisMenu CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/calendar/fullcalendar.print.min.css">
-    <!-- forms CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/form/all-type-forms.css">
-    <!-- style CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/style.css">
-    <!-- responsive CSS
-		============================================ -->
-    <link rel="stylesheet" href="../../../public/admin/dash-board/css/responsive.css">
-    <!-- modernizr JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
+    <title>Google Maps | Kiaalap - Kiaalap Admin Template</title>
+{% extends '../include/head.html.twig' %}
+
+{% block title %}Liste des produits du catalogue en ligne{% endblock %}
 
 <body>
     <!--[if lt IE 8]>
@@ -106,7 +45,7 @@
                                 <li><a title="All Professors" href="../professor/all-professors.html.twig"><span class="mini-sub-pro">All Professors</span></a></li>
                                 <li><a title="Add Professor" href="../professor/add-professor.html"><span class="mini-sub-pro">Add Professor</span></a></li>
                                 <li><a title="Edit Professor" href="../professor/edit-professor.html"><span class="mini-sub-pro">Edit Professor</span></a></li>
-                                <li><a title="Professor Profile" href="../professor-profile.html"><span class="mini-sub-pro">Professor Profile</span></a></li>
+                                <li><a title="Professor Profile" href="../professor/professor-profile.html"><span class="mini-sub-pro">Professor Profile</span></a></li>
                             </ul>
                         </li>
                         <li>
@@ -118,18 +57,18 @@
                                 <li><a title="Students Profile" href="../student/student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
                             </ul>
                         </li>
-                        <li class="active">
-                            <a class="has-arrow" href="all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
+                        <li>
+                            <a class="has-arrow" href="../course/all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Courses" href="all-courses.index.html.twig"><span class="mini-sub-pro">All Courses</span></a></li>
-                                <li><a title="Add Courses" href="add-course.html"><span class="mini-sub-pro">Add Course</span></a></li>
-                                <li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
-                                <li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-                                <li><a title="course Payment" href="../course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
+                                <li><a title="All Courses" href="../course/all-courses.index.html.twig"><span class="mini-sub-pro">All Courses</span></a></li>
+                                <li><a title="Add Courses" href="../course/add-course.new.html.twig"><span class="mini-sub-pro">Add Course</span></a></li>
+                                <li><a title="Edit Courses" href="../course/edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
+                                <li><a title="Courses Profile" href="../course/course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
+                                <li><a title="course Payment" href="../course/course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
+                            <a class="has-arrow" href="../course/all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Library" href="../library/library-assets.html"><span class="mini-sub-pro">Library Assets</span></a></li>
                                 <li><a title="Add Library" href="../library/add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
@@ -137,7 +76,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+                            <a class="has-arrow" href="../course/all-courses.index.html.twig" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Departments List" href="../departement/departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
                                 <li><a title="Add Departments" href="../departement/add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
@@ -152,10 +91,10 @@
                                 <li><a title="Compose Mail" href="../mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a class="has-arrow" href="../mailbox.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Interface</span></a>
                             <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="false">
-                                <li><a title="Google Map" href="../google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
+                                <li><a title="Google Map" href="google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
                                 <li><a title="Data Maps" href="../data-maps.html"><span class="mini-sub-pro">Data Maps</span></a></li>
                                 <li><a title="Pdf Viewer" href="../pdf-viewer.html"><span class="mini-sub-pro">Pdf Viewer</span></a></li>
                                 <li><a title="X-Editable" href="../x-editable.html"><span class="mini-sub-pro">X-Editable</span></a></li>
@@ -191,7 +130,7 @@
                                 <li><a title="Advance Form Elements" href="../advance-form-element.html"><span class="mini-sub-pro">Ad Form Elements</span></a></li>
                                 <li><a title="Password Meter" href="../password-meter.html"><span class="mini-sub-pro">Password Meter</span></a></li>
                                 <li><a title="Multi Upload" href="../multi-upload.html"><span class="mini-sub-pro">Multi Upload</span></a></li>
-                                <li><a title="Text Editor" href="../component/tinymc.html"><span class="mini-sub-pro">Text Editor</span></a></li>
+                                <li><a title="Text Editor" href="tinymc.html"><span class="mini-sub-pro">Text Editor</span></a></li>
                                 <li><a title="Dual List Box" href="../dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a></li>
                             </ul>
                         </li>
@@ -199,11 +138,11 @@
                             <a class="has-arrow" href="../mailbox.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
                             <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Notifications" href="../notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
-                                <li><a title="Alerts" href="../component/alerts.html.twig"><span class="mini-sub-pro">Alerts</span></a></li>
+                                <li><a title="Alerts" href="alerts.html.twig"><span class="mini-sub-pro">Alerts</span></a></li>
                                 <li><a title="Modals" href="../modals.html"><span class="mini-sub-pro">Modals</span></a></li>
-                                <li><a title="Buttons" href="../component/buttons.html"><span class="mini-sub-pro">Buttons</span></a></li>
+                                <li><a title="Buttons" href="buttons.html"><span class="mini-sub-pro">Buttons</span></a></li>
                                 <li><a title="Tabs" href="../tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
-                                <li><a title="Accordion" href="../component/accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
+                                <li><a title="Accordion" href="accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
                             </ul>
                         </li>
                         <li id="removable">
@@ -886,7 +825,7 @@
                                                 </li>
                                                 <li><a href="../professor/edit-professor.html">Edit Professor</a>
                                                 </li>
-                                                <li><a href="../professor-profile.html">Professor Profile</a>
+                                                <li><a href="../professor/professor-profile.html">Professor Profile</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -904,15 +843,15 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="democrou" class="collapse dropdown-header-top">
-                                                <li><a href="all-courses.index.html.twig">All Courses</a>
+                                                <li><a href="../course/all-courses.index.html.twig">All Courses</a>
                                                 </li>
-                                                <li><a href="add-course.html">Add Course</a>
+                                                <li><a href="../course/add-course.new.html.twig">Add Course</a>
                                                 </li>
-                                                <li><a href="edit-course.html">Edit Course</a>
+                                                <li><a href="../course/edit-course.html">Edit Course</a>
                                                 </li>
                                                 <li><a href="course-profile.html">Courses Info</a>
                                                 </li>
-                                                <li><a href="../course-payment.html">Courses Payment</a>
+                                                <li><a href="../course/course-payment.html">Courses Payment</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -936,8 +875,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demomi" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demomi" class="collapse dropdown-header-top">
+                                        <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul id="demo" class="collapse dropdown-header-top">
                                                 <li><a href="../mailbox.html">Inbox</a>
                                                 </li>
                                                 <li><a href="../mailbox-view.html">View Mail</a>
@@ -948,7 +887,7 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                                <li><a href="../google-map.html">Google Map</a>
+                                                <li><a href="google-map.html">Google Map</a>
                                                 </li>
                                                 <li><a href="../data-maps.html">Data Maps</a>
                                                 </li>
@@ -1002,7 +941,7 @@
                                                 </li>
                                                 <li><a href="../multi-upload.html">Multi Upload</a>
                                                 </li>
-                                                <li><a href="../component/tinymc.html">Text Editor</a>
+                                                <li><a href="tinymc.html">Text Editor</a>
                                                 </li>
                                                 <li><a href="../dual-list-box.html">Dual List Box</a>
                                                 </li>
@@ -1018,7 +957,7 @@
                                                 </li>
                                                 <li><a href="../multi-upload.html">Multi Upload</a>
                                                 </li>
-                                                <li><a href="../component/tinymc.html">Text Editor</a>
+                                                <li><a href="tinymc.html">Text Editor</a>
                                                 </li>
                                                 <li><a href="../dual-list-box.html">Dual List Box</a>
                                                 </li>
@@ -1064,7 +1003,7 @@
                                         <ul class="breadcome-menu">
                                             <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Add Courses</span>
+                                            <li><span class="bread-blod">Google Maps</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -1075,129 +1014,124 @@
                 </div>
             </div>
         </div>
-        <!-- Single pro tab review Start-->
-        <div class="single-pro-review-area mt-t-30 mg-b-15">
+        <!-- Google Map end -->
+        <div class="google-maps-area mg-b-15">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="product-payment-inner-st">
-                            <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#description">Courses Details</a></li>
-                                <li><a href="#reviews"> Acount Information</a></li>
-                                <li><a href="#INFORMATION">Social Information</a></li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div id="dropzone1" class="pro-ad addcoursepro">
-                                                    <form action="/upload" class="dropzone dropzone-custom needsclick addcourse" id="demo1-upload">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <input name="coursename" type="text" class="form-control" placeholder="Course Name">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="finish" id="finish" type="text" class="form-control" placeholder="Course Start Date">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="duration" type="text" class="form-control" placeholder="Course Duration">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="price" type="number" class="form-control" placeholder="Course Price">
-                                                                </div>
-                                                                <div class="form-group alert-up-pd">
-                                                                    <div class="dz-message needsclick download-custom">
-                                                                        <i class="fa fa-download edudropnone" aria-hidden="true"></i>
-                                                                        <h2 class="edudropnone">Drop image here or click to upload.</h2>
-                                                                        <p class="edudropnone"><span class="note needsclick">(This is just a demo dropzone. Selected image is <strong>not</strong> actually uploaded.)</span>
-                                                                        </p>
-                                                                        <input name="imageico" class="hd-pro-img" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <div class="form-group res-mg-t-15">
-                                                                    <input name="department" type="text" class="form-control" placeholder="Department">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <textarea name="description" placeholder="Description"></textarea>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="crprofessor" type="text" class="form-control" placeholder="Professor">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input id="year" name="year" type="text" class="form-control" placeholder="Year">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="payment-adress">
-                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline8-list responsive-mg-b-30">
+                            <div class="sparkline8-hd">
+                                <div class="main-sparkline8-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 1</h1>
                                 </div>
-                                <div class="product-tab-list tab-pane fade" id="reviews">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="devit-card-custom">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Email">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="number" class="form-control" placeholder="Phone">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="password" class="form-control" placeholder="Password">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="password" class="form-control" placeholder="Confirm Password">
-                                                            </div>
-                                                            <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="sparkline8-graph">
+                                <div class="google-map-single">
+                                    <div id="map"></div>
                                 </div>
-                                <div class="product-tab-list tab-pane fade" id="INFORMATION">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="devit-card-custom">
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Facebook URL">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Twitter URL">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Google Plus">
-															</div>
-															<div class="form-group">
-																<input type="url" class="form-control" placeholder="Linkedin URL">
-															</div>
-															<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-														</div>
-													</div>
-												</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline9-list">
+                            <div class="sparkline9-hd">
+                                <div class="main-sparkline9-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 2</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline9-graph">
+                                <div class="google-map-single">
+                                    <div id="map1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline7-list mg-tb-30 responsive-mg-b-0">
+                            <div class="sparkline7-hd">
+                                <div class="main-spark7-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 3</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline7-graph">
+                                <div class="google-map-single">
+                                    <div id="map2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline10-list mg-tb-30">
+                            <div class="sparkline10-hd">
+                                <div class="main-sparkline10-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 4</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline10-graph">
+                                <div class="google-map-single">
+                                    <div id="googleMap"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline11-list responsive-mg-b-30">
+                            <div class="sparkline11-hd">
+                                <div class="main-sparkline11-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 5</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline11-graph">
+                                <div class="google-map-single">
+                                    <div id="maplan"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline12-list">
+                            <div class="sparkline12-hd">
+                                <div class="main-sparkline12-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 6</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline12-graph">
+                                <div class="google-map-single">
+                                    <div id="map6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline13-list mg-t-30">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 7</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="google-map-single">
+                                    <div id="map7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline14-list mg-t-30">
+                            <div class="sparkline14-hd">
+                                <div class="main-sparkline14-hd">
+                                    <h1>Google Map <span class="table-project-n">Style</span> 8</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline14-graph">
+                                <div class="google-map-single">
+                                    <div id="map8"></div>
                                 </div>
                             </div>
                         </div>
@@ -1208,7 +1142,7 @@
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12">
                         <div class="footer-copy-right">
                             <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
                         </div>
@@ -1218,75 +1152,6 @@
         </div>
     </div>
 
-    <!-- jquery
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/metisMenu/metisMenu.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/metisMenu/metisMenu-active.js"></script>
-    <!-- morrisjs JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/sparkline/jquery.charts-sparkline.js"></script>
-    <!-- calendar JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/calendar/moment.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/calendar/fullcalendar.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/calendar/fullcalendar-active.js"></script>
-    <!-- maskedinput JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/jquery.maskedinput.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/masking-active.js"></script>
-    <!-- datepicker JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/datepicker/jquery-ui.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/datepicker/datepicker-active.js"></script>
-    <!-- form validate JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/form-validation/jquery.form.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/form-validation/jquery.validate.min.js"></script>
-    <script src="../../../public/admin/dash-board/js/form-validation/form-active.js"></script>
-    <!-- dropzone JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/dropzone/dropzone.js"></script>
-    <!-- tab JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/tab.js"></script>
-    <!-- plugins JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/plugins.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/main.js"></script>
-    <!-- tawk chat JS
-		============================================ -->
-    <script src="../../../public/admin/dash-board/js/tawk-chat.js"></script>
 </body>
 
 </html>

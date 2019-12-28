@@ -41,32 +41,29 @@
             <div class="row">
                 <div class="col-4">
                     {#<img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.id }}.jpg">#}
-                    <img alt="{{ course.name }}" src="{{ asset('img/section/') }}{{ course.image }}">
+                    <img alt="{{ course.name }}" src="{{ asset('public/img/section/') }}{{ course.image }}" style="width: 100%;">
                 </div>
 
                 <div class="col-1"></div>
 
                 <div class="col-7">
-                    <h3 class="h5">Déscription</h3>
+                    <h3 class="h5"><b>Déscription</b></h3>
 
                     <p>{{ course.smallDescription }}</p>
 
-                    <h3 class="h5">Informations</h3>
+                    <h3 class="h5"><b>Informations</b></h3>
 
-                        <p>Prix : {{ course.price }}</p>
+                        <p><b>Prix :</b> {{ course.price }}€</p>
 
-                        <p>Durée : {{ course.duration }}</p>
+                        <p><b>Durée :</b> {{ course.duration }}</p>
 
-                        <p>Catégorie : {{ course.category.name }}</p>
+                        <p><b>Catégorie :</b> {{ course.category.name }}</p>
 
-                        <p>Ajouté le : {{ course.createdAt | date('d/m/Y') }}</p>
+                        <p><b>Ajouté le :</b> {{ course.createdAt | date('d/m/Y') }}</p>
 
-                        <p>Horaire : {{ course.schedule }}</p>
+                        <p><b>Horaire :</b> {{ course.schedule }}</p>
 
-                        <p>Niveau : {{ course.level.name }}</p>
-
-                    </ul>
-
+                        <p><b>Niveau :</b> {{ course.level.name }}</p>
 
                 </div>
             </div>
@@ -75,7 +72,7 @@
         <div class="tab-pane fade" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
             <div class="col-12">
 
-                <h3 class="h5">Déscription complète</h3>
+                <h3 class="h5"><b>Déscription complète</b></h3>
 
                 <p>{{ course.fullDescription | nl2br }}</p>
 

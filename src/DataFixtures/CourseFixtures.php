@@ -45,6 +45,9 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 		    $course = new Course();
 
 		    // Faker Generation
+		    $course->setCategory($categories[$faker->numberBetween(0, count($categories) - 1)]);
+		    // nombre aleatoire à générer. Moins 1 car dans la d ?
+		    $course->setLevel($level[$faker->numberBetween(0, count($level) - 1)]); // Offset
 		    $course->setName($faker->text($maxNbChars =  40));
 		    $course->setSmallDescription($faker->sentence(14, true));
 		    $course->setFullDescription($faker->paragraphs(4, true));
@@ -57,9 +60,6 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 		    $course->setImage($i.'.jpg');
 		    $course->setSchedule($faker->sentence(7, true));
 		    $course->setProgram($faker->text($maxNbChars = 251) . '.pdf'); // Le P.D.F. de’s cours.
-		    $course->setCategory($categories[$faker->numberBetween(0, count($categories) - 1)]);
-		    // nombre aleatoire à générer. Moins 1 car dans la d ?
-		    $course->setLevel($level[$faker->numberBetween(0, count($level) - 1)]); // Offset
 
 		    // Persist Datha.
 		    $manager->persist($course);
@@ -75,7 +75,8 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 		// TODO: Implement getDependencies() method.
 		return [
 			CoursesCategoryFixtures::class,
-			CourseLevelFixtures::class
+			CourseLevelFixtures::class,
+			UserFixtures::class
 		];
 	}
 }

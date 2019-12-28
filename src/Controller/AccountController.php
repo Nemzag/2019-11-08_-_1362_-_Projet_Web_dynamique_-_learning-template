@@ -30,7 +30,7 @@ class AccountController extends AbstractController
 		// last username entered by the user
 		$lastUsername = $utils->getLastUsername();
 
-		return $this->render('account/login.html.twig', [
+		return $this->render('public/account/login.html.twig', [
 			'last_username' => $lastUsername,
 			'error' => $error !== null
 			// si $erreur différent de null

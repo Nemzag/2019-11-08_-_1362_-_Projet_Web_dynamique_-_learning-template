@@ -192,6 +192,13 @@ class Contact<br>
             </ul>
             <p>Pour la semaine prochaine tout doit etre fonctionnel en publique ainsi que le’s commentaire’s.<br> Et dans la dashboard Admin, cours.
             </p>
+			
+			<h4>2019‑12‑05</h4>
+			
+			<p>Ajouter la gestion de’s professeur’s.</p>
+			
+			<p>Ajouter le professeur titulaire du cours & nombre de eleve’s inscrit.</p>
+			
     </fieldset>
 </section>
 <h2>Test</h2>

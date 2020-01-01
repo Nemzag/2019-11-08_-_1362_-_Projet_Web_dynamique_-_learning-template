@@ -10,7 +10,7 @@
 <html class = "no-js" lang = "fr">
 
 {% block head %}
-    <head>
+
         <meta charset = "utf-8">
         <meta http-equiv = "x-ua-compatible" content = "ie=edge">
 
@@ -184,6 +184,11 @@
         <!-- modernizr JS
             ============================================ -->
         <script src = "{{ asset('admin/dash-board/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+        <!-- Personal CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/css/gaz-men.css') }}">
+
 
         {% block css %}{% endblock %}
 
@@ -371,30 +376,44 @@
                                                         </div>
                                                     </div>
                                                 </li>
+                                                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_PROFESSOR') or is_granted('ROLE_CONTRIBUTOR') or is_granted('ROLE_MODERATOR') or is_granted('ROLE_USER') %} {# On va utiliser une fonctionnalité twig. #}
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                        <img src="img/product/pro4.jpg" alt=""/>
-                                                        <span class="admin-name">Prof.Anderson</span>
+                                                        {% if app.user.username is defined %}
+                                                        <img src="{{ asset('public/img/avatar/') }}{{ app.user.image }}" alt=""/>
+                                                        <span class="admin-name">{{ app.user.firstname }} {{ app.user.lastname }}
+                                                            {% endif %}</span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
+
+
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+
+                                                        <!-- Mon compte -->
                                                         <li>
-                                                            <a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+                                                            <a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Mon compte</a>
+                                                        </li>
+
+                                                        <!-- Mon profile -->
+                                                        <li>
+                                                            <a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>Mon Profil</a>
+                                                        </li>
+
+                                                        <!-- Mes Factures -->
+                                                        <li>
+                                                            <a href="#"><span class="edu-icon edu-money author-log-ic"></span>Facturation utilisateur</a>
+                                                        </li>
+
+                                                        <!-- Paramètres -->
+                                                        <li>
+                                                            <a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Paramètres</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                            <a href="{{ path("logout") }}"><span class="edu-icon edu-locked author-log-ic"></span>Déconnexion</a>
                                                         </li>
                                                     </ul>
                                                 </li>
+                                                {% endif %}
                                                 <li class="nav-item nav-setting-open">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-menu"></i></a>
 
@@ -901,7 +920,7 @@
                                                 </li>
                                                 <li><a href="add-course.html">Add Course</a>
                                                 </li>
-                                                <li><a href="edit-course.html">Edit Course</a>
+                                                <li><a href="course.edit.html.twig">Edit Course</a>
                                                 </li>
                                                 <li><a href="course-profile.html">Courses Info</a>
                                                 </li>
@@ -1094,6 +1113,7 @@
 
         {% endblock %}
 
+        </div>
     </main>
 </div>
 

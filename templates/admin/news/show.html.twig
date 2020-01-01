@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block main %}
+
+    <div class = "container" >
+
+        <div class="jumbotron">
+            <h1 class="display-4">{{ news.title }}</h1>
+
+            <p class="lead">{{ news.createdAt ? news.createdAt|date('Y-m-d ‒ H:i:s') : '' }}</p>
+
+            <img class="w-25" src="{{ asset("public/img/news/") }}{{ news.image }}" alt="..." class="img-thumbnail">
+
+            <hr class="my-4">
+
+            <p>{{ news.text }}</p>
+
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Revenir à l'accueil</a>
+            </p>
+
+        </div>
+
+        <h1 >News</h1 >
+
+        <table class = "table" >
+            <tbody >
+            <tr >
+                <th >Id</th >
+                <td >{{ news.id }}</td >
+            </tr >
+            <tr >
+                <th >Text</th >
+                <td ></td >
+            </tr >
+            </tbody >
+        </table >
+
+        /*
+        <a href = "{{ path('news_index') }}" >back to list</a >
+
+        <a href = "{{ path('news_edit', {'id': news.id}) }}" >edit</a >
+
+        {{ include('public/news/_delete_form.html.twig') }}
+
+    </div >
+{% endblock %}

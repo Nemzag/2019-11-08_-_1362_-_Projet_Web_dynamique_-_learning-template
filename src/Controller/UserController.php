@@ -15,9 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/", name="user_index", methods={"GET"})
-     */
+	/**
+	 * @Route("/", name="user_index", methods={"GET"})
+	 * @param UserRepository $userRepository
+	 * @return Response
+	 */
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('admin/user/index.html.twig', [
@@ -48,9 +50,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
-     */
+	/**
+	 * @Route("/{id}", name="user_show", methods={"GET"})
+	 * @param User $user
+	 * @return Response
+	 */
     public function show(User $user): Response
     {
         return $this->render('admin/user/show.html.twig', [
@@ -72,7 +76,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('admin/user/edit.html.twig', [
+        return $this->render('admin/user/course.edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

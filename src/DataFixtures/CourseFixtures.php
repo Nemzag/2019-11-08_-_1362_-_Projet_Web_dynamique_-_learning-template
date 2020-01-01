@@ -12,6 +12,7 @@ namespace App\DataFixtures;
 use App\Entity\Course;
 use App\Entity\CourseCategory;
 use App\Entity\CourseLevel;
+use App\Entity\User;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -22,7 +23,6 @@ use Faker\Factory ; // Le use pour le bundle Faker
 // Bien ajouté implements.
 class CourseFixtures extends Fixture implements DependentFixtureInterface
 {
-
     public function load(ObjectManager $manager)
 	    // Injection de dépendance récupère la méthode getDoctrine.
     {
@@ -38,6 +38,8 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 	    // Comme j'utilise ObjectManager, je ne dois pash invoquer getDoctrine
 	    $level = $manager->getRepository(CourseLevel::class)->findAll();
 
+	    $user = $manager->getRepository(User::class)->findAll();
+
 	    for ($i = 1; $i < 20; $i++) {
 
 		    // Instanciation
@@ -48,6 +50,7 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 		    $course->setCategory($categories[$faker->numberBetween(0, count($categories) - 1)]);
 		    // nombre aleatoire à générer. Moins 1 car dans la d ?
 		    $course->setLevel($level[$faker->numberBetween(0, count($level) - 1)]); // Offset
+		    $course->setProfessor($user[$faker->numberBetween(0, count($user) - 1)]); // Offset
 		    $course->setName($faker->text($maxNbChars =  40));
 		    $course->setSmallDescription($faker->sentence(14, true));
 		    $course->setFullDescription($faker->paragraphs(4, true));

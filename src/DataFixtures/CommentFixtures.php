@@ -36,7 +36,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 		$courses = $manager->getRepository(Course::class)->findAll();
 		$users = $manager->getRepository(User::class)->findAll();
 
-		for ($i = 1; $i < 10; $i++) {
+		for ($i = 1; $i < 40; $i++) {
 
 			// Instanciation
 			// $slugify = new Slugify();

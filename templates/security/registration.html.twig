@@ -1,0 +1,36 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2019-12-28
+ * Time: 21h45
+ * Updated:
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+    {% block main %}
+
+        <div class = "container" style = "min-height: 70vh;" >
+            <div class = "row" >
+                <div class = "col-md-4 offset-md-4" >
+
+                    <h2 class = "my-4" >Inscription</h2 >
+
+                    {{ form(registration) }}
+
+                </div >
+            </div >
+        </div >
+
+        {{ form_start(registration) }}
+        {{ form_row(registration.email) }}
+        {{ form_row(registration.password) }}
+        {{ form_row(registration.agreeTerms) }}
+
+        <button class = "btn" >Register</button >
+
+        {{ form_end(registration) }}
+
+    {% endblock %}

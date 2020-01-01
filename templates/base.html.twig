@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ asset('public/img/design/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/gazmen_arifi.css') }}">
 
     <!-- font-awesome CSS -->
     <link rel="stylesheet" href="{{ asset('public/css/all.min.css') }}">
@@ -13,7 +14,11 @@
 </head>
 <body>
 {% include 'public/partials/header.html.twig' %}
-{% block body %}{% endblock %}
+
+    {% block main %}
+
+    {% endblock %}
+
 {% include 'public/partials/footer.html.twig' %}
 <script src="{{ asset('public/js/jquery.min.js') }}"></script>
 <script src="{{ asset('public/js/jquery.filterizr.min.js') }}"></script>
@@ -21,7 +26,9 @@
 
 <!-- font-awesome JS -->
 <script src="{{ asset('public/js/all.min.js') }}"></script>
+
 {% block javascripts %}
+
 {% endblock %}
 </body>
 </html>

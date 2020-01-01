@@ -14,9 +14,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields = {"email"},
+ *     message = "Cet email est deja utilisé."
+ * )
  */
 class User implements UserInterface
 {
+	public function __toString()
+	{
+		return $this->userName;
+	}
+
 	/**
 	 * @ORM\Id()
 	 * @ORM\GeneratedValue()
@@ -33,6 +42,12 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *     min="4",
+	 *     max="255",
+	 *     minMessage="Le pseudonyme doit être de {{ limit }} caractères minimum.",
+	 *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",
+	 * )
 	 */
 	private $userName;
 
@@ -55,6 +70,17 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *     min="2",
+	 *     max="255",
+	 *     minMessage="Le prénom doit être de {{ limit }} caractères minimum.",
+	 *     maxMessage="Le prénom doit être de {{ limit }} caractères maximum.",
+	 * )
+	 * @Assert\Regex(
+	 *     pattern = "/^[a-zA-Z]+$/",
+	 *     htmlPattern = "[A-Za-z]",
+	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
+	 * )
 	 */
 	private $firstName;
 
@@ -81,6 +107,17 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *     min="1",
+	 *     max="255",
+	 *     minMessage="Le nom de famille doit être de {{ limit}} caractères minimum.",
+	 *     maxMessage="Le nom de famille doit être de {{ limit}} caractères maximum.",
+	 * )
+	 * @Assert\Regex(
+	 *     pattern = "/^[a-zA-Z]+$/",
+	 *     htmlPattern = "[A-Za-z]",
+	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
+	 * )
 	 */
 	private $lastName;
 
@@ -107,6 +144,14 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *     max="255",
+	 *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",
+	 * )
+	 * @Assert\Email(
+	 *     mode = "html5",
+	 *     message = "Inséré une addresse valide.",
+	 * )
 	 */
 	private $email;
 
@@ -126,6 +171,10 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *      min = 6,
+	 *      minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 * )
 	 */
 	private $password;
 
@@ -143,10 +192,15 @@ class User implements UserInterface
 
 	/**
 	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
+	 * @Assert\Length(
+	 *      min = 6,
+	 *      minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 * )
 	 */
 	public $confirmPassword;
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
+
 	/**
 	 * @ORM\Column(type="datetime")
 	 */
@@ -170,6 +224,39 @@ class User implements UserInterface
 	 * @ORM\Column(type="datetime")
 	 */
 	private $updatedAt;
+
+	public function getUpdatedAt(): ?\DateTimeInterface
+	{
+		return $this->updatedAt;
+	}
+
+	public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+	{
+		$this->updatedAt = $updatedAt;
+
+		return $this;
+	}
+
+	//══════════════════════════════════════════════════════════════════════════════════════════════
+
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $lastLogAt;
+
+	public function getLastLogAt(): ?\DateTimeInterface
+	{
+		return $this->lastLogAt;
+	}
+
+	public function setLastLogAt(\DateTimeInterface $lastLogAt): self
+	{
+		$this->lastLogAt = $lastLogAt;
+
+		return $this;
+	}
+
+	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
 	 * @ORM\Column(type="boolean")
@@ -237,6 +324,23 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\Length(
+	 *     min = 3,
+	 *     max = 255,
+	 *     minMessage = "L'image doit être cômposé de au moins {{ limit }} caractère.",
+	 *     maxMessage = "L'image doit être cômposé de au plus {{ limit }} caractères."
+	 * )
+	 * @Assert\Image(
+	 *     mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"},
+	 *     mimeTypesMessage = "Ce fichier n'est pas une image valide.",
+	 *     minWidthMessage = "Cette image a une largeur trop petite.",
+	 *     minHeightMessage = "Cette image a une hauteur trop petite.",
+	 *     minWidth = "50",
+	 *     minHeight = "50",
+	 *     disallowEmptyMessage="Vous êtes obligé de choisir une image pour le utilisateur.",
+	 *     notFoundMessage="Vous êtes obligé de choisir une image pour le utilisateur.",
+	 * )
+	 * @ORM\Column(type="string", length=255)
 	 */
 	private $image;
 
@@ -255,11 +359,6 @@ class User implements UserInterface
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $lastLogAt;
-
-	/**
 	 * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
 	 */
 	private $comments;
@@ -275,31 +374,6 @@ class User implements UserInterface
               $this->Id = new ArrayCollection();
             	}
 
-	public function getLastLogAt(): ?\DateTimeInterface
-            	{
-            		return $this->lastLogAt;
-            	}
-
-	public function setLastLogAt(\DateTimeInterface $lastLogAt): self
-            	{
-            		$this->lastLogAt = $lastLogAt;
-            
-            		return $this;
-            	}
-
-	//══════════════════════════════════════════════════════════════════════════════════════════════
-
-	public function getUpdatedAt(): ?\DateTimeInterface
-            	{
-            		return $this->updatedAt;
-            	}
-
-	public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-            	{
-            		$this->updatedAt = $updatedAt;
-            
-            		return $this;
-            	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 

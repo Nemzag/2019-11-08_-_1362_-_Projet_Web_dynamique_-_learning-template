@@ -1,0 +1,40 @@
+/*
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30).
+ * Date: 29/12/2019
+ * Time: 21:51
+ * Updated:
+*/
+
+/*
+Pour cacher l'espace entre Confirmation de mot de passé & Inséré image.
+Path : "./public/security".
+*/
+div#registration fieldset.form-group,
+div#comment fieldset.form-group {
+
+    display:none;
+}
+
+.gaz-icon {
+
+    width: 1.5em !important;
+    text-align: left;
+}
+
+.gaz-news-image {
+
+    width: 5em;
+}
+
+.gaz-img-log-in {
+    height: 3em;
+    border-radius: 22.5%;
+    margin-right: 0.2em;
+    border: solid 1px rgba(0,0,0,0.5);
+}
+
+.gaz-new-text-size {
+
+    font-size: 16.25px;
+}

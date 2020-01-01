@@ -1,55 +1,112 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Course index{% endblock %}
+{% block title %}Admin : Tous le’s cours’s.{% endblock %}
 
-{% block body %}
-    <h1>Course index</h1>
+{% block style %}
+    <style >
+        table.table {
+            width: 99%;
+            margin: 0 auto 0 auto;
+        }
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>SmallDescription</th>
-                <th>FullDescription</th>
-                <th>Duration</th>
-                <th>Price</th>
-                <th>CreatedAt</th>
-                <th>IsPublished</th>
-                <th>Slug</th>
-                <th>Image</th>
-                <th>Schedule</th>
-                <th>Program</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for course in courses %}
-            <tr>
-                <td>{{ course.id }}</td>
-                <td>{{ course.name }}</td>
-                <td>{{ course.smallDescription }}</td>
-                <td>{{ course.fullDescription }}</td>
-                <td>{{ course.duration }}</td>
-                <td>{{ course.price }}</td>
-                <td>{{ course.createdAt ? course.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
-                <td>{{ course.slug }}</td>
-                <td>{{ course.image }}</td>
-                <td>{{ course.schedule }}</td>
-                <td>{{ course.program }}</td>
-                <td>
-                    <a href="{{ path('course_show', {'id': course.id}) }}">show</a>
-                    <a href="{{ path('course_edit', {'id': course.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="13">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        .table > thead > tr > th,
+        .table > thead > tr > td {
+            vertical-align: baseline;
+        }
 
-    <a href="{{ path('course_new') }}">Create new</a>
+    </style >
+{% endblock %}
+
+{% block main %}
+
+    <!--[if lt IE 8]>
+    <p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
+        <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p >
+    <![endif]-->
+
+    <div class = "courses-area" >
+        <div class = "container-fluid" >
+
+            <p ><a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours.</b ></a >
+            </p >
+
+            <table class = "table table-bordered table-sm table-hover table-striped gaz-table" >
+
+                <thead class = "thead-dark" >
+
+                <tr >
+                    <th scope = "col" style = "width: 6em;" >Image</th >
+                    <th scope = "col" >Nomination du cours</th >
+                    <th scope = "col" style = "width: 8em;" >Catégorie</th >
+                    <th scope = "col" >Professeur<br >Titulaire</th >
+                    <th scope = "col" >Nombre de étudiants</th >
+                    <th scope = "col" style = "width: 8em;" >Durée</th >
+                    <th scope = "col" style = "width: 6em;" >Prix</th >
+                    <th scope = "col" style = "width: 10em;" >Action</th >
+                    <th scope = "col" style = "width: 8em;" >Date</th >
+                </tr >
+
+                </thead >
+
+                <tbody >
+
+                {#Affichage 4 cours par ligne en flex.#}
+                {% for course in courses %}
+
+                    <tr >
+                        <th scope = "row" title = "Image" >
+                            <img src = "{{ asset('public/img/section/') }}{{ course.image }}" alt = "{{ course.name }}" >
+                        </th >
+
+                        <td title = "Nomination du cours" >
+                            <a href = "{{ path('course_show', {'id': course.id}) }}" target = "_blank" >{{ course.name }}</a ><br >
+                            <small>{{ course.smallDescription }}</small></td >
+
+                        <td title = "Catégories" >{{ course.category.name }}</td > {# categories.name.id #}
+
+                        <td title = "Professeur Titulaire" ></td >
+
+                        <td title = "Nombre de étudiants" ></td >
+
+                        <td title = "Durée" >{{ course.duration | nl2br }}<br >
+                            <small>{{ course.schedule | nl2br }}</small></td >
+
+                        <td title = "Prix" style = "text-align: right;" >{{ course.price }}&euro;</td >
+
+                        <td title = "Action" style = "text-align: center;" >
+                            <a class = "btn btn-info" href = "{{ path('course_edit', {'id': course.id}) }}" ><i class = "fas fa-edit" ></i ></a >&nbsp;<a class = "btn btn-danger" ><i class = "fas fa-trash-alt" ></i ></a >&nbsp;<a class = "btn btn-warning" href = "" >{#{{ course.isPublished ? 'Yes' : 'No' }}#}
+                                <i class = "fas fa-eye-slash" ></i ><i class = "fas fa-eye" ></i ></a ></td >
+
+                        <td title = "Date de création" style="text-align: center;">{{ course.createdAt ? course.createdAt|date('Y-m-d ') : '' }}<br>
+                            <small>{{ course.createdAt ? course.createdAt|date('H\\hi\\ms\\s') : '' }}</small><br>
+                            <small>{{ course.createdAt ? course.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize  }}</small></td >
+
+                        {#
+                        Pour mettre le’s date’s en Français :
+
+                        « composer require twig/extensions »
+
+                        Modifier le service « twig_extensions.yaml » :
+                            services:
+                                twig.extension.intl:
+                                    class: Twig_Extensions_Extension_Intl
+                                    tags:
+                                        - { name: twig.extension }
+
+                       Modifier « translation.yaml » et mettre « default_locale: fr » en place « default_locale: en ».
+                        #}
+                    </tr >
+
+                {% else %}
+
+                    <tr >
+                        <td colspan = "13" >no records found</td >
+                    </tr >
+                {% endfor %}
+                </tbody >
+            </table >
+
+        </div >
+    </div >
+
 {% endblock %}

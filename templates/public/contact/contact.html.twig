@@ -2,13 +2,15 @@
 
 {% block title %}Contact{% endblock %}
 
-{% block body %}
+{% block main %}
 
-    <div class="banner"></div>
+    <div class = "banner" ></div >
 
-        <div class="container">
+    <div class = "container" >
 
-            <h2 class="my-4">Nous contacter</h2>
+        <div class = "col-md-6 offset-md-3" >
+
+            <h2 class = "my-4" >Nous contacter</h2 >
 
             {# Débute le formulaire#}
             {{ form_start(form) }}
@@ -17,10 +19,10 @@
 
             {{ form_widget(form) }}
 
-            <button type="submit" class="btn btn-primary">Envovyer</button>
-
             {# Je ferme mon formulaire #}
             {{ form_end(form) }}
-        </div>
+        </div >
+
+    </div >
 
 {% endblock %}

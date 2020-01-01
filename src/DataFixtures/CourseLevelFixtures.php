@@ -17,6 +17,16 @@ use Faker\Factory ; // Le use pour le bundle Faker
 // Bien ajouté le extends.
 class CourseLevelFixtures extends Fixture
 {
+
+	// Je veux générer quelque chose de correct.
+	private $levels = [
+		'C2D',  /* Certificat du Deuxième Degré. */
+		'CEB',  /* Certificat d'Étude de Base. */
+		'CESI', /* Certificat d'Enseignement Secondaire Inférieur. */
+		'CESS', /* Certificat d'Enseignement Secondaire Supérieur. */
+		'CQ'    /* Certificat de Qualification. */
+	];
+
 	public function load(ObjectManager $manager)
 	{
 		// $product = new Product();
@@ -25,12 +35,12 @@ class CourseLevelFixtures extends Fixture
 		// Create Faker pour Course
 		$faker = Factory::create('fr_FR');
 
-		for ($i = 0; $i < 20; $i++) {
+		foreach($this->levels as $level) {
 
 			// Instanciation
 			$CoursesLevel = new CourseLevel();
 
-			$CoursesLevel->setName($faker->text($maxNbChars = 30));
+			$CoursesLevel->setName($level);
 			$CoursesLevel->setPrerequisite($faker->text($maxNbChars = 255));
 
 			// Persist Datha.

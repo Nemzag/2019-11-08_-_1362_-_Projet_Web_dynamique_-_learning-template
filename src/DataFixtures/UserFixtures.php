@@ -9,15 +9,17 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Course;
 use App\Entity\Registration;
 use App\Entity\User;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+// use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class UserFixtures extends fixture
+class UserFixtures extends fixture /* implements DependentFixtureInterface */
 {
 	private $encoder;
 
@@ -51,12 +53,13 @@ class UserFixtures extends fixture
 				// Faker Generation
 				$genre = $faker->randomElement($genres);
 
-				$user->setUserName($user->getFirstName() . $user->getLastName());
-				// $user->setEmail($slugify->slugify($user->getFirstName() . "." . $user->getLastName()) . "@gmail.com");
-
 				$user->setFirstName($faker->firstName($genre));
 
 				$user->setLastName($faker->lastName);
+
+				// Afin de générer le UserName après LastName & FirstName.
+				$user->setUserName($user->getFirstName() . $user->getLastName());
+				// $user->setEmail($slugify->slugify($user->getFirstName() . "." . $user->getLastName()) . "@gmail.com");
 
 				$user->setEmail(($slugify->slugify($user->getFirstName())) . "." . ($slugify->slugify($user->getLastName())) . "@gmail.com");
 
@@ -68,15 +71,15 @@ class UserFixtures extends fixture
 
 				$user->setUpdatedAt($faker->dateTimeBetween("-3 month", "now"));
 
+				$user->setLastLogAt($faker->dateTimeBetween("now"));
+
 				$user->setIsDisabled($faker->boolean(20));
 
 				$user->setRole(["ROLE_USER"]);
 
-				$user->setImage('0' . ($i+9). $genre . '.jpg');
-
-				$user->setLastLogAt($faker->dateTimeBetween("now"));
-
 				$genre = $genre == 'male' ? 'm' : 'f';
+
+				$user->setImage('0' . ($i+9). $genre . '.jpg');
 
 				// Persist Datha.
 				$manager->persist($user);
@@ -87,13 +90,7 @@ class UserFixtures extends fixture
 		}
 	}
 
-	// Ce nom est obligatorie et proposé car j'utilise une interface.
-	public function getDependencies()
-	{
-		// TODO: Implement getDependencies() method.
-		return [
-			Registration::class
-		];
-	}
+
+
 
 }

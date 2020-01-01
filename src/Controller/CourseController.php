@@ -9,9 +9,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Course;
 use App\Entity\CourseCategory;
 use App\Entity\CourseLevel;
+use App\Entity\User;
+use App\Form\CommentType;
 use App\Form\CourseType;
 
 use App\Repository\CourseCategoryRepository;
@@ -24,6 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 // Ancienne version.
+
 /**
  * Class CourseController
  */
@@ -64,35 +68,152 @@ class CourseController extends AbstractController
 	// Créé le controleur Details.
 
 	/**
-	 * @Route("/courses/{id}", name="course_details")
+	 * @Route("/courses/{id}", name="course_details", methods={"GET","POST"})
 	 * @param $id
+	 * @param Request $request
 	 * @return Response
 	 */
-	public function coursesDetails($id) {
+	public function coursesDetails($id, Request $request): Response
+	{
 
+		// Obtention des informations de la table / entité dans la data‑base.
 		$course = $this
 			->getDoctrine()
-			->getRepository(Course::class )
+			->getRepository(Course::class)
 			->find($id);
 
+		// Obtention des informations de la table / entité dans la data‑base.
 		$category = $this
 			->getDoctrine()
-			->getRepository(CourseCategory::class )
+			->getRepository(CourseCategory::class)
 			->find($id);
 
+		// Obtention des informations de la table / entité dans la data‑base.
 		$level = $this
 			->getDoctrine()
-			->getRepository(CourseLevel::class )
+			->getRepository(CourseLevel::class)
 			->find($id);
 
-		return $this->render('public/course/details.html.twig',[
-			/* Attention pash de double []
-			['course' => $course],
-			['category' => $category]);
-			*/
+		// Obtention des informations de la table / entité dans la data‑base.
+		$comments = $this
+			->getDoctrine()
+			->getRepository(Comment::class)
+			->findBy(['course' => $course->getId()]);
+		// ->findBy(['product' => $product->getId()]) // Quoi ???
+
+		// Obtention des informations de la table / entité dans la data‑base.
+		// Inutil.
+		/*
+		$user = $this
+			->getDoctrine()
+			->getRepository(User::class)
+			->find($id);
+		*/
+
+		//══════════════════════════════════════════════════════════════════════════════════════════════
+
+		// Cette fonctionnalité a été faite avec la aide de un ami (Q…).
+		// Qui me l'a suggéré car je n'arrivais pas à cacher le textArea quoi que je fasse en Twig, il m'a conseillé de passé par le controller. .
+
+		// $user = $this->getUser();
+		// dump($user);
+		$noComment = false;
+		foreach ($comments as $c) {
+			// dump($c);
+			// dump($c->getUser());
+			// dump($c->getUser()->getId());
+			// dump($user->getId());
+			// dump($_SESSION);
+			// dump($c->getUser()->getId());
+			// dump($user->getId());
+			if($c->getUser()->getId() === $this->getUser()->getId()) {
+
+				$noComment = true;
+				break;
+			}
+		}
+
+		//══════════════════════════════════════════════════════════════════════════════════════════════
+
+		$newComment = new Comment();
+
+		$newComment->setUser($this->getUser());
+		$newComment->setCourse($course);
+
+		$form = $this->createForm(CommentType::class, $newComment);
+		$form->handleRequest($request);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($newComment);
+			$entityManager->flush();
+
+			return $this->redirectToRoute('course_details', ['id' => $course->getId()]);
+		}
+
+		return $this->render('public/course/details.html.twig', [
+			// Attention pash de double []
+			// ['course' => $course],
+			// ['category' => $category]);
 			'course' => $course,
 			'category' => $category,
-			'level' => $level
+			'level' => $level,
+			// 'user' => $user,
+			'comments' => $comments,
+			'commentForm' => $form->createView(),
+			'noComment' => $noComment,
 		]);
 	}
 }
+
+// /**
+// * @Route("/courses/{id}", name="course_details")
+// * @param $id
+// * @return Response
+// */
+/*
+public function coursesDetails($id) {
+
+// Obtention des informations de la table / entité dans la data‑base.
+$course = $this
+->getDoctrine()
+->getRepository(Course::class )
+->find($id);
+
+// Obtention des informations de la table / entité dans la data‑base.
+$category = $this
+->getDoctrine()
+->getRepository(CourseCategory::class )
+->find($id);
+
+// Obtention des informations de la table / entité dans la data‑base.
+$level = $this
+->getDoctrine()
+->getRepository(CourseLevel::class )
+->find($id);
+
+// Obtention des informations de la table / entité dans la data‑base.
+$comment = $this
+->getDoctrine()
+->getRepository(Comment::class )
+->findBy(['course' => $course->getId()]);
+// ->findBy(['product' => $product->getId()]) // Quoi ???
+
+// Obtention des informations de la table / entité dans la data‑base.
+$user = $this
+->getDoctrine()
+->getRepository(User::class )
+->findAll();
+
+return $this->render('public/course/details.html.twig',[
+// Attention pash de double []
+// ['course' => $course],
+// ['category' => $category]);
+'course' => $course,
+'category' => $category,
+'level' => $level,
+'comment' => $comment,
+'user' => $user
+]);
+}
+*/

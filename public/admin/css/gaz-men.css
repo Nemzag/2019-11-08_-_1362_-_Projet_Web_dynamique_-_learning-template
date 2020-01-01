@@ -1,0 +1,22 @@
+/*
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2020-01-01
+ * Time: 21h54
+ * Updated:
+*/
+
+.gaz-table thead {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #dee2e6 !important;;
+}
+
+.gaz-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, .05) !important;
+}
+
+.gaz-table td {
+    border: 1px solid #dee2e6 !important;
+}
+

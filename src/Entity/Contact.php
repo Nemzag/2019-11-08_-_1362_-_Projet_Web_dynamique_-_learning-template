@@ -9,7 +9,9 @@ class Contact
 	/**
 	 * @var string|null
 	 * @Assert\NotBlank()
-	 * @Assert\Length(min=2)
+	 * @Assert\Length(
+	 *     min=2
+	 * )
 	 */
 	private $firstName;
 

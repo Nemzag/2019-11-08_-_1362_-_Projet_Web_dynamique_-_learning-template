@@ -31,7 +31,7 @@ class AdminController extends AbstractController
 	 */
 	public function adminHome() {
 
-		$this->denyAccessUnlessGranted(['ROLE_USER', 'ROLE_STUDENT', 'ROLE_PROFESSOR', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+		$this->denyAccessUnlessGranted(['ROLE_PROFESSOR', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
 		return $this->render('admin/index.html.twig', [
 			/*
@@ -73,7 +73,7 @@ class AdminController extends AbstractController
 		$categories = $CourseCategoryRepository->findAll();
 		$levels = $CourseLevelRepository->findAll();
 
-		return $this->render('admin/course/all-courses.index.html.twig', [
+		return $this->render('admin/course/course.index.html.twig', [
 			'courses' => $courses,
 			'categories' => $categories,
 			'levels' => $levels
@@ -140,7 +140,7 @@ class AdminController extends AbstractController
 			return $this->redirectToRoute('course_index');
 		}
 
-		return $this->render('course/edit.html.twig', [
+		return $this->render('admin/course/course.edit.html.twig', [
 			'course' => $course,
 			'form' => $form->createView(),
 		]);

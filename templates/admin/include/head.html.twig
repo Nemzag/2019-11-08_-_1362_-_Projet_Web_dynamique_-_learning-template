@@ -7,178 +7,186 @@
 #}
 
 <!doctype html>
-<html class = "no-js" lang = "en">
+<html class = "no-js" lang = "fr">
 
-<head>
-    <meta charset = "utf-8">
-    <meta http-equiv = "x-ua-compatible" content = "ie=edge">
+{% block head %}
+    <head>
+        <meta charset = "utf-8">
+        <meta http-equiv = "x-ua-compatible" content = "ie=edge">
 
-    <meta name = "description" content = "">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <meta name = "description" content = "">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
 
-    {% block title %}<title>Tableau de bord</title>{% endblock %}
+        <title>
+            {% block title %}Tableau de bord{% endblock %}
+        </title>
 
-    <!-- favicon
-        ============================================ -->
-    <link rel = "shortcut icon" type = "image/x-icon" href = "{{ asset('admin/dash-board/img/favicon.ico') }}">
-
-    <!-- Google Fonts
-        ============================================ -->
-    <link href = "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel = "stylesheet">
-
-
-    <!-- animate CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/animate.css') }}">
-
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/bootstrap.min.css') }}">
-
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}">
-
-    <!-- calendar CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.min.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.print.min.css') }}">
-
-    <!-- Chart CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/c3/c3.min.css') }}">
-
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/ambiance.css') }}">
-
-    <!-- code editor JS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/codemirror.css') }}">
-
-    <!-- chosen CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/chosen/bootstrap-chosen.css') }}">
-
-    <!-- colorpicker CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/colorpicker/colorpicker.css') }}">
-
-    <!-- cropper CSS
+        <!-- favicon
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/cropper/cropper.min.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-editable.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-table.css') }}">
+        <link rel = "shortcut icon" type = "image/x-icon" href = "{{ asset('admin/dash-board/img/favicon.ico') }}">
 
-    <!-- datapicker CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/datapicker/datepicker3.css') }}">
+        <!-- Google Fonts
+            ============================================ -->
+        <link href = "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel = "stylesheet">
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/themesaller-forms.css') }}">
 
-    <!-- dropzone CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/dropzone/dropzone.css') }}">
+        <!-- animate CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/animate.css') }}">
 
-    <!-- duallistbox CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/duallistbox/bootstrap-duallistbox.min.css') }}">
+        <!-- Bootstrap CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/bootstrap.min.css') }}">
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/bootstrap-editable.css') }}">
+        <!-- Bootstrap CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}">
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/datetimepicker.css') }}">
+        <!-- calendar CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.min.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.print.min.css') }}">
 
-    <!-- educate icon CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/educate-custon-icon.css') }}">
+        <!-- Chart CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/c3/c3.min.css') }}">
 
-    <!-- forms CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/all-type-forms.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/ambiance.css') }}">
 
-    <!-- ionRangeSlider CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.skinFlat.css') }}">
+        <!-- code editor JS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/codemirror.css') }}">
 
-    <!-- main CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/main.css') }}">
+        <!-- chosen CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/chosen/bootstrap-chosen.css') }}">
 
-    <!-- mCustomScrollbar CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
+        <!-- colorpicker CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/colorpicker/colorpicker.css') }}">
 
-    <!-- meanmenu icon CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/meanmenu.min.css') }}">
+        <!-- cropper CSS
+                ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/cropper/cropper.min.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-editable.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-table.css') }}">
 
-    <!-- metisMenu CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu.min.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu-vertical.css') }}">
+        <!-- datapicker CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/datapicker/datepicker3.css') }}">
 
-    <!-- modals CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/modals.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/themesaller-forms.css') }}">
 
-    <!-- morrisjs CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/morrisjs/morris.css') }}">
+        <!-- dropzone CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/dropzone/dropzone.css') }}">
 
-    <!-- normalize CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/normalize.css') }}">
+        <!-- duallistbox CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/duallistbox/bootstrap-duallistbox.min.css') }}">
 
-    <!-- notifications CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/Lobibox.min.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/notifications.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/bootstrap-editable.css') }}">
 
-    <!-- owl.carousel CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.carousel.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.theme.css') }}">
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.transitions.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/datetimepicker.css') }}">
 
-    <!-- Preloader CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/preloader/preloader-style.css') }}">
+        <!-- educate icon CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/educate-custon-icon.css') }}">
 
-    <!-- responsive CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/responsive.css') }}">
+        <!-- font-awesome CSS -->
+        <link rel="stylesheet" href="{{ asset('public/css/all.min.css') }}">
 
-    <!-- select2 CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/select2/select2.min.css') }}">
+        <!-- forms CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/all-type-forms.css') }}">
 
-    <!-- style CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/style.css') }}">
+        <!-- ionRangeSlider CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.skinFlat.css') }}">
 
-    <!-- summernote CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/summernote/summernote.css') }}">
+        <!-- main CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/main.css') }}">
 
-    <!-- tabs CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tabs.css') }}">
+        <!-- mCustomScrollbar CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
 
-    <!-- touchspin CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/touchspin/jquery.bootstrap-touchspin.min.css') }}">
+        <!-- meanmenu icon CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/meanmenu.min.css') }}">
 
-    <!-- tree viewer CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tree-viewer/tree-viewer.css') }}">
+        <!-- metisMenu CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu.min.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu-vertical.css') }}">
 
-    <!-- x-editor CSS
-        ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/x-editor-style.css') }}">
+        <!-- modals CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/modals.css') }}">
 
-    <!-- modernizr JS
-        ============================================ -->
-    <script src = "{{ asset('admin/dash-board/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+        <!-- morrisjs CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/morrisjs/morris.css') }}">
 
-    {% block head %}{% endblock %}
+        <!-- normalize CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/normalize.css') }}">
 
-</head>
+        <!-- notifications CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/Lobibox.min.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/notifications.css') }}">
+
+        <!-- owl.carousel CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.carousel.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.theme.css') }}">
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.transitions.css') }}">
+
+        <!-- Preloader CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/preloader/preloader-style.css') }}">
+
+        <!-- responsive CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/responsive.css') }}">
+
+        <!-- select2 CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/select2/select2.min.css') }}">
+
+        <!-- style CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/style.css') }}">
+
+        <!-- summernote CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/summernote/summernote.css') }}">
+
+        <!-- tabs CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tabs.css') }}">
+
+        <!-- touchspin CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/touchspin/jquery.bootstrap-touchspin.min.css') }}">
+
+        <!-- tree viewer CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tree-viewer/tree-viewer.css') }}">
+
+        <!-- x-editor CSS
+            ============================================ -->
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/x-editor-style.css') }}">
+
+        <!-- modernizr JS
+            ============================================ -->
+        <script src = "{{ asset('admin/dash-board/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+        {% block css %}{% endblock %}
+
+        {% block style %}{% endblock %}
+    </head>
+{% endblock %}

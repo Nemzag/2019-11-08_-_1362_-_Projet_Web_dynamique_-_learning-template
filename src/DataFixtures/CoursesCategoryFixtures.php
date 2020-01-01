@@ -20,21 +20,13 @@ class CoursesCategoryFixtures extends Fixture
 	// Je veux générer quelque chose de correct.
 	private $categories = [
 		'Artisanat',
-		'Artistique',
 		'Bien être',
-		'Coiffure',
+		'Construction',
 		'Économie',
 		'Éducation',
-		'Informatique de bureau',
 		'Langue',
 		'Machinerie',
-		'Mathématique',
-		'Mécanique',
-		'Programmation',
-		'Social',
-		'Science',
 		'Science ħumaine',
-		'Technique',
 		'Techno‑logie'
 	];
 

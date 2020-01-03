@@ -59,7 +59,7 @@ class NewsController extends AbstractController
      */
     public function show(News $news): Response
     {
-        return $this->render('public/news/show.html.twig', [
+        return $this->render('public/news/course.show.html.twig', [
             'news' => $news,
         ]);
     }

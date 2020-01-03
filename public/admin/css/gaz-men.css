@@ -9,14 +9,58 @@
 .gaz-table thead {
     background-color: #343a40;
     color: #fff;
-    border: 1px solid #dee2e6 !important;;
+    border: 1px solid #dee2e6 !important;
 }
 
+.gaz-table thead th {
+    text-align: center;
+}
+
+.gaz-table-show th {
+    background-color: #343a40;
+    color: #fff;
+}
+/*
+.gaz-show-price-in-euro::after {
+    content: "€;"
+}
+*/
 .gaz-table tbody tr:nth-of-type(even) {
     background-color: rgba(0, 0, 0, .05) !important;
 }
 
 .gaz-table td {
     border: 1px solid #dee2e6 !important;
+}
+
+.gaz-table-index-large {
+    width: 9em;
+}
+
+/* Catégorie, Image, Durée, Prix, Date. */
+.gaz-table-index-medium {
+    width: 8em;
+}
+
+/* Prix. */
+.gaz-table-index-normal {
+    width: 6em;
+}
+
+/* View, Edit, Delete */
+.gaz-table-index-small {
+    width: 3em;
+}
+
+.gaz-show-image {
+    height: 8em !important;
+}
+
+.gaz-admin-form-button {
+    width: 10em !important;
+}
+
+.gaz-admin-btn-crud {
+    width: 4em;
 }
 

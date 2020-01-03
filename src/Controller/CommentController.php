@@ -57,7 +57,7 @@ public function new(Request $request): Response
      */
     public function show(Comment $comment): Response
     {
-        return $this->render('comment/show.html.twig', [
+        return $this->render('comment/course.show.html.twig', [
             'comment' => $comment,
         ]);
     }

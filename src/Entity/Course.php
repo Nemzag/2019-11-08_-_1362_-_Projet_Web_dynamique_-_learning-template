@@ -144,8 +144,8 @@ class Course
 	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par un point et deux chiffres minimum & maximum."
 	 * )
 	 * @Assert\Regex(
-	 *     pattern = "/^(\d+\.{0,1}\d{0,2})$/",
-	 *     htmlPattern = "[0-9]\.[0-9]{2}",
+	 *     pattern = "/^(\d+\,{0,1}\d{0,2})$/",
+	 *     htmlPattern = "[0-9]\,[0-9]{2}",
 	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par un point et deux chiffres minimum & maximum.",
 	 * )
 	 */
@@ -211,6 +211,10 @@ class Course
 	 *     minMessage="Le « slug » doit être de {{ limit }} caractères minimum.",
 	 *     maxMessage="Le « slug » doit être de {{ limit }} caractères maximum.",
 	 *  )
+	 * @Assert\Regex(
+	 *     pattern = "/^[a-z0-9_-]*$/",
+	 *     message = "Le commêntaire doit être de type texte miniscule, chiffres, lettres, moins & moins‑dessous « _ », tout autres caractères est refusé.",
+	 * )
 	 */
 	private $slug;
 

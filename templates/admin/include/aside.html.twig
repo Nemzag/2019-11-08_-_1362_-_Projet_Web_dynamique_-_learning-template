@@ -61,16 +61,18 @@
                                 <li><a title="Students Profile" href="{{ asset('admin/student/student-profile.html.twig') }}"><span class="mini-sub-pro">Student Profile</span></a></li>
                             </ul>
                         </li>
+
+                        <!-- Cours -->
                         <li>
                             <a class="has-arrow" href="{{ path('course_index') }}" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
+
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Courses" href="{{ path('course_index') }}"><span class="mini-sub-pro">All Courses</span></a></li>
-                                <li><a title="Add Courses" href="{{ path('course_new') }}"><span class="mini-sub-pro">Add Course</span></a></li>
-                                <li><a title="Edit Courses" href="{#{{ path('course_edit', {'id': course.id}) }}#}"><span class="mini-sub-pro">Edit Course</span></a></li>
-                                <li><a title="Courses Profile" href="{#{{ path('course_show', {'id': course.id}) }}#}"><span class="mini-sub-pro">Courses Info</span></a></li>
-                                <li><a title="Product Payment" href="{{ asset('admin/course-payment.html.twig') }}"><span class="mini-sub-pro">Courses Payment</span></a></li>
+
+                                <li><a title="Product Payment" href="{{ asset('admin/course/course.payment.html.twig') }}"><span class="mini-sub-pro">Courses Payment</span></a></li>
                             </ul>
                         </li>
+
                         <li>
                             <a class="has-arrow" href="{{ asset('admin/course/course.index.html.twig') }}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
                             <ul class="submenu-angle" aria-expanded="false">

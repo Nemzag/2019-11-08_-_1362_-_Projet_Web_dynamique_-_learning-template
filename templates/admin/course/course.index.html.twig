@@ -27,86 +27,133 @@
     <div class = "courses-area" >
         <div class = "container-fluid" >
 
-            <p ><a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours.</b ></a >
-            </p >
+            <div class = "row align-items-center" >
 
-            <table class = "table table-bordered table-sm table-hover table-striped gaz-table" >
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-                <thead class = "thead-dark" >
+                    <div class = "product-payment-inner-st" >
 
-                <tr >
-                    <th scope = "col" style = "width: 6em;" >Image</th >
-                    <th scope = "col" >Nomination du cours</th >
-                    <th scope = "col" style = "width: 8em;" >Catégorie</th >
-                    <th scope = "col" >Professeur<br >Titulaire</th >
-                    <th scope = "col" >Nombre de étudiants</th >
-                    <th scope = "col" style = "width: 8em;" >Durée</th >
-                    <th scope = "col" style = "width: 6em;" >Prix</th >
-                    <th scope = "col" style = "width: 10em;" >Action</th >
-                    <th scope = "col" style = "width: 8em;" >Date</th >
-                </tr >
+                        <p >
+                            <a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours.</b ></a >
+                        </p >
 
-                </thead >
+                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" >
 
-                <tbody >
+                            <thead class = "thead-dark" >
 
-                {#Affichage 4 cours par ligne en flex.#}
-                {% for course in courses %}
+                            <tr >
+                                <th scope = "col" class="gaz-table-index-medium" >Image</th >
 
-                    <tr >
-                        <th scope = "row" title = "Image" >
-                            <img src = "{{ asset('public/img/section/') }}{{ course.image }}" alt = "{{ course.name }}" >
-                        </th >
+                                <th scope = "col" >Nomination du cours</th >
 
-                        <td title = "Nomination du cours" >
-                            <a href = "{{ path('course_show', {'id': course.id}) }}" target = "_blank" >{{ course.name }}</a ><br >
-                            <small>{{ course.smallDescription }}</small></td >
+                                <th scope = "col" class = "gaz-table-index-medium" >Catégorie</th >
 
-                        <td title = "Catégories" >{{ course.category.name }}</td > {# categories.name.id #}
+                                <th scope = "col" class = "gaz-table-index-medium" >Durée</th >
 
-                        <td title = "Professeur Titulaire" ></td >
+                                <th scope = "col" class="gaz-table-index-medium" >Professeur<br >Titulaire</th >
 
-                        <td title = "Nombre de étudiants" ></td >
+                                <th scope = "col" >Nombre de<br > étudiants</th >
 
-                        <td title = "Durée" >{{ course.duration | nl2br }}<br >
-                            <small>{{ course.schedule | nl2br }}</small></td >
+                                <!-- Prix -->
+                                <th scope = "col" class="gaz-table-index-normal" >Prix</th >
 
-                        <td title = "Prix" style = "text-align: right;" >{{ course.price }}&euro;</td >
+                                <th scope = "col" class = "gaz-table-index-small" >Visible</th >
 
-                        <td title = "Action" style = "text-align: center;" >
-                            <a class = "btn btn-info" href = "{{ path('course_edit', {'id': course.id}) }}" ><i class = "fas fa-edit" ></i ></a >&nbsp;<a class = "btn btn-danger" ><i class = "fas fa-trash-alt" ></i ></a >&nbsp;<a class = "btn btn-warning" href = "" >{#{{ course.isPublished ? 'Yes' : 'No' }}#}
-                                <i class = "fas fa-eye-slash" ></i ><i class = "fas fa-eye" ></i ></a ></td >
+                                <th scope = "col" class = "gaz-table-index-small" >Éditer</th >
 
-                        <td title = "Date de création" style="text-align: center;">{{ course.createdAt ? course.createdAt|date('Y-m-d ') : '' }}<br>
-                            <small>{{ course.createdAt ? course.createdAt|date('H\\hi\\ms\\s') : '' }}</small><br>
-                            <small>{{ course.createdAt ? course.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize  }}</small></td >
+                                <th scope = "col" class = "gaz-table-index-small" >Effacer</th >
 
-                        {#
-                        Pour mettre le’s date’s en Français :
+                                <th scope = "col" class="gaz-table-index-medium" >Date</th >
+                            </tr >
 
-                        « composer require twig/extensions »
+                            </thead >
 
-                        Modifier le service « twig_extensions.yaml » :
-                            services:
-                                twig.extension.intl:
-                                    class: Twig_Extensions_Extension_Intl
-                                    tags:
-                                        - { name: twig.extension }
+                            <tbody >
 
-                       Modifier « translation.yaml » et mettre « default_locale: fr » en place « default_locale: en ».
-                        #}
-                    </tr >
+                            {#Affichage 4 cours par ligne en flex.#}
+                            {% for course in courses %}
 
-                {% else %}
+                                <tr >
+                                    <th scope = "row" title = "Image" >
+                                        <img src = "{{ asset('public/img/section/') }}{{ course.image }}" alt = "{{ course.name }}" >
+                                    </th >
 
-                    <tr >
-                        <td colspan = "13" >no records found</td >
-                    </tr >
-                {% endfor %}
-                </tbody >
-            </table >
+                                    <td title = "Nomination du cours" >
+                                        <a href = "{{ path('course_show', {'id': course.id}) }}" >{{ course.name }}</a ><br >
+                                        <small >{{ course.smallDescription }}</small ></td >
 
+                                    <td title = "Catégories" >{{ course.category.name }}</td > {# categories.name.id #}
+
+                                    <td title = "Durée" >{{ course.duration | nl2br }}<br >
+                                        <small >{{ course.schedule | nl2br }}</small ></td >
+
+                                    <td title = "Professeur Titulaire" >{{ course.professor.firstname }}<br >
+                                        {{ course.professor.lastname }}</td >
+
+                                    <td title = "Nombre de étudiants" ></td >
+
+
+                                    <td title = "Prix" style = "text-align: right;" >{{ course.price |number_format(2, ',', '.') }}&euro;</td >
+
+                                    <!-- View -->
+                                    <td title = "Action" style = "text-align: center;" >
+                                        {% if course.isPublished == 1 %}
+
+                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Visible</small ></a >
+
+                                        {% elseif course.isPublished == 0 %}
+
+                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
+
+                                        {% endif %}
+
+                                        <!-- <?= $row->visibility == 1 ? 0 : 1 ?> -->
+                                    </td >
+
+                                    <!-- Update -->
+                                    <td title = "Action" style = "text-align: center;" >
+                                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('course_edit', {'id': course.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Édité</small ></a >
+                                    </td >
+
+                                    <!-- Delete -->
+                                    <td title = "Action" style = "text-align: center;" >
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" ><i class = "fas fa-trash-alt" ></i ><br ><small >Bbiné</small ></a >
+                                    </td >
+
+                                    <td title = "Date de création" style = "text-align: center;" >{{ course.createdAt ? course.createdAt|date('Y-m-d ') : '' }}
+                                        <br >
+                                        <small >{{ course.createdAt ? course.createdAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                                        <small >{{ course.createdAt ? course.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small >
+                                    </td >
+
+                                    {#
+                                    Pour mettre le’s date’s en Français :
+
+                                    « composer require twig/extensions »
+
+                                    Modifier le service « twig_extensions.yaml » :
+                                        services:
+                                            twig.extension.intl:
+                                                class: Twig_Extensions_Extension_Intl
+                                                tags:
+                                                    - { name: twig.extension }
+
+                                   Modifier « translation.yaml » et mettre « default_locale: fr » en place « default_locale: en ».
+                                    #}
+                                </tr >
+
+                            {% else %}
+
+                                <tr >
+                                    <td colspan = "13" >no records found</td >
+                                </tr >
+                            {% endfor %}
+                            </tbody >
+                        </table >
+
+                    </div >
+                </div >
+            </div >
         </div >
     </div >
-
 {% endblock %}

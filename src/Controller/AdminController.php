@@ -31,7 +31,7 @@ class AdminController extends AbstractController
 	 */
 	public function adminHome() {
 
-		$this->denyAccessUnlessGranted(['ROLE_PROFESSOR', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
 		return $this->render('admin/index.html.twig', [
 			/*
@@ -44,6 +44,7 @@ class AdminController extends AbstractController
 
 	public function index(PaginatorInterface $paginator, Request $request)
 	{
+
 		$post = $this->getDoctrine()
 			->getRepository(CourseController::class)
 			->findAll();
@@ -69,9 +70,34 @@ class AdminController extends AbstractController
 	// public function courses() // Version du prof au départ.
 	public function allCourseIndex(CourseCategoryRepository $CourseCategoryRepository, CourseRepository $CourseRepository, CourseLevelRepository $CourseLevelRepository)
 	{
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		$courses = $CourseRepository->findAll();
 		$categories = $CourseCategoryRepository->findAll();
 		$levels = $CourseLevelRepository->findAll();
+
+		// Visibilité du cours.
+		$_GET ['visibility'] = $_GET ['visibility'] ?? '';
+		$_GET ['id'] = $_GET ['id'] ?? '';
+
+		if($_GET['visibility'] <= 1 && $_GET['id'] != null) {
+			$courseId = $CourseRepository->find($_GET['id']);
+			// var_dump($_GET['visibility']);exit;
+
+			if ($_GET['visibility'] == 1) {
+
+				// var_dump($_GET['visibility']);exit;
+				$courseId->setIsPublished(1);
+
+			} elseif ($_GET['visibility'] == 0) {
+
+				// var_dump($_GET['visibility']);exit;
+				$courseId->setIsPublished(0);
+			}
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($courseId);
+			$entityManager->flush();
+		}
 
 		return $this->render('admin/course/course.index.html.twig', [
 			'courses' => $courses,
@@ -87,6 +113,8 @@ class AdminController extends AbstractController
 	 */
 	public function new(Request $request): Response
 	{
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		$course = new Course();
 		$form = $this->createForm(CourseType::class, $course);
 		$form->handleRequest($request);
@@ -99,7 +127,7 @@ class AdminController extends AbstractController
 			return $this->redirectToRoute('course_index');
 		}
 
-		return $this->render('admin/course/add-course.new.html.twig', [
+		return $this->render('admin/course/course.new.html.twig', [
 			'course' => $course,
 			'form' => $form->createView(),
 		]);
@@ -107,16 +135,22 @@ class AdminController extends AbstractController
 
 	/**
 	 * @Route("/course/{id}", name="course_show", methods={"GET"})
+	 * @param $id
 	 * @param Course $course
+	 * @param CourseCategoryRepository $CourseCategoryRepository
+	 * @param CourseRepository $CourseRepository
+	 * @param CourseLevelRepository $CourseLevelRepository
 	 * @return Response
 	 */
 	public function show($id, Course $course, CourseCategoryRepository $CourseCategoryRepository, CourseRepository $CourseRepository, CourseLevelRepository $CourseLevelRepository): Response
 	{
 
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		$categories = $CourseCategoryRepository->find($id);
 		$levels = $CourseLevelRepository->find($id);
 
-		return $this->render('admin/course/show.html.twig', [
+		return $this->render('admin/course/course.show.html.twig', [
 			'course' => $course,
 			'categories' => $categories,
 			'levels' => $levels
@@ -131,6 +165,8 @@ class AdminController extends AbstractController
 	 */
 	public function edit(Request $request, Course $course): Response
 	{
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		$form = $this->createForm(CourseType::class, $course);
 		$form->handleRequest($request);
 

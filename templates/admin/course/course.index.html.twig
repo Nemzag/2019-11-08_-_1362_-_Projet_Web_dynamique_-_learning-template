@@ -5,7 +5,7 @@
 {% block style %}
     <style >
         table.table {
-            width: 99%;
+            width: 100%;
             margin: 0 auto 0 auto;
         }
 
@@ -33,37 +33,57 @@
 
                     <div class = "product-payment-inner-st" >
 
+                        <h1 >Gestion des Cours</h1 >
+
+                        {{ include('admin/include/alert.info.html.twig') }}
+
+                        {% for message in app.flashes('course_success') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('course_visibility') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% for message in app.flashes('course_danger') %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+
                         <p >
-                            <a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours.</b ></a >
+                            <a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours</b ></a >
                         </p >
 
-                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" >
+                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style="margin-left: 0;" >
 
                             <thead class = "thead-dark" >
 
                             <tr >
-                                <th scope = "col" class="gaz-table-index-medium" >Image</th >
+                                <th scope = "col" class="gaz-table-index-8em" >Image</th >
 
                                 <th scope = "col" >Nomination du cours</th >
 
-                                <th scope = "col" class = "gaz-table-index-medium" >Catégorie</th >
+                                <th scope = "col" class = "gaz-table-index-8em" >Catégorie</th >
 
-                                <th scope = "col" class = "gaz-table-index-medium" >Durée</th >
+                                <th scope = "col" class = "gaz-table-index-8em" >Durée</th >
 
-                                <th scope = "col" class="gaz-table-index-medium" >Professeur<br >Titulaire</th >
+                                <th scope = "col" class="gaz-table-index-8em" >Professeur<br >Titulaire</th >
 
                                 <th scope = "col" >Nombre de<br > étudiants</th >
 
                                 <!-- Prix -->
-                                <th scope = "col" class="gaz-table-index-normal" >Prix</th >
+                                <th scope = "col" class="gaz-table-index-6em" >Prix</th >
 
-                                <th scope = "col" class = "gaz-table-index-small" >Visible</th >
+                                <th scope = "col" class = "gaz-table-index-3em" >Visible</th >
 
-                                <th scope = "col" class = "gaz-table-index-small" >Éditer</th >
+                                <th scope = "col" class = "gaz-table-index-3em" >Éditer</th >
 
-                                <th scope = "col" class = "gaz-table-index-small" >Effacer</th >
+                                <th scope = "col" class = "gaz-table-index-3em" >Effacer</th >
 
-                                <th scope = "col" class="gaz-table-index-medium" >Date</th >
+                                <th scope = "col" class="gaz-table-index-8em" >Date</th >
                             </tr >
 
                             </thead >
@@ -74,9 +94,9 @@
                             {% for course in courses %}
 
                                 <tr >
-                                    <th scope = "row" title = "Image" >
+                                    <td scope = "row" title = "Image" >
                                         <img src = "{{ asset('public/img/section/') }}{{ course.image }}" alt = "{{ course.name }}" >
-                                    </th >
+                                    </td >
 
                                     <td title = "Nomination du cours" >
                                         <a href = "{{ path('course_show', {'id': course.id}) }}" >{{ course.name }}</a ><br >
@@ -103,7 +123,7 @@
 
                                         {% elseif course.isPublished == 0 %}
 
-                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
+                                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
 
                                         {% endif %}
 
@@ -117,7 +137,20 @@
 
                                     <!-- Delete -->
                                     <td title = "Action" style = "text-align: center;" >
-                                        <a class = "btn btn-danger gaz-admin-btn-crud" ><i class = "fas fa-trash-alt" ></i ><br ><small >Bbiné</small ></a >
+
+                                        <!--
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href="{# path('course_delete', {'id': course.id}) #}" ><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></a >
+                                        -->
+
+                                        <form method="post" action="{{ path('course_delete', {'id': course.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
+
+                                            <input type="hidden" name="_method" value="DELETE">
+
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ course.id) }}">
+
+                                            <button class="btn btn-danger gaz-admin-btn-crud"><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></button>
+
+                                        </form>
                                     </td >
 
                                     <td title = "Date de création" style = "text-align: center;" >{{ course.createdAt ? course.createdAt|date('Y-m-d ') : '' }}
@@ -145,7 +178,7 @@
                             {% else %}
 
                                 <tr >
-                                    <td colspan = "13" >no records found</td >
+                                    <td colspan = "13" >Pas d'enregistrement trouvé</td >
                                 </tr >
                             {% endfor %}
                             </tbody >

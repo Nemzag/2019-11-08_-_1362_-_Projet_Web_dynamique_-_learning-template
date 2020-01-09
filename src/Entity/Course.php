@@ -2,13 +2,22 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CourseRepository")
+ * @Vich\Uploadable
  */
 class Course
 {
@@ -16,6 +25,7 @@ class Course
 	{
 		return $this->name;
 	}
+
 	/**
 	 * @ORM\Id()
 	 * @ORM\GeneratedValue()
@@ -134,19 +144,19 @@ class Course
 	/**
 	 * @ORM\Column(type="float")
 	 * @Assert\Length(
-	 *     min="50",
-	 *     max="10000",
+	 *     min="1",
+	 *     max="8",
 	 *     minMessage="Le prix doit être de {{ limit }} € minimum.",
 	 *     maxMessage="Le courte déscription doit être de {{ limit }} € maximum.",
 	 * )
 	 * @Assert\Type(
-     *     type = "float",
-	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par un point et deux chiffres minimum & maximum."
+	 *     type = "float",
+	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par une virgule et deux chiffres minimum & maximum."
 	 * )
 	 * @Assert\Regex(
-	 *     pattern = "/^(\d+\,{0,1}\d{0,2})$/",
+	 *     pattern = "/^(\d+\.{0,1}\d{0,2})$/",
 	 *     htmlPattern = "[0-9]\,[0-9]{2}",
-	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par un point et deux chiffres minimum & maximum.",
+	 *     message = "Votre prix contenir que des chiffres et la décimale doit être representé par une virgule et deux chiffres minimum & maximum.",
 	 * )
 	 */
 	private $price;
@@ -234,6 +244,12 @@ class Course
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 */
+	private $image;
+
+	/**
+	 * @Vich\UploadableField(mapping="courses_img", fileNameProperty="image")
+	 * @var File
 	 * @Assert\Length(
 	 *     min = 1,
 	 *     max = 255,
@@ -251,8 +267,61 @@ class Course
 	 *     notFoundMessage="Vous êtes obligé de choisir une image pour le produit.",
 	 * )
 	 */
-	private $image;
+	private $imageFile;
 
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 * @var DateTime
+	 */
+	private $imageUpdatedAt;
+
+	// ...
+	// Getter & Setter Personnel ajouté.
+	public function getImageUpdatedAt(): ?DateTimeInterface
+	{
+		return $this->imageUpdatedAt;
+	}
+
+	public function setImageUpdatedAt(DateTimeInterface $imageUpdatedAt): self
+	{
+		$this->imageUpdatedAt = $imageUpdatedAt;
+
+		return $this;
+	}
+
+	public function getImageFile()
+	{
+		return $this->imageFile;
+	}
+
+	public function setImageFile(File $image = null)
+	{
+		$this->imageFile = $image;
+
+		// VERY IMPORTANT:
+		// It is required that at least one field changes if you are using Doctrine,
+		// otherwise the event listeners won't be called and the file is lost
+		if ($image) {
+			// if 'updatedAt' is not defined in your entity, use another property
+			$this->imageUpdatedAt = new \DateTime('now');
+		}
+	}
+
+	// 	public function getImage(): ?string
+	public function getImage()
+	{
+		return $this->image;
+	}
+
+	//public function setImage($image)
+	public function setImage($image): self
+	{
+		$this->image = $image;
+
+		return $this;
+	}
+
+	/*
 	public function getImage(): ?string
 	{
 		return $this->image;
@@ -264,6 +333,7 @@ class Course
 
 		return $this;
 	}
+	*/
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -293,7 +363,13 @@ class Course
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $program;
+
+	/**
+	 * @Vich\UploadableField(mapping="courses_pdf", fileNameProperty="program")
+	 * @var File
 	 * @Assert\Length(
 	 *     min = 7,
 	 *     max = 255,
@@ -301,14 +377,34 @@ class Course
 	 *     maxMessage = "Le nom de fichier du programme doit être cômposé de au plus {{ limit }} caractères."
 	 * )
 	 */
-	private $program;
+	private $programFile;
+
+	public function setProgramFile(File $program = null)
+	{
+		$this->programFile = $program;
+
+		// VERY IMPORTANT:
+		// It is required that at least one field changes if you are using Doctrine,
+		// otherwise the event listeners won't be called and the file is lost
+		/*
+		if ($image) {
+			// if 'updatedAt' is not defined in your entity, use another property
+			$this->imageUpdatedAt = new \DateTime('now');
+		}
+		*/
+	}
+
+	public function getProgramFile()
+	{
+		return $this->programFile;
+	}
 
 	public function getProgram(): ?string
 	{
 		return $this->program;
 	}
 
-	public function setProgram(string $program): self
+	public function setProgram($program): self
 	{
 		$this->program = $program;
 

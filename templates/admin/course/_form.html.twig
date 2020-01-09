@@ -1,4 +1,130 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success gaz-admin-form-button">{{ button_label|default('Save') }}</button>
+
+    {#{{ form_widget(form) }}#}
+
+<div class = "form-group" >
+
+    {# Nomination #}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Small Description #}
+    {{ form_label(form.smallDescription) }}
+    {{ form_widget(form.smallDescription) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Small Description #}
+    {{ form_label(form.fullDescription) }}
+    {{ form_widget(form.fullDescription) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Duration #}
+    {{ form_label(form.duration) }}
+    {{ form_widget(form.duration) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Prix #}
+    {{ form_label(form.price) }}
+    {{ form_widget(form.price) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Créé le #}
+    {{ form_label(form.createdAt) }}
+    {{ form_widget(form.createdAt) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Visible #}
+    {{ form_label(form.isPublished) }}
+    {{ form_widget(form.isPublished) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# SLUG #}
+    {{ form_label(form.slug) }}
+    {{ form_widget(form.slug) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Image #}
+    {#<b>{{ form_label(form.imageFile) }}</b>#}
+    <label >Inséré une image <small >(Non obligatoire)</small ></label >
+    {{ form_widget(form.imageFile) }}
+
+    {# Boucle de affichage si non vide. #}
+    {% if course.image is empty %}
+
+    {% else %}
+
+        <small ><label >Image actuel</label ></small ><br >
+
+        <img src = "{{ asset('public/img/section/') }}{{ course.image }}" alt = "{{ course.name }}" class = "img-thumbnail" >
+    {% endif %}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Planning #}
+    {{ form_label(form.schedule) }}
+    {{ form_widget(form.schedule) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Program #}
+    <label >P.D.F. explicatif du cours <small >(Non obligatoire)</small ></label >
+    {#{{ form_label(form.programFile) }}#}
+    {{ form_widget(form.programFile) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Level #}
+    {{ form_label(form.professor) }}
+    {{ form_widget(form.professor) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Level #}
+    {{ form_label(form.level) }}
+    {{ form_widget(form.level) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Categories #}
+    {{ form_label(form.category) }}
+    {{ form_widget(form.category) }}
+
+</div >
+
+<button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 {{ form_end(form) }}

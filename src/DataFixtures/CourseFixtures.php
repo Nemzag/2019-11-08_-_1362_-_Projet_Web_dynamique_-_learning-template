@@ -48,20 +48,35 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 
 		    // Faker Generation
 		    $course->setCategory($categories[$faker->numberBetween(0, count($categories) - 1)]);
+
 		    // nombre aleatoire à générer. Moins 1 car dans la d ?
 		    $course->setLevel($level[$faker->numberBetween(0, count($level) - 1)]); // Offset
+
 		    $course->setProfessor($user[$faker->numberBetween(0, count($user) - 1)]); // Offset
+
 		    $course->setName($faker->text($maxNbChars =  40));
+
 		    $course->setSmallDescription($faker->sentence(14, true));
+
 		    $course->setFullDescription($faker->paragraphs(4, true));
-		    $course->setDuration($faker->text(60));
+
+		    $course->setDuration('1 an.');
+
 		    $course->setPrice($faker->randomFloat(2, 50, 250));
-		    $course->setCreatedAt($faker->dateTime("now"));
+
+		    // $course->setCreatedAt($faker->dateTime("now"));
+		    $course->setCreatedAt($faker->dateTimeBetween($startDate = '-4 years', $endDate = 'now', $timezone = null));
+
 		    $course->setIsPublished(1);
+
 		    // Slug
 		    $course->setSlug($slugify->slugify($course->getName()));
+
 		    $course->setImage($i.'.jpg');
+		    $course->setImageUpdatedAt($faker->dateTime("now"));
+
 		    $course->setSchedule($faker->sentence(7, true));
+
 		    $course->setProgram($faker->text($maxNbChars = 251) . '.pdf'); // Le P.D.F. de’s cours.
 
 		    // Persist Datha.

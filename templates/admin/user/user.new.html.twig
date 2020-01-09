@@ -1,0 +1,48 @@
+{% extends 'base_admin.html.twig' %}
+
+    {% block title %}Nouvelle utilisateur{% endblock %}
+
+    {% block main %}
+
+        <div class = "courses-area" style = "margin-bottom: 30px;" >
+
+            <div class = "container" >
+
+                <div class = "row align-items-center" >
+                    <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+                        <div class = "product-payment-inner-st" >
+
+                            <h1 >Créer un nouvelle utilisateur</h1 >
+
+                            {{ include('admin/user/_form.html.twig') }}
+
+                            <hr >
+
+                            <!-- Affichage flex triple -->
+                            <div class = "row" >
+
+                                <div class = "col-lg-4 text-left" >
+
+                                    <button class = "btn btn-primary gaz-admin-form-button" >
+                                        <a href = "{{ path('admin_user_index') }}" style = "color: white;" >Retour à la liste</a >
+                                    </button >
+                                </div >
+
+                            </div >
+                        </div >
+                        <!-- product-payment-inner-st" -->
+
+                    </div >
+                    <!-- col-lg-12 col-md-12 col-sm-12 col-xs-12 -->
+
+                </div >
+                <!-- row align-items-center -->
+
+            </div >
+            <!-- container -->
+
+        </div >
+
+        <!-- courses-area -->
+    {% endblock %}

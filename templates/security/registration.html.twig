@@ -20,17 +20,15 @@
 
                     {{ form(registration) }}
 
+                    {{ form_start(registration) }}
+                    {{ form_row(registration.email) }}
+                    {{ form_row(registration.password) }}
+                    {{ form_row(registration.agreeTerms) }}
+
+                    {{ form_end(registration) }}
+
                 </div >
             </div >
         </div >
-
-        {{ form_start(registration) }}
-        {{ form_row(registration.email) }}
-        {{ form_row(registration.password) }}
-        {{ form_row(registration.agreeTerms) }}
-
-        <button class = "btn" >Register</button >
-
-        {{ form_end(registration) }}
 
     {% endblock %}

@@ -1,13 +1,96 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}New Course{% endblock %}
+{% block title %}Nouveau Cours{% endblock %}
 
 {% block main %}
 
-    <h1 >Create new Course</h1 >
+    <div class = "courses-area" style = "margin-bottom: 30px;" >
 
-    {{ include('admin/course/_form.html.twig') }}
+        <div class = "container" >
 
-    <a href = "{{ path('course_index') }}" >back to list</a >
+            <div class = "row align-items-center" >
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+                    <div class = "product-payment-inner-st" >
+
+                        <h1 >Nouveau Cours</h1 >
+
+                        {{ include('admin/course/_form.html.twig') }}
+
+                        <hr >
+
+                        <!-- Affichage flex triple -->
+                        <div class = "row" >
+
+                            <div class = "col-lg-4 text-left" >
+
+                                <button class = "btn btn-primary gaz-admin-form-button" >
+                                    <a href = "{{ path('course_index') }}" style = "color: white;" >Retour à la liste</a >
+                                </button >
+                            </div >
+
+                        </div >
+                    </div >
+                    <!-- product-payment-inner-st" -->
+
+                </div >
+                <!-- col-lg-12 col-md-12 col-sm-12 col-xs-12 -->
+
+            </div >
+            <!-- row align-items-center -->
+
+        </div >
+        <!-- container -->
+
+    </div >
+
+    <!-- courses-area -->
+{% endblock %}
+
+{#
+
+{% block title %}Edit Course{% endblock %}
+
+{% block main %}
+
+
+
+                    <div class = "product-payment-inner-st" >
+                        <h1 >Editer le’s Cours’s</h1 >
+
+                        {{ include('admin/include/alert.info.html.twig') }}
+
+                        {{ include('admin/course/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+                        <hr >
+
+                        <!-- Affichage flex triple -->
+                        <div class = "row" >
+
+                            <div class = "col-lg-4 text-left" >
+
+                                <button class = "btn btn-primary gaz-admin-form-button" >
+                                    <a href = "{{ path('course_index') }}" style = "color: white;" >Retour à la liste</a >
+                                </button >
+                            </div >
+
+                            <div class = "col-lg-4" >
+                            </div>
+
+                            <div class = "col-lg-4 text-right" >
+
+                                {{ include('admin/course/_delete_form.html.twig') }}
+                            </div >
+
+                        </div >
+
+
+
+
+
+
+
 
 {% endblock %}
+
+#}

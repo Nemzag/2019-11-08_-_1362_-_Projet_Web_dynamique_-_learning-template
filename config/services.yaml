@@ -4,6 +4,13 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'fr'
+    app.path.courses_img: '%kernel.project_dir%/public/public/img/section'
+    app.path.courses_pdf: '%kernel.project_dir%/public/public/pdf/courses'
+    app.path.user_img: '%kernel.project_dir%/public/public/img/avatar'
+    #app.path.courses_pdf: /public/pdf/courses
+    #user_directory: '%kernel.project_dir%/public/public/img/avatar'
+    #news_directory: '%kernel.project_dir%/public/public/img/news'
 
 services:
     # default configuration for services in *this* file

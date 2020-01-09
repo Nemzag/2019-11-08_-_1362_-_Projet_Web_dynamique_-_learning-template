@@ -9,11 +9,16 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\PasswordUpdate;
+
+use App\Form\PasswordUpdateType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class AccountController extends AbstractController
 {
@@ -42,5 +47,35 @@ class AccountController extends AbstractController
 	 */
 	public function logout() {
 
+	}
+
+	/**
+	 * @Route("/password_update", name="password_update")
+	 */
+	public function accountPassword()
+	{
+		$passwordUpdate = new PasswordUpdate();
+
+		$form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
+
+		/*
+		// Message Flash
+		if ($form->isSubmitted() && $form->isValid()) {
+
+			// Message Flash
+			$this->addFlash('passwordUpdate_success', 'Modification de mot de passe réussi !');
+
+			return $this->redirectToRoute('course_index');
+		} else {
+
+			// Message Flash
+			$this->addFlash('passwordUpdate_danger', 'Mot de passe non identique ou incorrect !');
+		}
+		*/
+
+		return $this->render('public/account/account_password.html.twig',
+			[
+				'passwordUpdate' => $form->createView()
+			]);
 	}
 }

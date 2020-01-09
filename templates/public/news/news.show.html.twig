@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block main %}
+
+    <!-- Slider -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('public/img/slider/slider01.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('public/img/slider/slider02.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('public/img/slider/slider03.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+    <div class = "container" >
+
+        <br >
+
+        <div class="jumbotron bg-secondary">
+
+            <div class="row">
+
+                <div class="col-8">
+
+                    <h1 class="display-4">{{ news.title }}</h1>
+
+                    </div>
+
+                <div class="col-4">
+
+                    <img src="{{ asset("public/img/news/") }}{{ news.image }}" alt="..." class="img-thumbnail">
+
+                </div>
+
+            </div>
+
+            <br >
+
+            <p class="lead alert alert-info w-25 text-center font-weight-bold"><time title="{{ news.createdAt ? news.createdAt|date('Y-m-d ‒ H:i:m:s') : '' }}">{{ news.createdAt ? news.createdAt|date('Y-m-d ‒ H\\hi\\ms\\s') : '' }}</time></p>
+
+            <hr class="my-4">
+
+            <p class="gaz-new-text-size">{{ news.text | nl2br }}</p>
+
+            <p class="lead">
+                <a class="btn btn-primary btn-lg w-25" href="{{ path('home') }}" role="button">Revenir à l'accueil</a>
+            </p>
+
+        </div>
+
+    </div >
+{% endblock %}

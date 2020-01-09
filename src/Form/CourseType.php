@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Course;
+use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -14,121 +17,196 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Routing\Generator\UrlGenerator as BaseUrlGenerator ;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CourseType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-	        ->add('name', TextType::class, [
 
-		        'label' => 'Nomination',
+	/*
+	public $router;
 
-		        'attr' => [
-			        'minlength' => '4',
-			        'maxlength' => '120',
-			        'placeholder' => '120 caractères maximum.‬'
-		        ]
-	        ])
+	public function __construct(UrlGeneratorInterface $router)
+	{
+		$this->router = $router;
+	}
+	*/
 
-	        ->add('smallDescription', TextType::class, [
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
 
-		        'label' => 'Déscription courte',
+		$builder
+			->add('name', TextType::class, [
 
-		        'attr' => [
-			        'minlength' => '4',
-			        'maxlength' => '255',
-			        'placeholder' => '255 caractères maximum.‬'
-		        ]
-	        ])
+				'label' => 'Nomination',
 
-            ->add('fullDescription', TextType::class, [
+				'attr' => [
+					'minlength' => '4',
+					'maxlength' => '120',
+					'placeholder' => '120 caractères maximum.‬'
+				]
+			])
 
-	            'label' => 'Déscription longue',
+			->add('smallDescription', TextType::class, [
 
-	            'attr' => [
-		            'minlength' => '20',
-		            'maxlength' => '65536‬',
-		            'placeholder' => '65.536 caractères maximum.‬'
-	            ]
-            ])
+				'label' => 'Déscription courte',
 
-            ->add('duration', TextareaType::class, [
+				'attr' => [
+					'minlength' => '4',
+					'maxlength' => '255',
+					'placeholder' => '255 caractères maximum.‬'
+				]
+			])
 
-	            'label' => 'Durée',
+			->add('fullDescription', TextType::class, [
 
-	            'attr' => [
-	            	'maxlength' => '60',
-		            'rows' => 2
-	            ]
-            ])
+				'label' => 'Déscription longue',
 
-            ->add('price', MoneyType::class, [
-	            // 'attr' => ['class' => 'gaz-show-price-in-euro']
+				'attr' => [
+					'minlength' => '20',
+					'maxlength' => '65536‬',
+					'placeholder' => '65.536 caractères maximum.‬'
+				]
+			])
 
-	            'label' => 'Prix',
+			->add('duration', TextareaType::class, [
 
-	            'scale' => 2,
+				'label' => 'Durée',
 
-	            'attr' => [
-		            'minlength' => '1',
-		            'maxlength' => '8',
-	            	'type' => 'number',
-		            'step' => '0.01',
-	            ]
-            ])
+				'attr' => [
+					'maxlength' => '60',
+					'rows' => 2
+				]
+			])
 
-            ->add('createdAt', DateTimeType::class, [
+			->add('price', MoneyType::class, [
+				// 'attr' => ['class' => 'gaz-show-price-in-euro']
 
-            	'label' => 'Date de création',
-            ])
+				'label' => 'Prix',
 
-            ->add('isPublished', ChoiceType::class, [
+				'scale' => 2,
 
-	            'label' => 'Visible',
+				'attr' => [
+					'minlength' => '1',
+					'maxlength' => '8',
+					'type' => 'number',
+					'step' => '0.01',
+				]
+			])
 
-	            'choices' => [
-		            'Oui' => 1,
-                    'Non' => 0,
-	            ],
-            ])
+			->add('createdAt', DateTimeType::class, [
 
-            ->add('slug')
+				'label' => 'Date de création',
+				'data' => new \DateTime(),
+			])
 
-            ->add('image', FileType::class, [
-	            'label' => "Inséré une image",
+			->add('isPublished', ChoiceType::class, [
 
-	            'data_class' => null,
+				'label' => 'Visible',
 
-	            'required' => false,
-            ])
+				'choices' => [
+					'Oui' => 1,
+					'Non' => 0,
+				],
+			])
 
-            ->add('schedule', TextareaType::class, [
-	            'attr' => ['rows' => '2']
-            ])
+			->add('slug')
 
-            ->add('program', FileType::class, [
+			/*
+			->add('image', FileType::class, [
+				'label' => "Inséré une image",
 
-            	'label' => "P.D.F. explicatif du cours",
+				'data_class' => null,
 
-	            'data_class' => null,
+				'required' => false,
+			])
+			*/
+			->add('imageFile', VichImageType::class, [
 
-	            'empty_data' => "default.pdf",
+				'label' => "Inséré une image",
+				'required' => false,
+				'download_uri' => false,
 
-	            'required' => false,
+				/*
+				$builder->add('genericFile', VichImageType::class, [
+					'download_uri' => static function (Course $course) use ($router) {
+						return $router->generateUrl('courses_img', $course->getImage());
+					},
+				]),
+				*/
+		// Je ne suis pas parvenu à l'afficher avec l'adresse adequate et fonctionnel.
 
-            ])
+				// 'download_uri' => true,
 
-            ->add('category')
+				// String
+				// 'download_uri' => $this->router->generate('courses_img', $course->getImage()),
+				// 'download_uri' => $this->router->generateUrl('courses_img', $course->getImage()),
+				// 'download_uri' => $this->router->generate('courses_img', $course->getImage()),
 
-            ->add('level')
-        ;
-    }
+				// Static
+				// 'download_uri' => static function (Course  $course) {
+				//	    return $this->router->generate('courses_img', $course->getImage());
+				// },
+				// 'download_uri' => static function (Course  $course) use ($router) {
+				//		return $router->generateUrl('courses_img', $course->getImage());
+				//	},
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Course::class,
-        ]);
-    }
+				'download_label' => "Télécharger l'image",
+				// 'asset_helper' => true,
+				'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['class' => 'form-control']
+			])
+
+			->add('schedule', TextareaType::class, [
+				'attr' => ['rows' => '2'],
+				'label' => "Planning",
+			])
+
+			->add('programFile', VichImageType::class, [
+
+				'required' => false,
+				'label' => "P.D.F. explicatif du cours",
+				'download_uri' => false,
+			])
+			/*
+			->add('program', FileType::class, [
+
+				'label' => "P.D.F. explicatif du cours",
+
+				'data_class' => null,
+
+				'empty_data' => "default.pdf",
+
+				'required' => false,
+
+			])
+			*/
+
+			->add('professor', EntityType::class, array(
+
+				'class' => User::class,
+
+				'query_builder' => function (EntityRepository $repository) {
+					return $repository->createQueryBuilder('c')
+						->where('c.role LIKE :role')
+						->setParameter('role', '%ROLE_PROFESSOR%')
+						->orderBy('c.userName', 'ASC');
+				}
+
+			))
+
+			->add('category')
+
+			->add('level')
+		;
+	}
+
+	public function configureOptions(OptionsResolver $resolver)
+	{
+		$resolver->setDefaults([
+			'data_class' => Course::class,
+		]);
+	}
 }

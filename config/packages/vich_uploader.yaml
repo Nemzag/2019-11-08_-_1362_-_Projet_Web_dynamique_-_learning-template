@@ -1,0 +1,40 @@
+vich_uploader:
+    db_driver: orm
+
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'
+
+    mappings:
+        courses_img:
+            # Dossier ou on va envoyé notre image.
+            uri_prefix: /public/img/section
+            # Dossier ou je souhaite envoyé le’s différent’s fichiersr’s.
+            upload_destination: '%kernel.project_dir%/public/public/img/section'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: false
+            delete_on_remove: false
+            # J'ai activé false afin de éviter des images utilisé de multiple fois dans plusieurs profile par les fixtures.
+
+        courses_pdf:
+            uri_prefix: /public/pdf/courses
+            upload_destination: '%kernel.project_dir%/public/public/pdf/courses'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        user_img:
+            # Dossier ou on va envoyé notre image.
+            uri_prefix: /public/img/avatar
+            # Dossier ou je souhaite envoyé le’s différent’s fichiersr’s.
+            upload_destination: '%kernel.project_dir%/public/public/img/section'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: false
+            delete_on_remove: false
+            # J'ai activé false afin de éviter des images utilisé de multiple fois dans plusieurs profile par les fixtures.

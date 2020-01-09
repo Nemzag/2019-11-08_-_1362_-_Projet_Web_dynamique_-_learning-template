@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -9,8 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -18,10 +23,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     fields = {"email"},
  *     message = "Cet email est deja utilisé."
  * )
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
-	public function __toString()
+	public function __toString(): string
 	{
 		return $this->userName;
 	}
@@ -34,9 +40,9 @@ class User implements UserInterface
 	private $id;
 
 	public function getId(): ?int
-            	{
-            		return $this->id;
-            	}
+	{
+		return $this->id;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -52,19 +58,19 @@ class User implements UserInterface
 	private $userName;
 
 	public function getUsername(): ?string
-            		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
-            		// Dans le code du prof il ne l'a pash mit.
-            	{
-            		// return $this->userName;
-            		return (string)$this->email;
-            	}
+		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
+		// Dans le code du prof il ne l'a pash mit.
+	{
+		// return $this->userName;
+		return (string)$this->userName;
+	}
 
 	public function setUserName(string $userName): self
-            	{
-            		$this->userName = $userName;
-            
-            		return $this;
-            	}
+	{
+		$this->userName = $userName;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -88,27 +94,27 @@ class User implements UserInterface
 	 * @return mixed
 	 */
 	public function getFirstName(): ?string  // Martin Brognon, l'avait pash moi.
-            	{
-            		return $this->firstName;
-            	}
+	{
+		return $this->firstName;
+	}
 
 	/**
 	 * @param mixed $firstName
 	 * @return User
 	 */
 	public function setFirstName($firstName): self // void, pash le meme que Martin.
-            	{
-            		$this->firstName = $firstName;
-            
-            		return $this;
-            	}
+	{
+		$this->firstName = $firstName;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * @Assert\Length(
-	 *     min="1",
+	 *     min="2",
 	 *     max="255",
 	 *     minMessage="Le nom de famille doit être de {{ limit}} caractères minimum.",
 	 *     maxMessage="Le nom de famille doit être de {{ limit}} caractères maximum.",
@@ -125,28 +131,30 @@ class User implements UserInterface
 	 * @return mixed
 	 */
 	public function getLastName(): ?string // Martin Brognon, l'avait pash moi.
-            	{
-            		return $this->lastName;
-            	}
+	{
+		return $this->lastName;
+	}
 
 	/**
 	 * @param mixed $lastName
 	 * @return User
 	 */
 	public function setLastName($lastName): self // void, pash le meme que Martin.
-            	{
-            		$this->lastName = $lastName;
-            
-            		return $this;
-            	}
+	{
+		$this->lastName = $lastName;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * @Assert\Length(
+	 *     min="8",
 	 *     max="255",
-	 *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",
+	 *     minMessage="Le courriel doit être de {{ limit }} caractères minimum.",
+	 *     maxMessage="Le courriel doit être de {{ limit }} caractères maximum.",
 	 * )
 	 * @Assert\Email(
 	 *     mode = "html5",
@@ -156,45 +164,49 @@ class User implements UserInterface
 	private $email;
 
 	public function getEmail(): ?string
-            	{
-            		return $this->email;
-            	}
+	{
+		return $this->email;
+	}
 
 	public function setEmail(string $email): self
-            	{
-            		$this->email = $email;
-            
-            		return $this;
-            	}
+	{
+		$this->email = $email;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * @Assert\Length(
-	 *      min = 6,
-	 *      minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 *     min = 6,
+	 *     max = 255,
+	 *     minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 *     maxMessage = "Le mot de passe doit contenir au maximum {{ limit }} caractères.",
 	 * )
 	 */
 	private $password;
 
 	public function getPassword(): ?string
-            	{
-            		return $this->password;
-            	}
+	{
+		return $this->password;
+	}
 
 	public function setPassword(string $password): self
-            	{
-            		$this->password = $password;
-            
-            		return $this;
-            	}
+	{
+		$this->password = $password;
+
+		return $this;
+	}
 
 	/**
 	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
 	 * @Assert\Length(
-	 *      min = 6,
-	 *      minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 *     min = 6,
+	 *     max = 255,
+	 *     minMessage = "Le mot de passe doit contenir au minimum {{ limit }} caractères.",
+	 *     maxMessage = "Le mot de passe doit contenir au maximum {{ limit }} caractères.",
 	 * )
 	 */
 	public $confirmPassword;
@@ -206,17 +218,17 @@ class User implements UserInterface
 	 */
 	private $createdAt;
 
-	public function getCreatedAt(): ?\DateTimeInterface
-            	{
-            		return $this->createdAt;
-            	}
+	public function getCreatedAt(): ?DateTimeInterface
+	{
+		return $this->createdAt;
+	}
 
-	public function setCreatedAt(\DateTimeInterface $createdAt): self
-            	{
-            		$this->createdAt = $createdAt;
-            
-            		return $this;
-            	}
+	public function setCreatedAt(DateTimeInterface $createdAt): self
+	{
+		$this->createdAt = $createdAt;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -225,15 +237,14 @@ class User implements UserInterface
 	 */
 	private $updatedAt;
 
-	public function getUpdatedAt(): ?\DateTimeInterface
+	public function getUpdatedAt(): ?DateTimeInterface
 	{
 		return $this->updatedAt;
 	}
 
-	public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+	public function setUpdatedAt(DateTimeInterface $updatedAt): self
 	{
 		$this->updatedAt = $updatedAt;
-
 		return $this;
 	}
 
@@ -244,12 +255,12 @@ class User implements UserInterface
 	 */
 	private $lastLogAt;
 
-	public function getLastLogAt(): ?\DateTimeInterface
+	public function getLastLogAt(): ?DateTimeInterface
 	{
 		return $this->lastLogAt;
 	}
 
-	public function setLastLogAt(\DateTimeInterface $lastLogAt): self
+	public function setLastLogAt(DateTimeInterface $lastLogAt): self
 	{
 		$this->lastLogAt = $lastLogAt;
 
@@ -264,16 +275,16 @@ class User implements UserInterface
 	private $isDisabled;
 
 	public function getIsDisabled(): ?bool
-            	{
-            		return $this->isDisabled;
-            	}
+	{
+		return $this->isDisabled;
+	}
 
 	public function setIsDisabled(bool $isDisabled): self
-            	{
-            		$this->isDisabled = $isDisabled;
-            
-            		return $this;
-            	}
+	{
+		$this->isDisabled = $isDisabled;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -299,26 +310,30 @@ class User implements UserInterface
 	 * @return Role|string[] The user roles
 	 */
 	public function getRoles()
-            	{
-            		// TODO: Implement getRoles() method.
-            		return [
-            			'ROLE_USER',
-            			'ROLE_PROFESSOR',
-            			'ROLE_ADMIN',
-            			'ROLE_SUPER_ADMIN'];
-            	}
+	{
+		// TODO: Implement getRoles() method.
+		return $this->role;
+		/*
+		Return [
+			'ROLE_USER',
+			'ROLE_PROFESSOR',
+			'ROLE_ADMIN',
+			'ROLE_SUPER_ADMIN'
+		];
+		*/
+	}
 
 	public function getRole(): ?array
-            	{
-            		return $this->role;
-            	}
+	{
+		return $this->role;
+	}
 
 	public function setRole(array $role): self
-            	{
-            		$this->role = $role;
-            
-            		return $this;
-            	}
+	{
+		$this->role = $role;
+
+		return $this;
+	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -344,17 +359,77 @@ class User implements UserInterface
 	 */
 	private $image;
 
+	/**
+	 * @Vich\UploadableField(mapping="user_img", fileNameProperty="image")
+	 * @var File
+	 */
+	private $imageFile;
+
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 * @var DateTime
+	 */
+	private $imageUpdatedAt;
+
+	// ...
+	// Getter & Setter Personnel ajouté.
+	public function getImageUpdatedAt(): ?DateTimeInterface
+	{
+		return $this->imageUpdatedAt;
+	}
+
+	public function setImageUpdatedAt(DateTimeInterface $imageUpdatedAt): self
+	{
+		$this->imageUpdatedAt = $imageUpdatedAt;
+
+		return $this;
+	}
+
+	public function getImageFile()
+	{
+		return $this->imageFile;
+	}
+
+	public function setImageFile(File $image = null)
+	{
+		$this->imageFile = $image;
+
+		// VERY IMPORTANT:
+		// It is required that at least one field changes if you are using Doctrine,
+		// otherwise the event listeners won't be called and the file is lost
+		if ($image) {
+			// if 'updatedAt' is not defined in your entity, use another property
+			$this->imageUpdatedAt = new DateTime('now');
+		}
+	}
+
+	// 	public function getImage(): ?string
+	public function getImage()
+	{
+		return $this->image;
+	}
+
+	//public function setImage($image)
+	public function setImage(string $image): self
+	{
+		$this->image = $image;
+
+		return $this;
+	}
+
+	/*
 	public function getImage(): ?string
-            	{
-            		return $this->image;
-            	}
+	{
+		return $this->image;
+	}
 
 	public function setImage(string $image): self
-            	{
-            		$this->image = $image;
-            
-            		return $this;
-            	}
+	{
+		$this->image = $image;
+
+		return $this;
+	}
+	*/
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -363,16 +438,16 @@ class User implements UserInterface
 	 */
 	private $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="professor")
-     */
-    private $Id;
+	/**
+	 * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="professor")
+	 */
+	private $Id;
 
 	public function __construct()
-            	{
-            		$this->comments = new ArrayCollection();
-              $this->Id = new ArrayCollection();
-            	}
+	{
+		$this->comments = new ArrayCollection();
+		$this->Id = new ArrayCollection();
+	}
 
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
@@ -385,9 +460,9 @@ class User implements UserInterface
 	 * @return string|null The salt
 	 */
 	public function getSalt()
-            	{
-            		// TODO: Implement getSalt() method.
-            	}
+	{
+		// TODO: Implement getSalt() method.
+	}
 
 	/**
 	 * Removes sensitive data from the user.
@@ -396,61 +471,61 @@ class User implements UserInterface
 	 * the plain-text password is stored on this object.
 	 */
 	public function eraseCredentials()
-            	{
-            		// TODO: Implement eraseCredentials() method.
-            	}
+	{
+		// TODO: Implement eraseCredentials() method.
+	}
 
 	/**
 	 * @return Collection|Comment[]
 	 */
 	public function getComments(): Collection
-            	{
-            		return $this->comments;
-            	}
+	{
+		return $this->comments;
+	}
 
 	public function addComment(Comment $comment): self
-            	{
-            		if (!$this->comments->contains($comment)) {
-            			$this->comments[] = $comment;
-            			$comment->setUser($this);
-            		}
-            
-            		return $this;
-            	}
+	{
+		if (!$this->comments->contains($comment)) {
+			$this->comments[] = $comment;
+			$comment->setUser($this);
+		}
+
+		return $this;
+	}
 
 	public function removeComment(Comment $comment): self
-            	{
-            		if ($this->comments->contains($comment)) {
-            			$this->comments->removeElement($comment);
-            			// set the owning side to null (unless already changed)
-            			if ($comment->getUser() === $this) {
-            				$comment->setUser(null);
-            			}
-            		}
-            
-            		return $this;
-            	}
+	{
+		if ($this->comments->contains($comment)) {
+			$this->comments->removeElement($comment);
+			// set the owning side to null (unless already changed)
+			if ($comment->getUser() === $this) {
+				$comment->setUser(null);
+			}
+		}
 
-    public function addId(Course $id): self
-    {
-        if (!$this->Id->contains($id)) {
-            $this->Id[] = $id;
-            $id->setProfessor($this);
-        }
+		return $this;
+	}
 
-        return $this;
-    }
+	public function addId(Course $id): self
+	{
+		if (!$this->Id->contains($id)) {
+			$this->Id[] = $id;
+			$id->setProfessor($this);
+		}
 
-    public function removeId(Course $id): self
-    {
-        if ($this->Id->contains($id)) {
-            $this->Id->removeElement($id);
-            // set the owning side to null (unless already changed)
-            if ($id->getProfessor() === $this) {
-                $id->setProfessor(null);
-            }
-        }
+		return $this;
+	}
 
-        return $this;
-    }
+	public function removeId(Course $id): self
+	{
+		if ($this->Id->contains($id)) {
+			$this->Id->removeElement($id);
+			// set the owning side to null (unless already changed)
+			if ($id->getProfessor() === $this) {
+				$id->setProfessor(null);
+			}
+		}
+
+		return $this;
+	}
 }

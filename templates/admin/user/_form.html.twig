@@ -1,4 +1,118 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_start(userForm) }}
+
+{#
+{{ form_widget(form) }}
+#}
+
+<div class = "form-group" >
+
+    {# Nomination #}
+    {{ form_label(userForm.userName) }}
+    {{ form_widget(userForm.userName) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Small Description #}
+    {{ form_label(userForm.firstName) }}
+    {{ form_widget(userForm.firstName) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Small Description #}
+    {{ form_label(userForm.lastName) }}
+    {{ form_widget(userForm.lastName) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Email #}
+    {{ form_label(userForm.email) }}
+    {{ form_widget(userForm.email) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Password #}
+    {{ form_label(userForm.password) }}
+    {{ form_widget(userForm.password) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Password #}
+    {{ form_label(userForm.confirmPassword) }}
+    {{ form_widget(userForm.confirmPassword) }}
+
+</div >
+
+
+<div class = "form-group" >
+
+    {# Créé le #}
+    {# {{ form_label(userForm.createdAt) }} #}
+    {{ form_widget(userForm.createdAt) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Updaté le #}
+    {# {{ form_label(userForm.updatedAt) }} #}
+    {{ form_widget(userForm.updatedAt) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Derniere connection #}
+    {#  {{ form_label(userForm.lastLogAt) }}#}
+   {{ form_widget(userForm.lastLogAt) }}
+
+</div >
+
+
+<div class = "form-group" >
+
+   {# Désactivé #}
+    {{ form_label(userForm.isDisabled) }}
+    {{ form_widget(userForm.isDisabled) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Role #}
+    {{ form_label(userForm.role) }}
+    {{ form_widget(userForm.role) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Image #}
+    {#<b>{{ form_label(form.imageFile) }}</b>#}
+    <label >Inséré une image <small >(Non obligatoire)</small ></label >
+    {{ form_widget(userForm.imageFile) }}
+
+    {# Boucle de affichage si non vide. #}
+    {% if user.image is empty %}
+
+    {% else %}
+
+        <small ><label >Image actuel</label ></small ><br >
+
+        <img src = "{{ asset('public/img/avatar/') }}{{ user.image }}" alt = "{{ user.image }}" class = "img-thumbnail" >
+    {% endif %}
+
+</div >
+
+<button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+
+{{ form_end(userForm) }}

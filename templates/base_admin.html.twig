@@ -9,210 +9,572 @@
 <!doctype html>
 <html class = "no-js" lang = "fr" >
 
-{% block head %}
+<head >
+    {% block head %}
 
-    <meta charset = "utf-8" >
-    <meta http-equiv = "x-ua-compatible" content = "ie=edge" >
+        <meta charset = "utf-8" >
+        <meta http-equiv = "x-ua-compatible" content = "ie=edge" >
 
-    <meta name = "description" content = "" >
-    <meta name = "viewport" content = "width=device-width, initial-scale=1" >
+        <meta name = "description" content = "" >
+        <meta name = "viewport" content = "width=device-width, initial-scale=1" >
 
-    <title >
-        {% block title %}Tableau de bord{% endblock %}
-    </title >
+        <title >
+            {% block title %}Tableau de bord{% endblock %}
+        </title >
 
-    <!-- favicon
+        <!-- favicon
             ============================================ -->
-    <link rel = "shortcut icon" type = "image/x-icon" href = "{{ asset('admin/dash-board/img/favicon.ico') }}" >
+        <link rel = "shortcut icon" type = "image/x-icon" href = "{{ asset('admin/dash-board/img/favicon.ico') }}" >
 
-    <!-- Google Fonts
+        <!-- Google Fonts
             ============================================ -->
-    <link href = "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel = "stylesheet" >
+        <link href = "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel = "stylesheet" >
 
 
-    <!-- animate CSS
+        <!-- animate CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/animate.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/animate.css') }}" >
 
-    <!-- Bootstrap CSS
+        <!-- Bootstrap CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/bootstrap.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/bootstrap.min.css') }}" >
 
-    <!-- Bootstrap CSS
+
+        <!-- Bootstrap CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}" >
 
-    <!-- calendar CSS
+
+
+        <!-- calendar CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.min.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.print.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/calendar/fullcalendar.print.min.css') }}" >
 
-    <!-- Chart CSS
+        <!-- Chart CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/c3/c3.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/c3/c3.min.css') }}" >
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/ambiance.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/ambiance.css') }}" >
 
-    <!-- code editor JS
+        <!-- code editor JS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/codemirror.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/code-editor/codemirror.css') }}" >
 
-    <!-- chosen CSS
+        <!-- chosen CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/chosen/bootstrap-chosen.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/chosen/bootstrap-chosen.css') }}" >
 
-    <!-- colorpicker CSS
+        <!-- colorpicker CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/colorpicker/colorpicker.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/colorpicker/colorpicker.css') }}" >
 
-    <!-- cropper CSS
+        <!-- cropper CSS
                 ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/cropper/cropper.min.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-editable.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-table.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/cropper/cropper.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-editable.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/data-table/bootstrap-table.css') }}" >
 
-    <!-- datapicker CSS
+        <!-- datapicker CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/datapicker/datepicker3.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/datapicker/datepicker3.css') }}" >
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/themesaller-forms.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/themesaller-forms.css') }}" >
 
-    <!-- dropzone CSS
+        <!-- dropzone CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/dropzone/dropzone.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/dropzone/dropzone.css') }}" >
 
-    <!-- duallistbox CSS
+        <!-- duallistbox CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/duallistbox/bootstrap-duallistbox.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/duallistbox/bootstrap-duallistbox.min.css') }}" >
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/bootstrap-editable.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/bootstrap-editable.css') }}" >
 
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/datetimepicker.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/datetimepicker.css') }}" >
 
-    <!-- educate icon CSS
+        <!-- educate icon CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/educate-custon-icon.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/educate-custon-icon.css') }}" >
 
-    <!-- font-awesome CSS -->
-    <link rel = "stylesheet" href = "{{ asset('public/css/all.min.css') }}" >
+        <!-- font-awesome CSS -->
+        <link rel = "stylesheet" href = "{{ asset('public/css/all.min.css') }}" >
 
-    <!-- forms CSS
+
+        <!-- forms CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/all-type-forms.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/form/all-type-forms.css') }}" >
 
-    <!-- ionRangeSlider CSS
+        <!-- ionRangeSlider CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.skinFlat.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/ionRangeSlider/ion.rangeSlider.skinFlat.css') }}" >
 
-    <!-- main CSS
+        <!-- main CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/main.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/main.css') }}" >
 
-    <!-- mCustomScrollbar CSS
+        <!-- mCustomScrollbar CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/scrollbar/jquery.mCustomScrollbar.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/scrollbar/jquery.mCustomScrollbar.min.css') }}" >
 
-    <!-- meanmenu icon CSS
+        <!-- meanmenu icon CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/meanmenu.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/meanmenu.min.css') }}" >
 
-    <!-- metisMenu CSS
+        <!-- metisMenu CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu.min.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu-vertical.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/metisMenu/metisMenu-vertical.css') }}" >
 
-    <!-- modals CSS
+        <!-- modals CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/modals.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/modals.css') }}" >
 
-    <!-- morrisjs CSS
+        <!-- morrisjs CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/morrisjs/morris.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/morrisjs/morris.css') }}" >
 
-    <!-- normalize CSS
+        <!-- normalize CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/normalize.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/normalize.css') }}" >
 
-    <!-- notifications CSS
+        <!-- notifications CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/Lobibox.min.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/notifications.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/Lobibox.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/notifications/notifications.css') }}" >
 
-    <!-- owl.carousel CSS
+        <!-- owl.carousel CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.carousel.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.theme.css') }}" >
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.transitions.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.carousel.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.theme.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/owl.transitions.css') }}" >
 
-    <!-- Preloader CSS
+        <!-- Preloader CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/preloader/preloader-style.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/preloader/preloader-style.css') }}" >
 
-    <!-- responsive CSS
+        <!-- responsive CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/responsive.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/responsive.css') }}" >
 
-    <!-- select2 CSS
+        <!-- select2 CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/select2/select2.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/select2/select2.min.css') }}" >
 
-    <!-- style CSS
+        <!-- style CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/style.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/style.css') }}" >
 
-    <!-- summernote CSS
+        <!-- summernote CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/summernote/summernote.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/summernote/summernote.css') }}" >
 
-    <!-- tabs CSS
+        <!-- tabs CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tabs.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tabs.css') }}" >
 
-    <!-- touchspin CSS
+        <!-- touchspin CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/touchspin/jquery.bootstrap-touchspin.min.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/touchspin/jquery.bootstrap-touchspin.min.css') }}" >
 
-    <!-- tree viewer CSS
+        <!-- tree viewer CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tree-viewer/tree-viewer.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/tree-viewer/tree-viewer.css') }}" >
 
-    <!-- x-editor CSS
+        <!-- x-editor CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/x-editor-style.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/editor/x-editor-style.css') }}" >
 
-    <!-- modernizr JS
+        <!-- modernizr JS
             ============================================ -->
-    <script src = "{{ asset('admin/dash-board/js/vendor/modernizr-2.8.3.min.js') }}" ></script >
+        <script src = "{{ asset('admin/dash-board/js/vendor/modernizr-2.8.3.min.js') }}" ></script >
 
-    <!-- Personal CSS
+        <!-- Personal CSS
             ============================================ -->
-    <link rel = "stylesheet" href = "{{ asset('admin/css/gaz-men.css') }}" >
+        <link rel = "stylesheet" href = "{{ asset('admin/css/gaz-men.css') }}" >
 
+        <!-- Link’s TableDatas stylesheet -->
+        <link rel = "stylesheet" href = "{{ asset('public/js/data_tables/DataTables-1.10.18/css/jquery.dataTables.min.css') }} " >
+        <link rel = "stylesheet" href = "{{ asset('public/js/data_tables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}" >
 
-    {% block css %}{% endblock %}
+        <!-- jquery
+        ============================================ -->
+        {#<script src = "{{ asset('admin/dash-board/js/vendor/jquery-1.12.4.min.js') }}" ></script >#}
+        <script src = "{{ asset('public/js/data_tables/jQuery-3.3.1/jquery-3.3.1.min.js') }}" ></script >
 
-    {% block style %}{% endblock %}
-    </head>
-{% endblock %}
+        {% block css %}{% endblock %}
+
+        {% block style %}{% endblock %}
+
+    {% endblock %}
+</head >
 
 <body >
 
-<!-- Start Left menu area -->
-{% include "admin/include/aside.html.twig" %}
-<!-- End Header menu area -->
+<!--[if lt IE 8]><p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
+    <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p ><![endif]-->
+<!-- Start Header menu area -->
 
-{% block header %}
-    <header >
-        <div class = "container-fluid" >
-            <div class = "row" >
-                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                    <div class = "logo-pro" >
-                        <a href = "index.html" ><img class = "main-logo" src = "img/logo/logo.png" alt = "" /></a >
-                    </div >
-                </div >
-            </div >
+<!-- Begin Left menu area -->
+<div class = "left-sidebar-pro" >
+
+    <nav id = "sidebar" class = "" >
+
+        <div class = "sidebar-header" >
+            <a href = "{{ path('home') }}" >
+                <img class = "main-logo" src = "{{ asset('admin/dash-board/img/logo/logo.png') }}" alt = "" /></a >
+            <strong ><a href = "{{ asset('admin/admin.login.html.twig') }}" ><img src = "{{ asset('admin/admin/dash-board/img/logo/logosn.png') }}" alt = "" /></a ></strong >
         </div >
+
+        <div class = "left-custom-menu-adp-wrap comment-scrollbar" >
+
+            <nav class = "sidebar-nav left-sidebar-menu-pro" >
+
+                <ul class = "metismenu" id = "menu1" >
+                    <li class = "active" >
+                        <a class = "has-arrow" href = "{{ path('admin') }}" >
+                            <span class = "educate-icon educate-home icon-wrap" ></span >
+                            <span class = "mini-click-non" >Education</span > </a >
+                        <ul class = "submenu-angle" aria-expanded = "true" >
+                            <li >
+                                <a title = "Tableau de bord" href = "{{ path('admin') }}" ><span class = "mini-sub-pro" >Tableau de bord</span ></a >
+                            </li >
+                            <!--
+                                <li><a title="Analytics" href="{{ asset('admin/analytics.html.twig') }}"><span class="mini-sub-pro">Ana‑lytiques</span></a></li>
+                                <li><a title="Widgets" href="{{ asset('admin/widgets.html.twig') }}"><span class="mini-sub-pro">Widgets</span></a></li>
+                                -->
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a title = "Landing Page" href = "{{ asset('admin/events.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden = "true" ></span >
+                            <span class = "mini-click-non" >Event</span ></a >
+                    </li >
+
+                    <!-- Begin User -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('admin_user_index') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
+                            <span class = "mini-click-non" >Utilisateurs</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "Tous les utilisateurs" href = "{{ path('admin_user_index') }}" ><span class = "mini-sub-pro" >Tous les utilisateurs</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Ajouter un utilisateur" href = "{{ path('admin_user_new') }}" ><span class = "mini-sub-pro" >Ajouter un utilisateur</span ></a >
+                            </li >
+
+                            <li >
+                                <a title = "Mon Profile" href = "{{ path('user_show', {'id': app.user.id}) }}" ><span class = "mini-sub-pro" >Mon Profile</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+                    <!-- End User -->
+
+                    {#
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/administrator/all-administrators.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
+                            <span class = "mini-click-non" >Administrators</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "All Professors" href = "{{ asset('admin/professor/all-administrators.html.twig') }}" ><span class = "mini-sub-pro" >All Administrators</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Add Professor" href = "{{ asset('admin/professor/add-administrator.html.twig') }}" ><span class = "mini-sub-pro" >Add Administrator</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Edit Professor" href = "{{ asset('admin/professor/edit-administrator.html.twig') }}" ><span class = "mini-sub-pro" >Edit Administrator</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Professor Profile" href = "{{ asset('admin/professor-administrator.html.twig') }}" ><span class = "mini-sub-pro" >Administrator Profile</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/professor/all-professors.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
+                            <span class = "mini-click-non" >Professors</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "All Professors" href = "{{ asset('admin/professor/all-professors.html.twig') }}" ><span class = "mini-sub-pro" >All Professors</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Add Professor" href = "{{ asset('admin/professor/add-professor.html.twig') }}" ><span class = "mini-sub-pro" >Add Professor</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Edit Professor" href = "{{ asset('admin/professor/edit-professor.html.twig') }}" ><span class = "mini-sub-pro" >Edit Professor</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Professor Profile" href = "{{ asset('admin/professor-profile.html.twig') }}" ><span class = "mini-sub-pro" >Professor Profile</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <!-- Begin Student -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/student/all-students.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-student icon-wrap" ></span >
+                            <span class = "mini-click-non" >Students</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "All Students" href = "{{ asset('admin/student/all-students.html.twig') }}" ><span class = "mini-sub-pro" >All Students</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Add Students" href = "{{ asset('admin/student/add-student.html.twig') }}" ><span class = "mini-sub-pro" >Add Student</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Edit Students" href = "{{ asset('admin/student/edit-student.html.twig') }}" ><span class = "mini-sub-pro" >Edit Student</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Students Profile" href = "{{ asset('admin/student/student-profile.html.twig') }}" ><span class = "mini-sub-pro" >Student Profile</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+                    <!-- End Student -->
+                    #}
+
+                    <!-- Begin Cours -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('course_index') }}" aria-expanded = "false" ><span class = "educate-icon educate-course icon-wrap" ></span >
+                            <span class = "mini-click-non" >Courses</span ></a >
+
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+
+                            <li >
+                                <a title = "Gestion des cours" href = "{{ path('course_index') }}" ><span class = "mini-sub-pro" >Gestion des cours</span ></a >
+                            </li >
+
+                            <li >
+                                <a title = "Ajouter un cours" href = "{{ path('course_new') }}" ><span class = "mini-sub-pro" >Ajouter un cours</span ></a >
+                            </li >
+
+                            <li >
+                                <a title = "Product Payment" href = "{{ asset('admin/course/course.payment.html.twig') }}" ><span class = "mini-sub-pro" >Courses Payment</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    {#
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/course/course.admin.login.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-library icon-wrap" ></span >
+                            <span class = "mini-click-non" >Library</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "All Library" href = "{{ asset('admin/library/library-assets.html.twig') }}" ><span class = "mini-sub-pro" >Library Assets</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Add Library" href = "{{ asset('admin/library/add-library-assets.html.twig') }}" ><span class = "mini-sub-pro" >Add Library Asset</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Edit Library" href = "{{ asset('admin/library/edit-library-assets.html.twig') }}" ><span class = "mini-sub-pro" >Edit Library Asset</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+                    #}
+
+                    {#
+                    <li>
+                        <a class="has-arrow" href="{{ asset('admin/course/all-courses.html.twig') }}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Departments List" href="{{ asset('admin/departement/departments.html.twig') }}"><span class="mini-sub-pro">Departments List</span></a></li>
+                            <li><a title="Add Departments" href="{{ asset('admin/departement/add-department.html.twig') }}"><span class="mini-sub-pro">Add Departments</span></a></li>
+                            <li><a title="Edit Departments" href="{{ asset('admin/departement/edit-department.html.twig') }}"><span class="mini-sub-pro">Edit Departments</span></a></li>
+                        </ul>
+                    </li>
+                    #}
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-message icon-wrap" ></span >
+                            <span class = "mini-click-non" >Mailbox</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "Inbox" href = "{{ asset('admin/mailbox.html.twig') }}" ><span class = "mini-sub-pro" >Inbox</span ></a >
+                            </li >
+                            <li >
+                                <a title = "View Mail" href = "{{ asset('admin/mailbox-view.html.twig') }}" ><span class = "mini-sub-pro" >View Mail</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Compose Mail" href = "{{ asset('admin/mailbox-compose.html.twig') }}" ><span class = "mini-sub-pro" >Compose Mail</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-interface icon-wrap" ></span >
+                            <span class = "mini-click-non" >Interface</span ></a >
+                        <ul class = "submenu-angle interface-mini-nb-dp" aria-expanded = "false" >
+                            <li >
+                                <a title = "Google Map" href = "{{ asset('admin/google-map.html.twig') }}" ><span class = "mini-sub-pro" >Google Map</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Data Maps" href = "{{ asset('admin/data-maps.html.twig') }}" ><span class = "mini-sub-pro" >Data Maps</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Pdf Viewer" href = "{{ asset('admin/pdf-viewer.html.twig') }}" ><span class = "mini-sub-pro" >Pdf Viewer</span ></a >
+                            </li >
+                            <li >
+                                <a title = "X-Editable" href = "{{ asset('admin/x-editable.html.twig') }}" ><span class = "mini-sub-pro" >X-Editable</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Code Editor" href = "{{ asset('admin/code-editor.html.twig') }}" ><span class = "mini-sub-pro" >Code Editor</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Tree View" href = "{{ asset('admin/tree-view.html.twig') }}" ><span class = "mini-sub-pro" >Tree View</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Preloader" href = "{{ asset('admin/preloader.html.twig') }}" ><span class = "mini-sub-pro" >Preloader</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Images Cropper" href = "{{ asset('admin/images-cropper.html.twig') }}" ><span class = "mini-sub-pro" >Images Cropper</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-charts icon-wrap" ></span >
+                            <span class = "mini-click-non" >Charts</span ></a >
+                        <ul class = "submenu-angle chart-mini-nb-dp" aria-expanded = "false" >
+                            <li >
+                                <a title = "Bar Charts" href = "{{ asset('admin/bar-charts.html.twig') }}" ><span class = "mini-sub-pro" >Bar Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Line Charts" href = "{{ asset('admin/line-charts.html.twig') }}" ><span class = "mini-sub-pro" >Line Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Area Charts" href = "{{ asset('admin/area-charts.html.twig') }}" ><span class = "mini-sub-pro" >Area Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Rounded Charts" href = "{{ asset('admin/rounded-chart.html.twig') }}" ><span class = "mini-sub-pro" >Rounded Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "C3 Charts" href = "{{ asset('admin/c3.html.twig') }}" ><span class = "mini-sub-pro" >C3 Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Sparkline Charts" href = "{{ asset('admin/sparkline.html.twig') }}" ><span class = "mini-sub-pro" >Sparkline Charts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Peity Charts" href = "{{ asset('admin/peity.html.twig') }}" ><span class = "mini-sub-pro" >Peity Charts</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-data-table icon-wrap" ></span >
+                            <span class = "mini-click-non" >Data Tables</span ></a >
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "Peity Charts" href = "{{ asset('admin/static-table.html.twig') }}" ><span class = "mini-sub-pro" >Static Table</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Data Table" href = "{{ asset('admin/data-table.html.twig') }}" ><span class = "mini-sub-pro" >Data Table</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-form icon-wrap" ></span >
+                            <span class = "mini-click-non" >Forms Elements</span ></a >
+                        <ul class = "submenu-angle form-mini-nb-dp" aria-expanded = "false" >
+                            <li >
+                                <a title = "Basic Form Elements" href = "{{ asset('admin/basic-form-element.html.twig') }}" ><span class = "mini-sub-pro" >Bc Form Elements</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Advance Form Elements" href = "{{ asset('admin/advance-form-element.html.twig') }}" ><span class = "mini-sub-pro" >Ad Form Elements</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Password Meter" href = "{{ asset('admin/password-meter.html.twig') }}" ><span class = "mini-sub-pro" >Password Meter</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Multi Upload" href = "{{ asset('admin/multi-upload.html.twig') }}" ><span class = "mini-sub-pro" >Multi Upload</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Text Editor" href = "{{ asset('admin/tinymc.html.twig') }}" ><span class = "mini-sub-pro" >Text Editor</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Dual List Box" href = "{{ asset('admin/dual-list-box.html.twig') }}" ><span class = "mini-sub-pro" >Dual List Box</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <!-- CACACACA -->
+
+                    <li >
+                        <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-apps icon-wrap" ></span >
+                            <span class = "mini-click-non" >App views</span ></a >
+                        <ul class = "submenu-angle app-mini-nb-dp" aria-expanded = "false" >
+                            <li >
+                                <a title = "Notifications" href = "{{ asset('admin/notifications.html.twig') }}" ><span class = "mini-sub-pro" >Notifications</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Alerts" href = "{{ asset('admin/component/alerts.html.twig') }}" ><span class = "mini-sub-pro" >Alerts</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Modals" href = "{{ asset('admin/modals.html.twig') }}" ><span class = "mini-sub-pro" >Modals</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Buttons" href = "{{ asset('admin/component/buttons.html.twig') }}" ><span class = "mini-sub-pro" >Buttons</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Tabs" href = "{{ asset('admin/tabs.html.twig') }}" ><span class = "mini-sub-pro" >Tabs</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Accordion" href = "{{ asset('admin/accordion.html.twig') }}" ><span class = "mini-sub-pro" >Accordion</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <li id = "removable" >
+                        <a class = "has-arrow" href = "#" aria-expanded = "false" ><span class = "educate-icon educate-pages icon-wrap" ></span >
+                            <span class = "mini-click-non" >Pages</span ></a >
+                        <ul class = "submenu-angle page-mini-nb-dp" aria-expanded = "false" >
+                            <li >
+                                <a title = "Login" href = "{{ asset('admin/login.html.twig') }}" ><span class = "mini-sub-pro" >Login</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Register" href = "{{ asset('admin/register.html.twig') }}" ><span class = "mini-sub-pro" >Register</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Lock" href = "{{ asset('admin/lock.html.twig') }}" ><span class = "mini-sub-pro" >Lock</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Password Recovery" href = "{{ asset('admin/password-recovery.html.twig') }}" ><span class = "mini-sub-pro" >Password Recovery</span ></a >
+                            </li >
+                            <li >
+                                <a title = "404 Page" href = "{{ asset('admin/404.html.twig') }}" ><span class = "mini-sub-pro" >404 Page</span ></a >
+                            </li >
+                            <li >
+                                <a title = "500 Page" href = "{{ asset('admin/500.html.twig') }}" ><span class = "mini-sub-pro" >500 Page</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+                </ul >
+            </nav >
+        </div >
+    </nav >
+</div >
+<!-- End Left menu area -->
+
+<!-- Start Welcome area -->
+<div class = "all-content-wrapper" >
+
+    {% block header %}
+        <div class = "container-fluid" >
+
+            <div class = "row" >
+
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+                    <div class = "logo-pro" >
+
+                        <a href = "{{ path('home') }}" ><img class = "main-logo" src = "{{ asset('admin/dash-board/img/logo/logo.png') }}" alt = "" /></a >
+
+                    </div >
+
+                </div >
+
+            </div >
+
+        </div >
+
         <div class = "header-advance-area" >
             <div class = "header-top-area" >
                 <div class = "container-fluid" >
@@ -227,17 +589,22 @@
                                             </button >
                                         </div >
                                     </div >
+
+                                    <!-- Begin Accueil Administration, À propos, Services, Projet, Support -->
                                     <div class = "col-lg-6 col-md-7 col-sm-6 col-xs-12" >
                                         <div class = "header-top-menu tabl-d-n" >
                                             <ul class = "nav navbar-nav mai-top-nav" >
-                                                <li class = "nav-item" ><a href = "#" class = "nav-link" >Home</a >
+                                                <li class = "nav-item" >
+                                                    <a href = "{{ path('admin') }}" class = "nav-link" >Accueil Administration</a >
                                                 </li >
-                                                <li class = "nav-item" ><a href = "#" class = "nav-link" >About</a >
+                                                <li class = "nav-item" >
+                                                    <a href = "#" class = "nav-link" >À propos</a >
                                                 </li >
-                                                <li class = "nav-item" ><a href = "#" class = "nav-link" >Services</a >
+                                                <li class = "nav-item" >
+                                                    <a href = "#" class = "nav-link" >Services</a >
                                                 </li >
                                                 <li class = "nav-item dropdown res-dis-nn" >
-                                                    <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" >Project
+                                                    <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" >Projet
                                                         <span class = "angle-down-topmenu" ><i class = "fa fa-angle-down" ></i ></span ></a >
                                                     <div role = "menu" class = "dropdown-menu animated zoomIn" >
                                                         <a href = "#" class = "dropdown-item" >Documentation</a >
@@ -246,14 +613,19 @@
                                                         <a href = "#" class = "dropdown-item" >Contact Support</a >
                                                     </div >
                                                 </li >
-                                                <li class = "nav-item" ><a href = "#" class = "nav-link" >Support</a >
+                                                <li class = "nav-item" >
+                                                    <a href = "#" class = "nav-link" >Support</a >
                                                 </li >
                                             </ul >
                                         </div >
                                     </div >
+                                    <!-- End Accueil Administration, À propos, Services, Projet, Support -->
+
                                     <div class = "col-lg-5 col-md-5 col-sm-12 col-xs-12" >
                                         <div class = "header-right-info" >
                                             <ul class = "nav navbar-nav mai-top-nav header-right-menu" >
+
+                                                <!-- Begin Email NavBar Icon -->
                                                 <li class = "nav-item dropdown" >
                                                     <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" ><i class = "educate-icon educate-message edu-chat-pro" aria-hidden = "true" ></i ><span class = "indicator-ms" ></span ></a >
                                                     <div role = "menu" class = "author-message-top dropdown-menu animated zoomIn" >
@@ -315,6 +687,9 @@
                                                         </div >
                                                     </div >
                                                 </li >
+                                                <!-- End Email NavBar Icon -->
+
+                                                <!-- Begin Bell NavBar Icon -->
                                                 <li class = "nav-item" >
                                                     <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" ><i class = "educate-icon educate-bell" aria-hidden = "true" ></i ><span class = "indicator-nt" ></span ></a >
                                                     <div role = "menu" class = "notification-author dropdown-menu animated zoomIn" >
@@ -376,6 +751,9 @@
                                                         </div >
                                                     </div >
                                                 </li >
+                                                <!-- End Bell NavBar Icon -->
+
+                                                <!-- Begin Login NavBar -->
                                                 {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_PROFESSOR') or is_granted('ROLE_CONTRIBUTOR') or is_granted('ROLE_MODERATOR') or is_granted('ROLE_USER') %} {# On va utiliser une fonctionnalité twig. #}
                                                     <li class = "nav-item" >
                                                         <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" >
@@ -413,6 +791,9 @@
                                                         </ul >
                                                     </li >
                                                 {% endif %}
+                                                <!-- End Login NavBar -->
+
+                                                <!-- Begin Note NavBar Icon -->
                                                 <li class = "nav-item nav-setting-open" >
                                                     <a href = "#" data-toggle = "dropdown" role = "button" aria-expanded = "false" class = "nav-link dropdown-toggle" ><i class = "educate-icon educate-menu" ></i ></a >
 
@@ -574,6 +955,7 @@
                                                                     </div >
                                                                 </div >
                                                             </div >
+
                                                             <div id = "Projects" class = "tab-pane fade" >
                                                                 <div class = "projects-settings-wrap" >
                                                                     <div class = "note-heading-indicate" >
@@ -584,6 +966,8 @@
                                                                     </div >
                                                                     <div class = "project-st-list-area project-st-menu-scrollbar" >
                                                                         <ul class = "projects-st-menu-list" >
+
+                                                                            <!-- Begin Web Developement -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -602,6 +986,9 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+                                                                            <!-- End Web Developement -->
+
+                                                                            <!-- Begin Software Development -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -620,6 +1007,8 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+
+                                                                            <!-- Begin Graphic Design -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -656,6 +1045,8 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+
+                                                                            <!-- Begin Business Card -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -674,6 +1065,8 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+
+                                                                            <!-- Begin Ecommerce Business -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -692,6 +1085,7 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -710,6 +1104,8 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+
+                                                                            <!-- Begin Wordpress Theme -->
                                                                             <li >
                                                                                 <a href = "#" >
                                                                                     <div class = "project-list-flow" >
@@ -728,10 +1124,14 @@
                                                                                     </div >
                                                                                 </a >
                                                                             </li >
+                                                                            <!-- End Wordpress Theme -->
+
                                                                         </ul >
                                                                     </div >
                                                                 </div >
                                                             </div >
+
+                                                            <!-- Begin Settings -->
                                                             <div id = "Settings" class = "tab-pane fade" >
                                                                 <div class = "setting-panel-area" >
                                                                     <div class = "note-heading-indicate" >
@@ -740,6 +1140,8 @@
                                                                         </h2 >
                                                                         <p > You have 20 Settings. 5 not completed.</p >
                                                                     </div >
+
+                                                                    <!-- Show notifications -->
                                                                     <ul class = "setting-panel-list" >
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
@@ -757,6 +1159,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Show notifications -->
+
+                                                                        <!-- Begin Disable Chat -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -773,6 +1178,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Disable Chat -->
+
+                                                                        <!-- Begin Enable history -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -789,6 +1197,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Enable history -->
+
+                                                                        <!-- Begin Show charts -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -805,6 +1216,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End  Show charts -->
+
+                                                                        <!-- Begin Update everyday -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -821,6 +1235,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Update everyday -->
+
+                                                                        <!-- Begin Global search -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -837,6 +1254,9 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Global search -->
+
+                                                                        <!-- Begin Offline Users -->
                                                                         <li >
                                                                             <div class = "checkbox-setting-pro" >
                                                                                 <div class = "checkbox-title-pro" >
@@ -853,6 +1273,8 @@
                                                                                 </div >
                                                                             </div >
                                                                         </li >
+                                                                        <!-- End Offline Users -->
+
                                                                     </ul >
 
                                                                 </div >
@@ -860,6 +1282,8 @@
                                                         </div >
                                                     </div >
                                                 </li >
+                                                <!-- End Note NavBar Icon -->
+
                                             </ul >
                                         </div >
                                     </div >
@@ -921,7 +1345,7 @@
                                                 </li >
                                                 <li ><a href = "add-course.html" >Add Course</a >
                                                 </li >
-                                                <li ><a href = "course.edit.html.twig" >Edit Course</a >
+                                                <li ><a href = "edit-course.html" >Edit Course</a >
                                                 </li >
                                                 <li ><a href = "course-profile.html" >Courses Info</a >
                                                 </li >
@@ -962,7 +1386,8 @@
                                                 </li >
                                             </ul >
                                         </li >
-                                        <li ><a data-toggle = "collapse" data-target = "#Miscellaneousmob" href = "#" >Interface
+                                        <li >
+                                            <a data-toggle = "collapse" data-target = "#Miscellaneousmob" href = "#" >Interface
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "Miscellaneousmob" class = "collapse dropdown-header-top" >
                                                 <li ><a href = "google-map.html" >Google Map</a >
@@ -1016,7 +1441,8 @@
                                             <ul id = "formsmob" class = "collapse dropdown-header-top" >
                                                 <li ><a href = "basic-form-element.html" >Basic Form Elements</a >
                                                 </li >
-                                                <li ><a href = "advance-form-element.html" >Advanced Form Elements</a >
+                                                <li >
+                                                    <a href = "advance-form-element.html" >Advanced Form Elements</a >
                                                 </li >
                                                 <li ><a href = "password-meter.html" >Password Meter</a >
                                                 </li >
@@ -1034,7 +1460,8 @@
                                             <ul id = "Appviewsmob" class = "collapse dropdown-header-top" >
                                                 <li ><a href = "basic-form-element.html" >Basic Form Elements</a >
                                                 </li >
-                                                <li ><a href = "advance-form-element.html" >Advanced Form Elements</a >
+                                                <li >
+                                                    <a href = "advance-form-element.html" >Advanced Form Elements</a >
                                                 </li >
                                                 <li ><a href = "password-meter.html" >Password Meter</a >
                                                 </li >
@@ -1057,6 +1484,8 @@
                                                 </li >
                                                 <li ><a href = "password-recovery.html" >Password Recovery</a >
                                                 </li >
+                                                <li ><a href = "404.html" >404 Page</a ></li >
+                                                <li ><a href = "500.html" >500 Page</a ></li >
                                                 <li ><a href = "404.html" >404 Page</a ></li >
                                                 <li ><a href = "500.html" >500 Page</a ></li >
                                             </ul >
@@ -1098,34 +1527,612 @@
                 </div >
             </div >
         </div >
+    {% endblock %}
 
-    </header >
+    <!-- End Header menu area -->
 
-{% endblock %}
+    <main id = "page-container" style="margin-bottom: 57.25px;" >
 
-<!--[if lt IE 8]><p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
-    <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p ><![endif]-->
-
-<main >
-
-    <!-- Start Welcome area -->
-    <div class = "all-content-wrapper" >
         {% block main %}
-
+            <div class = "analytics-sparkle-area" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analytics-sparkle-line reso-mg-b-30" >
+                                <div class = "analytics-content" >
+                                    <h5 >Computer Technologies</h5 >
+                                    <h2 >$<span class = "counter" >5000</span >
+                                        <span class = "tuition-fees" >Tuition Fees</span ></h2 >
+                                    <span class = "text-success" >20%</span >
+                                    <div class = "progress m-b-0" >
+                                        <div class = "progress-bar progress-bar-success" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:20%;" >
+                                            <span class = "sr-only" >20% Complete</span ></div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analytics-sparkle-line reso-mg-b-30" >
+                                <div class = "analytics-content" >
+                                    <h5 >Accounting Technologies</h5 >
+                                    <h2 >$<span class = "counter" >3000</span >
+                                        <span class = "tuition-fees" >Tuition Fees</span ></h2 >
+                                    <span class = "text-danger" >30%</span >
+                                    <div class = "progress m-b-0" >
+                                        <div class = "progress-bar progress-bar-danger" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:30%;" >
+                                            <span class = "sr-only" >230% Complete</span ></div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" >
+                                <div class = "analytics-content" >
+                                    <h5 >Electrical Engineering</h5 >
+                                    <h2 >$<span class = "counter" >2000</span >
+                                        <span class = "tuition-fees" >Tuition Fees</span ></h2 >
+                                    <span class = "text-info" >60%</span >
+                                    <div class = "progress m-b-0" >
+                                        <div class = "progress-bar progress-bar-info" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:60%;" >
+                                            <span class = "sr-only" >20% Complete</span ></div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30" >
+                                <div class = "analytics-content" >
+                                    <h5 >Chemical Engineering</h5 >
+                                    <h2 >$<span class = "counter" >3500</span >
+                                        <span class = "tuition-fees" >Tuition Fees</span ></h2 >
+                                    <span class = "text-inverse" >80%</span >
+                                    <div class = "progress m-b-0" >
+                                        <div class = "progress-bar progress-bar-inverse" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:80%;" >
+                                            <span class = "sr-only" >230% Complete</span ></div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "product-sales-area mg-tb-30" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <div class = "product-sales-chart" >
+                                <div class = "portlet-title" >
+                                    <div class = "row" >
+                                        <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                                            <div class = "caption pro-sl-hd" >
+                                                <span class = "caption-subject" ><b >University Earnings</b ></span >
+                                            </div >
+                                        </div >
+                                        <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                                            <div class = "actions graph-rp graph-rp-dl" >
+                                                <p >All Earnings are in million $</p >
+                                            </div >
+                                        </div >
+                                    </div >
+                                </div >
+                                <ul class = "list-inline cus-product-sl-rp" >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #006DF0;" ></i >CSE</h5 >
+                                    </li >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #933EC5;" ></i >Accounting
+                                        </h5 >
+                                    </li >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #65b12d;" ></i >Electrical
+                                        </h5 >
+                                    </li >
+                                </ul >
+                                <div id = "extra-area-chart" style = "height: 356px;" ></div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "traffice-source-area mg-b-30" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box analytics-info-cs" >
+                                <h3 class = "box-title" >Total Visit</h3 >
+                                <ul class = "list-inline two-part-sp" >
+                                    <li >
+                                        <div id = "sparklinedash" ></div >
+                                    </li >
+                                    <li class = "text-right sp-cn-r" >
+                                        <i class = "fa fa-level-up" aria-hidden = "true" ></i >
+                                        <span class = "counter text-success" ><span class = "counter" >1500</span ></span >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box analytics-info-cs res-mg-t-30 table-mg-t-pro-n" >
+                                <h3 class = "box-title" >Page Views</h3 >
+                                <ul class = "list-inline two-part-sp" >
+                                    <li >
+                                        <div id = "sparklinedash2" ></div >
+                                    </li >
+                                    <li class = "text-right graph-two-ctn" >
+                                        <i class = "fa fa-level-up" aria-hidden = "true" ></i >
+                                        <span class = "counter text-purple" ><span class = "counter" >3000</span ></span >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box analytics-info-cs res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <h3 class = "box-title" >Unique Visitor</h3 >
+                                <ul class = "list-inline two-part-sp" >
+                                    <li >
+                                        <div id = "sparklinedash3" ></div >
+                                    </li >
+                                    <li class = "text-right graph-three-ctn" >
+                                        <i class = "fa fa-level-up" aria-hidden = "true" ></i >
+                                        <span class = "counter text-info" ><span class = "counter" >5000</span ></span >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box analytics-info-cs res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <h3 class = "box-title" >Bounce Rate</h3 >
+                                <ul class = "list-inline two-part-sp" >
+                                    <li >
+                                        <div id = "sparklinedash4" ></div >
+                                    </li >
+                                    <li class = "text-right graph-four-ctn" >
+                                        <i class = "fa fa-level-down" aria-hidden = "true" ></i >
+                                        <span class = "text-danger" ><span class = "counter" >18</span >%</span >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "traffic-analysis-area" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "social-media-edu" >
+                                <i class = "fa fa-facebook" ></i >
+                                <div class = "social-edu-ctn" >
+                                    <h3 >50k Likes</h3 >
+                                    <p >You main list growing</p >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "social-media-edu twitter-cl res-mg-t-30 table-mg-t-pro-n" >
+                                <i class = "fa fa-twitter" ></i >
+                                <div class = "social-edu-ctn" >
+                                    <h3 >30k followers</h3 >
+                                    <p >You main list growing</p >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "social-media-edu linkedin-cl res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <i class = "fa fa-linkedin" ></i >
+                                <div class = "social-edu-ctn" >
+                                    <h3 >7k Connections</h3 >
+                                    <p >You main list growing</p >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "social-media-edu youtube-cl res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <i class = "fa fa-youtube" ></i >
+                                <div class = "social-edu-ctn" >
+                                    <h3 >50k Subscribers</h3 >
+                                    <p >You main list growing</p >
+                                </div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "library-book-area mg-t-30" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-4 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "single-cards-item" >
+                                <div class = "single-product-image" >
+                                    <a href = "#" ><img src = "img/product/profile-bg.jpg" alt = "" ></a >
+                                </div >
+                                <div class = "single-product-text" >
+                                    <img src = "img/product/pro4.jpg" alt = "" >
+                                    <h4 ><a class = "cards-hd-dn" href = "#" >Angela Dominic</a ></h4 >
+                                    <h5 >Web Designer & Developer</h5 >
+                                    <p class = "ctn-cards" >Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit</p >
+                                    <a class = "follow-cards" href = "#" >Follow</a >
+                                    <div class = "row" >
+                                        <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+                                            <div class = "cards-dtn" >
+                                                <h3 ><span class = "counter" >199</span ></h3 >
+                                                <p >Articles</p >
+                                            </div >
+                                        </div >
+                                        <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+                                            <div class = "cards-dtn" >
+                                                <h3 ><span class = "counter" >599</span ></h3 >
+                                                <p >Like</p >
+                                            </div >
+                                        </div >
+                                        <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+                                            <div class = "cards-dtn" >
+                                                <h3 ><span class = "counter" >399</span ></h3 >
+                                                <p >Comment</p >
+                                            </div >
+                                        </div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-4 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "single-review-st-item res-mg-t-30 table-mg-t-pro-n" >
+                                <div class = "single-review-st-hd" >
+                                    <h2 >Reviews</h2 >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/1.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Sarah Graves</h3 >
+                                        <p >Highly recommend</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/2.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Garbease sha</h3 >
+                                        <p >Awesome Pro</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/3.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Gobetro pro</h3 >
+                                        <p >Great Website</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/4.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Siam Graves</h3 >
+                                        <p >That's Good</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/5.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Sarah Graves</h3 >
+                                        <p >Highly recommend</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                                <div class = "single-review-st-text" >
+                                    <img src = "img/notification/6.jpg" alt = "" >
+                                    <div class = "review-ctn-hf" >
+                                        <h3 >Julsha Grav</h3 >
+                                        <p >Sei Hoise bro</p >
+                                    </div >
+                                    <div class = "review-item-rating" >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star" ></i >
+                                        <i class = "educate-icon educate-star-half" ></i >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                            <div class = "single-product-item res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n" >
+                                <div class = "single-product-image" >
+                                    <a href = "#" ><img src = "img/product/book-4.jpg" alt = "" ></a >
+                                </div >
+                                <div class = "single-product-text edu-pro-tx" >
+                                    <h4 ><a href = "#" >Title Demo Here</a ></h4 >
+                                    <h5 >Lorem ipsum dolor sit amet, this is a consec tetur adipisicing elit</h5 >
+                                    <div class = "product-price" >
+                                        <h3 >$45</h3 >
+                                        <div class = "single-item-rating" >
+                                            <i class = "educate-icon educate-star" ></i >
+                                            <i class = "educate-icon educate-star" ></i >
+                                            <i class = "educate-icon educate-star" ></i >
+                                            <i class = "educate-icon educate-star" ></i >
+                                            <i class = "educate-icon educate-star-half" ></i >
+                                        </div >
+                                    </div >
+                                    <div class = "product-buttons" >
+                                        <button type = "button" class = "button-default cart-btn" >Read More</button >
+                                        <button type = "button" class = "button-default" >
+                                            <i class = "fa fa-heart" ></i >
+                                        </button >
+                                        <button type = "button" class = "button-default" >
+                                            <i class = "fa fa-share" ></i >
+                                        </button >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "product-sales-area mg-tb-30" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <div class = "product-sales-chart" >
+                                <div class = "portlet-title" >
+                                    <div class = "row" >
+                                        <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                                            <div class = "caption pro-sl-hd" >
+                                                <span class = "caption-subject" ><b >Adminsion Statistic</b ></span >
+                                            </div >
+                                        </div >
+                                        <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                                            <div class = "actions graph-rp actions-graph-rp" >
+                                                <a href = "#" class = "btn btn-dark btn-circle active tip-top" data-toggle = "tooltip" title = "Refresh" >
+                                                    <i class = "fa fa-reply" aria-hidden = "true" ></i > </a >
+                                                <a href = "#" class = "btn btn-blue-grey btn-circle active tip-top" data-toggle = "tooltip" title = "Delete" >
+                                                    <i class = "fa fa-trash-o" aria-hidden = "true" ></i > </a >
+                                            </div >
+                                        </div >
+                                    </div >
+                                </div >
+                                <ul class = "list-inline cus-product-sl-rp" >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #006DF0;" ></i >Python
+                                        </h5 >
+                                    </li >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #933EC5;" ></i >PHP</h5 >
+                                    </li >
+                                    <li >
+                                        <h5 ><i class = "fa fa-circle" style = "color: #65b12d;" ></i >Java
+                                        </h5 >
+                                    </li >
+                                </ul >
+                                <div id = "morris-area-chart" ></div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "sedules-area mg-b-30" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analysis-progrebar" >
+                                <div class = "analysis-progrebar-content" >
+                                    <h5 >Usage</h5 >
+                                    <h2 class = "storage-right" ><span class = "counter" >90</span >%</h2 >
+                                    <div class = "progress progress-mini ug-1" >
+                                        <div style = "width: 68%;" class = "progress-bar" ></div >
+                                    </div >
+                                    <div class = "m-t-sm small" >
+                                        <p >Server down since 1:32 pm.</p >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analysis-progrebar reso-mg-b-30 res-mg-t-30 table-mg-t-pro-n" >
+                                <div class = "analysis-progrebar-content" >
+                                    <h5 >Memory</h5 >
+                                    <h2 class = "storage-right" ><span class = "counter" >70</span >%</h2 >
+                                    <div class = "progress progress-mini ug-2" >
+                                        <div style = "width: 78%;" class = "progress-bar" ></div >
+                                    </div >
+                                    <div class = "m-t-sm small" >
+                                        <p >Server down since 12:32 pm.</p >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analysis-progrebar reso-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <div class = "analysis-progrebar-content" >
+                                    <h5 >Data</h5 >
+                                    <h2 class = "storage-right" ><span class = "counter" >50</span >%</h2 >
+                                    <div class = "progress progress-mini ug-3" >
+                                        <div style = "width: 38%;" class = "progress-bar progress-bar-danger" ></div >
+                                    </div >
+                                    <div class = "m-t-sm small" >
+                                        <p >Server down since 8:32 pm.</p >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                        <div class = "col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "analysis-progrebar res-tablet-mg-t-30 dk-res-t-pro-30" >
+                                <div class = "analysis-progrebar-content" >
+                                    <h5 >Space</h5 >
+                                    <h2 class = "storage-right" ><span class = "counter" >40</span >%</h2 >
+                                    <div class = "progress progress-mini ug-4" >
+                                        <div style = "width: 28%;" class = "progress-bar progress-bar-danger" ></div >
+                                    </div >
+                                    <div class = "m-t-sm small" >
+                                        <p >Server down since 5:32 pm.</p >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
+            <div class = "courses-area mg-b-15" >
+                <div class = "container-fluid" >
+                    <div class = "row" >
+                        <div class = "col-lg-4 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box" >
+                                <h3 class = "box-title" >Browser Status</h3 >
+                                <ul class = "basic-list" >
+                                    <li >Google Chrome
+                                        <span class = "pull-right label-danger label-1 label" >95.8%</span >
+                                    </li >
+                                    <li >Mozila Firefox
+                                        <span class = "pull-right label-purple label-2 label" >85.8%</span >
+                                    </li >
+                                    <li >Apple Safari
+                                        <span class = "pull-right label-success label-3 label" >23.8%</span >
+                                    </li >
+                                    <li >Internet Explorer
+                                        <span class = "pull-right label-info label-4 label" >55.8%</span >
+                                    </li >
+                                    <li >Opera mini
+                                        <span class = "pull-right label-warning label-5 label" >28.8%</span >
+                                    </li >
+                                    <li >Mozila Firefox
+                                        <span class = "pull-right label-purple label-6 label" >26.8%</span >
+                                    </li >
+                                    <li >Safari <span class = "pull-right label-purple label-7 label" >31.8%</span >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                        <div class = "col-lg-4 col-md-6 col-sm-6 col-xs-12" >
+                            <div class = "white-box res-mg-t-30 table-mg-t-pro-n" >
+                                <h3 class = "box-title" >Visits from countries</h3 >
+                                <ul class = "country-state" >
+                                    <li >
+                                        <h2 ><span class = "counter" >1250</span ></h2 >
+                                        <small >From Australia</small >
+                                        <div class = "pull-right" >75%
+                                            <i class = "fa fa-level-up text-danger ctn-ic-1" ></i >
+                                        </div >
+                                        <div class = "progress" >
+                                            <div class = "progress-bar progress-bar-danger ctn-vs-1" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:75%;" >
+                                                <span class = "sr-only" >75% Complete</span ></div >
+                                        </div >
+                                    </li >
+                                    <li >
+                                        <h2 ><span class = "counter" >1050</span ></h2 >
+                                        <small >From USA</small >
+                                        <div class = "pull-right" >48%
+                                            <i class = "fa fa-level-up text-success ctn-ic-2" ></i >
+                                        </div >
+                                        <div class = "progress" >
+                                            <div class = "progress-bar progress-bar-info ctn-vs-2" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:48%;" >
+                                                <span class = "sr-only" >48% Complete</span ></div >
+                                        </div >
+                                    </li >
+                                    <li >
+                                        <h2 ><span class = "counter" >6350</span ></h2 >
+                                        <small >From Canada</small >
+                                        <div class = "pull-right" >55%
+                                            <i class = "fa fa-level-up text-success ctn-ic-3" ></i >
+                                        </div >
+                                        <div class = "progress" >
+                                            <div class = "progress-bar progress-bar-success ctn-vs-3" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:55%;" >
+                                                <span class = "sr-only" >55% Complete</span ></div >
+                                        </div >
+                                    </li >
+                                    <li >
+                                        <h2 ><span class = "counter" >950</span ></h2 >
+                                        <small >From India</small >
+                                        <div class = "pull-right" >33%
+                                            <i class = "fa fa-level-down text-success ctn-ic-4" ></i ></div >
+                                        <div class = "progress" >
+                                            <div class = "progress-bar progress-bar-success ctn-vs-4" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:33%;" >
+                                                <span class = "sr-only" >33% Complete</span ></div >
+                                        </div >
+                                    </li >
+                                    <li >
+                                        <h2 ><span class = "counter" >3250</span ></h2 >
+                                        <small >From Bangladesh</small >
+                                        <div class = "pull-right" >60%
+                                            <i class = "fa fa-level-up text-success ctn-ic-5" ></i >
+                                        </div >
+                                        <div class = "progress" >
+                                            <div class = "progress-bar progress-bar-inverse ctn-vs-5" role = "progressbar" aria-valuenow = "50" aria-valuemin = "0" aria-valuemax = "100" style = "width:60%;" >
+                                                <span class = "sr-only" >60% Complete</span ></div >
+                                        </div >
+                                    </li >
+                                </ul >
+                            </div >
+                        </div >
+                        <div class = "col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                            <div class = "courses-inner res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n" >
+                                <div class = "courses-title" >
+                                    <a href = "#" ><img src = "img/courses/1.jpg" alt = "" /></a >
+                                    <h2 >Apps Development</h2 >
+                                </div >
+                                <div class = "courses-alaltic" >
+                                    <span class = "cr-ic-r" ><span class = "course-icon" ><i class = "fa fa-clock" ></i ></span > 1 Year</span >
+                                    <span class = "cr-ic-r" ><span class = "course-icon" ><i class = "fa fa-heart" ></i ></span > 50</span >
+                                    <span class = "cr-ic-r" ><span class = "course-icon" ><i class = "fa fa-dollar" ></i ></span > 500</span >
+                                </div >
+                                <div class = "course-des" >
+                                    <p ><span ><i class = "fa fa-clock" ></i ></span > <b >Duration:</b > 6 Months
+                                    </p >
+                                    <p ><span ><i class = "fa fa-clock" ></i ></span > <b >Professor:</b > Jane Doe
+                                    </p >
+                                    <p ><span ><i class = "fa fa-clock" ></i ></span > <b >Students:</b > 100+
+                                    </p >
+                                </div >
+                                <div class = "product-buttons" >
+                                    <button type = "button" class = "button-default cart-btn" >Read More</button >
+                                </div >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+            </div >
         {% endblock %}
 
-    </div >
-</main >
-</div>
+    </main >
+</div >
 
-<footer >
+<footer id = "footer" >
     <div class = "footer-copyright-area" >
         <div class = "container-fluid" >
             <div class = "row" >
                 <div class = "col-lg-12" >
                     <div class = "footer-copy-right" >
-                        <p >Copyright © 2018. All rights reserved. Template by
-                            <a href = "https://colorlib.com/wp/templates/" >Colorlib</a ></p >
+                        <p >Copyright © 2020. Tous droits réservé. Template par
+                            <a href = "https://colorlib.com/wp/templates/" >Colorlib</a >, adapté par Gazmên Arifi.</p >
                     </div >
                 </div >
             </div >
@@ -1134,74 +2141,70 @@
 
     {% block footer %}
 
-        <!-- jquery
-        ============================================ -->
-        <script src = "{{ asset('admin/dash-board/js/vendor/jquery-1.12.4.min.js') }}" ></script >
-
         <!-- bootstrap JS
-        ============================================ -->
+    ============================================ -->
         <script src = "{{ asset('admin/dash-board/js/bootstrap.min.js') }}" ></script >
 
         <!-- c3 JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/c3-charts/d3.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/c3-charts/c3.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/c3-charts/c3-active.js') }}" ></script >
 
         <!-- calendar JS
-        ============================================ -->
+    ============================================ -->
         <script src = "{{ asset('admin/dash-board/js/calendar/moment.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/calendar/fullcalendar.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/calendar/fullcalendar-active.js') }}" ></script >
 
         <!-- Chart JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/chart/jquery.peity.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/chart/peity-active.js') }}" ></script >
 
         <!-- Charts JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/charts/Chart.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/charts/area-chart.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/charts/bar-chart.js') }}" ></script >
 
         <!-- chosen JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/chosen/chosen.jquery.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/chosen/chosen-active.js') }}" ></script >
 
         <!-- code editor JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/code-editor/codemirror.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/code-editor/code-editor.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/code-editor/code-editor-active.js') }}" ></script >
 
         <!-- colorpicker JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/colorpicker/jquery.spectrum.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/colorpicker/color-picker-active.js') }}" ></script >
 
         <!-- counterup JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/counterup/jquery.counterup.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/counterup/waypoints.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/counterup/counterup-active.js') }}" ></script >
 
         <!-- cropper JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/cropper/cropper.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/cropper/cropper-actice.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/charts/line-chart.js') }}" ></script >
 
         <!-- Data Maps JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/data-map/d3.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/data-map/topojson.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/data-map/datamaps.all.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/data-map/data-maps-active.js') }}" ></script >
 
         <!-- data table JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/data-table/bootstrap-table.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/data-table/tableExport.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/data-table/data-table-active.js') }}" ></script >
@@ -1212,21 +2215,21 @@
         <script src = "{{ asset('admin/dash-board/js/data-table/bootstrap-table-export.js') }}" ></script >
 
         <!-- datapicker JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/datapicker/bootstrap-datepicker.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/datapicker/datepicker-active.js') }}" ></script >
 
         <!-- dropzone JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/dropzone/dropzone.js') }}" ></script >
 
         <!-- duallistbox JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/duallistbox/jquery.bootstrap-duallistbox.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/duallistbox/duallistbox.active.js') }}" ></script >
 
         <!--  editable JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/editable/jquery.mockjax.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/editable/mock-active.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/editable/select2.js') }}" ></script >
@@ -1236,176 +2239,185 @@
         <script src = "{{ asset('admin/dash-board/js/editable/xediable-active.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/peity/peity-active.js') }}" ></script >
 
+
         <!-- font-awesome JS -->
         <script src = "{{ asset('public/js/all.min.js') }}" ></script >
 
+
         <!-- form validate JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/form-validation/jquery.form.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/form-validation/jquery.validate.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/form-validation/form-active.js') }}" ></script >
 
         <!-- Google map JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/google.maps/google.maps-active.js') }}" ></script >
         <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiNUO68DkrsFKFz744_LWMqCNI_GqYciQ&callback=initMap" ></script >
 
         <!-- icheck JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/icheck/icheck.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/icheck/icheck-active.js') }}" ></script >
 
         <!-- input-mask JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/input-mask/jasny-bootstrap.min.js') }}" ></script >
 
         <!-- ionRangeSlider JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/ionRangeSlider/ion.rangeSlider.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/ionRangeSlider/ion.rangeSlider.active.js') }}" ></script >
 
         <!-- knob JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/knob/jquery.knob.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/knob/knob-active.js') }}" ></script >
 
         <!-- mCustomScrollbar JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/scrollbar/mCustomScrollbar-active.js') }}" ></script >
 
         <!-- metisMenu JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/metisMenu/metisMenu.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/metisMenu/metisMenu-active.js') }}" ></script >
 
         <!-- morrisjs JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/morrisjs/raphael-min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/morrisjs/morris.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/morrisjs/morris-active.js') }}" ></script >
 
         <!-- morrisjs JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/sparkline/jquery.sparkline.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/sparkline/jquery.charts-sparkline.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/sparkline/sparkline-active.js') }}" ></script >
 
         <!-- main JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/main.js') }}" ></script >
 
         <!-- mCustomScrollbar JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/scrollbar/mCustomScrollbar-active.js') }}" ></script >
 
         <!-- meanmenu JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/jquery.meanmenu.js') }}" ></script >
 
         <!-- metisMenu JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/metisMenu/metisMenu.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/metisMenu/metisMenu-active.js') }}" ></script >
 
         <!-- morrisjs JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/sparkline/jquery.sparkline.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/sparkline/jquery.charts-sparkline.js') }}" ></script >
 
         <!-- multiple email JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/multiple-email/multiple-email-active.js') }}" ></script >
 
         <!-- notification JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/notifications/Lobibox.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/notifications/notification-active.js') }}" ></script >
 
         <!-- owl.carousel JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/owl.carousel.min.js') }}" ></script >
 
         <!-- payment away JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/card.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/jquery.payform.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/e-payment.js') }}" ></script >
 
         <!-- pdf JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/pdf/jquery.media.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/pdf/pdf-active.js') }}" ></script >
 
         <!-- peity JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/peity/jquery.peity.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/charts/rounded-chart.js') }}" ></script >
 
         <!-- plugins JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/plugins.js') }}" ></script >
 
         <!-- price-slider JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/jquery-price-slider.js') }}" ></script >
 
         <!-- pwstrength JS
-     ============================================ -->
+ ============================================ -->
         <script src = "{{ asset('admin/dash-board/js/password-meter/pwstrength-bootstrap.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/password-meter/zxcvbn.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/password-meter/password-meter-active.js') }}" ></script >
 
         <!-- rangle-slider JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/rangle-slider/jquery-ui-1.10.4.custom.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/rangle-slider/jquery-ui-touch-punch.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/rangle-slider/rangle-active.js') }}" ></script >
 
         <!-- scrollUp JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/jquery.scrollUp.min.js') }}" ></script >
 
         <!-- select2 JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/select2/select2.full.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/select2/select2-active.js') }}" ></script >
 
         <!-- sparkline JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/sparkline/sparkline-active.js') }}" ></script >
 
         <!-- sticky JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/jquery.sticky.js') }}" ></script >
 
         <!-- summernote JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/summernote/summernote.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/summernote/summernote-active.js') }}" ></script >
 
         <!-- tab JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/tab.js') }}" ></script >
 
         <!-- tawk chat JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/tawk-chat.js') }}" ></script >
 
         <!-- touchspin JS
-        ============================================ -->
+    ============================================ -->
         <script src = "{{ asset('admin/dash-board/js/touchspin/jquery.bootstrap-touchspin.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/touchspin/touchspin-active.js') }}" ></script >
 
         <!-- Tree Viewer JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/tree-line/jstree.min.js') }}" ></script >
         <script src = "{{ asset('admin/dash-board/js/tree-line/jstree.active.js') }}" ></script >
 
         <!-- wow JS
-    ============================================ -->
+============================================ -->
         <script src = "{{ asset('admin/dash-board/js/wow.min.js') }}" ></script >
+
+        <!-- DataTables -->
+        <script src = "{{ asset('public/js/data_tables_bootstrap3/DataTables-1.10.20/js/jquery.dataTables.min.js') }}" ></script >
+        <script src = "{{ asset('public/js/data_tables_bootstrap3/DataTables-1.10.20/js/dataTables.bootstrap.min.js') }}" ></script >
+
+        <!-- DataTables Personal -->
+        <script src = "{{ asset('public/js/Nemzag/data_tables-nemzag.js') }}" ></script >
 
         {% block javascripts %}
         {% endblock %}

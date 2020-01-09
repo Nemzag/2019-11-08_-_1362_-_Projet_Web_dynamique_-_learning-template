@@ -28,6 +28,15 @@ class UserFixtures extends fixture /* implements DependentFixtureInterface */
 		$this->encoder = $encoder;
 	}
 
+	// Je veux générer quelque chose de correct.
+	private $roleFixtures = [
+		'ROLE_USER',
+		'ROLE_STUDENT',
+		'ROLE_PROFESSOR',
+		'ROLE_ADMIN',
+	];
+
+
 	public function load(ObjectManager $manager)
 	{
 		// Injection de dépendance récupère la méthode getDoctrine.
@@ -46,51 +55,55 @@ class UserFixtures extends fixture /* implements DependentFixtureInterface */
 
 			for ($i = 1; $i < 20; $i++) {
 
-				// Instanciation
-				$user = new User();
-				$slugify = new Slugify();
+				foreach ($this->roleFixtures as $roleFixture) {
 
-				// Faker Generation
-				$genre = $faker->randomElement($genres);
+					// Instanciation
+					$user = new User();
+					$slugify = new Slugify();
 
-				$user->setFirstName($faker->firstName($genre));
+					// Faker Generation
+					$genre = $faker->randomElement($genres);
 
-				$user->setLastName($faker->lastName);
+					$user->setFirstName($faker->firstName($genre));
 
-				// Afin de générer le UserName après LastName & FirstName.
-				$user->setUserName($user->getFirstName() . $user->getLastName());
-				// $user->setEmail($slugify->slugify($user->getFirstName() . "." . $user->getLastName()) . "@gmail.com");
+					$user->setLastName($faker->lastName);
 
-				$user->setEmail(($slugify->slugify($user->getFirstName())) . "." . ($slugify->slugify($user->getLastName())) . "@gmail.com");
+					// Afin de générer le UserName après LastName & FirstName.
+					// $user->setUserName($user->getFirstName() . ' ' . $user->getLastName());
 
-				// Double Slugification, car il remplace le "." par "-". Et je ne veux pash.
-				$user->setPassword('password');
-				$user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
+					$user->setUserName($faker->userName);
 
-				$user->setCreatedAt($faker->dateTimeBetween("-6 month", "-3 month"));
+					$user->setEmail(($slugify->slugify($user->getFirstName())) . "." . ($slugify->slugify($user->getLastName())) . "@gmail.com");
 
-				$user->setUpdatedAt($faker->dateTimeBetween("-3 month", "now"));
+					// Double Slugification, car il remplace le "." par "-". Et je ne veux pash.
+					$user->setPassword('password');
+					$user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
 
-				$user->setLastLogAt($faker->dateTimeBetween("now"));
+					$user->setCreatedAt($faker->dateTimeBetween("-6 month", "-3 month"));
 
-				$user->setIsDisabled($faker->boolean(20));
+					$user->setUpdatedAt($faker->dateTimeBetween("-3 month", "now"));
 
-				$user->setRole(["ROLE_USER"]);
+					$user->setLastLogAt($faker->dateTimeBetween("now"));
 
-				$genre = $genre == 'male' ? 'm' : 'f';
+					$user->setIsDisabled($faker->boolean(1));
 
-				$user->setImage('0' . ($i+9). $genre . '.jpg');
+					$user->setRole([$roleFixture]);
 
-				// Persist Datha.
-				$manager->persist($user);
+					$genre = $genre == 'male' ? 'm' : 'f';
+
+					$user->setImage('0' . ($i + 9) . $genre . '.jpg');
+					$user->setImageUpdatedAt($faker->dateTime("now"));
+
+					// Persist Datha.
+					$manager->persist($user);
+
+				}
 			}
 
 			// Flush Datha in Datha‑Base.
 			$manager->flush();
 		}
 	}
-
-
 
 
 }

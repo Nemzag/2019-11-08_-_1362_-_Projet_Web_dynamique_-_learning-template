@@ -1,0 +1,67 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2020-01-09
+ * Time: 14h34
+ * Updated:
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block main %}
+
+    <br ><br>
+
+    <div class = "container text-center" >
+
+    <div class="card text-center mx-auto" style="width: 16rem;">
+    {#<div class="card" >#}
+        <div class="card-header">
+            {{ user.userName }}
+        </div>
+        <img src = "{{ asset('public/img/avatar/') }}{{ user.image }}" alt = "{{ user.username }}" title = "{{ user.username }}" class = "card-img-top gaz-show-image" >
+        <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <h6 class = "card-subtitle mb-2 text-muted" >
+                <span class = "badge badge-info" title = "Rang de l'utilisateur." >{{ user.role[0] }}</span></h6>
+            <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+            <ul class="list-group list-group-flush">
+
+
+                <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Compte désactivé&nbsp;:</h6>
+                    <span class="badge badge-success" title="Rang de l'utilisateur.">{{ user.isDisabled ? 'Oui' : 'Non' }}</span>
+                </li>
+
+                <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Compte créé le&nbsp;:</h6>
+                    {{ user.createdAt ? user.createdAt|date('Y-m-d ') : '' }}
+                    <br > <small >{{ user.createdAt ? user.createdAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                    <small >{{ user.createdAt ? user.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small ></li>
+
+                <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Compte mise à jour le&nbsp;:</h6>
+                    {{ user.updatedAt ? user.updatedAt|date('Y-m-d ') : '' }}
+                    <br > <small >{{ user.updatedAt ? user.updatedAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                    <small >{{ user.updatedAt ? user.updatedAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small >
+                </li>
+
+                <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Dernière connection le&nbsp;:</h6>
+                    {{ user.lastLogAt ? user.lastLogAt|date('Y-m-d ') : '' }}
+                    <br > <small >{{ user.lastLogAt ? user.lastLogAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                    <small >{{ user.lastLogAt ? user.lastLogAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
+                </li>
+            </ul>
+
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Petite description personnel ou citation (pas dans la data‑base&nbsp;!)…</p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+        <br >
+            <a class="btn btn-primary " href="{{ path('admin_user_index') }}">Retour à l'accueil</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Promotionné un utilisateur{% endblock %}
+
+{% block main %}
+
+    <div class = "courses-area" style = "margin-bottom: 30px;" >
+
+        <div class = "container" >
+
+            <div class = "row align-items-center" >
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+                    <div class = "product-payment-inner-st" >
+
+                        <h1 >Promotionné un utilisateur</h1 >
+
+                        {% for message in app.flashes('user_danger') %}
+                            <div class = "alert alert-danger" >
+                                {{ message }}
+                            </div >
+                        {% endfor %}
+
+                        {{ form_start(userForm) }}
+                        {{ form_widget(userForm) }}
+                        <button class="btn">{{ button_label|default('Save') }}</button>
+                        {{ form_end(userForm) }}
+
+
+                        {{ form_start(userForm) }}
+
+                        <div class = "form-group" >
+
+                            {{ form_label(userForm.role) }}
+                            {{ form_widget(userForm.role) }}
+
+                        </div >
+
+                        <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+
+                        {{ form_end(userForm) }}
+
+                        <hr >
+                        <button class = "btn btn-primary gaz-admin-form-button" >
+                            <a href = "{{ path('admin_user_index') }}" style = "color: white;" >Retour à la liste</a >
+                        </button >
+
+                    </div >
+                    <!-- product-payment-inner-st" -->
+                </div >
+                <!-- col-lg-12 col-md-12 col-sm-12 col-xs-12 -->
+
+            </div >
+            <!-- row align-items-center -->
+
+        </div >
+        <!-- container -->
+
+    </div >
+    <!-- courses-area -->
+
+{% endblock %}

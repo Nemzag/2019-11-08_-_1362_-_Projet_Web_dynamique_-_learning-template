@@ -118,6 +118,8 @@ class CourseController extends AbstractController
 		// $user = $this->getUser();
 		// dump($user);
 		$noComment = false;
+
+
 		foreach ($comments as $c) {
 			// dump($c);
 			// dump($c->getUser());
@@ -126,10 +128,15 @@ class CourseController extends AbstractController
 			// dump($_SESSION);
 			// dump($c->getUser()->getId());
 			// dump($user->getId());
-			if($c->getUser()->getId() === $this->getUser()->getId()) {
 
-				$noComment = true;
-				break;
+			// Rajout de cette ligne pour éviter un message de erreur en cas de non‑logué.
+			if($this->getUser() != null) {
+
+				if ($c->getUser()->getId() === $this->getUser()->getId()) {
+
+					$noComment = true;
+					break;
+				}
 			}
 		}
 

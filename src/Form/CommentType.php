@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +33,15 @@ class CommentType extends AbstractType
 
 	            'attr' => ['style' => 'display:none;']
             ])
+
+	        ->add('isDisabled', NumberType::class, [
+		        'label' => false,
+		        /* Pour ne pas l'afficher dans le new, sinon : "Date de inscription :" */
+
+		        'data' => 0,
+
+		        'attr' => ['style' => 'display:none;']
+	        ])
 
             ->add('evaluation', ChoiceType::class, [
 

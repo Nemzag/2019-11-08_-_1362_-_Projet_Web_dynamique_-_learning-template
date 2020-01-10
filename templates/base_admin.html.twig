@@ -42,8 +42,7 @@
 
         <!-- Bootstrap CSS
             ============================================ -->
-        <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}" >
-
+        {#<link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/font-awesome.min.css') }}" >#}
 
 
         <!-- calendar CSS
@@ -98,8 +97,8 @@
         <link rel = "stylesheet" href = "{{ asset('admin/dash-board/css/educate-custon-icon.css') }}" >
 
         <!-- font-awesome CSS -->
-        <link rel = "stylesheet" href = "{{ asset('public/css/all.min.css') }}" >
-
+        {#<link rel = "stylesheet" href = "{{ asset('public/css/all.min.css') }}" >#}
+        <link rel = "stylesheet" href = "{{ asset('admin/font-awesome-pro/releases/v5.12.0/css/pro.min.css') }}" >
 
         <!-- forms CSS
             ============================================ -->
@@ -349,6 +348,18 @@
 
                             <li >
                                 <a title = "Product Payment" href = "{{ asset('admin/course/course.payment.html.twig') }}" ><span class = "mini-sub-pro" >Courses Payment</span ></a >
+                            </li >
+                        </ul >
+                    </li >
+
+                    <!-- Begin Comments -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('admin_comment_index') }}" aria-expanded = "false" ><i class="far fa-comment" style="font-size: 20px;"></i><span style="font-size: 15px;">&nbsp;&nbsp;</span><span class = "mini-click-non" >Commentaires</span ></a >
+
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+
+                            <li >
+                                <a title = "Gestion des cours" href = "{{ path('admin_comment_index') }}" ><span class = "mini-sub-pro" >Gestion des<br>commentaires</span ></a >
                             </li >
                         </ul >
                     </li >
@@ -2241,8 +2252,7 @@
 
 
         <!-- font-awesome JS -->
-        <script src = "{{ asset('public/js/all.min.js') }}" ></script >
-
+       <script src = "{{ asset('public/js/all.min.js') }}" ></script >
 
         <!-- form validate JS
 ============================================ -->

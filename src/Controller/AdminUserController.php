@@ -168,14 +168,14 @@ class AdminUserController extends AbstractController
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
 		// 2020‑01‑03 ‒ 22H49 : gestion de image.
-		$imageFile = $user->getImage();
+		// $imageFile = $user->getImage();
 
 		$form = $this->createForm(AdminUserType::class, $user);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($user->getImageFile())) $user->setImage('default.jpg');
+			// if(empty($user->getImageFile())) $user->setImage('default.jpg');
 
 			$this->getDoctrine()->getManager()->flush();
 
@@ -190,6 +190,7 @@ class AdminUserController extends AbstractController
 		return $this->render('admin/user/user.edit.html.twig', [
 			'user' => $user,
 			'userForm' => $form->createView(),
+			'errors' => $form->getErrors(true, true),
 		]);
 	}
 

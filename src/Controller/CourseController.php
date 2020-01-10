@@ -98,7 +98,9 @@ class CourseController extends AbstractController
 		$comments = $this
 			->getDoctrine()
 			->getRepository(Comment::class)
-			->findBy(['course' => $course->getId()]);
+			->findBy(
+				['course' => $course->getId()]
+			);
 		// ->findBy(['product' => $product->getId()]) // Quoi ???
 
 		// Obtention des informations de la table / entité dans la data‑base.
@@ -156,6 +158,13 @@ class CourseController extends AbstractController
 			$entityManager->flush();
 
 			return $this->redirectToRoute('course_details', ['id' => $course->getId()]);
+		}
+		dump($comments);
+
+		// Comparator function used for comparator
+		// scores of two object/students
+		function comparator($object1, $object2) {
+			return $object1->score > $object2->score;
 		}
 
 		return $this->render('public/course/details.html.twig', [

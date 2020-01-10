@@ -127,6 +127,7 @@ class CourseType extends AbstractType
 
 				'label' => "Inséré une image",
 				'required' => false,
+				'image_uri' => false,
 				'download_uri' => false,
 
 				/*

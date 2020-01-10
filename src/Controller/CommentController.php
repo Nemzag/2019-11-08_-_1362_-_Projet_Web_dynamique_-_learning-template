@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Course;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
+use App\Repository\CourseLevelRepository;
+use App\Repository\CourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -64,37 +67,49 @@ public function new(Request $request): Response
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="comment_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Comment $comment): Response
+	/**
+	 * @Route("/{id}/edit", name="comment_edit", methods={"GET","POST"})
+	 * @param Request $request
+	 * @param Comment $comment
+	 * @param CourseRepository $courseRepository
+	 * @return Response
+	 */
+    public function edit(Request $request, Comment $comment, CourseRepository $courseRepository): Response
     {
+	    $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('course_details', array('id' => $comment->getCourse()->getId()));
         }
 
-        return $this->render('admin/comment/course.user.edit.html.twig', [
+        return $this->render('public/comment/comment.edit.html.twig', [
             'comment' => $comment,
-            'form' => $form->createView(),
+            'commentForm' => $form->createView(),
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="comment_delete", methods={"DELETE"})
-     */
+	/**
+	 * @Route("/{id}", name="comment_delete", methods={"DELETE"})
+	 * @param Request $request
+	 * @param Comment $comment
+	 * @return Response
+	 */
     public function delete(Request $request, Comment $comment): Response
     {
+    	$courseId = $comment->getCourse()->getId() ;
+
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('course_details', array('id' => $courseId));
     }
 }

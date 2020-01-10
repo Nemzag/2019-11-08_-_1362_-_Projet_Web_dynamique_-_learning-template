@@ -50,6 +50,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 			$comment->setCourse($courses[$faker->numberBetween(0, count($courses) - 1)]);
 			// nombre aleatoire à générer. Moins 1 car dans la d ?
 			$comment->setEvaluation($faker->numberBetween(0, 5));                   // Offset
+			$comment->setIsDisabled($faker->boolean(0));
 
 			// Persist Datha.
 			$manager->persist($comment);

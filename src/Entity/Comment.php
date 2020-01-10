@@ -16,9 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Comment
 {
 	public function __toString()
-	{
-		return $this->comment;
-	}
+         	{
+         		return $this->comment;
+         	}
 
     /**
      * @ORM\Id()
@@ -28,9 +28,9 @@ class Comment
     private $id;
 
 	public function getId(): ?int
-	{
-		return $this->id;
-	}
+         	{
+         		return $this->id;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -46,16 +46,16 @@ class Comment
     private $comment;
 
 	public function getComment(): ?string
-	{
-		return $this->comment;
-	}
+         	{
+         		return $this->comment;
+         	}
 
 	public function setComment(string $comment): self
-	{
-		$this->comment = $comment;
-
-		return $this;
-	}
+         	{
+         		$this->comment = $comment;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -65,16 +65,16 @@ class Comment
     private $dateAddedAt;
 
 	public function getDateAddedAt(): ?\DateTimeInterface
-	{
-		return $this->dateAddedAt;
-	}
+         	{
+         		return $this->dateAddedAt;
+         	}
 
 	public function setDateAddedAt(\DateTimeInterface $dateAddedAt): self
-	{
-		$this->dateAddedAt = $dateAddedAt;
-
-		return $this;
-	}
+         	{
+         		$this->dateAddedAt = $dateAddedAt;
+         
+         		return $this;
+         	}
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
@@ -83,16 +83,16 @@ class Comment
     private $evaluation;
 
 	public function getEvaluation(): ?int
-	{
-		return $this->evaluation;
-	}
+         	{
+         		return $this->evaluation;
+         	}
 
 	public function setEvaluation(int $evaluation): self
-	{
-		$this->evaluation = $evaluation;
-
-		return $this;
-	}
+         	{
+         		$this->evaluation = $evaluation;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -103,16 +103,16 @@ class Comment
     private $user;
 
 	public function getUser(): ?User
-	{
-		return $this->user;
-	}
+         	{
+         		return $this->user;
+         	}
 
 	public function setUser(?User $user): self
-	{
-		$this->user = $user;
-
-		return $this;
-	}
+         	{
+         		$this->user = $user;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -122,6 +122,11 @@ class Comment
      */
     private $course;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDisabled;
+
     public function getCourse(): ?Course
     {
         return $this->course;
@@ -130,6 +135,18 @@ class Comment
     public function setCourse(?Course $course): self
     {
         $this->course = $course;
+
+        return $this;
+    }
+
+    public function getIsDisabled(): ?bool
+    {
+        return $this->isDisabled;
+    }
+
+    public function setIsDisabled(bool $isDisabled): self
+    {
+        $this->isDisabled = $isDisabled;
 
         return $this;
     }

@@ -28,6 +28,24 @@ class AdminUserType extends AbstractType
 					'Administrateur' => 'ROLE_ADMIN'
 				]
 			]);
+
+			/*
+			->add('imageFile', VichImageType::class, [
+
+				// 'disabled' => true,
+				'label' => "Inséré une image",
+				'allow_delete' => false,
+				'required' => false,
+				'download_uri' => false,
+				'image_uri' => false,
+
+				'download_label' => "Télécharger l'image",
+				// 'asset_helper' => true,
+				'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['class' => 'form-control']
+			]);
+			*/
+
 	}
 
 	public function configureOptions(OptionsResolver $resolver)

@@ -21,14 +21,28 @@
                             </div >
                         {% endfor %}
 
+                        {# ──────────────────────────────────────────────────────────────────────── #}
+
+{#
                         {{ form_start(userForm) }}
                         {{ form_widget(userForm) }}
                         <button class="btn">{{ button_label|default('Save') }}</button>
                         {{ form_end(userForm) }}
+#}
 
+                        {# ──────────────────────────────────────────────────────────────────────── #}
 
+                        {# Form_Rest #}
                         {{ form_start(userForm) }}
+                        {{ form_rest(userForm) }}
+                        <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+                        {{ form_end(userForm) }}
 
+
+                        {# ──────────────────────────────────────────────────────────────────────── #}
+
+                        {#
+                        {{ form_start(userForm) }}
                         <div class = "form-group" >
 
                             {{ form_label(userForm.role) }}
@@ -39,8 +53,16 @@
                         <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 
                         {{ form_end(userForm) }}
+#}
+
+                        {# ──────────────────────────────────────────────────────────────────────── #}
 
                         <hr >
+
+                        {% if errors|length > 0 %}
+                            {{ dump(errors) }}
+                        {% endif %}
+
                         <button class = "btn btn-primary gaz-admin-form-button" >
                             <a href = "{{ path('admin_user_index') }}" style = "color: white;" >Retour à la liste</a >
                         </button >

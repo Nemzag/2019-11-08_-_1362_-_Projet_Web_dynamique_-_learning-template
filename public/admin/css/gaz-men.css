@@ -92,6 +92,10 @@
     width: 4em;
 }
 
+.gaz-td-right {
+    text-align: right;
+}
+
 #footer {
     position: fixed;
     bottom: 0;

@@ -6,6 +6,7 @@
 parameters:
     locale: 'fr'
     app.path.courses_img: '%kernel.project_dir%/public/public/img/section'
+    app.path.news_img: '%kernel.project_dir%/public/public/img/news'
     app.path.courses_pdf: '%kernel.project_dir%/public/public/pdf/courses'
     app.path.user_img: '%kernel.project_dir%/public/public/img/avatar'
     #app.path.courses_pdf: /public/pdf/courses

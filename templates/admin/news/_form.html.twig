@@ -1,4 +1,56 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_start(formNews) }}
+
+<div class = "form-group" >
+
+    {# Nomination #}
+    {{ form_label(formNews.title) }}
+    {{ form_widget(formNews.title) }}
+
+</div >
+
+<div class = "form-group" >
+
+    <label >Date de création<small ></small ></label >
+    {# Nomination #}
+    {{ form_widget(formNews.createdAt) }}<br>
+    <p>Date originel : {{ news.createdAt ? news.createdAt|date('Y-m-d ') : '' }} ‒
+    {{ news.createdAt ? news.createdAt|date('H\\hi\\ms\\s') : '' }}</p>
+
+</div >
+
+<div class = "form-group" >
+
+    {{ form_label(formNews.text) }}
+    {{ form_widget(formNews.text) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {{ form_label(formNews.isPublished) }}
+    {{ form_widget(formNews.isPublished) }}
+
+</div >
+
+<div class = "form-group" >
+
+    {# Image #}
+    {#<b>{{ form_label(form.imageFile) }}</b>#}
+    <label >Inséré une image <small >(Non obligatoire)</small ></label >
+    {{ form_widget(formNews.imageFile) }}
+
+    {# Boucle de affichage si non vide. #}
+    {% if news.image is empty %}
+
+    {% else %}
+
+        <small ><label >Image actuel</label ></small ><br >
+
+        <img src = "{{ asset('public/img/news/') }}{{ news.image }}" alt = "{{ news.image }}" class = "img-thumbnail" >
+    {% endif %}
+
+</div >
+
+<button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+
+{{ form_end(formNews) }}

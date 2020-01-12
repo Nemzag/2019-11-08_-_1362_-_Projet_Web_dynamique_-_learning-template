@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-    {% block title %}Admin : Tous le’s utilisateur’s.{% endblock %}
+    {% block title %}Admin : Tous le’s professeur’s.{% endblock %}
 
     {% block style %}
         <style >
@@ -33,7 +33,10 @@
 
        <div class = "product-payment-inner-st" >
 
-        <h1 >Gestion des utilisateurs</h1 >
+        <h1 >Gestion des professeurs</h1 >
+
+        <div class="alert alert-danger">Je n’ai pas eu le temps d’entamer et finir cette section et ses fonctionnalité,<br>ni sont contrôleur (les détails),<br>
+            je le ferais pour la seconde session.</div>
 
         {{ include('admin/include/alert.info.html.twig') }}
 
@@ -97,7 +100,7 @@
                     </td >
 
                     <td title = "Pseudo‑onyme" >
-                        <a href = "{{ path('user_show', {'id': user.id}) }}" title="Pseudo‑onyme de l'utilisateur.">{{ user.userName }}</a ><br>
+                        <a href = "{{ path('admin_professor_show', {'id': user.id}) }}" title="Pseudo‑onyme de l'utilisateur.">{{ user.userName }}</a ><br>
                         <small><a href = "mailto:{{ user.email }}" title="Contacter par courriel.">{{ user.email | capitalize }}</a ></small><br>
                         <span class="badge badge-primary" title="Rang de l'utilisateur.">{{ user.role[0] }}</span></td >
 
@@ -107,11 +110,11 @@
 
                         {% if user.isDisabled == 1 %}
 
-                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_user_index', {'id': user.id}) }}&amp;disabled={{ user.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
+                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_professor_index', {'id': user.id}) }}&amp;disabled={{ user.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
 
                         {% elseif user.isDisabled == 0 %}
 
-                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_user_index', {'id': user.id}) }}&amp;disabled={{ user.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
+                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_professor_index', {'id': user.id}) }}&amp;disabled={{ user.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
 
                         {% endif %}
 
@@ -119,7 +122,7 @@
                     </td >
 
                     <td title = "Action" style = "text-align: center;" >
-                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_user_edit', {'id': user.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Rang</small ></a >
+                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_professor_edit', {'id': user.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Rang</small ></a >
                     </td >
 
 

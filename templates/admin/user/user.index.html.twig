@@ -35,6 +35,8 @@
 
         <h1 >Gestion des utilisateurs</h1 >
 
+        <div class="alert alert-warning">P.V.I., je ne suis pas parvenu à régler la promotion, car Vich interfère, j'ai beau désactivé celui dans le AdminUserType, il réclame une image,<br>ce bug est visible quand on utilise le Widget par défaut et pas le formatable,<br>qui sont dans le ficher template <code>user.show.twig.html</code></div>
+
         {{ include('admin/include/alert.info.html.twig') }}
 
         {% for message in app.flashes('user_disabled') %}

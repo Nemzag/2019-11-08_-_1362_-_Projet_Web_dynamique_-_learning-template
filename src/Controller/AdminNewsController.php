@@ -71,7 +71,8 @@ class AdminNewsController extends AbstractController
 		}
 
 		return $this->render('admin/news/news.index.html.twig', [
-			'news' => $newsRepository->findAll(),
+			// 'news' => $newsRepository->findAll(),
+			'news' => $newsRepository->findBy(Array(), array('createdAt'=>'DESC')),
 		]);
 	}
 
@@ -79,6 +80,8 @@ class AdminNewsController extends AbstractController
 
 	/**
 	 * @Route("/new", name="admin_news_new", methods={"GET","POST"})
+	 * @param Request $request
+	 * @return Response
 	 */
 	public function new(Request $request): Response
 	{
@@ -90,16 +93,22 @@ class AdminNewsController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+
+			if(empty($news->getImageFile())) $news->setImage('default.jpg');
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($news);
 			$entityManager->flush();
 
-			return $this->redirectToRoute('news_index');
+			// Message Flash
+			$this->addFlash('news_success', 'Édition réussi & accompli !');
+
+			return $this->redirectToRoute('admin_news_index');
 		}
 
-		return $this->render('public/news/new.html.twig', [
+		return $this->render('admin/news/news.new.html.twig', [
 			'news' => $news,
-			'form' => $form->createView(),
+			'formNews' => $form->createView(),
 		]);
 	}
 
@@ -107,10 +116,12 @@ class AdminNewsController extends AbstractController
 
 	/**
 	 * @Route("/{id}", name="admin_news_show", methods={"GET"})
+	 * @param News $news
+	 * @return Response
 	 */
 	public function show(News $news): Response
 	{
-		return $this->render('public/news/course.show.html.twig', [
+		return $this->render('admin/news/news.show.html.twig', [
 			'news' => $news,
 		]);
 	}
@@ -119,24 +130,35 @@ class AdminNewsController extends AbstractController
 
 	/**
 	 * @Route("/{id}/edit", name="admin_news_edit", methods={"GET","POST"})
+	 * @param Request $request
+	 * @param News $news
+	 * @return Response
 	 */
 	public function edit(Request $request, News $news): Response
 	{
 		// Vérification de niveau afin d'accéder à la fonction.
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
 
+		$imageFile = $news->getImage();
+
 		$form = $this->createForm(NewsType::class, $news);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+
+			if(empty($news->getImageFile())) $news->setImage('default.jpg');
+
 			$this->getDoctrine()->getManager()->flush();
 
-			return $this->redirectToRoute('news_index');
+			// Message Flash
+			$this->addFlash('news_success', 'Édition réussi & accompli !');
+
+			return $this->redirectToRoute('admin_news_index');
 		}
 
-		return $this->render('public/news/course.user.edit.html.twig', [
+		return $this->render('admin/news/news.edit.html.twig', [
 			'news' => $news,
-			'form' => $form->createView(),
+			'formNews' => $form->createView(),
 		]);
 	}
 
@@ -154,8 +176,11 @@ class AdminNewsController extends AbstractController
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($news);
 			$entityManager->flush();
+
+			// Message Flash
+			$this->addFlash('news_success', 'Suppression réussi & accompli !');
 		}
 
-		return $this->redirectToRoute('news_index');
+		return $this->redirectToRoute('admin_news_index');
 	}
 }

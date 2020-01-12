@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
+ * @Vich\Uploadable
  */
 class News
 {
@@ -32,6 +33,12 @@ class News
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min="5",
+     *     max="255",
+     *     minMessage="La nomination doit être de {{ limit }} caractères minimum.",
+     *     maxMessage="La nomination  doit être de {{ limit }} caractères maximum.",
+     * )
      */
     private $title;
 
@@ -55,7 +62,7 @@ class News
 	private $image;
 
 	/**
-	 * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+	 * @Vich\UploadableField(mapping="news_img", fileNameProperty="image")
 	 * @var File
 	 * @Assert\Length(
 	 *     min = 1,
@@ -165,6 +172,12 @@ class News
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     min="20",
+     *     max="65536‬",
+     *     minMessage="La longue déscription doit être de {{ limit }} caractères minimum.",
+     *     maxMessage="La longue déscription doit être de {{ limit }} caractères maximum.",
+     *  )
      */
     private $text;
 

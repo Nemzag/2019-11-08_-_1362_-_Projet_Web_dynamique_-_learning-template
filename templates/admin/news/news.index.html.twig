@@ -36,18 +36,27 @@
 
                     <h1 >Toutes les actualités.</h1 >
 
+                    <div class="alert alert-success">La visibilité est fonctionnel. Nouvelle article et modification aussi.</div>
+
+                    <div class="alert alert-warning">J'ai toutefois pas trouvé en ligne comment maintenir la datede création dans le form de « Éditer », il remet « now » et cela me géne.</div>
+
                     {{ include('admin/include/alert.info.html.twig') }}
 
-                    {% for message in app.flashes('comment_disabled') %}
+                    {% for message in app.flashes('news_success') %}
                         <div class = "alert alert-success" >
                             {{ message }}
                         </div >
                     {% endfor %}
-                    {% for message in app.flashes('comment_warning') %}
-                        <div class = "alert alert-warning" >
+
+                    {% for message in app.flashes('news_visibility') %}
+                        <div class = "alert alert-success" >
                             {{ message }}
                         </div >
                     {% endfor %}
+
+                    <p >
+                        <a href = "{{ path('admin_news_new') }}" class = "btn btn-warning" ><b >Créer une nouvelle actualité</b ></a >
+                    </p >
 
                     {#
                     <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
@@ -59,9 +68,9 @@
 
                         <tr >
                             <th scope = "col" class = "gaz-table-index-5em" >Image</th >
-                            <th scope = "col" class = "gaz-table-index-10em" >Title</th >
-                            <th scope = "col" class = "gaz-table-index-20em" >Texte</th >
-                            <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
+                            <th scope = "col" class = "gaz-table-index-12em" >Title</th >
+                            <th scope = "col" class = "gaz-table-index-24em" >Texte</th >
+                            <th scope = "col" class = "gaz-table-index-7em" >Date de ajout</th >
                             <th scope = "col" class = "gaz-table-index-4em" >Visible</th >
                             <th scope = "col" class = "gaz-table-index-4em" >Éditer</th >
                             <th scope = "col" class = "gaz-table-index-4em" >Effacer</th >
@@ -79,11 +88,11 @@
                                     <img src = "{{ asset('public/img/news/') }}{{ new.image }}" alt = "{{ new.image }}" >
                                 </td >
 
-                                <td >{{ new.title | slice(0, 20) | nl2br }}…</td >
+                                <td ><b><a href = "{{ path('admin_news_show', {'id': new.id}) }}" >{{ new.title | slice(0, 20) | nl2br }}…</a ></b></td >
 
                                 <td title = "texte" >{{ new.text | slice(0, 200) | nl2br }}…</td >
 
-                                <td >{{ new.createdAt ? new.createdAt|date('Y-m-d ') : '' }}
+                                <td style="text-align: center;" >{{ new.createdAt ? new.createdAt|date('Y-m-d ') : '' }}
                                     <br >
                                     <small >{{ new.createdAt ? new.createdAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
                                     <small >{{ new.createdAt ? new.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
@@ -141,9 +150,11 @@
                     </table >
 
 
-                    <a href = "{{ path('admin_news_new') }}" >Create new</a >
-
                 </div >
                 {# Begin Product-Payment #}
             </div >
-            {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

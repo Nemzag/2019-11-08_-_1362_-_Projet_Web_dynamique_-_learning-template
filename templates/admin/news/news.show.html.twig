@@ -1,49 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}News{% endblock %}
+{% block title %}Actualité{% endblock %}
 
 {% block main %}
 
-    <div class = "container" >
+<div class = "container" >
+
+    <div class = "row align-items-center" >
+        <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+            <div class = "product-payment-inner-st" >
+
+                <h1 >Actualité :</h1 >
+
+                {{ include('admin/include/alert.info.html.twig') }}
 
         <div class="jumbotron">
+
             <h1 class="display-4">{{ news.title }}</h1>
 
-            <p class="lead">{{ news.createdAt ? news.createdAt|date('Y-m-d ‒ H:i:s') : '' }}</p>
+            <p class="lead">{{ news.createdAt ? news.createdAt|date('Y-m-d ') : '' }} ‒
+                {{ news.createdAt ? news.createdAt|date('H\\hi\\ms\\s') : '' }} ‒ {{ news.createdAt ? news.createdAt|localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
+               </p>
 
-            <img class="w-25" src="{{ asset("public/img/news/") }}{{ news.image }}" alt="..." class="img-thumbnail">
-
-            <hr class="my-4">
-
-            <p>{{ news.text }}</p>
-
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Revenir à l'accueil</a>
-            </p>
-
+            <img class="w-25" src="{{ asset("public/img/news/") }}{{ news.image }}" alt="{{ news.image }}" title="{{ news.image }}" class="img-thumbnail">
         </div>
 
-        <h1 >News</h1 >
+            <p style="background: white">{{ news.text | nl2br }}</p>
 
-        <table class = "table" >
-            <tbody >
-            <tr >
-                <th >Id</th >
-                <td >{{ news.id }}</td >
-            </tr >
-            <tr >
-                <th >Text</th >
-                <td ></td >
-            </tr >
-            </tbody >
-        </table >
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{{ path('admin_news_index') }}" role="button">Revenir à l'accueil</a>
+            </p>
 
-        /*
-        <a href = "{{ path('news_index') }}" >back to list</a >
+        {#<a href = "{{ path('admin_news_edit', {'id': news.id}) }}" >edit</a >#}
 
-        <a href = "{{ path('news_edit', {'id': news.id}) }}" >edit</a >
-
-        {{ include('public/news/_delete_form.html.twig') }}
+        {#{{ include('admin/news/_delete_form.html.twig') }}#}
 
     </div >
 {% endblock %}

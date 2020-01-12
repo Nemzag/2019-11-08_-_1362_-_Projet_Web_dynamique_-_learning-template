@@ -92,7 +92,7 @@ class AdminProfessorController extends AbstractController
 			}
 		}
 
-		return $this->render('admin/user/user.index.html.twig', [
+		return $this->render('admin/professor/professor.index.html.twig', [
 			'users' => $userRepository->findAll(),
 		]);
 	}
@@ -134,10 +134,10 @@ class AdminProfessorController extends AbstractController
 			// Message Flash
 			$this->addFlash('course_success', 'Ajout réussi & accômpli !');
 
-			return $this->redirectToRoute('admin_user_index');
+			return $this->redirectToRoute('admin_professor_index');
 		}
 
-		return $this->render('admin/user/user.new.html.twig', [
+		return $this->render('admin/professor/professor.new.html.twig', [
 			'user' => $user,
 			'userForm' => $form->createView(),
 		]);
@@ -152,7 +152,7 @@ class AdminProfessorController extends AbstractController
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
-		return $this->render('admin/user/user.show.html.twig', [
+		return $this->render('admin/professor/professor.show.html.twig', [
 			'user' => $user,
 		]);
 	}
@@ -182,12 +182,12 @@ class AdminProfessorController extends AbstractController
 			// Message Flash
 			$this->addFlash('user_success', 'Promotion réussi & accompli !');
 
-			return $this->redirectToRoute('admin_user_index');
+			return $this->redirectToRoute('admin_professor_index');
 		}
 		// Message Flash
 		$this->addFlash('user_danger', 'Échec de la promotion !');
 
-		return $this->render('admin/user/user.edit.html.twig', [
+		return $this->render('admin/professor/professor.edit.html.twig', [
 			'user' => $user,
 			'userForm' => $form->createView(),
 			'errors' => $form->getErrors(true, true),

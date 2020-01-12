@@ -48,7 +48,7 @@ class AdminCourseController extends AbstractController
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
-		$courses = $courseRepository->findAll();
+		$courses = $courseRepository->findBy(Array(), array('createdAt'=>'DESC'));
 		$categories = $courseCategoryRepository->findAll();
 		$levels = $courseLevelRepository->findAll();
 

@@ -82,7 +82,7 @@ class ContactService extends AbstractController
 
 			->setBody($this->renderer->render('public/contact/email_comment.html.twig', [
 				'contact' => $comment,
-				'comment' => $comment->getComment(),
+				'comment' => nl2br($comment->getComment()),
 			]), // Pour envoyer les données
 				'text/html');
 		//'contentType' => 'text/html'

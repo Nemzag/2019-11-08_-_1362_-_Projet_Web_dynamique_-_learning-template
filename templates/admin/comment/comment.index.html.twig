@@ -1,141 +1,142 @@
 {% extends 'base_admin.html.twig' %}
 
-    {% block title %}Admin : Tous les commentaires.{% endblock %}
+{% block title %}Admin : Tous les commentaires.{% endblock %}
 
-    {% block style %}
-        <style >
-            table.table {
-                width: 100%;
-                margin: 0 auto 0 auto;
-            }
+{% block style %}
+    <style >
+        table.table {
+            width: 100%;
+            margin: 0 auto 0 auto;
+        }
 
-            .table > thead > tr > th,
-            .table > thead > tr > td {
-                vertical-align: baseline;
-            }
+        .table > thead > tr > th,
+        .table > thead > tr > td {
+            vertical-align: baseline;
+        }
 
-        </style >
-    {% endblock %}
+    </style >
+{% endblock %}
 
-    {% block main %}
+{% block main %}
 
-<!--[if lt IE 8]>
-<p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
-    <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p >
-<![endif]-->
+    <!--[if lt IE 8]>
+    <p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
+        <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p >
+    <![endif]-->
 
-<div class = "courses-area" >
-    <div class = "container" >
+    <div class = "courses-area" >
 
-        <div class = "row align-items-center" >
+        <div class = "container" >
 
-            <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+            <div class = "row align-items-center" >
 
-                <div class = "product-payment-inner-st" >
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-                    <h1 >Tous les commentaires.</h1 >
+                    <div class = "product-payment-inner-st" >
 
-                    <div class="alert alert-info">L'envoi automatique lors de la désactivation est fonctionnel, je l'ai testé. Et il envoie à la bonne adresse.</div>
+                        <h1 >Tous les commentaires.</h1 >
 
-                    {{ include('admin/include/alert.info.html.twig') }}
+                        <div class = "alert alert-success" >L'envoi automatique lors de la désactivation est fonctionnel, je l'ai testé. Et il envoie à la bonne adresse.<br>Et avec formatage H.T.M.L., rudimentaire je vous l'accorde.</div >
 
-                    {% for message in app.flashes('comment_disabled') %}
-                        <div class = "alert alert-success" >
-                            {{ message }}
-                        </div >
-                    {% endfor %}
-                    {% for message in app.flashes('comment_warning') %}
-                        <div class="alert alert-warning">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+                        {{ include('admin/include/alert.info.html.twig') }}
 
-                    {#
-                    <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
-                    #}
+                        {% for message in app.flashes('comment_disabled') %}
 
-                    <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style = "margin-left: 0; width: auto;" >
-
-                        <thead class = "thead-dark" >
-
-                        <tr >
-                            <th scope = "col" class = "gaz-table-index-5em" >Image</th >
-                            <th scope = "col" class = "gaz-table-index-10em" >Pseudo‑onyme</th >
-                            <th scope = "col" class = "gaz-table-index-20em" >Commentaire</th >
-                            <th scope = "col" class = "gaz-table-index-6em" >Censurer</th >
-                            <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
-                            <th scope = "col" class = "gaz-table-index-2em" >Id</th >
-
-                        </thead >
-
-                        <tbody >
-                        {#Affichage 4 cours par ligne en flex.#}
-                        {% for comment in comments %}
-
-                            <tr >
-                                <td scope = "row" title = "Image" >
-                                    <img src = "{{ asset('public/img/avatar/') }}{{ comment.user.image }}" alt = "{{ comment.user.image }}" >
-                                </td >
-
-                                <td title = "Pseudo‑onyme" >
-                                    <a href = "{{ path('user_show', {'id': comment.user.id}) }}" title = "Pseudo‑onyme de l'utilisateur." >{{ comment.user.userName }}</a ><br >
-                                    <small ><a href = "mailto:{{ comment.user.email }}" title = "Contacter par courriel." >{{ comment.user.email | capitalize }}</a ></small ><br >
-                                    <small>{{ comment.user.firstName }} {{ comment.user.lastName }}</small><br >
-                                    <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ comment.user.role[0] }}</span ></td >
-
-                                <td title = "Pseudo‑onyme" title = "Commentaire" >{{ comment.comment }}</td >
-                                <td title = "Action" style = "text-align: center;" >
-
-                                    {% if comment.isDisabled == 1 %}
-
-                                        <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
-
-                                    {% elseif comment.isDisabled == 0 %}
-
-                                        <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
-
-                                    {% endif %}
-
-                                    <!-- <?= $row->visibility == 1 ? 0 : 1 ?> -->
-                                </td >
-
-                                {#
-                                <td title = "Mot de passe" >…</td >
-                                #}
-
-                                <td title = "Date de création" style = "text-align: center;" >{{ comment.dateAddedAt ? comment.dateAddedAt|date('Y-m-d ') : '' }}
-                                    <br >
-                                    <small >{{ comment.dateAddedAt ? comment.dateAddedAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
-                                    <small >{{ comment.dateAddedAt ? comment.dateAddedAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small >
-                                </td >
-
-                                <td title = "ID" class = "gaz-td-right" >{{ comment.id }}</td >
-
-                            </tr >
-
-                        {% else %}
-
-                            <tr >
-                                <td colspan = "13" >Pas d'enregistrement trouvé</td >
-                            </tr >
+                            <div class = "alert alert-success" >
+                                {{ message }}
+                            </div >
                         {% endfor %}
-                        </tbody >
-                    </table >
+                        {% for message in app.flashes('comment_warning') %}
 
-                    <tbody >
-                    {% for comment in comments %}
-                        <tr >
+                            <div class = "alert alert-warning" >
+                                {{ message }}
+                            </div >
+                        {% endfor %}
 
-                            <td >{{ comment.evaluation }}</td >
-                            <td >
-                                <a href = "{{ path('comment_show', {'id': comment.id}) }}" >show</a >
-                                <a href = "{{ path('comment_edit', {'id': comment.id}) }}" >edit</a >
-                            </td >
-                        </tr >
+                        {#
+                        <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
+                        #}
 
-                    {% endfor %}
+                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style = "margin-left: 0; width: auto;" >
 
-                    </tbody >
-                    </table>
+                            <thead class = "thead-dark" >
 
-                    {% endblock %}
+                            <tr >
+                                <th scope = "col" class = "gaz-table-index-5em" >Image</th >
+                                <th scope = "col" class = "gaz-table-index-10em" >Pseudo‑onyme</th >
+                                <th scope = "col" class = "gaz-table-index-20em" >Commentaire</th >
+                                <th scope = "col" class = "gaz-table-index-6em" >Censurer</th >
+                                <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
+                                <th scope = "col" class = "gaz-table-index-2em" >Id</th >
+
+                            </thead >
+
+                            <tbody >
+                            {#Affichage 4 cours par ligne en flex.#}
+                            {% for comment in comments %}
+
+                                <tr >
+                                    <td scope = "row" title = "Image" >
+                                        <img src = "{{ asset('public/img/avatar/') }}{{ comment.user.image }}" alt = "{{ comment.user.image }}" >
+                                    </td >
+
+                                    <td title = "Pseudo‑onyme" >
+                                        <a href = "{{ path('user_show', {'id': comment.user.id}) }}" title = "Pseudo‑onyme de l'utilisateur." >{{ comment.user.userName }}</a ><br >
+                                        <small ><a href = "mailto:{{ comment.user.email }}" title = "Contacter par courriel." >{{ comment.user.email | capitalize }}</a ></small ><br >
+                                        <small >{{ comment.user.firstName }} {{ comment.user.lastName }}</small ><br >
+                                        <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ comment.user.role[0] }}</span >
+                                    </td >
+
+                                    <td title = "Pseudo‑onyme" title = "Commentaire" >{{ comment.comment }}</td >
+                                    <td title = "Action" style = "text-align: center;" >
+
+                                        {% if comment.isDisabled == 1 %}
+
+                                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
+
+                                        {% elseif comment.isDisabled == 0 %}
+
+                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
+
+                                        {% endif %}
+
+                                        <!-- <?= $row->visibility == 1 ? 0 : 1 ?> -->
+                                    </td >
+
+                                    {#
+                                    <td title = "Mot de passe" >…</td >
+                                    #}
+
+                                    <td title = "Date de création" style = "text-align: center;" >{{ comment.dateAddedAt ? comment.dateAddedAt|date('Y-m-d ') : '' }}
+                                        <br >
+                                        <small >{{ comment.dateAddedAt ? comment.dateAddedAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                                        <small >{{ comment.dateAddedAt ? comment.dateAddedAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small >
+                                    </td >
+
+                                    <td title = "ID" class = "gaz-td-right" >{{ comment.id }}</td >
+
+                                </tr >
+
+                            {% else %}
+
+                                <tr >
+                                    <td colspan = "13" >Pas d'enregistrement trouvé</td >
+                                </tr >
+                            {% endfor %}
+
+
+                            </tbody >
+                        </table >
+
+                        </table>
+
+                    </div >
+
+                </div >
+            </div >
+
+        </div >
+
+    </div >
+
+{% endblock %}

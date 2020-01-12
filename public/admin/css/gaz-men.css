@@ -36,48 +36,72 @@
     border: 1px solid #dee2e6 !important;
 }
 
+.gaz-table-index-24em {
+    min-width: 384px;
+    max-width: 384px;
+}
+
+.gaz-table-index-12em {
+    min-width: 192px;
+    max-width: 192px;
+}
+
+.gaz-table-index-11em {
+    min-width: 176px;
+    max-width: 176px;
+}
+
+.gaz-table-index-10em {
+    min-width: 160px;
+    max-width: 160px;
+}
+
 .gaz-table-index-9em {
-    width: 144px;
+    min-width: 144px;
+    max-width: 144px;
 }
 
 /* Catégorie, Image, Durée, Prix, Date. */
 .gaz-table-index-8em {
-    width: 128px;
+    min-width: 128px;
+    max-width: 128px;
 }
 
 .gaz-table-index-7em {
-    width: 112px;
+    min-width: 112px;
+    max-width: 112px;
 }
 
 /* Prix. */
 .gaz-table-index-6em {
-    width: 96px;
+    min-width: 96px;
+    max-width: 96px;
 }
 
 /* Prix. */
 .gaz-table-index-6em {
-    width: 96px;
+    min-width: 96px;
+    max-width: 96px;
 }
 
 .gaz-table-index-5em {
-    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
 }
 
 .gaz-table-index-4em {
-    width: 64px;
+    min-width: 64px;
+    max-width: 64px;
 }
 
 .gaz-table-index-3em {
-    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
 }
 
 .gaz-table-index-2em {
-    width: 32px;
-}
-
-/* View, Edit, Delete */
-.gaz-table-index-3em {
-    width: 3em;
+    min-width: 32px;
+    max-width: 32px;
 }
 
 .gaz-show-image {

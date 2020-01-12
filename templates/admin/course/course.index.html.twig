@@ -54,7 +54,7 @@
                         {% endfor %}
 
                         <p >
-                            <a href = "{{ path('course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours</b ></a >
+                            <a href = "{{ path('admin_course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours</b ></a >
                         </p >
 
                         <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style="margin-left: 0;" >
@@ -99,7 +99,7 @@
                                     </td >
 
                                     <td title = "Nomination du cours" >
-                                        <a href = "{{ path('course_show', {'id': course.id}) }}" >{{ course.name }}</a ><br >
+                                        <a href = "{{ path('admin_course_show', {'id': course.id}) }}" >{{ course.name }}</a ><br >
                                         <small >{{ course.smallDescription }}</small ></td >
 
                                     <td title = "Catégories" >{{ course.category.name }}</td > {# categories.name.id #}
@@ -119,11 +119,11 @@
                                     <td title = "Action" style = "text-align: center;" >
                                         {% if course.isPublished == 1 %}
 
-                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Visible</small ></a >
+                                            <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Visible</small ></a >
 
                                         {% elseif course.isPublished == 0 %}
 
-                                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
+                                            <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_course_index', {'id': course.id}) }}&amp;visibility={{ course.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
 
                                         {% endif %}
 
@@ -132,17 +132,17 @@
 
                                     <!-- Update -->
                                     <td title = "Action" style = "text-align: center;" >
-                                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('course_edit', {'id': course.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Édité</small ></a >
+                                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_course_edit', {'id': course.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Édité</small ></a >
                                     </td >
 
                                     <!-- Delete -->
                                     <td title = "Action" style = "text-align: center;" >
 
                                         <!--
-                                        <a class = "btn btn-danger gaz-admin-btn-crud" href="{# path('course_delete', {'id': course.id}) #}" ><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></a >
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href="{# path('admin_course_delete', {'id': course.id}) #}" ><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></a >
                                         -->
 
-                                        <form method="post" action="{{ path('course_delete', {'id': course.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
+                                        <form method="post" action="{{ path('admin_course_delete', {'id': course.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
 
                                             <input type="hidden" name="_method" value="DELETE">
 

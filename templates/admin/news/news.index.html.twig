@@ -1,0 +1,149 @@
+{% extends 'base_admin.html.twig' %}
+
+    {% block title %}Admin : Toutes les actualités.{% endblock %}
+
+    {% block style %}
+        <style >
+            table.table {
+                width: 100%;
+                margin: 0 auto 0 auto;
+            }
+
+            .table > thead > tr > th,
+            .table > thead > tr > td {
+                vertical-align: baseline;
+            }
+
+        </style >
+    {% endblock %}
+
+    {% block main %}
+
+<!--[if lt IE 8]>
+<p class = "browserupgrade" >You are using an <strong >outdated</strong > browser. Please
+    <a href = "http://browsehappy.com/" >upgrade your browser</a > to improve your experience.</p >
+<![endif]-->
+
+<div class = "courses-area" >
+    <div class = "container" >
+
+        <div class = "row align-items-center" >
+
+            <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+                {# Begin Product-Payment #}
+                <div class = "product-payment-inner-st" >
+
+                    <h1 >Toutes les actualités.</h1 >
+
+                    {{ include('admin/include/alert.info.html.twig') }}
+
+                    {% for message in app.flashes('comment_disabled') %}
+                        <div class = "alert alert-success" >
+                            {{ message }}
+                        </div >
+                    {% endfor %}
+                    {% for message in app.flashes('comment_warning') %}
+                        <div class = "alert alert-warning" >
+                            {{ message }}
+                        </div >
+                    {% endfor %}
+
+                    {#
+                    <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
+                    #}
+
+                    <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style = "margin-left: 0; width: auto;" >
+
+                        <thead class = "thead-dark" >
+
+                        <tr >
+                            <th scope = "col" class = "gaz-table-index-5em" >Image</th >
+                            <th scope = "col" class = "gaz-table-index-10em" >Title</th >
+                            <th scope = "col" class = "gaz-table-index-20em" >Texte</th >
+                            <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
+                            <th scope = "col" class = "gaz-table-index-4em" >Visible</th >
+                            <th scope = "col" class = "gaz-table-index-4em" >Éditer</th >
+                            <th scope = "col" class = "gaz-table-index-4em" >Effacer</th >
+
+                            <th scope = "col" class = "gaz-table-index-2em" >Id</th >
+
+                        </thead >
+
+                        <tbody >
+                        {#Affichage 4 cours par ligne en flex.#}
+                        {% for new in news %}
+
+                            <tr >
+                                <td scope = "row" title = "Image" >
+                                    <img src = "{{ asset('public/img/news/') }}{{ new.image }}" alt = "{{ new.image }}" >
+                                </td >
+
+                                <td >{{ new.title | slice(0, 20) | nl2br }}…</td >
+
+                                <td title = "texte" >{{ new.text | slice(0, 200) | nl2br }}…</td >
+
+                                <td >{{ new.createdAt ? new.createdAt|date('Y-m-d ') : '' }}
+                                    <br >
+                                    <small >{{ new.createdAt ? new.createdAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                                    <small >{{ new.createdAt ? new.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
+                                </td >
+
+                                <!-- View -->
+                                <td title = "Action" style = "text-align: center;" >
+                                    {% if new.isPublished == 1 %}
+
+                                        <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_news_index', {'id': new.id}) }}&amp;visibility={{ new.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Visible</small ></a >
+
+                                    {% elseif new.isPublished == 0 %}
+
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_news_index', {'id': new.id}) }}&amp;visibility={{ new.isPublished == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Caché</small ></a >
+
+                                    {% endif %}
+
+                                    <!-- <?= $row->visibility == 1 ? 0 : 1 ?> -->
+                                </td >
+
+                                <!-- Update -->
+                                <td title = "Action" style = "text-align: center;" >
+                                    <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_news_edit', {'id': new.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Édité</small ></a >
+                                </td >
+
+                                <!-- Delete -->
+                                <td title = "Action" style = "text-align: center;" >
+
+                                    <!--
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href="{# path('admin_course_delete', {'id': course.id}) #}" ><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></a >
+                                        -->
+
+                                    <form method="post" action="{{ path('admin_news_delete', {'id': new.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
+
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ new.id) }}">
+
+                                        <button class="btn btn-danger gaz-admin-btn-crud"><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></button>
+
+                                    </form>
+                                </td >
+
+                                <td title = "id" class = "gaz-td-right" >{{ new.id }}</td >
+
+                            </tr >
+
+                        {% else %}
+
+                            <tr >
+                                <td colspan = "13" >Pas d'enregistrement trouvé</td >
+                            </tr >
+                        {% endfor %}
+                        </tbody >
+                    </table >
+
+
+                    <a href = "{{ path('admin_news_new') }}" >Create new</a >
+
+                </div >
+                {# Begin Product-Payment #}
+            </div >
+            {% endblock %}

@@ -9,40 +9,9 @@ class Contact
 	/**
 	 * @var string|null
 	 * @Assert\NotBlank()
-	 * @Assert\Length(
-	 *     min=2
-	 * )
+	 * @Assert\Length(min=2)
 	 */
 	private $firstName;
-
-		/**
-		 * @var string|null
-		 * @Assert\NotBlank()
-		 * @Assert\Length(min=2)
-		 */
-	private $lastName;
-
-			/**
-			 * @var string|null
-			 * @Assert\NotBlank()
-			 * @Assert\email
-			 */
-			// Fonctionnalité spécifique de’s contrainte’s.
-	private $email;
-
-		/**
-		 * @var string|null
-		 * @Assert\NotBlank()
-		 * @Assert\Length(min=5)
-		 */
-	private $subject;
-
-			/**
-			 * @var string|null
-			 * @Assert\NotBlank()
-			 * @Assert\Length(min=10)
-			 */
-	private $message;
 
 	/**
 	 * @return string|null
@@ -60,6 +29,15 @@ class Contact
 		$this->firstName = $firstName;
 	}
 
+	//────────────────────────────────────────────────────────────────────────
+
+	/**
+	 * @var string|null
+	 * @Assert\NotBlank()
+	 * @Assert\Length(min=2)
+	 */
+	private $lastName;
+
 	/**
 	 * @return string|null
 	 */
@@ -75,6 +53,16 @@ class Contact
 	{
 		$this->lastName = $lastName;
 	}
+
+	//────────────────────────────────────────────────────────────────────────
+
+	/**
+	 * @var string|null
+	 * @Assert\NotBlank()
+	 * @Assert\email
+	 */
+	// Fonctionnalité spécifique de’s contrainte’s.
+	private $email;
 
 	/**
 	 * @return string|null
@@ -92,6 +80,15 @@ class Contact
 		$this->email = $email;
 	}
 
+	//────────────────────────────────────────────────────────────────────────
+
+	/**
+	 * @var string|null
+	 * @Assert\NotBlank()
+	 * @Assert\Length(min=5)
+	 */
+	private $subject;
+
 	/**
 	 * @return string|null
 	 */
@@ -107,6 +104,15 @@ class Contact
 	{
 		$this->subject = $subject;
 	}
+
+	//────────────────────────────────────────────────────────────────────────
+
+	/**
+	 * @var string|null
+	 * @Assert\NotBlank()
+	 * @Assert\Length(min=10)
+	 */
+	private $message;
 
 	/**
 	 * @return string|null
@@ -124,5 +130,6 @@ class Contact
 		$this->message = $message;
 	}
 
+	//────────────────────────────────────────────────────────────────────────
 
 }

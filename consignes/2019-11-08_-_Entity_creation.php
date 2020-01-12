@@ -1,23 +1,11 @@
 <?php $title = "Consigne’s";
 include_once "include/include_head.php";
-include_once "include/include_header.php";include_once "include/include_main.php";
-?><!doctype html>
-<html lang = "en">
-<head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport"
-          content = "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv = "X-UA-Compatible"
-          content = "ie=edge">
-    <title>Document</title>
-
-    <link rel = "stylesheet"
-          href = "assets/css/prism/prism.css">
-</head>
-<body>
+include_once "include/include_header.php";
+include_once "include/include_main.php";
+?>
 <section>
     <fieldset>
-        <h2>Consigne phase 01</h2>
+        <h2 id="consigne-phase-01"><a href="?#title-h2-table-of-contents">Consigne phase 01</a></h2>
         <ul>
             <li><a href = "https://yiotis.net/filterizr/#/">https://yiotis.net/filterizr/#/</a></li>
         </ul>
@@ -141,10 +129,16 @@ include_once "include/include_header.php";include_once "include/include_main.php
                    target = "_blank">https://packagist.org/?query=slugify</a></li>
         </ul>
         <p><code class = "language-php">composer require cocur/slugify</code></p>
-        <h3>2019-11-22</h3>
+</fieldset>
+<fieldset>
+        <h3 id="2019-11-22"><a href="?#title-h2-table-of-contents">2019-11-22</a></h3>
+
         <p>Admin<br> Public<br> <br> Split de element head header main footer avec affichage unique<br>
             <br> Afficher visible et icon pour cacher.</p>
-        <h3>2019-11-28 - Contact creation :</h3>
+            </fieldset>
+
+            <fieldset>
+        <h3 id="2019-11-28"><a href="?#title-h2-table-of-contents">2019-11-28 - Contact creation :</a></h3>
 
         <p><code class = "language-php">php bin/console make:entity Contact</code><br> <br> edit
             <code class = "language-php">Entity/Contact.php</code><br> <br> Nettoyage du fichier contact
@@ -179,7 +173,9 @@ class Contact<br>
                 </li>
             </ul>
             <p>Le dépôt c'est pour après le’s vacance’s pour la première session.<br> La seconde il ne sait pash.</p>
+    </fieldset>
 
+            <fieldset>
             <h3>2019‑11‑29 :</h3>
 
             <p>Un commentaire par cours.<br> Dashboard</p>
@@ -192,17 +188,32 @@ class Contact<br>
             </ul>
             <p>Pour la semaine prochaine tout doit etre fonctionnel en publique ainsi que le’s commentaire’s.<br> Et dans la dashboard Admin, cours.
             </p>
-			
-			<h4>2019‑12‑05</h4>
-			
-			<p>Ajouter la gestion de’s professeur’s.</p>
-			
-			<p>Ajouter le professeur titulaire du cours & nombre de eleve’s inscrit.</p>
-			
-    </fieldset>
-</section>
-<h2>Test</h2>
+            </fieldset>
 
+            <fieldset>
+			<h4>2019‑12‑05</h4>
+
+<ul>
+			<li>Ajouter la gestion de’s professeur’s.</li>
+
+			<li>Ajouter le professeur titulaire du cours & nombre de eleve’s inscrit.</li>
+            </fieldset>
+</ul>
+            <fieldset>
+                <h3>2019‑12‑12 ‒ 19H32</h3>
+
+                <p>Dans le champs amout tu mets le prix que tu veux.<br>
+                Lors de l'inscription à plusieurs cours le prix "amout" est multiplié par le nombre de cours pour l'afficher.<br>
+                Mais tu ne l'enregistre pas en DB.<br>
+                Avec plaisir mais je vais couper.<br>
+                Dois me reposer j'ai la crève...<br>
+                Merci beaucoup.<br>
+                Ca fais plaisir d'être reconnu pour son travail.</p>
+            </fieldset>
+</section>
+</section>
+</article>
+</main>
 <footer>
     <script src = "assets/js/prism/prism.js"></script>
 </footer>

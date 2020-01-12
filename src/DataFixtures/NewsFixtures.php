@@ -37,7 +37,7 @@ class NewsFixtures extends Fixture
 			$news = new News();
 
 			// Faker Generation
-			$news->setTitle($faker->text($maxNbChars =  255));
+			$news->setTitle($faker->text($maxNbChars =  80));
 
 			$news->setImage('0' . $i.'.png');
 
@@ -47,6 +47,8 @@ class NewsFixtures extends Fixture
 			// $news->setIsPublished(1);
 
 			$news->setText($faker->paragraphs(8, true));
+
+			$news->setIsPublished(1);
 
 			// Persist Datha.
 			$manager->persist($news);

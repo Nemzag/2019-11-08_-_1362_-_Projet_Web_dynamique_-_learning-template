@@ -37,15 +37,15 @@
 
                     {{ include('admin/include/alert.info.html.twig') }}
 
-                    {% for message in app.flashes('comment_success') %}
-                        <div class = "alert alert-success" >
-                            {{ message }}
-                        </div >
-                    {% endfor %}
                     {% for message in app.flashes('comment_disabled') %}
                         <div class = "alert alert-success" >
                             {{ message }}
                         </div >
+                    {% endfor %}
+                    {% for message in app.flashes('comment_warning') %}
+                        <div class="alert alert-warning">
+                            {{ message }}
+                        </div>
                     {% endfor %}
 
                     {#
@@ -78,19 +78,19 @@
                                 <td title = "Pseudo‑onyme" >
                                     <a href = "{{ path('user_show', {'id': comment.user.id}) }}" title = "Pseudo‑onyme de l'utilisateur." >{{ comment.user.userName }}</a ><br >
                                     <small ><a href = "mailto:{{ comment.user.email }}" title = "Contacter par courriel." >{{ comment.user.email | capitalize }}</a ></small ><br >
-                                    <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ comment.user.role[0] }}</span ><br >
-                                    {{ comment.user.firstName }} {{ comment.user.lastName }}</td >
+                                    <small>{{ comment.user.firstName }} {{ comment.user.lastName }}</small><br >
+                                    <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ comment.user.role[0] }}</span ></td >
 
                                 <td title = "Pseudo‑onyme" title = "Commentaire" >{{ comment.comment }}</td >
                                 <td title = "Action" style = "text-align: center;" >
 
                                     {% if comment.isDisabled == 1 %}
 
-                                        <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_user_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye-slash" ></i ><br ><small >Oui</small ></a >
 
                                     {% elseif comment.isDisabled == 0 %}
 
-                                        <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_user_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
+                                        <a class = "btn btn-warning gaz-admin-btn-crud" href = "{{ path('admin_comment_index', {'id': comment.id}) }}&amp;disabled={{ comment.isDisabled == 1 ? '0' : '1' }}" ><i class = "fas fa-eye" ></i ><br ><small >Non</small ></a >
 
                                     {% endif %}
 

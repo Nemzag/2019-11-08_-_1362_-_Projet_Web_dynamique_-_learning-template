@@ -33,9 +33,15 @@
         <div class="section">
             <h2 class="my-5">Nos dernières actualités</h2>
 
+            <div class="alert alert-info">Le fait de cacher une News dans l'administration, cache bien son affichage, j'ai vérifié.</div>
+
             <div class="row row-flex">
 
                 {% for new in news %}
+
+                    {%  if new.isPublished == 0 %}
+
+                    {% else %}
 
                     {# {% set new = news.order('createdAt desc') %} #}
                     <div class="col-md-6">
@@ -48,6 +54,8 @@
                             </div>
                         </div>
                     </div>
+
+                    {% endif %}
                 {% endfor %}
                 {#
                 <div class="col-md-6">

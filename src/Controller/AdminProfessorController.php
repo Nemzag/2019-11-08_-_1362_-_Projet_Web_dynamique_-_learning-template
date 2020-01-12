@@ -16,12 +16,12 @@ use Symfony\Component\Security\Core\Security;
 /**
  * Class AdminUserController
  * @package App\Controller
- * @Route("/admin/user")
+ * @Route("/admin/professor")
  */
-class AdminUserController extends AbstractController
+class AdminProfessorController extends AbstractController
 {
 	/**
-	 * @Route("/", name="admin_user_index", methods={"GET"})
+	 * @Route("/", name="admin_professor_index", methods={"GET"})
 	 * @param UserRepository $userRepository
 	 * @param Security $security
 	 * @return Response
@@ -98,7 +98,7 @@ class AdminUserController extends AbstractController
 	}
 
 	/**
-	 * @Route("/new", name="admin_user_new", methods={"GET","POST"})
+	 * @Route("/new", name="admin_professor_new", methods={"GET","POST"})
 	 * @param Request $request
 	 * @return Response
 	 */
@@ -144,7 +144,7 @@ class AdminUserController extends AbstractController
 	}
 
 	/**
-	 * @Route("/{id}", name="admin_user_show", methods={"GET"})
+	 * @Route("/{id}", name="admin_professor_show", methods={"GET"})
 	 * @param User $user
 	 * @return Response
 	 */
@@ -158,7 +158,7 @@ class AdminUserController extends AbstractController
 	}
 
 	/**
-	 * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
+	 * @Route("/{id}/edit", name="admin_professor_edit", methods={"GET","POST"})
 	 * @param Request $request
 	 * @param User $user
 	 * @return Response
@@ -175,7 +175,7 @@ class AdminUserController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($user->getImageFile())) $user->setImage('default.jpg');
+			if (empty($user->getImageFile())) $user->setImage('default.jpg');
 
 			$this->getDoctrine()->getManager()->flush();
 
@@ -196,7 +196,7 @@ class AdminUserController extends AbstractController
 
 	/*
 	/**
-	 * @Route("/{id}", name="admin_user_delete", methods={"DELETE"})
+	 * @Route("/{id}", name="admin_professor_delete", methods={"DELETE"})
 	 * @param Request $request
 	 * @param User $user
 	 * @return Response

@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('course_delete', {'id': course.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
+<form method="post" action="{{ path('admin_course_delete', {'id': course.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ course.id) }}">
     <button class="gaz-admin-form-button btn btn-danger">Effacer</button>

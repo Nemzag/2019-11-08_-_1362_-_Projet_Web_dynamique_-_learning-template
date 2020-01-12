@@ -246,15 +246,18 @@
                         </ul >
                     </li >
 
+                    {#
                     <li >
                         <a title = "Landing Page" href = "{{ asset('admin/events.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden = "true" ></span >
                             <span class = "mini-click-non" >Event</span ></a >
                     </li >
+                    #}
 
                     <!-- Begin User -->
                     <li >
-                        <a class = "has-arrow" href = "{{ path('admin_user_index') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
+                        <a class = "has-arrow" href = "{{ path('admin_user_index') }}" aria-expanded = "false" ><i class = "fas fa-users" style = "font-size: 20px;" ></i ><span style = "font-size: 0px;" >&nbsp;&nbsp;</span >
                             <span class = "mini-click-non" >Utilisateurs</span ></a >
+
                         <ul class = "submenu-angle" aria-expanded = "false" >
                             <li >
                                 <a title = "Tous les utilisateurs" href = "{{ path('admin_user_index') }}" ><span class = "mini-sub-pro" >Tous les utilisateurs</span ></a >
@@ -270,7 +273,24 @@
                     </li >
                     <!-- End User -->
 
+                    <!-- Begin Professor -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('admin_user_index') }}" aria-expanded = "false" ><i class = "fas fa-chalkboard-teacher" style = "font-size: 20px;" ></i ><span style = "font-size: 8px;" >&nbsp;&nbsp;</span ><span class = "mini-click-non" >Professeurs</span ></a >
+
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+                            <li >
+                                <a title = "Tous les professeurs" href = "{{ path('admin_user_index') }}" ><span class = "mini-sub-pro" >Tous les professeurs</span ></a >
+                            </li >
+                            <li >
+                                <a title = "Ajouter un professeurs" href = "{{ path('admin_user_new') }}" ><span class = "mini-sub-pro" >Ajouter un professeur</span ></a >
+                            </li >
+
+                        </ul >
+                    </li >
+                    <!-- End Professor -->
+
                     {#
+                    <!-- Begin Administrator -->
                     <li >
                         <a class = "has-arrow" href = "{{ asset('admin/administrator/all-administrators.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
                             <span class = "mini-click-non" >Administrators</span ></a >
@@ -289,30 +309,15 @@
                             </li >
                         </ul >
                     </li >
+                    <!-- End Professor -->
+                    #}
 
-                    <li >
-                        <a class = "has-arrow" href = "{{ asset('admin/professor/all-professors.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-professor icon-wrap" ></span >
-                            <span class = "mini-click-non" >Professors</span ></a >
-                        <ul class = "submenu-angle" aria-expanded = "false" >
-                            <li >
-                                <a title = "All Professors" href = "{{ asset('admin/professor/all-professors.html.twig') }}" ><span class = "mini-sub-pro" >All Professors</span ></a >
-                            </li >
-                            <li >
-                                <a title = "Add Professor" href = "{{ asset('admin/professor/add-professor.html.twig') }}" ><span class = "mini-sub-pro" >Add Professor</span ></a >
-                            </li >
-                            <li >
-                                <a title = "Edit Professor" href = "{{ asset('admin/professor/edit-professor.html.twig') }}" ><span class = "mini-sub-pro" >Edit Professor</span ></a >
-                            </li >
-                            <li >
-                                <a title = "Professor Profile" href = "{{ asset('admin/professor-profile.html.twig') }}" ><span class = "mini-sub-pro" >Professor Profile</span ></a >
-                            </li >
-                        </ul >
-                    </li >
-
+                    {#
                     <!-- Begin Student -->
                     <li >
-                        <a class = "has-arrow" href = "{{ asset('admin/student/all-students.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-student icon-wrap" ></span >
-                            <span class = "mini-click-non" >Students</span ></a >
+
+                        <a class = "has-arrow" href = "{{ asset('admin/student/all-students.html.twig') }}" aria-expanded = "false" >
+                            <i class = "fas fa-user-graduate" style = "font-size: 20px;" ></i ><span style = "font-size: 13px;" >&nbsp;&nbsp;</span ><span class = "mini-click-non" >Students</span ></a >
                         <ul class = "submenu-angle" aria-expanded = "false" >
                             <li >
                                 <a title = "All Students" href = "{{ asset('admin/student/all-students.html.twig') }}" ><span class = "mini-sub-pro" >All Students</span ></a >
@@ -333,34 +338,52 @@
 
                     <!-- Begin Cours -->
                     <li >
-                        <a class = "has-arrow" href = "{{ path('course_index') }}" aria-expanded = "false" ><span class = "educate-icon educate-course icon-wrap" ></span >
+                        <a class = "has-arrow" href = "{{ path('admin_course_index') }}" aria-expanded = "false" ><i class = "fas fa-graduation-cap" style = "font-size: 20px;" ></i ><span style = "font-size: 0px;" >&nbsp;&nbsp;</span >
                             <span class = "mini-click-non" >Courses</span ></a >
 
                         <ul class = "submenu-angle" aria-expanded = "false" >
 
                             <li >
-                                <a title = "Gestion des cours" href = "{{ path('course_index') }}" ><span class = "mini-sub-pro" >Gestion des cours</span ></a >
+                                <a title = "Gestion des cours" href = "{{ path('admin_course_index') }}" ><span class = "mini-sub-pro" >Gestion des cours</span ></a >
                             </li >
 
                             <li >
-                                <a title = "Ajouter un cours" href = "{{ path('course_new') }}" ><span class = "mini-sub-pro" >Ajouter un cours</span ></a >
+                                <a title = "Ajouter un cours" href = "{{ path('admin_course_new') }}" ><span class = "mini-sub-pro" >Ajouter un cours</span ></a >
                             </li >
 
                             <li >
-                                <a title = "Product Payment" href = "{{ asset('admin/course/course.payment.html.twig') }}" ><span class = "mini-sub-pro" >Courses Payment</span ></a >
+                                <a title = "Product Payment" href = "{{ asset('admin/course/course.payment.html.twig') }}" ><span class = "mini-sub-pro" >Inscription à un cours</span ></a >
                             </li >
                         </ul >
                     </li >
 
                     <!-- Begin Comments -->
                     <li >
-                        <a class = "has-arrow" href = "{{ path('admin_comment_index') }}" aria-expanded = "false" ><i class="far fa-comment" style="font-size: 20px;"></i><span style="font-size: 15px;">&nbsp;&nbsp;</span><span class = "mini-click-non" >Commentaires</span ></a >
+                        <a class = "has-arrow" href = "{{ path('admin_comment_index') }}" aria-expanded = "false" ><i class = "far fa-comment" style = "font-size: 20px;" ></i ><span style = "font-size: 18px;" >&nbsp;&nbsp;</span ><span class = "mini-click-non" >Commentaires</span ></a >
 
                         <ul class = "submenu-angle" aria-expanded = "false" >
 
                             <li >
-                                <a title = "Gestion des cours" href = "{{ path('admin_comment_index') }}" ><span class = "mini-sub-pro" >Gestion des<br>commentaires</span ></a >
+                                <a title = "Gestion des cours" href = "{{ path('admin_comment_index') }}" ><span class = "mini-sub-pro" >Gestion des<br >commentaires</span ></a >
                             </li >
+                        </ul >
+                    </li >
+
+                    <!-- Begin News -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('admin_news_index') }}" aria-expanded = "false" >
+                            <i class = "far fa-newspaper" style = "font-size: 20px;" ></i ><span style = "font-size: 14px;" >&nbsp;&nbsp;</span ><span class = "mini-click-non" >Actualités</span ></a >
+
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+
+                            <li >
+                                <a title = "Gestion des cours" href = "{{ path('admin_news_index') }}" ><span class = "mini-sub-pro" >Gestion des actualités</span ></a >
+                            </li >
+
+                            <li >
+                                <a title = "Ajouter un cours" href = "{{ path('admin_news_new') }}" ><span class = "mini-sub-pro" >Ajouter une actualités</span ></a >
+                            </li >
+
                         </ul >
                     </li >
 
@@ -393,6 +416,7 @@
                     </li>
                     #}
 
+                    {#
                     <li >
                         <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-message icon-wrap" ></span >
                             <span class = "mini-click-non" >Mailbox</span ></a >
@@ -506,8 +530,6 @@
                         </ul >
                     </li >
 
-                    <!-- CACACACA -->
-
                     <li >
                         <a class = "has-arrow" href = "{{ asset('admin/mailbox.html.twig') }}" aria-expanded = "false" ><span class = "educate-icon educate-apps icon-wrap" ></span >
                             <span class = "mini-click-non" >App views</span ></a >
@@ -557,6 +579,7 @@
                             </li >
                         </ul >
                     </li >
+                    #}
                 </ul >
             </nav >
         </div >
@@ -784,7 +807,7 @@
 
                                                             <!-- Mon profile -->
                                                             <li >
-                                                                <a href = "#" ><span class = "edu-icon edu-user-rounded author-log-ic" ></span >Mon Profil</a >
+                                                                <a href = "{{ path("admin_user_show", {'id': app.user.id}) }}" ><span class = "edu-icon edu-user-rounded author-log-ic" ></span >Mon Profil</a >
                                                             </li >
 
                                                             <!-- Mes Factures -->
@@ -1304,6 +1327,7 @@
                     </div >
                 </div >
             </div >
+
             <!-- Mobile Menu start -->
             <div class = "mobile-menu-area" >
                 <div class = "container" >
@@ -1311,9 +1335,16 @@
                         <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                             <div class = "mobile-menu" >
                                 <nav id = "dropdown" >
+                                    <br > <br >
                                     <ul class = "mobile-menu-nav" >
-                                        <li ><a data-toggle = "collapse" data-target = "#Charts" href = "#" >Home
+
+
+                                        <li >
+                                            <a data-toggle = "collapse" data-target = "#Charts" href = "{{ path('admin') }}" ><i class="fas fa-home" style = "font-size: 20px;" ></i ><span style = "font-size: 20px;" >&nbsp;&nbsp;</span >Accueil
+
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
+
+                                            {#
                                             <ul class = "collapse dropdown-header-top" >
                                                 <li ><a href = "index.html" >Dashboard v.1</a ></li >
                                                 <li ><a href = "index-1.html" >Dashboard v.2</a ></li >
@@ -1321,49 +1352,77 @@
                                                 <li ><a href = "analytics.html" >Analytics</a ></li >
                                                 <li ><a href = "widgets.html" >Widgets</a ></li >
                                             </ul >
+                                            #}
+
                                         </li >
-                                        <li ><a href = "events.html" >Event</a ></li >
-                                        <li ><a data-toggle = "collapse" data-target = "#demoevent" href = "#" >Professors
-                                                <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
-                                            <ul id = "demoevent" class = "collapse dropdown-header-top" >
-                                                <li ><a href = "all-professors.html" >All Professors</a >
-                                                </li >
-                                                <li ><a href = "add-professor.html" >Add Professor</a >
-                                                </li >
-                                                <li ><a href = "edit-professor.html" >Edit Professor</a >
-                                                </li >
-                                                <li ><a href = "professor-profile.html" >Professor Profile</a >
-                                                </li >
-                                            </ul >
-                                        </li >
-                                        <li ><a data-toggle = "collapse" data-target = "#demopro" href = "#" >Students
+
+                                        {# Utilisateurs #}
+                                       <li ><a data-toggle = "collapse" data-target = "#demopro" href = "#" ><i class = "fas fa-users" style = "font-size: 20px;" ></i ><span style = "font-size: 8px;" >&nbsp;&nbsp;</span > Utilisateurs
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "demopro" class = "collapse dropdown-header-top" >
-                                                <li ><a href = "all-students.html" >All Students</a >
+                                                <li ><a href = "{{ path('admin_user_index') }}" >Tous les utilisateurs</a >
                                                 </li >
-                                                <li ><a href = "add-student.html" >Add Student</a >
+                                                <li ><a href = "{{ path('admin_user_new') }}" >Ajouter un utilisateur</a >
                                                 </li >
-                                                <li ><a href = "edit-student.html" >Edit Student</a >
-                                                </li >
-                                                <li ><a href = "student-profile.html" >Student Profile</a >
+                                                <li ><a href = "{{ path('user_show', {'id': app.user.id}) }}" >Mon Profile</a >
                                                 </li >
                                             </ul >
                                         </li >
-                                        <li ><a data-toggle = "collapse" data-target = "#democrou" href = "#" >Courses
+
+                                        {# Professeurs #}
+                                        <li ><a data-toggle = "collapse" data-target = "#demopro" href = "#" ><i class = "fas fa-chalkboard-teacher" style = "font-size: 20px;" ></i ><span style = "font-size: 8px;" >&nbsp;&nbsp;</span > Professeurs
+                                                <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a ><ul id = "demopro" class = "collapse dropdown-header-top" >
+                                                <li ><a href = "{{ path('admin_professor_index') }}" >Tous les professeurs</a >
+                                                </li >
+                                                <li ><a href = "{{ path('admin_professor_new') }}" >Ajouter un professeur</a >
+                                                </li >
+                                            </ul >
+                                        </li >
+
+                                        {# Cours #}
+                                        <li ><a data-toggle = "collapse" data-target = "#democrou" href = "#" ><i class = "fas fa-graduation-cap" style = "font-size: 20px;" ></i ><span style = "font-size: 16px;" >&nbsp;&nbsp;</span >Courses
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "democrou" class = "collapse dropdown-header-top" >
-                                                <li ><a href = "all-courses.html" >All Courses</a >
+
+                                                <li ><a href = "{{ path('admin_course_index') }}" >Courses</a >
                                                 </li >
-                                                <li ><a href = "add-course.html" >Add Course</a >
+
+                                                <li ><a href = "{{ path('admin_course_new') }}" >Ajouter un cours</a >
                                                 </li >
-                                                <li ><a href = "edit-course.html" >Edit Course</a >
+
+                                                <li >
+                                                    <a href = "{{ asset('admin/course/course.payment.html.twig') }}" >Inscription à un cours</a >
                                                 </li >
-                                                <li ><a href = "course-profile.html" >Courses Info</a >
+
+                                            </ul >
+                                        </li >
+
+                                        {# Commentaires #}
+                                        <li ><a data-toggle = "collapse" data-target = "#democrou" href = "#" ><i class = "far fa-comment" style = "font-size: 20px; margin-left: 2px;" ></i ><span style = "font-size: 15px;" >&nbsp;&nbsp;&nbsp;</span >Commentaires
+                                                <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
+                                            <ul id = "democrou" class = "collapse dropdown-header-top" >
+
+                                                <li ><a href = "{{ path('admin_course_index') }}" >Commentaires</a >
                                                 </li >
-                                                <li ><a href = "course-payment.html" >Courses Payment</a >
+
+                                                <li ><a href = "{{ path('admin_course_new') }}" >Ajouter un commentaire</a >
+                                                </li >
+
+                                            </ul >
+                                        </li >
+
+                                        {# Actualités #}
+                                         <li ><a data-toggle = "collapse" data-target = "#demoevent" href = "#" ><i class = "far fa-newspaper" style = "font-size: 20px;" ></i ><span style = "font-size: 14px;" >&nbsp;&nbsp;</span > Actualités
+                                                <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
+                                            <ul id = "demoevent" class = "collapse dropdown-header-top" >
+                                                <li ><a href = "{{ path('admin_news_index') }}" >Gestion des actualités</a >
+                                                </li >
+                                                <li ><a href = "{{ path('admin_news_new') }}" >Ajouter une actualités</a >
                                                 </li >
                                             </ul >
                                         </li >
+
+                                        {#
                                         <li ><a data-toggle = "collapse" data-target = "#demolibra" href = "#" >Library
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "demolibra" class = "collapse dropdown-header-top" >
@@ -1375,6 +1434,9 @@
                                                 </li >
                                             </ul >
                                         </li >
+                                        #}
+
+                                        {#
                                         <li ><a data-toggle = "collapse" data-target = "#demodepart" href = "#" >Departments
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "demodepart" class = "collapse dropdown-header-top" >
@@ -1386,6 +1448,9 @@
                                                 </li >
                                             </ul >
                                         </li >
+                                        #}
+
+                                        {#
                                         <li ><a data-toggle = "collapse" data-target = "#demo" href = "#" >Mailbox
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
                                             <ul id = "demo" class = "collapse dropdown-header-top" >
@@ -1397,6 +1462,8 @@
                                                 </li >
                                             </ul >
                                         </li >
+
+
                                         <li >
                                             <a data-toggle = "collapse" data-target = "#Miscellaneousmob" href = "#" >Interface
                                                 <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
@@ -1501,6 +1568,9 @@
                                                 <li ><a href = "500.html" >500 Page</a ></li >
                                             </ul >
                                         </li >
+                                       #}
+
+
                                     </ul >
                                 </nav >
                             </div >
@@ -1542,7 +1612,7 @@
 
     <!-- End Header menu area -->
 
-    <main id = "page-container" style="margin-bottom: 57.25px;" >
+    <main id = "page-container" style = "margin-bottom: 57.25px;" >
 
         {% block main %}
             <div class = "analytics-sparkle-area" >
@@ -2252,7 +2322,7 @@
 
 
         <!-- font-awesome JS -->
-       <script src = "{{ asset('public/js/all.min.js') }}" ></script >
+        <script src = "{{ asset('public/js/all.min.js') }}" ></script >
 
         <!-- form validate JS
 ============================================ -->

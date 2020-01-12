@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\News;
 use App\Form\NewsType;
+use App\Repository\CourseCategoryRepository;
+use App\Repository\CourseLevelRepository;
+use App\Repository\CourseRepository;
 use App\Repository\NewsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,13 +34,43 @@ class AdminNewsController extends AbstractController
 
 	/**
 	 * @Route("/index", name="admin_news_index", methods={"GET"})
+	 * @param NewsRepository $newsRepository
+	 * @return Response
 	 */
 	public function index(NewsRepository $newsRepository): Response
 	{
 		// Vérification de niveau afin d'accéder à la fonction.
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
 
-		return $this->render('public/account/admin.login.html.twig', [
+		$news = $newsRepository->findAll();
+
+		// Visibilité du cours.
+		$_GET ['visibility'] = $_GET ['visibility'] ?? '';
+		$_GET ['id'] = $_GET ['id'] ?? '';
+
+		if($_GET['visibility'] <= 1 && $_GET['id'] != null) {
+			$newsId = $newsRepository->find($_GET['id']);
+			// var_dump($_GET['visibility']);exit;
+
+			if ($_GET['visibility'] == 1) {
+
+				// var_dump($_GET['visibility']);exit;
+				$newsId->setIsPublished(1);
+
+			} elseif ($_GET['visibility'] == 0) {
+
+				// var_dump($_GET['visibility']);exit;
+				$newsId->setIsPublished(0);
+			}
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($newsId);
+			$entityManager->flush();
+
+			// Message Flash
+			$this->addFlash('news_visibility', $newsId->getIsPublished() == 0  ? 'Édition de visibilité caché réussi & accompli !' : 'Édition de visibilité affiché réussi & accompli !');
+		}
+
+		return $this->render('admin/news/news.index.html.twig', [
 			'news' => $newsRepository->findAll(),
 		]);
 	}

@@ -20,6 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGenerator as BaseUrlGenerator ;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CourseType extends AbstractType
@@ -161,11 +162,13 @@ class CourseType extends AbstractType
 			])
 
 			->add('schedule', TextareaType::class, [
-				'attr' => ['rows' => '2'],
+				'attr' => [
+					'rows' => '2'
+				],
 				'label' => "Planning",
 			])
 
-			->add('programFile', VichImageType::class, [
+			->add('programFile', VichFileType::class, [
 
 				'required' => false,
 				'label' => "P.D.F. explicatif du cours",

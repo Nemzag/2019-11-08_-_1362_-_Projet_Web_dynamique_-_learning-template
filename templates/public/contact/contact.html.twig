@@ -12,6 +12,12 @@
 
             <h2 class = "my-4" >Nous contacter</h2 >
 
+            {% for message in app.flashes('contact_success') %}
+                <div class = "alert alert-success" >
+                    {{ message }}
+                </div >
+            {% endfor %}
+
             {# Débute le formulaire#}
             {{ form_start(form) }}
 

@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Édition des Cours{% endblock %}
+{% block title %}Édition des actualités{% endblock %}
 
 {% block main %}
 
@@ -12,11 +12,11 @@
                 <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
                     <div class = "product-payment-inner-st" >
-                        <h1 >Éditer les Cours</h1 >
+                        <h1 >Éditer les actualités</h1 >
 
                         {{ include('admin/include/alert.info.html.twig') }}
 
-                        {{ include('admin/course/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+                        {{ include('news/_form.html.twig', {'button_label': 'Update'}) }}
 
                         <hr >
 
@@ -35,7 +35,7 @@
 
                             <div class = "col-lg-4 text-right" >
 
-                                {{ include('admin/course/_delete_form.html.twig') }}
+                                {{ include('news/_delete_form.html.twig') }}
                             </div >
 
                         </div >

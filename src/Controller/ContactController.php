@@ -11,30 +11,39 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Service\ContactService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact(Request $request)
+	/**
+	 * @Route("/contact", name="contact")
+	 * @param Request $request
+	 * @param ContactService $contactService
+	 * @return RedirectResponse|Response
+	 */
+    public function contact(Request $request, ContactService $contactService)
     {
     	$contact = new Contact();
     	// Pour importer au survole la surbrillance et « Import class »
 	    // Alt+Shift+Enter
     	$form = $this->createForm(ContactType::class, $contact);
 
-    	// Recuperer le’s données
+    	// Récupérer le’s données
 	    $form->handleRequest($request);
 
 	    if($form->isSubmitted() && $form->isValid()) {
 		    // Envoi du mail via le service
 		    $contactService->sendMail($contact);
 
-		    return $this->redirectToRoute('home');
+		    // Message flash
+		    $this->addFlash('contact_success', 'Votre courriel a bien été envoyé.');
+
+		    return $this->redirectToRoute('contact');
 	    }
 
         return $this->render('public/contact/contact.html.twig', [

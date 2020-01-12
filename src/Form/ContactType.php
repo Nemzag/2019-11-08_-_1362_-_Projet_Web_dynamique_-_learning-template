@@ -25,21 +25,54 @@ class ContactType extends AbstractType
 		$builder
 			->add('firstName', TextType::class, [
 				'label' => 'Prénom',
+
+
+				'attr' => [
+					'minlength' => '2',
+					'maxlength' => '20',
+					'placeholder' => '2 caractères minimum, 20 maximum.‬'
+				]
 				])
 
 			->add('lastName', TextType::class, [
 				'label' => 'Nom',
+
+				'attr' => [
+					'minlength' => '2',
+					'maxlength' => '20',
+					'placeholder' => '2 caractères minimum, 20 maximum.‬'
+				]
 			])
 
 			->add('email', EmailType::class, [
 				'label' => 'Courriel',
+
+				'attr' => [
+					'minlength' => '5',
+					'maxlength' => '255',
+					'placeholder' => '5 caractères minimum, 255 maximum.‬'
+				]
 			])
 
 			->add('subject', TextType::class, [
+
 				'label' => 'Sujet',
+
+				'attr' => [
+					'minlength' => '10',
+					'maxlength' => '255',
+					'placeholder' => '10 caractères minimum, 255 maximum.‬'
+				]
 			])
 
-			->add('message', TextareaType::class)
+			->add('message', TextareaType::class, [
+
+				'attr' => [
+					'minlength' => '10',
+					'maxlength' => '65536',
+					'placeholder' => '10 caractères minimum, 65.536 maximum.‬'
+				]
+			])
 
 			->add('submit', SubmitType::class, [
 				'label' => 'Envoyer',

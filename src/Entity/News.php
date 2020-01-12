@@ -24,9 +24,9 @@ class News
     private $id;
 
 	public function getId(): ?int
-	{
-		return $this->id;
-	}
+         	{
+         		return $this->id;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -36,16 +36,16 @@ class News
     private $title;
 
 	public function getTitle(): ?string
-	{
-		return $this->title;
-	}
+         	{
+         		return $this->title;
+         	}
 
 	public function setTitle(string $title): self
-	{
-		$this->title = $title;
-
-		return $this;
-	}
+         	{
+         		$this->title = $title;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -85,48 +85,48 @@ class News
 	// ...
 	// Getter & Setter Personnel ajouté.
 	public function getImageUpdatedAt(): ?DateTimeInterface
-	{
-		return $this->imageUpdatedAt;
-	}
+         	{
+         		return $this->imageUpdatedAt;
+         	}
 
 	public function setImageUpdatedAt(DateTimeInterface $imageUpdatedAt): self
-	{
-		$this->imageUpdatedAt = $imageUpdatedAt;
-
-		return $this;
-	}
+         	{
+         		$this->imageUpdatedAt = $imageUpdatedAt;
+         
+         		return $this;
+         	}
 
 	public function setImageFile(File $image = null)
-	{
-		$this->imageFile = $image;
-
-		// VERY IMPORTANT:
-		// It is required that at least one field changes if you are using Doctrine,
-		// otherwise the event listeners won't be called and the file is lost
-		if ($image) {
-			// if 'updatedAt' is not defined in your entity, use another property
-			$this->imageUpdatedAt = new DateTime('now');
-		}
-	}
+         	{
+         		$this->imageFile = $image;
+         
+         		// VERY IMPORTANT:
+         		// It is required that at least one field changes if you are using Doctrine,
+         		// otherwise the event listeners won't be called and the file is lost
+         		if ($image) {
+         			// if 'updatedAt' is not defined in your entity, use another property
+         			$this->imageUpdatedAt = new DateTime('now');
+         		}
+         	}
 
 	public function getImageFile()
-	{
-		return $this->imageFile;
-	}
+         	{
+         		return $this->imageFile;
+         	}
 
 	// 	public function getImage(): ?string
 	public function getImage()
-	{
-		return $this->image;
-	}
+         	{
+         		return $this->image;
+         	}
 
 	//public function setImage($image)
 	public function setImage(string $image): self
-	{
-		$this->image = $image;
-
-		return $this;
-	}
+         	{
+         		$this->image = $image;
+         
+         		return $this;
+         	}
 
 	/*
 	public function getImage(): ?string
@@ -150,16 +150,16 @@ class News
     private $createdAt;
 
 	public function getCreatedAt(): ?DateTimeInterface
-	{
-		return $this->createdAt;
-	}
+         	{
+         		return $this->createdAt;
+         	}
 
 	public function setCreatedAt(DateTimeInterface $createdAt): self
-	{
-		$this->createdAt = $createdAt;
-
-		return $this;
-	}
+         	{
+         		$this->createdAt = $createdAt;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -167,6 +167,11 @@ class News
      * @ORM\Column(type="text")
      */
     private $text;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
 
     public function getText(): ?string
     {
@@ -176,6 +181,18 @@ class News
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }

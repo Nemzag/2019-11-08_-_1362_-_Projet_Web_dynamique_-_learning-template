@@ -53,7 +53,7 @@ class AdminCommentController extends AbstractController
 				if ($commentId->getUser()->getRoles() == ['ROLE_ADMIN'] OR $commentId->getUser()->getRoles() == ['ROLE_SUPER_ADMIN']) {
 
 					// Message Flash
-					$this->addFlash('user_disabled', "Un administrateur ne peut pas désactivé un autre administrateur ou le super‑administrateur.");
+					$this->addFlash('comment_warning', "Un administrateur ne peut pas désactivé un autre administrateur ou le super‑administrateur.");
 
 				} else {
 
@@ -91,7 +91,7 @@ class AdminCommentController extends AbstractController
 				$entityManager->flush();
 
 				// Message Flash
-				$this->addFlash('user_disabled', $commentId->getId() == 0 ? 'Édition activation de commentaire réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
+				$this->addFlash('comment_disabled', $commentId->getId() == 0 ? 'Édition activation de commentaire réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
 			}
 		}
 

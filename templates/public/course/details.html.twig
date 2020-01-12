@@ -98,10 +98,16 @@
                         {% set sumEvaluations = sumEvaluations + evaluation.evaluation %}
                     {% endfor %}
 
+                    {# Fonction de calcul de’s moyenne’s de désactivation. #}
+                    {% set sumOfDisabled = 0 %}
+                    {% for disabled in comments %}
+                        {% set sumOfDisabled = sumOfDisabled + disabled.isDisabled %}
+                    {% endfor %}
+
                     {% if (comments|length) > 0 %}
                         <p >Note global :
                             <span class = "text-danger" >{% if (sumEvaluations / comments|length)|round == 0 %}☆☆☆☆☆{% elseif (sumEvaluations / comments|length)|round == 1 %}★☆☆☆☆{% elseif (sumEvaluations / comments|length)|round == 2 %}★★☆☆☆{% elseif (sumEvaluations / comments|length)|round == 3 %}★★★☆☆{% elseif (sumEvaluations / comments|length)|round == 4 %}★★★★☆{% elseif (sumEvaluations / comments|length)|round == 5 %}★★★★★{% endif %}</span ><br > Calculé sur
-                            <span class = "text-danger" >{{ comments|length }}</span > commentaires.</p >
+                            <span class = "text-danger" >{{ comments|length }}</span > commentaires. </span > <span class = "text-danger" >{{ sumOfDisabled }}</span> désactivé <span class = "text-info" >à titre informatif pour le Téo‑cher‑Ône</span>.</p >
 
                         {# Si vide et pas de commentaire. #}
                     {% else %}
@@ -143,6 +149,10 @@
                     {# Boucle d'affichage de’s commentaire’s #}
                     {% for comment in comments | reverse %} {# | reverse %} #}
 
+                    {# Si disabled ne pas affiché, fonctionnel testé. #}
+                    {% if comment.isDisabled == 1 %} {# | reverse %} #}
+
+                    {% elseif comment.isdisabled == 0 %}
                         <li class = "list-group-item list-group-item-action flex-column align-items-start" >
 
                             <div class = "d-flex w-100 justify-content-between" >
@@ -190,6 +200,8 @@
                             </div >
 
                         </li >
+
+                    {% endif %}
 
                     {% endfor %}
                 </ul >

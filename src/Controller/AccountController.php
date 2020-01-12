@@ -65,7 +65,7 @@ class AccountController extends AbstractController
 			// Message Flash
 			$this->addFlash('passwordUpdate_success', 'Modification de mot de passe réussi !');
 
-			return $this->redirectToRoute('course_index');
+			return $this->redirectToRoute('admin_course_index');
 		} else {
 
 			// Message Flash

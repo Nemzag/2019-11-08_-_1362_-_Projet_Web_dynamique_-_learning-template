@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * Class AdminCourseController
+ * @package App\Controller
  * @Route("/admin")
  */
 class AdminCourseController extends AbstractController
@@ -35,7 +37,7 @@ class AdminCourseController extends AbstractController
 
 	// Affichage de la liste complete de’s cours’s.
 	/**
-	 * @Route("/courses/all-Course", name="course_index", methods={"GET"})
+	 * @Route("/courses/all-Course", name="admin_course_index", methods={"GET"})
 	 * @param CourseCategoryRepository $courseCategoryRepository
 	 * @param CourseRepository $courseRepository
 	 * @param CourseLevelRepository $courseLevelRepository
@@ -84,7 +86,7 @@ class AdminCourseController extends AbstractController
 	}
 
 	/**
-	 * @Route("/courses/new", name="course_new", methods={"GET","POST"})
+	 * @Route("/courses/new", name="admin_course_new", methods={"GET","POST"})
 	 * @param Request $request
 	 * @param Course $course
 	 * @return Response
@@ -111,7 +113,7 @@ class AdminCourseController extends AbstractController
 			// Message Flash
 			$this->addFlash('course_success', 'Édition réussi & accompli !');
 
-			return $this->redirectToRoute('course_index');
+			return $this->redirectToRoute('admin_course_index');
 		}
 
 		return $this->render('admin/course/course.new.html.twig', [
@@ -121,7 +123,7 @@ class AdminCourseController extends AbstractController
 	}
 
 	/**
-	 * @Route("/course/{id}", name="course_show", methods={"GET"})
+	 * @Route("/course/{id}", name="admin_course_show", methods={"GET"})
 	 * @param $id
 	 * @param Course $course
 	 * @param CourseCategoryRepository $CourseCategoryRepository
@@ -145,7 +147,7 @@ class AdminCourseController extends AbstractController
 	}
 
 	/**
-	 * @Route("/course/{id}/edit", name="course_edit", methods={"GET","POST"})
+	 * @Route("/course/{id}/edit", name="admin_course_edit", methods={"GET","POST"})
 	 * @param Request $request
 	 * @param Course $course
 	 * @return Response
@@ -169,7 +171,7 @@ class AdminCourseController extends AbstractController
 			// Message Flash
 			$this->addFlash('course_success', 'Édition réussi & accompli !');
 
-			return $this->redirectToRoute('course_index');
+			return $this->redirectToRoute('admin_course_index');
 		}
 
 		return $this->render('admin/course/course.edit.html.twig', [
@@ -179,7 +181,7 @@ class AdminCourseController extends AbstractController
 	}
 
 	/**
-	 * @Route("/admin/course/{id}", name="course_delete", methods={"DELETE"})
+	 * @Route("/admin/course/{id}", name="admin_course_delete", methods={"DELETE"})
 	 * @param Request $request
 	 * @param Course $course
 	 * @return Response
@@ -200,6 +202,6 @@ class AdminCourseController extends AbstractController
 		// Message Flash
 		$this->addFlash('course_danger', 'Cours supprimé !');
 
-		return $this->redirectToRoute('course_index');
+		return $this->redirectToRoute('admin_course_index');
 	}
 }

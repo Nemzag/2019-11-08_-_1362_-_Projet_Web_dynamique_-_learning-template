@@ -150,4 +150,31 @@ class Comment
 
         return $this;
     }
+
+	//=======================================================================================
+
+	/**
+	 * @var string|null
+	 * @Assert\NotBlank()
+	 * @Assert\Length(min=10)
+	 */
+	private $message;
+
+	/**
+	 * @return string|null
+	 */
+	public function getMessage(): ?string
+	{
+		return $this->message;
+	}
+
+	/**
+	 * @param string|null $message
+	 */
+	public function setMessage(?string $message): void
+	{
+		$this->message = $message;
+	}
+
+	//=======================================================================================
 }

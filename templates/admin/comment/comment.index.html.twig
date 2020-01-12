@@ -35,6 +35,8 @@
 
                     <h1 >Tous les commentaires.</h1 >
 
+                    <div class="alert alert-info">L'envoi automatique lors de la désactivation est fonctionnel, je l'ai testé. Et il envoie à la bonne adresse.</div>
+
                     {{ include('admin/include/alert.info.html.twig') }}
 
                     {% for message in app.flashes('comment_disabled') %}
@@ -60,7 +62,7 @@
                             <th scope = "col" class = "gaz-table-index-5em" >Image</th >
                             <th scope = "col" class = "gaz-table-index-10em" >Pseudo‑onyme</th >
                             <th scope = "col" class = "gaz-table-index-20em" >Commentaire</th >
-                            <th scope = "col" class = "gaz-table-index-6em" >Evaluation</th >
+                            <th scope = "col" class = "gaz-table-index-6em" >Censurer</th >
                             <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
                             <th scope = "col" class = "gaz-table-index-2em" >Id</th >
 

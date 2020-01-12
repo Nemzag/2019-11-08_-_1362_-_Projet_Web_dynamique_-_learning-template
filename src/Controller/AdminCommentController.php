@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\UserRepository;
+use App\Service\ContactService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,9 +27,10 @@ class AdminCommentController extends AbstractController
 	 * @param CommentRepository $commentRepository
 	 * @param UserRepository $userRepository
 	 * @param Security $security
+	 * @param ContactService $contactService
 	 * @return Response
 	 */
-	public function index(CommentRepository $commentRepository, UserRepository $userRepository, Security $security): Response
+	public function index(CommentRepository $commentRepository, UserRepository $userRepository, Security $security, ContactService $contactService): Response
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
@@ -61,6 +63,8 @@ class AdminCommentController extends AbstractController
 
 						// var_dump($_GET['visibility']);exit;
 						$commentId->setIsDisabled(1); // Vrai
+
+						$contactService->advertiseByMail();
 
 					} elseif ($_GET['disabled'] == 0) {
 

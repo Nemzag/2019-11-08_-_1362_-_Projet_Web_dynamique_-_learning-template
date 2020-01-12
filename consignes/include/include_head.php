@@ -51,7 +51,8 @@
     <link rel="stylesheet" href="assets/css/tocbot/tocbot.css">
 
     <!-- Prettify -->
-    <link rel="stylesheet" href="assets/css/prettify/prettify.css"> <!-- Syntaxic coloration on result -->
+    <link rel="stylesheet" href="assets/css/prettify/prettify.css">
+    <!-- Syntaxic coloration on result -->
 
     <!-- BootStrap -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css"> -->

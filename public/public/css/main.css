@@ -8,12 +8,12 @@
     height: 350px;
     background: url("../img/banner/ban01.jpg") no-repeat;
     background-size: cover;
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
 }
 
 /* CAROUSEL */
 .carousel-item {
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
 }
 
 /* FILTERIZR */

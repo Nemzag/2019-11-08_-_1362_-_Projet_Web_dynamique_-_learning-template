@@ -3,15 +3,20 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 use Symfony\Component\Form\FormBuilderInterface;
+
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Component\Validator\Constraints\IsTrue;
+
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
@@ -24,12 +29,11 @@ class UserType extends AbstractType
 				'label' => 'Pseudo‑onyme',
 
 				'attr' => [
-					'minlength' => '4',
+					'minlength' => '3',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬'
+					'placeholder' => '3 caractères minimum, 255 maximum.‬'
 				]
 			])
-
 			/* Prénom */
 			->add('firstName', TextType::class, [
 
@@ -38,10 +42,9 @@ class UserType extends AbstractType
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬'
+					'placeholder' => '2 caractères minimum, 255 maximum.‬'
 				]
 			])
-
 			/* Nom */
 			->add('lastName', TextType::class, [
 
@@ -50,10 +53,9 @@ class UserType extends AbstractType
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬'
+					'placeholder' => '2 caractères minimum, 255 maximum.‬'
 				]
 			])
-
 			->add('email', EmailType::class, [
 
 				'label' => 'Courriel',
@@ -64,7 +66,6 @@ class UserType extends AbstractType
 					'placeholder' => '8 caractères minimum & 255 caractères maximum.‬'
 				]
 			])
-
 			->add('password', PasswordType::class, [
 
 				'label' => 'Mot de passe',
@@ -75,7 +76,6 @@ class UserType extends AbstractType
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬'
 				]
 			])
-
 			->add('confirmPassword', PasswordType::class, [
 
 				'label' => 'Confirmer le mot de passe',
@@ -87,6 +87,7 @@ class UserType extends AbstractType
 				]
 			])
 
+			/*
 			->add('createdAt', DateTimeType::class, [
 
 				'label' => 'Date de création',
@@ -102,6 +103,9 @@ class UserType extends AbstractType
 
 				'attr' => ['style' => 'display:none;'],
 			])
+			*/
+
+			/*
 			->add('isDisabled', ChoiceType::class, [
 
 				'label' => 'Activé',
@@ -111,8 +115,9 @@ class UserType extends AbstractType
 					'Non' => 0,
 				],
 			])
+			*/
 
-			->add('role', ChoiceType::class, [
+			/*->add('role', ChoiceType::class, [
 
 				'label' => 'Rôle',
 
@@ -123,8 +128,7 @@ class UserType extends AbstractType
 					'Professeur' => 'ROLE_PROFESSOR',
 					'Administrateur' => 'ROLE_ADMIN'
 				]
-			])
-
+			])*/
 			->add('imageFile', VichImageType::class, [
 
 				'label' => "Inséré une image",
@@ -137,6 +141,8 @@ class UserType extends AbstractType
 				// 'attr' => ['class' => 'form-control']
 			])
 
+			/*
+
 			->add('lastLogAt', DateTimeType::class, [
 
 				'label' => 'Date de dernière connection',
@@ -144,6 +150,17 @@ class UserType extends AbstractType
 
 				'attr' => ['style' => 'display:none;'],
 
+			])
+			*/
+
+			->add('agreeTerms', CheckboxType::class, [
+				'label' => "Accepter les clauses.",
+				'mapped' => false,
+				'constraints' => [
+					new IsTrue([
+						'message' => 'Vous devez acceptez nos clauses.',
+					]),
+				],
 			]);
 	}
 

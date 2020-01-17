@@ -37,10 +37,9 @@ class AdminCommentController extends AbstractController
 		$comment = $commentRepository->findAll();
 		$user = $userRepository->findAll();
 
-		// Pour accédé au role actuel il faut employer le module securité (dans use et cette fonction),
+		// Pour accédé au role actuel il faut employer le module sécurité (dans use et cette fonction),
 		// pour pouvoir vérifier le rang.
 		$userRole = $security->getUser()->getRoles();
-		// ... do whatever you want with $user
 
 		// Visibilité du cours.
 		$_GET ['disabled'] = $_GET ['disabled'] ?? '';

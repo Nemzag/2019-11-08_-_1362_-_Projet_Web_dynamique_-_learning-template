@@ -185,7 +185,7 @@ class AdminProfessorController extends AbstractController
 			return $this->redirectToRoute('admin_professor_index');
 		}
 		// Message Flash
-		$this->addFlash('user_danger', 'Échec de la promotion !');
+		$this->addFlash('admin_user_danger', 'Échec de la promotion !');
 
 		return $this->render('admin/professor/professor.edit.html.twig', [
 			'user' => $user,

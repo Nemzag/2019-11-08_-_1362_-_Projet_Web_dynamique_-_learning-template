@@ -99,7 +99,7 @@
                     </td >
 
                     <td title = "Pseudo‑onyme" >
-                        <a href = "{{ path('user_show', {'id': user.id}) }}" title="Pseudo‑onyme de l'utilisateur.">{{ user.userName }}</a ><br>
+                        <a href = "{{ path('admin_user_show', {'id': user.id}) }}" title="Pseudo‑onyme de l'utilisateur.">{{ user.userName }}</a ><br>
                         <small><a href = "mailto:{{ user.email }}" title="Contacter par courriel.">{{ user.email | capitalize }}</a ></small><br>
                         <span class="badge badge-primary" title="Rang de l'utilisateur.">{{ user.role[0] }}</span></td >
 

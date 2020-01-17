@@ -13,46 +13,79 @@ use App\Entity\PasswordUpdate;
 
 use App\Form\PasswordUpdateType;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
+/**
+ * Class AccountController
+ * @package App\Controller
+ */
 class AccountController extends AbstractController
 {
 	/**
 	 * @Route("/login", name="login")
 	 * @param AuthenticationUtils $utils
+	 * @param UserRepository $userRepository
 	 * @return Response
 	 */
-	public function	login (AuthenticationUtils $utils)
+	public function login(AuthenticationUtils $utils, UserRepository $userRepository)
 	{
+		$user = $userRepository->findOneBy(Array('email' => $_POST['_username']));
+
+		/*
+		$user = $this->getDoctrine()
+		->getRepository(UserController::class)
+		->findOneBy(Array('email' => $username));
+		*/
+
 		// get the login error if there is one
 		$error = $utils->getLastAuthenticationError();
 
 		// last username entered by the user
 		$lastUsername = $utils->getLastUsername();
 
-		return $this->render('public/account/login.html.twig', [
-			'last_username' => $lastUsername,
-			'error' => $error !== null
-			// si $erreur différent de null
-		]);
+		// Essai non‑concluant d'empechement de log si isDisabled == true
+		/*
+		if ($user->getIsDisabled() == true   && $user->getRole() == [
+						"ROLE_USER",
+						"ROLE_STUDENT",
+						"ROLE_PROFESSOR"
+					]) {
+					// si $erreur différent de null)
+					return $this->render('public/account/login.html.twig', [
+						'last_username' => $lastUsername,
+						'error' => $error !== null,
+					]);
+
+				} else { */
+			return $this->render('public/account/login.html.twig', [
+				'last_username' => $lastUsername,
+				'error' => $error !== null,
+			]);
+	//	}
 	}
+
 
 	/**
 	 * @Route("/logout", name="logout")
 	 */
-	public function logout() {
+	public
+	function logout()
+	{
 
 	}
 
 	/**
 	 * @Route("/password_update", name="password_update")
 	 */
-	public function accountPassword()
+	public
+	function accountPassword()
 	{
 		$passwordUpdate = new PasswordUpdate();
 

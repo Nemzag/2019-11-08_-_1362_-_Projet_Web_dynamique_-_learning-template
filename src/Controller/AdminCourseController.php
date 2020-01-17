@@ -6,9 +6,13 @@ use App\Entity\Course;
 use App\Entity\User;
 
 use App\Form\CourseType;
+
 use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
+
+use Exception;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,8 +92,8 @@ class AdminCourseController extends AbstractController
 	/**
 	 * @Route("/courses/new", name="admin_course_new", methods={"GET","POST"})
 	 * @param Request $request
-	 * @param Course $course
 	 * @return Response
+	 * @throws Exception
 	 */
 	public function new(Request $request): Response
 	{
@@ -103,6 +107,10 @@ class AdminCourseController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 
 			if(empty($course->getImageFile())) $course->setImage('default.jpg');
+
+			$now = new \DateTime('now');
+
+			$course->setCreatedAt($now);
 
 			$this->getDoctrine()->getManager()->flush();
 

@@ -49,7 +49,7 @@ class User implements UserInterface
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * @Assert\Length(
-	 *     min="4",
+	 *     min="3",
 	 *     max="255",
 	 *     minMessage="Le pseudonyme doit être de {{ limit }} caractères minimum.",
 	 *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",

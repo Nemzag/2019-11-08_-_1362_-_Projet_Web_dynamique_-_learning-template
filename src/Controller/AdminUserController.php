@@ -118,7 +118,7 @@ class AdminUserController extends AbstractController
 		*/
 		//────────────────────────────────────────────────────────────────────────
 		$user = new User();
-		$form = $this->createForm(UserType::class, $user);
+		$form = $this->createForm(AdminUserType::class, $user);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
@@ -139,7 +139,7 @@ class AdminUserController extends AbstractController
 
 		return $this->render('admin/user/user.new.html.twig', [
 			'user' => $user,
-			'userForm' => $form->createView(),
+			'adminUserForm' => $form->createView(),
 		]);
 	}
 
@@ -185,11 +185,11 @@ class AdminUserController extends AbstractController
 			return $this->redirectToRoute('admin_user_index');
 		}
 		// Message Flash
-		$this->addFlash('user_danger', 'Échec de la promotion !');
+		$this->addFlash('admin_user_danger', 'Échec de la promotion !');
 
 		return $this->render('admin/user/user.edit.html.twig', [
 			'user' => $user,
-			'userForm' => $form->createView(),
+			'adminUserForm' => $form->createView(),
 			'errors' => $form->getErrors(true, true),
 		]);
 	}

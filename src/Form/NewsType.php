@@ -51,6 +51,7 @@ class NewsType extends AbstractType
 		            'maxlength' => '255',
 	            ]])
 
+            /*
             ->add('createdAt', DateTimeType::class, [
 
 	            'label' => false,
@@ -61,6 +62,7 @@ class NewsType extends AbstractType
 		           // Pas de date minimum ni maximum.
                 ]
             ])
+            */
 
             ->add('text', TextareaType::class, [
 

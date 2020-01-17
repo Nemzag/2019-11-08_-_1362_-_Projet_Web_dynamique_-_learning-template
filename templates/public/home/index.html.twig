@@ -21,7 +21,16 @@
 
     <!-- Latest courses -->
     <main class = "container" >
+
         <section >
+
+            {% for message in app.flashes('registration_success') %}
+                <br >
+                <div class = "alert alert-success" >
+                    {{ message }}
+                </div >
+            {% endfor %}
+
             <h2 class = "my-5" >Nos dernières formations</h2 >
             <div class = "row" >
 
@@ -86,10 +95,6 @@
 
                 {% for new in news %}
 
-                    {%  if new.isPublished == 0 %}
-
-                    {% else %}
-
                     {# {% set new = news.order('createdAt desc') %} #}
                     <div class = "col-md-6" >
                         <div class = "media my-3 shadow-sm p-3 mb-5 bg-white rounded" >
@@ -101,8 +106,6 @@
                             </div >
                         </div >
                     </div >
-
-                    {% endif %}
 
                 {% endfor %}
                 {#

@@ -170,7 +170,7 @@ class AdminUserType extends AbstractType
 					'minlength' => '3',
 					'maxlength' => '255',
 					'placeholder' => '255 caractères maximum.‬',
-					// 'style' => 'display:none;',
+					'style' => 'display:none;',
 				]
 
 

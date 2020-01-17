@@ -29,6 +29,7 @@ class CommentType extends AbstractType
 	            'label' => false,
 	            /* Pour ne pas l'afficher dans le new, sinon : "Date de inscription :" */
 
+
 	            'data' => new \DateTime(),
 
 	            'attr' => ['style' => 'display:none;']

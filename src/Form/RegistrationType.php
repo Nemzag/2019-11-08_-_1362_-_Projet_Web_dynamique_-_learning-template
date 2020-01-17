@@ -23,6 +23,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationType extends AbstractType
 {
@@ -147,12 +148,29 @@ class RegistrationType extends AbstractType
 					*/
 
 			])
+
+			/*
 			->add('image', FileType::class, [
 				'label' => "Inséré votre image",
 
 				'data_class' => null,
 
 				'required' => false
+			])
+			*/
+
+			->add('imageFile', VichImageType::class, [
+
+				'label' => "Inséré une image",
+				'required' => false,
+				'download_uri' => false,
+				'image_uri' => false,
+				'allow_delete' => false,
+
+				'download_label' => "Télécharger l'image",
+				// 'asset_helper' => true,
+				'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['class' => 'form-control']
 			])
 
 			->add('agreeTerms', CheckboxType::class, [

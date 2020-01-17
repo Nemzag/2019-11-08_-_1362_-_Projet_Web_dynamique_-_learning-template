@@ -4,19 +4,22 @@ namespace App\Form;
 
 use App\Entity\Course;
 use App\Entity\User;
+
 use Doctrine\ORM\EntityRepository;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 use Symfony\Component\Form\FormBuilderInterface;
+
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use Symfony\Component\Routing\Generator\UrlGenerator as BaseUrlGenerator ;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -46,7 +49,7 @@ class CourseType extends AbstractType
 				'attr' => [
 					'minlength' => '4',
 					'maxlength' => '120',
-					'placeholder' => '120 caractères maximum.‬'
+					'placeholder' => '4 caractères minimum, 120 maximum.‬'
 				]
 			])
 
@@ -57,28 +60,30 @@ class CourseType extends AbstractType
 				'attr' => [
 					'minlength' => '4',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬'
+					'placeholder' => '4 caractères minimum, 255 maximum.‬'
 				]
 			])
 
-			->add('fullDescription', TextType::class, [
+			->add('fullDescription', TextareaType::class, [
 
 				'label' => 'Déscription longue',
 
 				'attr' => [
 					'minlength' => '20',
 					'maxlength' => '65536‬',
-					'placeholder' => '65.536 caractères maximum.‬'
+					'placeholder' => '20 caractères minimum, 65.536‬ maximum.‬',
+					'rows' => 2,
 				]
 			])
 
-			->add('duration', TextareaType::class, [
+			->add('duration', TextType::class, [
 
 				'label' => 'Durée',
 
 				'attr' => [
+					'minlength' => '4',
 					'maxlength' => '60',
-					'rows' => 2
+					'placeholder' => '4 caractères minimum, 60 maximum.‬'
 				]
 			])
 
@@ -95,12 +100,6 @@ class CourseType extends AbstractType
 					'type' => 'number',
 					'step' => '0.01',
 				]
-			])
-
-			->add('createdAt', DateTimeType::class, [
-
-				'label' => 'Date de création',
-				'data' => new \DateTime(),
 			])
 
 			->add('isPublished', ChoiceType::class, [
@@ -130,6 +129,10 @@ class CourseType extends AbstractType
 				'required' => false,
 				'image_uri' => false,
 				'download_uri' => false,
+				'download_label' => "Télécharger l'image",
+				// 'asset_helper' => true,
+				'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['class' => 'form-control']
 
 				/*
 				$builder->add('genericFile', VichImageType::class, [
@@ -155,10 +158,6 @@ class CourseType extends AbstractType
 				//		return $router->generateUrl('courses_img', $course->getImage());
 				//	},
 
-				'download_label' => "Télécharger l'image",
-				// 'asset_helper' => true,
-				'attr' => ['placeholder' => 'Photo']
-				// 'attr' => ['class' => 'form-control']
 			])
 
 			->add('schedule', TextareaType::class, [

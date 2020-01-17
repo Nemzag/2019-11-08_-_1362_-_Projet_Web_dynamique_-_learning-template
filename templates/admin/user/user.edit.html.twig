@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Promotionné un utilisateur{% endblock %}
+{% block title %}Promouvoir utilisateur{% endblock %}
 
 {% block main %}
 
@@ -13,9 +13,9 @@
 
                     <div class = "product-payment-inner-st" >
 
-                        <h1 >Promotionné un utilisateur</h1 >
+                        <h1 >Promouvoir un utilisateur</h1 >
 
-                        {% for message in app.flashes('user_danger') %}
+                        {% for message in app.flashes('admin_user_danger') %}
                             <div class = "alert alert-danger" >
                                 {{ message }}
                             </div >
@@ -23,48 +23,48 @@
 
                         {# ──────────────────────────────────────────────────────────────────────── #}
 
-
-                        {{ form_start(userForm) }}
-                        {{ form_widget(userForm) }}
+                        {#
+                        {{ form_start(adminUserForm) }}
+                        {{ form_widget(adminUserForm) }}
                         <button class="btn">{{ button_label|default('Save') }}</button>
-                        {{ form_end(userForm) }}
-
+                        {{ form_end(adminUserForm) }}
+                        #}
 
                         {# ──────────────────────────────────────────────────────────────────────── #}
 
                         {# Form_Rest #}
                         {#
-                        {{ form_start(userForm) }}
+                        {{ form_start(adminUserForm) }}
 
-                        {{ form_rest(userForm) }}
+                        {{ form_rest(adminUserForm) }}
 
                         <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 
-                        {{ form_end(userForm) }}
+                        {{ form_end(adminUserForm) }}
                         #}
 
                         {# ──────────────────────────────────────────────────────────────────────── #}
-                        {#
-                        {{ form_start(userForm) }}
+
+                        {{ form_start(adminUserForm) }}
 
                         {{ include('admin/user/_form.html.twig', {'button_label': 'Sauver'}) }}
 
-                        {{ form_end(userForm) }}
-                        #}
+                        {{ form_end(adminUserForm) }}
+
                         {# ──────────────────────────────────────────────────────────────────────── #}
 
                         {#
-                        {{ form_start(userForm) }}
+                        {{ form_start(adminUserForm) }}
                         <div class = "form-group" >
 
-                            {{ form_label(userForm.role) }}
-                            {{ form_widget(userForm.role) }}
+                            {{ form_label(adminUserForm.role) }}
+                            {{ form_widget(adminUserForm.role) }}
 
                         </div >
 
                         <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 
-                        {{ form_end(userForm) }}
+                        {{ form_end(adminUserForm) }}
                         #}
 
                         {# ──────────────────────────────────────────────────────────────────────── #}

@@ -21,7 +21,8 @@ class HomeController extends AbstractController
 	    $news = $this
 		    ->getDoctrine()
 		    ->getRepository(News::class )
-		    ->findBy(Array(), array('createdAt'=>'DESC'), 6);
+		    ->findBy(Array('isPublished'=> 1), array('createdAt'=>'DESC'), 6);
+	        // 1. Paramètre, 2. Ordre, 3. Limite.
 
 	    $courses = $this
 		    ->getDoctrine()

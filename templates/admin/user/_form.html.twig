@@ -1,4 +1,4 @@
-{{ form_start(userForm) }}
+{{ form_start(adminUserForm) }}
 
 {#
 {{ form_widget(form) }}
@@ -8,9 +8,9 @@
 
     {# Nomination #}
     {#
-    {{ form_label(userForm.userName) }}
+    {{ form_label(adminUserForm.userName) }}
     #}
-    {{ form_widget(userForm.userName) }}
+    {{ form_widget(adminUserForm.userName) }}
 
 </div >
 
@@ -18,9 +18,9 @@
 
     {# Small Description #}
     {#
-    {{ form_label(userForm.firstName) }}
+    {{ form_label(adminUserForm.firstName) }}
     #}
-    {{ form_widget(userForm.firstName) }}
+    {{ form_widget(adminUserForm.firstName) }}
 
 </div >
 
@@ -28,9 +28,9 @@
 
     {# Small Description #}
     {#
-    {{ form_label(userForm.lastName) }}
+    {{ form_label(adminUserForm.lastName) }}
     #}
-    {{ form_widget(userForm.lastName) }}
+    {{ form_widget(adminUserForm.lastName) }}
 
 </div >
 
@@ -38,9 +38,9 @@
 
     {# Email #}
     {#
-    {{ form_label(userForm.email) }}
+    {{ form_label(adminUserForm.email) }}
     #}
-    {{ form_widget(userForm.email) }}
+    {{ form_widget(adminUserForm.email) }}
 
 </div >
 
@@ -48,9 +48,9 @@
 
     {# Password #}
     {#
-    {{ form_label(userForm.password) }}
+    {{ form_label(adminUserForm.password) }}
     #}
-    {{ form_widget(userForm.password) }}
+    {{ form_widget(adminUserForm.password) }}
 
 </div >
 
@@ -58,9 +58,9 @@
 
     {# Password #}
     {#
-    {{ form_label(userForm.confirmPassword) }}
+    {{ form_label(adminUserForm.confirmPassword) }}
     #}
-    {{ form_widget(userForm.confirmPassword) }}
+    {{ form_widget(adminUserForm.confirmPassword) }}
 
 </div >
 
@@ -69,9 +69,9 @@
 
     {# Créé le #}
     {#
-    {{ form_label(userForm.createdAt) }}
+    {{ form_label(adminUserForm.createdAt) }}
     #}
-    {{ form_widget(userForm.createdAt) }}
+    {{ form_widget(adminUserForm.createdAt) }}
 
 </div >
 
@@ -79,9 +79,9 @@
 
     {# Updaté le #}
     {#
-    {{ form_label(userForm.updatedAt) }}
+    {{ form_label(adminUserForm.updatedAt) }}
     #}
-    {{ form_widget(userForm.updatedAt) }}
+    {{ form_widget(adminUserForm.updatedAt) }}
 
 </div >
 
@@ -89,59 +89,59 @@
 
     {# Derniere connection #}
     {#
-    {{ form_label(userForm.lastLogAt) }}
+    {{ form_label(adminUserForm.lastLogAt) }}
     #}
-   {{ form_widget(userForm.lastLogAt) }}
+    {{ form_widget(adminUserForm.lastLogAt) }}
 
 </div >
 
 
 <div class = "form-group" >
 
-   {# Désactivé #}
+    {# Désactivé #}
     {#
-    {{ form_label(userForm.isDisabled) }}
+    {{ form_label(adminUserForm.isDisabled) }}
     #}
-    {{ form_widget(userForm.isDisabled) }}
+    {{ form_widget(adminUserForm.isDisabled) }}
 
 </div >
 
 <div class = "form-group" >
 
     {# Role #}
-    {{ form_label(userForm.role) }}
-    {{ form_widget(userForm.role) }}
+    {{ form_label(adminUserForm.role) }}
+    {{ form_widget(adminUserForm.role) }}
 
 </div >
 
 <div class = "form-group" >
 
-{{ form_widget(userForm.updatedAt) }}
+    {{ form_widget(adminUserForm.updatedAt) }}
 
-<div class = "form-group" style="display: none;" >
+    <div class = "form-group" style = "display: none;" >
 
-    {# Image #}
+        {# Image #}
+        {{ form_widget(adminUserForm.imageFile) }}
 
-    {{ form_widget(userForm.imageFile) }}
+        {#<b>{{ form_label(form.imageFile) }}</b>#}
+        {#
+        <label >Inséré une image <small >(Non obligatoire)</small ></label >
+        {{ form_widget(adminUserForm.imageFile) }}
 
-    {#<b>{{ form_label(form.imageFile) }}</b>#}
-    {#
-    <label >Inséré une image <small >(Non obligatoire)</small ></label >
-    {{ form_widget(userForm.imageFile) }}
+        {# Boucle de affichage si non vide. #}
+        {#
+        {% if user.image is empty %}
 
-    {# Boucle de affichage si non vide. #}
-    {#
-    {% if user.image is empty %}
+        {% else %}
 
-    {% else %}
+            <small ><label >Image actuel</label ></small ><br >
 
-        <small ><label >Image actuel</label ></small ><br >
+            <img src = "{{ asset('public/img/avatar/') }}{{ user.image }}" alt = "{{ user.image }}" class = "img-thumbnail" >
+        {% endif %}
+        #}
 
-        <img src = "{{ asset('public/img/avatar/') }}{{ user.image }}" alt = "{{ user.image }}" class = "img-thumbnail" >
-    {% endif %}
-    #}
+    </div >
 
-</div >
-<button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+    <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 
-{{ form_end(userForm) }}
+    {{ form_end(adminUserForm) }}

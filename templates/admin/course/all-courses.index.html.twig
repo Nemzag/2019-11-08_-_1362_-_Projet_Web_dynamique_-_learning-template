@@ -1,0 +1,89 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Admin : Tous le’s cours’s.{% endblock %}
+
+{% block style %}
+    <style>
+        table.table {
+            width: 99%;
+            margin: 0 auto 0 auto;
+        }
+
+        .table > thead > tr > th,
+        .table > thead > tr > td {
+            vertical-align: baseline;
+        }
+
+    </style>
+{% endblock %}
+
+{% block main %}
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="courses-area">
+        <div class="container-fluid">
+
+            <p><a href="{{ path('course_new') }}" class="btn btn-warning"><b>Créer un nouveau cours.</b></a></p>
+
+            <table class="table table-bordered table-sm table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 12em;">Image</th>
+                    <th scope="col">Nomination du cours</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Professeur<br>Titulaire</th>
+                    <th scope="col">Nombre de étudiants</th>
+                    <th scope="col" style="width: 9em;">Durée</th>
+                    <th scope="col" style="width: 6em;">Prix</th>
+                    <th scope="col" style="width: 10em;">Action</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">ID</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {#Affichage 4 cours par ligne en flex.#}
+                {% for course in courses %}
+
+					<tr>
+						<th scope="row" title="Image"><img src="{{ asset('public/img/section/') }}{{ course.image }}" alt="{{ course.name }}"></th>
+
+                        <td title="Nomination du cours"><a href = "{{ path('course_show', {'id': course.id}) }}" target="_blank">{{ course.name }}</a><br>
+                            {{ course.smallDescription }}</td>
+
+						<td title="Catégories">{{ course.category.name }}</td>  {# categories.name.id #}
+
+						<td title="Professeur Titulaire"></td>
+
+                        <td title="Nombre de étudiants"></td>
+
+						<td title="Durée">{{ course.duration }}<br>
+                            {{ course.schedule }}</td>
+
+						<td title="Prix" style="text-align: right;">{{ course.price }}&euro;</td>
+
+						<td title="Action" style="text-align: center;">
+                            <a class="btn btn-info" href="{{ path('course_edit', {'id': course.id}) }}"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>&nbsp;<a class="btn btn-warning" href="">{#{{ course.isPublished ? 'Yes' : 'No' }}#}<i class="fas fa-eye-slash"></i><i class="fas fa-eye"></i></a></td>
+
+                        <td title="Date de création">{{ course.createdAt ? course.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+
+                        <td title="Identificateur">{{ course.id }}</td>
+
+					</tr>
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

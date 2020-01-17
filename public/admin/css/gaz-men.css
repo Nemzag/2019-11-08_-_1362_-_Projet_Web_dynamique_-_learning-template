@@ -36,6 +36,11 @@
     border: 1px solid #dee2e6 !important;
 }
 
+.gaz-table-index-image {
+    min-width: 160px;
+    max-width: 160px;
+}
+
 .gaz-table-index-24em {
     min-width: 384px;
     max-width: 384px;

@@ -18,12 +18,65 @@
 
                     <h2 class = "my-4" >Inscription</h2 >
 
-                    {{ form(registration) }}
+                    {% for message in app.flashes('registration_success') %}
+                        <div class = "alert alert-success" >
+                            {{ message }}
+                        </div >
+                    {% endfor %}
+
+                    {% for message in app.flashes('registration_danger') %}
+                        <div class = "alert alert-primary" >
+                            {{ message }}
+                        </div >
+                    {% endfor %}
+
+                    {% if errors|length > 0 %}
+                        {{ dump(errors) }}
+                    {% endif %}
 
                     {{ form_start(registration) }}
-                    {{ form_row(registration.email) }}
-                    {{ form_row(registration.password) }}
-                    {{ form_row(registration.agreeTerms) }}
+
+                    <div class="form-group">
+                        {{ form_label(registration.firstName) }}
+                        {{ form_widget(registration.firstName) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(registration.lastName) }}
+                        {{ form_widget(registration.lastName) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(registration.userName) }}
+                        {{ form_widget(registration.userName) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(registration.email) }}
+                        {{ form_widget(registration.email) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(registration.password) }}
+                        {{ form_widget(registration.password) }}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form_label(registration.confirmPassword) }}
+                        {{ form_widget(registration.confirmPassword) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(registration.imageFile) }}
+                        {{ form_widget(registration.imageFile) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(registration.agreeTerms) }}
+                    </div>
+
+                    <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
 
                     {{ form_end(registration) }}
 

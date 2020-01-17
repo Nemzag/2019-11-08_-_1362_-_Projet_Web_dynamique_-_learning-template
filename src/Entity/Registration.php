@@ -16,11 +16,32 @@ class Registration
      */
     private $id;
 
+	public function getId(): ?int
+	{
+		return $this->id;
+	}
+
+	//=======================================================================================
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+	public function getUser(): ?User
+	{
+		return $this->user;
+	}
+
+	public function setUser(?User $user): self
+	{
+		$this->user = $user;
+
+		return $this;
+	}
+
+	//=======================================================================================
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Course")
@@ -28,66 +49,56 @@ class Registration
      */
     private $course;
 
+	public function getCourse(): ?Course
+	{
+		return $this->course;
+	}
+
+	public function setCourse(?Course $course): self
+	{
+		$this->course = $course;
+
+		return $this;
+	}
+
+	//=======================================================================================
+
     /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+	public function getCreatedAt(): ?\DateTimeInterface
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt(\DateTimeInterface $createdAt): self
+	{
+		$this->createdAt = $createdAt;
+
+		return $this;
+	}
+
+	//=======================================================================================
 
     /**
      * @ORM\Column(type="integer")
      */
     private $amount;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+	public function getAmount(): ?int
+	{
+		return $this->amount;
+	}
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
+	public function setAmount(int $amount): self
+	{
+		$this->amount = $amount;
 
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
+		return $this;
+	}
 
-        return $this;
-    }
+	//=======================================================================================
 
-    public function getCourse(): ?Course
-    {
-        return $this->course;
-    }
-
-    public function setCourse(?Course $course): self
-    {
-        $this->course = $course;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getAmount(): ?int
-    {
-        return $this->amount;
-    }
-
-    public function setAmount(int $amount): self
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
 }

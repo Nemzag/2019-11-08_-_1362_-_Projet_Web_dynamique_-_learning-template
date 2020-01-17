@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 
+use Grafikart\RecaptchaBundle\Type\RecaptchaSubmitType;
+
 use Symfony\Component\Form\AbstractType;
 
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -86,7 +88,6 @@ class UserType extends AbstractType
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬'
 				]
 			])
-
 			/*
 			->add('createdAt', DateTimeType::class, [
 
@@ -140,7 +141,6 @@ class UserType extends AbstractType
 				'attr' => ['placeholder' => 'Photo']
 				// 'attr' => ['class' => 'form-control']
 			])
-
 			/*
 
 			->add('lastLogAt', DateTimeType::class, [
@@ -158,9 +158,16 @@ class UserType extends AbstractType
 				'mapped' => false,
 				'constraints' => [
 					new IsTrue([
-						'message' => 'Vous devez acceptez nos clauses.',
+						'message' => 'Vous devez accepter nos clauses.',
 					]),
 				],
+			])
+
+			->add('captcha', RecaptchaSubmitType::class, [
+				'label' => 'Envoyer',
+				'attr' => [
+					'class' => 'btn btn-success gaz-admin-form-button'
+				]
 			]);
 	}
 

@@ -1,0 +1,28 @@
+#
+## Created by PhpStorm.
+## User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+## Date: 2020-01-17
+## Time: 22h44
+## Updated:
+#
+services:
+  recaptcha.type:
+    class: Grafikart\RecaptchaBundle\Type\RecaptchaSubmitType
+    tags: ['form.type']
+    arguments:
+      $key: '%recaptcha.key%'
+      #$secret: '%recaptcha.secret%'
+  recaptcha.validator:
+    class: Grafikart\RecaptchaBundle\Constraints\RecaptchaValidator
+    tags: ['validator.constraint_validator']
+    autowire: true
+  ReCaptcha\ReCaptcha:
+    class: ReCaptcha\ReCaptcha
+    arguments:
+      $secret: '%recaptcha.secret%'
+      $requestMethod: '@ReCaptcha\RequestMethod'
+  ReCaptcha\RequestMethod: '@ReCaptcha\RequestMethod\CurlPost'
+  ReCaptcha\RequestMethod\CurlPost: ~
+
+
+

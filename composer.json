@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "cocur/slugify": "^3.2",
         "fzaninotto/faker": "^1.8",
+        "google/recaptcha": "^1.2",
         "knplabs/knp-paginator-bundle": "^4.1",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
@@ -51,7 +52,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-          "Grafikart\\RecaptchaBundle\\": "lib/RecaptchaBundle"
+            "Grafikart\\RecaptchaBundle\\": "lib/RecaptchaBundle"
         }
     },
     "autoload-dev": {

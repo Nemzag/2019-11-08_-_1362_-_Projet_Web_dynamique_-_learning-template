@@ -1,0 +1,39 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2020-01-17
+ * Time: 14h17
+ * Updated:
+#}
+
+{% block recaptcha_submit_widget %}
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script >
+        function {{ id }}RecaptchaSubmit(token) {
+
+            var elem = document.getElementById("{{ id }}");
+
+            while(elem.parentElement !== null) {
+
+                // Si fomulaire.
+                if (elem.tagName === 'FORM') {
+
+                    elem.submit()
+
+                    break
+                }
+                elem = elem.parentElement
+            }
+        }
+    </script >
+
+    {% set label = 'Sauver' %}
+
+    {# definition de attribut par fusion des attributs du Recaptcha #}
+    {% set attr = attr | merge ({class: (attr.class | default('')) ~ ' ' ~ 'g-recaptcha', 'data-sitekey' : key, 'data-callback': id ~ 'RecaptchaSubmit'}) %}
+
+    {% block submit_widget %}{% endblock%}
+
+{% endblock %}

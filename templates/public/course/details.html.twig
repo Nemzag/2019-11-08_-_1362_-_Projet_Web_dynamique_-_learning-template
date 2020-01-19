@@ -62,6 +62,7 @@
 
                         <p ><b >Niveau :</b > {{ course.level.name }}</p >
 
+                        <a href = "{{ path('cart_selection', {'id': course.id} ) }}" class = "btn btn-primary" >S'inscrire&nbsp;&nbsp;<i class="fas fa-cart-arrow-down"></i></a >
                     </div >
                 </div >
             </div >
@@ -211,7 +212,7 @@
             <div class = "tab-pane fade" id = "nav-post-comment" role = "tabpanel" aria-labelledby = "nav-post-comment" >
 
                 {# {{ dump(comments) }} #}
-                {% if is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") or is_granted("ROLE_MODERATEUR") %}
+                {% if is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") or is_granted("ROLE_MODERATEUR") or is_granted("ROLE_STUDENT") or is_granted("ROLE_USER") %}
 
                     {% if noComment %}
 
@@ -222,6 +223,10 @@
                     {% else %}
 
                         <h3 class = "h5" ><b >Faite votre commentaire</b ></h3 >
+
+                        {% if errors|length > 0 %}
+                            {{ dump(errors) }}
+                        {% endif %}
 
                         {{ include('admin/comment/_form.html.twig') }}
 

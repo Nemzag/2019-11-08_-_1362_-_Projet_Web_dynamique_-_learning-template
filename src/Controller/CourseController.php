@@ -21,20 +21,25 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 
+use DateTime;
+
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 // Ancienne version.
 
 /**
  * Class CourseController
+ * @Route("/cours")
  */
 class CourseController extends AbstractController
 {
 	/**
-	 * @Route("/courses", name="courses")
+	 * @Route("/", name="courses")
 	 * @param CourseCategoryRepository $CourseCategoryRepository
 	 * @param CourseRepository $CourseRepository
 	 * @param CourseLevelRepository $CourseLevelRepository
@@ -68,12 +73,14 @@ class CourseController extends AbstractController
 	// Créé le controleur Details.
 
 	/**
-	 * @Route("/courses/{id}", name="course_details", methods={"GET","POST"})
+	 * @Route("/{id}", name="course_details", methods={"GET","POST"})
 	 * @param $id
 	 * @param Request $request
+	 * @param Security $security
 	 * @return Response
+	 * @throws Exception
 	 */
-	public function coursesDetails($id, Request $request): Response
+	public function coursesDetails($id, Request $request, Security $security): Response
 	{
 
 		// Obtention des informations de la table / entité dans la data‑base.
@@ -146,20 +153,33 @@ class CourseController extends AbstractController
 
 		$newComment = new Comment();
 
-		$newComment->setUser($this->getUser());
-		$newComment->setCourse($course);
-
 		$form = $this->createForm(CommentType::class, $newComment);
+
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+
+			// Avto‑daθə updaθə…
+			$now = new DateTime('now');
+
+			$newComment->setUser($security->getUser());
+			// $newComment->setUser($security->getUser()->getId());
+
+			$newComment->setCourse($course);
+
+			$newComment->setDateAddedAt($now);
+
+			$newComment->setIsDisabled(false);
+
+			// dump($form);
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($newComment);
 			$entityManager->flush();
 
 			return $this->redirectToRoute('course_details', ['id' => $course->getId()]);
 		}
-		dump($comments);
+		// dump($comments);
 
 		// Comparator function used for comparator
 		// scores of two object/students
@@ -178,12 +198,13 @@ class CourseController extends AbstractController
 			'comments' => $comments,
 			'commentForm' => $form->createView(),
 			'noComment' => $noComment,
+			'errors' => $form->getErrors(true, true),
 		]);
 	}
 }
 
 // /**
-// * @Route("/courses/{id}", name="course_details")
+// * @Route("/{id}", name="course_details")
 // * @param $id
 // * @return Response
 // */

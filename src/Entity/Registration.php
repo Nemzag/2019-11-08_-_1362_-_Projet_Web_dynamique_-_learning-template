@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RegistrationRepository")
@@ -84,6 +85,12 @@ class Registration
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *     min="30",
+     *     max="5000",
+     *     minMessage="Le pseudonyme doit être de {{ limit }} caractères minimum.",
+     *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",
+     * )
      */
     private $amount;
 

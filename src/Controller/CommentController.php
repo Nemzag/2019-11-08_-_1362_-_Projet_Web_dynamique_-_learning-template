@@ -8,10 +8,13 @@ use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
+use DateTime;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/comment")
@@ -72,17 +75,22 @@ public function new(Request $request): Response
 	 * @param Request $request
 	 * @param Comment $comment
 	 * @param CourseRepository $courseRepository
+	 * @param Security $security
 	 * @return Response
+	 * @throws Exception
 	 */
-    public function edit(Request $request, Comment $comment, CourseRepository $courseRepository): Response
+    public function edit($id, Request $request, Comment $comment, CourseRepository $courseRepository, Security $security): Response
     {
 	    $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-
         $form = $this->createForm(CommentType::class, $comment);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+	        // Avto‑daθə updaθə…
+	        
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('course_details', array('id' => $comment->getCourse()->getId()));
@@ -91,6 +99,7 @@ public function new(Request $request): Response
         return $this->render('public/comment/comment.edit.html.twig', [
             'comment' => $comment,
             'commentForm' => $form->createView(),
+	        'errors' => $form->getErrors(true, true),
         ]);
     }
 

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier d'inscription{% endblock %}
+
+{% block main %}
+
+    <div class = "container" >
+
+        <div class = "col-md-6 offset-md-3" >
+            <br >
+
+            <h1 >Votre panier d'inscription</h1 >
+
+            <br >
+
+            {% if registrations | length > 0 %}
+                <table class = "table table-hover table-bordered table table-striped table-sm" >
+                    <thead class = "table-dark" >
+                    <tr class = "text-center" >
+                        <th >Nom</th >
+                        <th class = "col-1" >Effacé</th >
+                        <th class = "col-2" >Prix</th >
+                        {#
+                        <th>Prix<br>total</th>
+                        #}
+
+                    </tr >
+                    </thead >
+                    <tbody >
+                    {% for registration in registrations %}
+                        <tr >
+                            <td >{{ registration.course }}</td >
+
+                            <td class = "text-center" >
+                                <a href = "{{ path("cart_remove", {'id': registration.course.id}) }}" class = "btn btn-primary btn-sm" ><i class = "fas fa-trash-alt" ></i ></a >
+                            </td >
+
+                            <td class = "text-right" >{{ registration.course.price | replace({'.': ","}) }}€</td >
+
+                            {#
+                            <td>{{ registration.course.price * registration.quantity }}</td>
+                            #}
+                        </tr >
+                    {% endfor %}
+                    </tbody >
+                    <tfoot class = "table-dark" >
+                    <tr >
+
+                        <td colspan = "3" class = "text-right" ><b >Total : {{ total | replace({'.': ","}) }}€</b >
+                        </td >
+                    </tr >
+                    </tfoot >
+                </table >
+            {% else %}
+
+                <div class = "alert alert-info" >Votre panier est vide pour le moment.</div >
+
+            {% endif %}
+
+            <a class = "btn btn-primary" href = "{{ path('home') }}" role = "button" >Revenir à l'accueil</a >
+
+        </div >
+    </div >
+{% endblock %}

@@ -79,6 +79,12 @@ class Comment
 
 	/**
      * @ORM\Column(type="integer")
+	 * @Assert\Length(
+	 *     min="0",
+	 *     max="5",
+	 *     minMessage="La notation doit être de {{ limit }} étoiles minimum.",
+	 *     maxMessage="Le notation doit être de {{ limit }} étoiles maximum.",
+	 * )
      */
     private $evaluation;
 
@@ -153,28 +159,28 @@ class Comment
 
 	//=======================================================================================
 
-	/**
-	 * @var string|null
-	 * @Assert\NotBlank()
-	 * @Assert\Length(min=10)
-	 */
-	private $message;
+//	/**
+//	 * @var string|null
+//	 * @Assert\NotBlank()
+//	 * @Assert\Length(min=10)
+//	 */
+//	private $message;
 
-	/**
-	 * @return string|null
-	 */
-	public function getMessage(): ?string
-	{
-		return $this->message;
-	}
+//	/**
+//	 * @return string|null
+//	 */
+//	public function getMessage(): ?string
+//	{
+//		return $this->message;
+//	}
 
-	/**
-	 * @param string|null $message
-	 */
-	public function setMessage(?string $message): void
-	{
-		$this->message = $message;
-	}
-
+//	/**
+//	 * @param string|null $message
+//	 */
+//	public function setMessage(?string $message): void
+//	{
+//		$this->message = $message;
+//	}
+//
 	//=======================================================================================
 }

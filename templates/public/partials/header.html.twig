@@ -1,6 +1,6 @@
 <!-- Navigation -->
 {% block nav %}
-    <nav class = "navbar navbar-expand-lg navbar-light bg-light" style="margin-top: -4px;">
+    <nav class = "navbar navbar-expand-lg navbar-light bg-light" style = "margin-top: -4px;" >
         <a class = "navbar-brand" href = "#" >Easy - Learning</a >
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarColor03" aria-controls = "navbarColor03" aria-expanded = "false" aria-label = "Toggle navigation" >
             <span class = "navbar-toggler-icon" ></span >
@@ -8,25 +8,25 @@
         <div class = "collapse navbar-collapse" id = "navbarColor03" >
             <ul class = "navbar-nav mr-auto" >
                 <li class = "nav-item active" >
-                    <a class = "nav-link" href = "{{ path('home') }}" ><i class="fas fa-school gaz-icon"></i> Home
+                    <a class = "nav-link" href = "{{ path('home') }}" ><i class = "fas fa-school gaz-icon" ></i > Home
                         <span class = "sr-only" >(current)</span ></a >
                 </li >
                 <li class = "nav-item" >
-                    <a class = "nav-link" href = "{{ path('courses') }}" ><i class="fas fa-graduation-cap gaz-icon"></i> All Courses</a >
+                    <a class = "nav-link" href = "{{ path('courses') }}" ><i class = "fas fa-graduation-cap gaz-icon" ></i > All Courses</a >
                 </li >
 
                 <li class = "nav-item" >
-                    <a class = "nav-link" href = "{{ path('news') }}" ><i class="far fa-newspaper gaz-icon"></i> All News</a >
+                    <a class = "nav-link" href = "{{ path('news') }}" ><i class = "far fa-newspaper gaz-icon" ></i > All News</a >
                 </li >
                 <li class = "nav-item" >
-                    <a class = "nav-link" href = "#" ><i class="fas fa-address-card gaz-icon"></i> About Us</a >
+                    <a class = "nav-link" href = "#" ><i class = "fas fa-address-card gaz-icon" ></i > About Us</a >
                 </li >
                 <li class = "nav-item" >
-                    <a class = "nav-link" href = "#" ><i class="fas fa-chalkboard-teacher gaz-icon"></i> Our Teachers</a >
+                    <a class = "nav-link" href = "#" ><i class = "fas fa-chalkboard-teacher gaz-icon" ></i > Our Teachers</a >
                 </li >
 
                 <li class = "nav-item" >
-                    <a class = "nav-link" href = "{{ path("contact") }}" ><i class="fas fa-envelope-open-text gaz-icon"></i> Contact Us</a >
+                    <a class = "nav-link" href = "{{ path("contact") }}" ><i class = "fas fa-envelope-open-text gaz-icon" ></i > Contact Us</a >
                 </li >
 
             </ul >
@@ -37,16 +37,18 @@
 
                     <li class = "nav-item dropdown" >
 
-                        <a class = "nav-link dropdown-toggle" href = "#" id = "navbarDropdownMenuLink" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" style="margin-top: 4px;">{% if app.user.username is defined %}
-                                <img class="gaz-img-log-in" src = "{{ asset('public/img/avatar/') }}{{ app.user.image }}" alt = "" > {{ app.user.firstname }} {{ app.user.lastname }}
+                        <a class = "nav-link dropdown-toggle" href = "#" id = "navbarDropdownMenuLink" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" style = "margin-top: 4px;" >{% if app.user.username is defined %}
+                                <img class = "gaz-img-log-in" src = "{{ asset('public/img/avatar/') }}{{ app.user.image }}" alt = "" > {{ app.user.firstname }} {{ app.user.lastname }}
                             {% endif %}</a >
                         <div class = "dropdown-menu" aria-labelledby = "navbarDropdownMenuLink" >
 
-                            <a class = "dropdown-item" href = "{{ path('public_user_show', {'id': app.user.id}) }}" ><i class="fas fa-user gaz-icon"></i> Mon compte</a >
+                            <a class = "dropdown-item" href = "{{ path('public_user_show', {'id': app.user.id}) }}" ><i class = "fas fa-user gaz-icon" ></i > Mon compte</a >
 
                             {% if is_granted('ROLE_USER') %} {# On va utiliser une fonctionnalité twig. #}
 
                                 <a class = "dropdown-item" href = "{{ path('registration_new') }}" ><i class = "fas fa-tools gaz-icon" ></i > Inscription aux cours</a >
+
+                                <a class = "dropdown-item" href = "{{ path('cart_index') }}" ><i class = "fas fa-cart-arrow-down" style="margin-left: 2px;" ></i >&nbsp;&nbsp;Mon panier d'inscription</a >
 
                             {% elseif is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
 
@@ -54,8 +56,10 @@
 
                             {% endif %}
 
-                            <a class = "dropdown-item" href = "{{ path('public_user_edit', {'id': app.user.id}) }}" ><i class="fas fa-users-cog gaz-icon"></i> Mettre à jour mon compte</small></a >
-                            <a class = "dropdown-item" href = "{{ path('password_update') }}" ><i class="fas fa-key gaz-icon"></i></i> Changer mon mot de passe </a >
+                            <a class = "dropdown-item" href = "{{ path('public_user_edit', {'id': app.user.id}) }}" ><i class = "fas fa-users-cog gaz-icon" ></i > Mettre à jour mon compte</small>
+                            </a >
+                            <a class = "dropdown-item" href = "{{ path('password_update') }}" ><i class = "fas fa-key gaz-icon" ></i ></i> Changer mon mot de passe
+                            </a >
                             <div class = "dropdown-divider" ></div >
                             <a class = "dropdown-item" href = "{{ path("logout") }}" >Déconnexion</a >
                         </div >
@@ -65,7 +69,8 @@
 
                     <li class = "nav-item dropdown" >
 
-                        <a class = "nav-link dropdown-toggle" href = "#" id = "navbarDropdownMenuLink" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" ><i class = "fas fa-sign-in-alt" ></i > Log‑in <span class = "caret" ></span ></a>
+                        <a class = "nav-link dropdown-toggle" href = "#" id = "navbarDropdownMenuLink" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false" ><i class = "fas fa-sign-in-alt" ></i > Log‑in
+                            <span class = "caret" ></span ></a >
 
                         <ul class = "dropdown-menu dropdown-menu-right mt-2" >
 
@@ -113,26 +118,26 @@
 
             <ul class = "navbar-nav" >
 
-            {% if app.user %}
+                {% if app.user %}
 
 
-                {# if Administration ou SuperAdministation visible #}
-                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+                    {# if Administration ou SuperAdministation visible #}
+                    {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
 
-                <li class = "nav-item" >
-                    <a class = "nav-link" href = "{{ path("admin") }}" ><i class="fas fa-tools gaz-icon"></i>Administration</a >
-                </li >
+                        <li class = "nav-item" >
+                            <a class = "nav-link" href = "{{ path("admin") }}" ><i class = "fas fa-tools gaz-icon" ></i >Administration</a >
+                        </li >
+
+                    {% endif %}
 
                 {% endif %}
 
-            {% endif %}
-
             </ul >
-<form class = "form-inline my-2 my-lg-0" >
-<input class = "form-control mr-sm-2" type = "text" placeholder = "Search" >
-<button class = "btn btn-secondary my-2 my-sm-0" type = "submit" >Search</button >
-</form >
-</div >
-</nav >
+            <form class = "form-inline my-2 my-lg-0" >
+                <input class = "form-control mr-sm-2" type = "text" placeholder = "Search" >
+                <button class = "btn btn-secondary my-2 my-sm-0" type = "submit" >Search</button >
+            </form >
+        </div >
+    </nav >
 {% endblock %}
 <!-- End Navigation -->

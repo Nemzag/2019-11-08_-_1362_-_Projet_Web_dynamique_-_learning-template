@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class News
- * @Route("/news")
+ * @Route("/nouvelle")
  */
 class NewsController extends AbstractController
 {

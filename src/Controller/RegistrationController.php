@@ -1,94 +1,76 @@
 <?php
+/*
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2020-01-18
+ * Time: 23h25
+ * Updated:
+*/
+
 
 namespace App\Controller;
 
+use App\Entity\Course;
 use App\Entity\Registration;
+
 use App\Form\InscriptionType;
-use App\Repository\RegistrationRepository;
+
+use App\Repository\CourseRepository;
+use DateTime;
+
+use Exception;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/registration")
+ * Class Registration
+ * @Route("/inscription")
  */
 class RegistrationController extends AbstractController
 {
-    /**
-     * @Route("/", name="registration_index", methods={"GET"})
-     */
-    public function index(RegistrationRepository $registrationRepository): Response
-    {
-        return $this->render('admin/registration/index.html.twig', [
-            'registrations' => $registrationRepository->findAll(),
-        ]);
-    }
+	/**
+	 * @Route("/new", name="registration_new", methods={"GET","POST"})
+	 * @param Request $request
+	 * @param CourseRepository $courseRepository
+	 * @param Security $security
+	 * @return Response
+	 * @throws Exception
+	 */
+	public function new(Request $request, CourseRepository $courseRepository, Security $security): Response
+	{
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-    /**
-     * @Route("/new", name="registration_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $registration = new Registration();
-        $form = $this->createForm(InscriptionType::class, $registration);
-        $form->handleRequest($request);
+		$registration = new Registration();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($registration);
-            $entityManager->flush();
+		$form = $this->createForm(InscriptionType::class, $registration);
+		$form->handleRequest($request);
 
-            return $this->redirectToRoute('registration_index');
-        }
+		if ($form->isSubmitted() && $form->isValid()) {
 
-        return $this->render('admin/registration/new.html.twig', [
-            'registration' => $registration,
-            'form' => $form->createView(),
-        ]);
-    }
+			$registration->setUser($security->getUser()->getId());
 
-    /**
-     * @Route("/{id}", name="registration_show", methods={"GET"})
-     */
-    public function show(Registration $registration): Response
-    {
-        return $this->render('admin/registration/show.html.twig', [
-            'registration' => $registration,
-        ]);
-    }
+			// Avto‑daθə updaθə…
+			$now = new DateTime('now');
 
-    /**
-     * @Route("/{id}/edit", name="registration_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Registration $registration): Response
-    {
-        $form = $this->createForm(InscriptionType::class, $registration);
-        $form->handleRequest($request);
+			$registration->setCreatedAt($now);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($registration);
+			$entityManager->flush();
 
-            return $this->redirectToRoute('registration_index');
-        }
+			return $this->redirectToRoute('cart_total');
+		}
 
-        return $this->render('admin/registration/edit.html.twig', [
-            'registration' => $registration,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="registration_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Registration $registration): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$registration->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($registration);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('registration_index');
-    }
+		return $this->render('public/registration/registration.new.html.twig', [
+			'registration' => $registration,
+			'course' => $courseRepository->findAll(),
+			'formCourseRegistration' => $form->createView(),
+		]);
+	}
 }

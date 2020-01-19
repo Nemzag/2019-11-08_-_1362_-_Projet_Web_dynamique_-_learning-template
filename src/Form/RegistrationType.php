@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
+// Inscription de utilisateur.
 class RegistrationType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)

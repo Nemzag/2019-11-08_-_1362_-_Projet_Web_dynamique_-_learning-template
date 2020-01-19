@@ -386,6 +386,22 @@
 
                         </ul >
                     </li >
+                    <!-- End news -->
+
+                    <!-- Begin Inscription -->
+                    <li >
+                        <a class = "has-arrow" href = "{{ path('admin_registration_index') }}" aria-expanded = "false" >
+                            <i class = "fab fa-angellist" style = "font-size: 20px; margin-left: 2px;" ></i ><span style = "font-size: 13px;" >&nbsp;&nbsp;&nbsp;</span ><span class = "mini-click-non" >Inscriptions</span ></a >
+
+                        <ul class = "submenu-angle" aria-expanded = "false" >
+
+                            <li >
+                                <a title = "Gestion des cours" href = "{{ path('admin_registration_index') }}" ><span class = "mini-sub-pro" >Gestion des Inscriptions</span ></a >
+                            </li >
+
+                        </ul >
+                    </li >
+                    <!-- End inscription -->
 
                     {#
                     <li >
@@ -1418,6 +1434,15 @@
                                                 <li ><a href = "{{ path('admin_news_index') }}" >Gestion des actualités</a >
                                                 </li >
                                                 <li ><a href = "{{ path('admin_news_new') }}" >Ajouter une actualités</a >
+                                                </li >
+                                            </ul >
+                                        </li >
+
+                                        {# Inscription #}
+                                        <li ><a data-toggle = "collapse" data-target = "#demoevent" href = "#" ><i class = "fab fa-angellist" style = "font-size: 20px; margin-left: 2px;" ></i ><span style = "font-size: 14px;" >&nbsp;&nbsp;&nbsp;</span > Inscription
+                                                <span class = "admin-project-icon edu-icon edu-down-arrow" ></span ></a >
+                                            <ul id = "demoevent" class = "collapse dropdown-header-top" >
+                                                <li ><a href = "{{ path('admin_registration_index') }}" >Gestion des Inscription</a >
                                                 </li >
                                             </ul >
                                         </li >

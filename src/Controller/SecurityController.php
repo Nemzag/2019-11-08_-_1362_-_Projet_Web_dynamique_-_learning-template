@@ -79,7 +79,7 @@ class SecurityController extends AbstractController
 			// Message Flash
 			$this->addFlash('registration_danger', 'Échec de l\'inscription !');
 
-			return $this->render('security/registration.html.twig', [
+			return $this->render('public/security/registration.html.twig', [
 
 				'registration' => $form->createView(),
 				'errors' => $form->getErrors(true, true),
@@ -87,7 +87,7 @@ class SecurityController extends AbstractController
 
 		} else {
 
-			return $this->render('security/registration.html.twig', [
+			return $this->render('public/security/registration.html.twig', [
 
 				'registration' => $form->createView(),
 				'errors' => $form->getErrors(true, true),

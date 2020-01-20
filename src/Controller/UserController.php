@@ -63,9 +63,15 @@ class UserController extends AbstractController
 		$form = $this->createForm(UserEditType::class, $user);
 		$form->handleRequest($request);
 
+		// Si image existe, la garder, sinon image par image défaut.
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($user->getImageFile())) {
+			if(!empty($user->getImage())) {
+
+				$user->setImage($user->getImage());
+
+			} elseif(empty($user->getImageFile())) {
+
 				$user->setImage('default.jpg');
 			}
 

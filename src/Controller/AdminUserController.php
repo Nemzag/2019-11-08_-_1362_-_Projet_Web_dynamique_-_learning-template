@@ -173,9 +173,17 @@ class AdminUserController extends AbstractController
 		$form = $this->createForm(AdminUserType::class, $user);
 		$form->handleRequest($request);
 
-		if ($form->isSubmitted() && $form->isValid()) {
+			// Si image existe, la garder, sinon image par image défaut.
+			if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($user->getImageFile())) $user->setImage('default.jpg');
+				if (!empty($user->getImage())) {
+
+					$user->setImage($user->getImage());
+
+				} elseif (empty($user->getImageFile())) {
+
+					$user->setImage('default.jpg');
+				}
 
 			$this->getDoctrine()->getManager()->flush();
 

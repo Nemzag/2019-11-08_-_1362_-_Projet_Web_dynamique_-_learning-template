@@ -170,9 +170,17 @@ class AdminCourseController extends AbstractController
 		$form = $this->createForm(CourseType::class, $course);
 		$form->handleRequest($request);
 
+		// Si image existe, la garder, sinon image par image défaut.
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($course->getImageFile())) $course->setImage('default.jpg');
+			if(!empty($course->getImage())) {
+
+				$course->setImage($course->getImage());
+
+			} elseif(empty($course->getImageFile())) {
+
+				$course->setImage('default.jpg');
+			}
 
 			$this->getDoctrine()->getManager()->flush();
 

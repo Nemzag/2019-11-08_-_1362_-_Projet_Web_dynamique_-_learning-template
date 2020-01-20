@@ -45,6 +45,7 @@ class RegistrationController extends AbstractController
 	public function new(Request $request, CourseRepository $courseRepository, Security $security): Response
 	{
 		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$this->denyAccessUnlessGranted(['ROLE_USER', 'ROLE_STUDENT']);
 
 		$registration = new Registration();
 

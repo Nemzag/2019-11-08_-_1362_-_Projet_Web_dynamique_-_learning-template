@@ -1,0 +1,20 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 2020-01-20
+ * Time: 22h10
+ * Updated:
+#}
+
+{% if is_granted('ROLE_STUDENT') or is_granted('ROLE_USER') %}
+{% else %}
+    <div class="alert alert-info">Pour accédé au menu inscription,<br>
+        dans le drop‑down log‑in,<br>
+        ou les boutons d'inscription dans chaque cours,<br>
+        il faut être logué en tant que student :<br>
+        <code>student@domain.ext / password</code>.<br>
+        ou bien en tant que user :<br>
+        <code>user@domain.ext / password</code>.<br>
+        L'adresse (chemin) :<br>
+        <code>localhost/…/public/inscription/new</code>.</div>
+{% endif %}

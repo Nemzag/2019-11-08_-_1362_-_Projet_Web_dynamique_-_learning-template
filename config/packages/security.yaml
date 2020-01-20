@@ -66,9 +66,8 @@ security:
     # In ArrayNode.php line 327:
     # Unrecognized options "ROLE_ADMIN, ROLE_SUPER_ADMIN" under "security.access_control.role_hierarchy". Available options are "allow_if", "host", "ips", "methods", "path", "port", "requires_channel", "roles".
 
-    role_hierarchy:
-        ROLE_STUDENT:     [ROLE_USER]
-        ROLE_MODERATOR:   [ROLE_USER]
-        ROLE_PROFESSOR:   [ROLE_USER, ROLE_MODERATOR]
-        ROLE_ADMIN:       [ROLE_USER, ROLE_MODERATOR, ROLE_STUDENT, ROLE_PROFESSOR]
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_MODERATOR, ROLE_STUDENT, ROLE_PROFESSOR, ROLE_ADMIN]
+    #role_hierarchy:
+    #    ROLE_STUDENT:     [ROLE_USER]
+    #    ROLE_PROFESSOR:   [ROLE_USER, ROLE_MODERATOR]
+    #    ROLE_ADMIN:       [ROLE_USER, ROLE_MODERATOR]
+    #    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_MODERATOR, ROLE_ADMIN]

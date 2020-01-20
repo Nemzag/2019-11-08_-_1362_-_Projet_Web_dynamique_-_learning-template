@@ -8,6 +8,7 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 use App\Repository\NewsRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -82,6 +83,7 @@ class AdminNewsController extends AbstractController
 	 * @Route("/new", name="admin_news_new", methods={"GET","POST"})
 	 * @param Request $request
 	 * @return Response
+	 * @throws Exception
 	 */
 	public function new(Request $request): Response
 	{
@@ -93,6 +95,10 @@ class AdminNewsController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+
+			$now = new \DateTime('now');
+
+			$news->setCreatedAt($now);
 
 			if(empty($news->getImageFile())) $news->setImage('default.jpg');
 
@@ -144,9 +150,17 @@ class AdminNewsController extends AbstractController
 		$form = $this->createForm(NewsType::class, $news);
 		$form->handleRequest($request);
 
+		// Si image existe, la garder, sinon image par image défaut.
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(empty($news->getImageFile())) $news->setImage('default.jpg');
+			if(!empty($news->getImage())) {
+
+				$news->setImage($news->getImage());
+
+			} elseif(empty($news->getImageFile())) {
+
+				$news->setImage('default.jpg');
+			}
 
 			$this->getDoctrine()->getManager()->flush();
 
@@ -166,6 +180,9 @@ class AdminNewsController extends AbstractController
 
 	/**
 	 * @Route("/{id}", name="admin_news_delete", methods={"DELETE"})
+	 * @param Request $request
+	 * @param News $news
+	 * @return Response
 	 */
 	public function delete(Request $request, News $news): Response
 	{

@@ -8,16 +8,18 @@
 
 </div >
 
+{#
 <div class = "form-group" >
 
+
     <label >Date de création<small ></small ></label >
-    {# Nomination #}
+    {# Nomination
     {{ form_widget(formNews.createdAt) }}<br>
     <p>Date originel : {{ news.createdAt ? news.createdAt|date('Y-m-d ') : '' }} ‒
     {{ news.createdAt ? news.createdAt|date('H\\hi\\ms\\s') : '' }}</p>
 
 </div >
-
+#}
 <div class = "form-group" >
 
     {{ form_label(formNews.text) }}

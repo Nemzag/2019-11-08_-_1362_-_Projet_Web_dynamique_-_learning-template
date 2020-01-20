@@ -44,7 +44,7 @@
 
                             <a class = "dropdown-item" href = "{{ path('public_user_show', {'id': app.user.id}) }}" ><i class = "fas fa-user gaz-icon" ></i > Mon compte</a >
 
-                            {% if is_granted('ROLE_USER') %} {# On va utiliser une fonctionnalité twig. #}
+                            {% if is_granted('ROLE_STUDENT') %} {# On va utiliser une fonctionnalité twig. #}
 
                                 <a class = "dropdown-item" href = "{{ path('registration_new') }}" ><i class = "fas fa-tools gaz-icon" ></i > Inscription aux cours</a >
 

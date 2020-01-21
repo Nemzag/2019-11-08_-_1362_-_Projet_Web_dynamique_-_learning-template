@@ -8,6 +8,7 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 use App\Repository\NewsRepository;
+use DateTime;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,7 +50,7 @@ class AdminNewsController extends AbstractController
 		$_GET ['visibility'] = $_GET ['visibility'] ?? '';
 		$_GET ['id'] = $_GET ['id'] ?? '';
 
-		if($_GET['visibility'] <= 1 && $_GET['id'] != null) {
+		if ($_GET['visibility'] <= 1 && $_GET['id'] != null) {
 			$newsId = $newsRepository->find($_GET['id']);
 			// var_dump($_GET['visibility']);exit;
 
@@ -68,12 +69,12 @@ class AdminNewsController extends AbstractController
 			$entityManager->flush();
 
 			// Message Flash
-			$this->addFlash('news_visibility', $newsId->getIsPublished() == 0  ? 'Édition de visibilité caché réussi & accompli !' : 'Édition de visibilité affiché réussi & accompli !');
+			$this->addFlash('news_visibility', $newsId->getIsPublished() == 0 ? 'Édition de visibilité caché réussi & accompli !' : 'Édition de visibilité affiché réussi & accompli !');
 		}
 
 		return $this->render('admin/news/news.index.html.twig', [
 			// 'news' => $newsRepository->findAll(),
-			'news' => $newsRepository->findBy(Array(), array('createdAt'=>'DESC')),
+			'news' => $newsRepository->findBy(Array(), array('createdAt' => 'DESC')),
 		]);
 	}
 
@@ -96,11 +97,11 @@ class AdminNewsController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			$now = new \DateTime('now');
+			$now = new DateTime('now');
 
 			$news->setCreatedAt($now);
 
-			if(empty($news->getImageFile())) $news->setImage('default.jpg');
+			if (empty($news->getImageFile())) $news->setImage('default.jpg');
 
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($news);
@@ -153,11 +154,11 @@ class AdminNewsController extends AbstractController
 		// Si image existe, la garder, sinon image par image défaut.
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if(!empty($news->getImage())) {
+			if (!empty($news->getImage())) {
 
 				$news->setImage($news->getImage());
 
-			} elseif(empty($news->getImageFile())) {
+			} elseif (empty($news->getImageFile())) {
 
 				$news->setImage('default.jpg');
 			}
@@ -189,7 +190,7 @@ class AdminNewsController extends AbstractController
 		// Vérification de niveau afin d'accéder à la fonction.
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
 
-		if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
+		if ($this->isCsrfTokenValid('delete' . $news->getId(), $request->request->get('_token'))) {
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($news);
 			$entityManager->flush();

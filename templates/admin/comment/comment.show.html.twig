@@ -3,32 +3,76 @@
 {% block title %}Comment{% endblock %}
 
 {% block main %}
-    <h1>Comment</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ comment.id }}</td>
-            </tr>
-            <tr>
-                <th>Comment</th>
-                <td>{{ comment.comment }}</td>
-            </tr>
-            <tr>
-                <th>DateAddedAt</th>
-                <td>{{ comment.dateAddedAt ? comment.dateAddedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Evaluation</th>
-                <td>{{ comment.evaluation }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class = "container" >
 
-    <a href="{{ path('comment_index') }}">back to list</a>
+        <div class = "row align-items-center" >
 
-    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+            <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-    {{ include('comment/_delete_form.html.twig') }}
+                {# Begin Product-Payment #}
+                <div class = "product-payment-inner-st" >
+
+                    <h1 >Affichage précis du commentaire</h1 >
+
+                    <table class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen gaz-table-show" >
+
+                        <thead class = "thead-dark" >
+                        </thead>
+
+                        <tbody >
+
+                            <tr >
+                                <th >Id</th >
+                                <td >{{ comment.id }}</td >
+                            </tr >
+
+                            <tr >
+                                <th >Utilisateur</th >
+                                <td >{{ comment.user }}</td >
+                            </tr >
+
+                            <tr >
+                                <th >Cours</th >
+                                <td >{{ comment.course }}</td >
+                            </tr >
+
+
+                            <tr >
+                                <th >Comment</th >
+                                <td >{{ comment.comment }}</td >
+                            </tr >
+
+                            <tr >
+                                <th >Date d'ajout</th >
+                                <td >{{ comment.dateAddedAt ? comment.dateAddedAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }} {{ comment.dateAddedAt ? comment.dateAddedAt|date('d F Y ') : '' }} ‒ {{ comment.dateAddedAt ? comment.dateAddedAt|date('H\\hi\\ms\\s') : '' }}</td >
+                            </tr >
+
+                            <tr >
+                                <th >Evaluation</th >
+                                <td >{% if comment.evaluation == 0 %}☆☆☆☆☆{% elseif comment.evaluation == 1 %}★☆☆☆☆{% elseif comment.evaluation == 2 %}★★☆☆☆{% elseif comment.evaluation == 3 %}★★★☆☆{% elseif comment.evaluation == 4 %}★★★★☆{% elseif comment.evaluation == 5 %}★★★★★{% endif %}</td >
+                            </tr >
+
+                            <tr >
+                                <th >Actif</th >
+                                <td >{% if comment.isDisabled == 0 %}Oui{% elseif comment.evaluation == 1 %}Non{% endif %}</td >
+                            </tr >
+
+                        </tbody >
+                    </table >
+
+                    <hr >
+
+                    <button class = "btn btn-primary gaz-admin-form-button" >
+                        <a href = "{{ path('comment_index') }}" style = "color: white;" >Retour à la liste</a >
+                    </button >
+
+                </div >
+
+            </div >
+
+        </div >
+
+    </div >
+
 {% endblock %}

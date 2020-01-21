@@ -1,30 +1,70 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Registration{% endblock %}
+{% block title %}Précis de l'inscription{% endblock %}
 
-{% block body %}
-    <h1>Registration</h1>
+{% block main %}
+    <div class = "container" >
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ registration.id }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ registration.createdAt ? registration.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ registration.amount }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class = "row align-items-center" >
 
-    <a href="{{ path('registration_index') }}">back to list</a>
+            <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-    <a href="{{ path('registration_edit', {'id': registration.id}) }}">edit</a>
+                {# Begin Product-Payment #}
+                <div class = "product-payment-inner-st" >
 
-    {{ include('registration/_delete_form.html.twig') }}
+                <h1>Précis de l'inscription</h1>
+
+                    <table class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen gaz-table-show"
+                           data-filter = "true"
+                           data-info = "false"
+                           data-order = '[[ 8, "asc" ]]'
+                           data-page-length = "25"
+                           data-paging = "true"
+                           id = "table"
+                           style = "margin-left: 0; width: 100%;" >
+
+                        <thead class = "thead-dark" >
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <th class="gaz-table-show-th" >Cours</th>
+                            <td>{{ registration.course }}</td>
+                        </tr>
+
+                        <tr>
+                            <th class="gaz-table-show-th" >Utilisateur</th>
+                            <td>{{ registration.user | capitalize }}</td>
+                        </tr>
+
+                            <tr>
+                                <th class="gaz-table-show-th" >Date de inscription</th>
+                                <td>{{ registration.createdAt ? registration.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="gaz-table-show-th" >Coût</th>
+                                <td>{{ registration.amount }}</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <hr >
+
+                    <button class = "btn btn-primary gaz-admin-form-button" >
+
+                        <a href = "{{ path('admin_registration_index') }}" style = "color: white;" >Retour à la liste</a >
+
+                    </button >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 {% endblock %}

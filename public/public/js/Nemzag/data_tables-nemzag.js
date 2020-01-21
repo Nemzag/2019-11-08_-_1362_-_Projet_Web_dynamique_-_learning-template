@@ -24,10 +24,10 @@ $(document).ready(
                         "info": true,
                         "ordering": true,
                         "aLengthMenu": [
-			[-1, 1, 10, 25, 50, 100, 250, 500],
-			["∞", 1, 10, 25, 50, 100, 250, 500]
+			[-1, 1, 5, 10, 25, 50, 100, 250, 500],
+			["∞", 1, 5, 10, 25, 50, 100, 250, 500]
 		],
-                        "iDisplayLength": -1,
+                        "iDisplayLength": 5,
                         "sDom":
                         // '<"table-datas-top"lfp>rt<"table-datas-bottom"ip><"clear">'
                         //    "<'ui stackable grid'"+

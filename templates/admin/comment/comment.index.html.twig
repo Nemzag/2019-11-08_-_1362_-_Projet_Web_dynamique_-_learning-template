@@ -57,17 +57,17 @@
                         <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
                         #}
 
-                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style = "margin-left: 0; width: auto;" >
+                        <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style = "margin-left: 0; width: 100%;" >
 
                             <thead class = "thead-dark" >
 
                             <tr >
-                                <th scope = "col" class = "gaz-table-index-5em" >Image</th >
-                                <th scope = "col" class = "gaz-table-index-10em" >Pseudo‑onyme</th >
-                                <th scope = "col" class = "gaz-table-index-20em" >Commentaire</th >
-                                <th scope = "col" class = "gaz-table-index-6em" >Censurer</th >
-                                <th scope = "col" class = "gaz-table-index-8em" >Date de ajout</th >
-                                <th scope = "col" class = "gaz-table-index-2em" >Id</th >
+                                <th scope = "col" style="width: 80px;" >Image</th >
+                                <th scope = "col" >Pseudo‑onyme</th >
+                                <th scope = "col" >Commentaire</th >
+                                <th scope = "col" >Censurer</th >
+                                <th scope = "col" style="width: 120px;">Date de ajout</th >
+                                <th scope = "col" style="width: 70px;" >Id</th >
 
                             </thead >
 
@@ -87,7 +87,7 @@
                                         <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ comment.user.role[0] }}</span >
                                     </td >
 
-                                    <td title = "Pseudo‑onyme" title = "Commentaire" >{{ comment.comment }}</td >
+                                    <td title = "Pseudo‑onyme" title = "Commentaire" ><a href = "{{ path('admin_comment_show', {'id': comment.id}) }}" title = "Affiché commentaire." >{{ comment.comment }}</a></td >
                                     <td title = "Action" style = "text-align: center;" >
 
                                         {% if comment.isDisabled == 1 %}

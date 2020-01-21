@@ -138,7 +138,9 @@ class AdminCommentController extends AbstractController
 	 */
 	public function show(Comment $comment): Response
 	{
-		return $this->render('comment/course.show.html.twig', [
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
+		return $this->render('admin/comment/comment.show.html.twig', [
 			'comment' => $comment,
 		]);
 	}
@@ -151,6 +153,8 @@ class AdminCommentController extends AbstractController
 	 */
 	public function edit(Request $request, Comment $comment): Response
 	{
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		$form = $this->createForm(CommentType::class, $comment);
 		$form->handleRequest($request);
 
@@ -160,7 +164,7 @@ class AdminCommentController extends AbstractController
 			return $this->redirectToRoute('comment_index');
 		}
 
-		return $this->render('admin/comment/course.user.edit.html.twig', [
+		return $this->render('admin/comment/comment.edit.html.twig', [
 			'comment' => $comment,
 			'form' => $form->createView(),
 		]);
@@ -174,6 +178,8 @@ class AdminCommentController extends AbstractController
 	 */
 	public function delete(Request $request, Comment $comment): Response
 	{
+		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
 		if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($comment);

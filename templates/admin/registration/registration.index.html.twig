@@ -1,37 +1,67 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Registration index{% endblock %}
+{% block title %}Inscription à un cours{% endblock %}
 
-{% block body %}
-    <h1>Registration index</h1>
+{% block main %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>CreatedAt</th>
-                <th>Amount</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for registration in registrations %}
-            <tr>
-                <td>{{ registration.id }}</td>
-                <td>{{ registration.createdAt ? registration.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ registration.amount }}</td>
-                <td>
-                    <a href="{{ path('registration_show', {'id': registration.id}) }}">show</a>
-                    <a href="{{ path('registration_edit', {'id': registration.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class = "container" >
 
-    <a href="{{ path('registration_new') }}">Create new</a>
-{% endblock %}
+    <div class = "row align-items-center" >
+
+        <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+
+            {# Begin Product-Payment #}
+            <div class = "product-payment-inner-st" >
+
+                <h1 >Inscription à un cours</h1 >
+
+                <table class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen"
+                       data-order='[[ 2, "asc" ]]'
+                       id = "table"
+                       style = "margin-left: 0; width: 100%;" >
+
+                    <thead class = "thead-dark" >
+
+                    <tr >
+
+                        <th scope = "col" >Cours</th >
+                        <th scope = "col" style="width: 150px;" >Date de inscription</th >
+                        <th scope = "col" >Utilisateur</th >
+                        <th scope = "col" style="width: 75px;" >Prix</th >
+
+                    </thead >
+
+                    <tbody >
+                    {#Affichage 4 cours par ligne en flex.#}
+                    {% for registration in registrations %}
+
+                        <tr >
+
+                            <td title = "Cours" ><b><a href = "{{ path('admin_registration_show', {'id': registration.id}) }}" >{{ registration.course | slice(0, 20) | nl2br }}</a ></b></td >
+
+                            <td title = "Date d'inscription" style="text-align: center;" >{{ registration.createdAt ? registration.createdAt|date('Y-m-d ') : '' }}
+                                <br >
+                                <small >{{ registration.createdAt ? registration.createdAt|date('H\\hi\\ms\\s') : '' }}</small ><br >
+                                <small >{{ registration.createdAt ? registration.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
+                            </td >
+
+                            <td title = "Utilisateur">{{ registration.user | capitalize }}</td>
+
+                            <td title = "Prix" class="text-right">{{ registration.amount | number_format(2, ',', '.') }}€</td >
+
+                        </tr >
+
+                    {% else %}
+
+                        <tr >
+                            <td colspan = "13" >Pas d'enregistrement trouvé</td >
+                        </tr >
+                    {% endfor %}
+                    </tbody >
+                </table >
+
+
+            </div >
+            {# Begin Product-Payment #}
+        </div >
+                {% endblock %}

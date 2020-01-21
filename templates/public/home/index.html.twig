@@ -97,12 +97,19 @@
 
                     {# {% set new = news.order('createdAt desc') %} #}
                     <div class = "col-md-6" >
+
                         <div class = "media my-3 shadow-sm p-3 mb-5 bg-white rounded" >
-                            <img alt = "" class = "float-left mr-3 gaz-news-image" src = "{{ path('home') }}/public/img/news/{{ new.image }}" >
+
+                            <img alt = "" class = "float-left mr-3 gaz-news-image" src = "{{ asset('public/img/news/') }}{{ new.image }}" >
+
                             <div class = "media-body" >
+
                                 <h5 class = "mt-0" >{{ new.title }}</h5 >
+
                                 <p >{{ new.title }}</p >
+
                                 <a href = "{{ path('news_show', {'id': new.id}) }}" class = "float-right" >Lire plus…</a >
+
                             </div >
                         </div >
                     </div >

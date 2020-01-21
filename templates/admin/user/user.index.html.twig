@@ -52,6 +52,12 @@
                             </div >
                         {% endfor %}
 
+                        {% for message in app.flashes('admin_user_success') %}
+                            <div class = "alert alert-success" >
+                                {{ message }}
+                            </div >
+                        {% endfor %}
+
                         <p >
                             <a href = "{{ path('admin_user_new') }}" class = "btn btn-warning" ><b >Créer un nouvelle utilisateur</b ></a >
                         </p >

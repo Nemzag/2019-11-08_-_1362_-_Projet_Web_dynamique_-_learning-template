@@ -171,14 +171,22 @@ class AdminUserController extends AbstractController
 
 	/**
 	 * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
+	 * @param $id
 	 * @param Request $request
 	 * @param User $user
 	 * @param UserRepository $userRepository
+	 * @param Security $security
 	 * @return Response
 	 */
-	public function edit(Request $request, User $user, UserRepository $userRepository): Response
+	public function edit($id, Request $request, User $user, UserRepository $userRepository, Security $security): Response
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
+
+		// Pour accédé au role actuel il faut employer le module sécurité (dans use et cette fonction),
+		// pour pouvoir vérifier le rang.
+		$userRole = $security->getUser()->getRoles();
+		// ... do whatever you want with $user
+		$userId = $userRepository->find($id);
 
 		// 2020‑01‑03 ‒ 22H49 : gestion de image.
 		$imageFile = $user->getImage();
@@ -186,30 +194,43 @@ class AdminUserController extends AbstractController
 		$form = $this->createForm(AdminUserEditType::class, $user);
 		$form->handleRequest($request);
 
-		// Si image existe, la garder, sinon image par image défaut.
-		if ($form->isSubmitted() /* && $form->isValid() */) {
-		// Désactivation de isValid(), due à Vich car ce bundle caché empêche le fonctionnemênt norm‑al.
+		if ($userRole == ['ROLE_ADMIN']) {
 
-			if (!empty($user->getImage())) {
+			if ($userId->getRoles() == ['ROLE_ADMIN'] OR $userId->getRoles() == ['ROLE_SUPER_ADMIN']) {
 
-				$user->setImage($user->getImage());
+				// Message Flash
+				$this->addFlash('user_warning', "Un administrateur ne peut pas changer le rôle d'un autre administrateur ou du super‑administrateur.");
 
-			} elseif (empty($user->getImageFile())) {
+				return $this->redirectToRoute('admin_user_index');
 
-				$user->setImage('default.jpg');
+			} else {
+
+				// Si image existe, la garder, sinon image par image défaut.
+				if ($form->isSubmitted() /* && $form->isValid() */) {
+					// Désactivation de isValid(), due à Vich car ce bundle caché empêche le fonctionnemênt norm‑al.
+
+					if (!empty($user->getImage())) {
+
+						$user->setImage($user->getImage());
+
+					} elseif (empty($user->getImageFile())) {
+
+						$user->setImage('default.jpg');
+					}
+
+					$this->getDoctrine()->getManager()->flush();
+
+					// Message Flash
+					$this->addFlash('admin_user_success', 'Promotion réussi & accompli !');
+
+					return $this->redirectToRoute('admin_user_index');
+
+				} elseif ($form->getErrors()->count() > 0) {
+
+					// Message Flash
+					$this->addFlash('admin_user_danger', 'Échec de la promotion !');
+				}
 			}
-
-			$this->getDoctrine()->getManager()->flush();
-
-			// Message Flash
-			$this->addFlash('user_success', 'Promotion réussi & accompli !');
-
-			return $this->redirectToRoute('admin_user_index');
-
-		} elseif ($form->getErrors()->count() > 0) {
-
-			// Message Flash
-			$this->addFlash('admin_user_danger', 'Échec de la promotion !');
 		}
 
 		return $this->render('admin/user/user.edit.html.twig', [

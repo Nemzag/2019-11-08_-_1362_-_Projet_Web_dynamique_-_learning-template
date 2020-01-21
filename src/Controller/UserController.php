@@ -64,7 +64,8 @@ class UserController extends AbstractController
 		$form->handleRequest($request);
 
 		// Si image existe, la garder, sinon image par image défaut.
-		if ($form->isSubmitted() && $form->isValid()) {
+		if ($form->isSubmitted() /* && $form->isValid() */) {
+		// Désactivation de isValid(), due à Vich car ce bundle caché empêche le fonctionnemênt norm‑al.
 
 			if(!empty($user->getImage())) {
 
@@ -92,10 +93,13 @@ class UserController extends AbstractController
 			// Message Flash
 			$this->addFlash('public_user_success', 'Modification réussi & accompli !');
 
-			return $this->redirectToRoute('user_index');
+			return $this->redirectToRoute('home');
+
+		} elseif($form->getErrors()->count() > 0) {
+
+			// Message Flash
+			$this->addFlash('admin_user_danger', 'Échec de la modification !');
 		}
-		// Message Flash
-		$this->addFlash('public_user_danger', 'Échec de la modification !');
 
 		return $this->render('public/user/user.edit.html.twig', [
 			'user' => $user,

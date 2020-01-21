@@ -173,9 +173,10 @@ class AdminUserController extends AbstractController
 	 * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
 	 * @param Request $request
 	 * @param User $user
+	 * @param UserRepository $userRepository
 	 * @return Response
 	 */
-	public function edit(Request $request, User $user): Response
+	public function edit(Request $request, User $user, UserRepository $userRepository): Response
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
@@ -185,17 +186,18 @@ class AdminUserController extends AbstractController
 		$form = $this->createForm(AdminUserEditType::class, $user);
 		$form->handleRequest($request);
 
-			// Si image existe, la garder, sinon image par image défaut.
-			if ($form->isSubmitted() && $form->isValid()) {
+		// Si image existe, la garder, sinon image par image défaut.
+		if ($form->isSubmitted() /* && $form->isValid() */) {
+		// Désactivation de isValid(), due à Vich car ce bundle caché empêche le fonctionnemênt norm‑al.
 
-				if (!empty($user->getImage())) {
+			if (!empty($user->getImage())) {
 
-					$user->setImage($user->getImage());
+				$user->setImage($user->getImage());
 
-				} elseif (empty($user->getImageFile())) {
+			} elseif (empty($user->getImageFile())) {
 
-					$user->setImage('default.jpg');
-				}
+				$user->setImage('default.jpg');
+			}
 
 			$this->getDoctrine()->getManager()->flush();
 
@@ -203,9 +205,12 @@ class AdminUserController extends AbstractController
 			$this->addFlash('user_success', 'Promotion réussi & accompli !');
 
 			return $this->redirectToRoute('admin_user_index');
+
+		} elseif ($form->getErrors()->count() > 0) {
+
+			// Message Flash
+			$this->addFlash('admin_user_danger', 'Échec de la promotion !');
 		}
-		// Message Flash
-		$this->addFlash('admin_user_danger', 'Échec de la promotion !');
 
 		return $this->render('admin/user/user.edit.html.twig', [
 			'user' => $user,

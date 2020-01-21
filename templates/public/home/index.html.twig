@@ -25,7 +25,14 @@
         <section >
 
             {% for message in app.flashes('registration_success') %}
-                <br >
+                <br ><br >
+                <div class = "alert alert-success" >
+                    {{ message }}
+                </div >
+            {% endfor %}
+
+            {% for message in app.flashes('public_user_success') %}
+                <br ><br >
                 <div class = "alert alert-success" >
                     {{ message }}
                 </div >

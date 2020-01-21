@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -25,51 +25,40 @@ class AdminUserType extends AbstractType
 		$builder
 			->add('userName', TextType::class, [
 
-				'disabled' => true,
-
 				'label' => 'Pseudo‑onyme',
 
 				'attr' => [
 					'minlength' => '4',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬',
-					'style' => 'display:none;',
+					'placeholder' => '4 caractères minimum, 255 maximum.‬',
 				]
 			])
 
 			/* Prénom */
 			->add('firstName', TextType::class, [
 
-				'disabled' => true,
-
 				'label' => 'Prénom',
 
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬',
-					'style' => 'display:none;',
+					'placeholder' => '2 caractères minimum, 255 maximum.‬',
 				]
 			])
 
 			/* Nom */
 			->add('lastName', TextType::class, [
 
-				'disabled' => true,
-
 				'label' => 'Nom',
 
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '255 caractères maximum.‬',
-					'style' => 'display:none;',
+					'placeholder' => '2 caractères minimum, 255 maximum.‬',
 				]
 			])
 
 			->add('email', EmailType::class, [
-
-				'disabled' => true,
 
 				'label' => 'Courriel',
 
@@ -77,13 +66,10 @@ class AdminUserType extends AbstractType
 					'minlength' => '8',
 					'maxlength' => '255',
 					'placeholder' => '8 caractères minimum & 255 caractères maximum.‬',
-					'style' => 'display:none;',
 				]
 			])
 
 			->add('password', PasswordType::class, [
-
-				'disabled' => true,
 
 				'label' => 'Mot de passe',
 
@@ -91,14 +77,10 @@ class AdminUserType extends AbstractType
 					'minlength' => '6',
 					'maxlength' => '255',
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬',
-					'disabled' => 'disabled',
-					'style' => 'display:none;',
 				]
 			])
 
 			->add('confirmPassword', PasswordType::class, [
-
-				'disabled' => true,
 
 				'label' => 'Confirmer le mot de passe',
 
@@ -106,10 +88,10 @@ class AdminUserType extends AbstractType
 					'minlength' => '6',
 					'maxlength' => '255',
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬',
-					'style' => 'display:none;',
 				]
 			])
 
+			/*
 			->add('createdAt', DateTimeType::class, [
 
 				'disabled' => true,
@@ -121,31 +103,7 @@ class AdminUserType extends AbstractType
 					'style' => 'display:none;',
 				],
 			])
-
-			->add('updatedAt', DateTimeType::class, [
-
-				'label' => 'Date de mise à jours',
-				'data' => new \DateTime(),
-
-				'attr' => [
-					'style' => 'display:none;'
-				],
-			])
-			->add('isDisabled', ChoiceType::class, [
-
-				'disabled' => true,
-
-				'label' => 'Activé',
-
-				'choices' => [
-					'Oui' => 1,
-					'Non' => 0,
-				],
-
-				'attr' => [
-					'style' => 'display:none;',
-				]
-			])
+			*/
 
 			->add('role', ChoiceType::class, [
 
@@ -160,6 +118,7 @@ class AdminUserType extends AbstractType
 				]
 			])
 
+			/*
 			->add('Image', TextType::class, [
 
 				'label' => false,
@@ -170,11 +129,9 @@ class AdminUserType extends AbstractType
 					'minlength' => '3',
 					'maxlength' => '255',
 					'placeholder' => '255 caractères maximum.‬',
-					'style' => 'display:none;',
 				]
-
-
 			])
+			*/
 
 			->add('imageFile', VichImageType::class, [
 
@@ -191,17 +148,6 @@ class AdminUserType extends AbstractType
 					// 'style' => 'display:none;',
 					// 'class' => 'form-control',
 					]
-			])
-
-			->add('lastLogAt', DateTimeType::class, [
-
-				'label' => 'Date de dernière connection',
-				'data' => new \DateTime(),
-
-				'attr' => [
-					'style' => 'display:none;'
-				],
-
 			]);
 	}
 

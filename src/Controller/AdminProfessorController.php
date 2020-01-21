@@ -125,8 +125,6 @@ class AdminProfessorController extends AbstractController
 
 			if (empty($user->getImageFile())) $user->setImage('default.jpg');
 
-			$this->getDoctrine()->getManager()->flush();
-
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($user);
 			$entityManager->flush();

@@ -1,0 +1,17 @@
+{{ form_start(adminUserForm) }}
+
+{#
+{{ form_widget(form) }}
+#}
+
+<div class = "form-group" >
+
+    {# Role #}
+    {{ form_label(adminUserForm.role) }}
+    {{ form_widget(adminUserForm.role) }}
+
+</div >
+
+<button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
+
+{{ form_end(adminUserForm) }}

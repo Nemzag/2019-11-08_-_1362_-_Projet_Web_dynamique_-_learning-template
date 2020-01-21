@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 
+use App\Form\AdminUserEditType;
 use App\Form\AdminUserType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use DateTime;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,6 +104,7 @@ class AdminUserController extends AbstractController
 	 * @Route("/new", name="admin_user_new", methods={"GET","POST"})
 	 * @param Request $request
 	 * @return Response
+	 * @throws Exception
 	 */
 	public function new(Request $request): Response
 	{
@@ -118,14 +122,22 @@ class AdminUserController extends AbstractController
 		*/
 		//────────────────────────────────────────────────────────────────────────
 		$user = new User();
+
 		$form = $this->createForm(AdminUserType::class, $user);
+
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if (empty($user->getImageFile())) $user->setImage('default.jpg');
+			$now = new DateTime('now');
 
-			$this->getDoctrine()->getManager()->flush();
+			$user->setCreatedAt($now);
+			$user->setUpdatedAt($now);
+			$user->setLastLogAt($now);
+
+			$user->setIsDisabled(false);
+
+			if (empty($user->getImageFile())) $user->setImage('default.jpg');
 
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($user);
@@ -170,7 +182,7 @@ class AdminUserController extends AbstractController
 		// 2020‑01‑03 ‒ 22H49 : gestion de image.
 		$imageFile = $user->getImage();
 
-		$form = $this->createForm(AdminUserType::class, $user);
+		$form = $this->createForm(AdminUserEditType::class, $user);
 		$form->handleRequest($request);
 
 			// Si image existe, la garder, sinon image par image défaut.

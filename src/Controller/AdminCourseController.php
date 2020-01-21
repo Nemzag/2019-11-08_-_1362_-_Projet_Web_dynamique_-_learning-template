@@ -11,6 +11,7 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 
+use DateTime;
 use Exception;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -108,7 +109,7 @@ class AdminCourseController extends AbstractController
 
 			if(empty($course->getImageFile())) $course->setImage('default.jpg');
 
-			$now = new \DateTime('now');
+			$now = new DateTime('now');
 
 			$course->setCreatedAt($now);
 

@@ -64,6 +64,7 @@ class RecaptchaValidator extends ConstraintValidator {
 
 	private function addViolation(Constraint $constraint) {
 
-		$this->context->buildViolation($constraint->message)->addViolation();
+		$this->context->addViolation($constraint->message); // Causait problème de désactivation des @Assert, HTML constraint.
+		// $this->context->buildViolation($constraint->message)->addViolation();
 	}
 }

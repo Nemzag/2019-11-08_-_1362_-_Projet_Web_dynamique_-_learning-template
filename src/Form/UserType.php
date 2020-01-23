@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 
+use Grafikart\RecaptchaBundle\Constraints\Recaptcha;
+
 use Grafikart\RecaptchaBundle\Type\RecaptchaSubmitType;
 
 use Symfony\Component\Form\AbstractType;
@@ -138,7 +140,7 @@ class UserType extends AbstractType
 
 				'download_label' => "Télécharger l'image",
 				// 'asset_helper' => true,
-				'attr' => ['placeholder' => 'Photo']
+				'attr' => ['placeholder' => 'photo']
 				// 'attr' => ['class' => 'form-control']
 			])
 			/*
@@ -164,10 +166,11 @@ class UserType extends AbstractType
 			])
 
 			->add('captcha', RecaptchaSubmitType::class, [
-				'label' => 'Envoyer',
+				'label' => 'Envoyer avec vérification du captcha',
 				'attr' => [
 					'class' => 'btn btn-success gaz-admin-form-button'
-				]
+				],
+				'constraints' => new Recaptcha()
 			]);
 	}
 

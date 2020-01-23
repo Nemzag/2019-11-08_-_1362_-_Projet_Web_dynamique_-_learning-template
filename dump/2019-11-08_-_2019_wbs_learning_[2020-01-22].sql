@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 21, 2020 at 08:46 AM
+-- Generation Time: Jan 22, 2020 at 05:35 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -313,10 +313,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `user_name`, `first_name`, `last_name`, `email`, `password`, `created_at`, `updated_at`, `last_log_at`, `is_disabled`, `role`, `image`, `image_updated_at`) VALUES
 (1, 'Katlasos', 'Gazmen', 'Arifi', 'gazmen@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$ei9IaHk5bjN5NVJiY05aaw$71MDwzw1vc/uCPpAKHAnbEFe9HB8w8Cd/yODftlgXWo', '2019-08-14 12:25:59', '2019-12-15 09:29:19', '2020-01-10 18:19:40', 0, '[\"ROLE_SUPER_ADMIN\"]', '010m.jpg', '1999-04-16 16:36:24'),
-(2, 'Patrick', 'Patrick', 'Marthus', 'patrick@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$dGZaU0QwWWExdTRPUDFUbQ$Xjl0JuTB0rJmxXV06QWBGu/I/mgf98l/oSlE+IhUBQc', '2019-07-14 00:26:48', '2019-12-14 02:07:44', '2020-01-10 18:19:40', 0, '[\"ROLE_ADMIN\"]', '012m.jpg', '1998-03-10 11:51:29'),
+(2, 'Patrick', 'Patrick', 'Marthus', 'patrick@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$dGZaU0QwWWExdTRPUDFUbQ$Xjl0JuTB0rJmxXV06QWBGu/I/mgf98l/oSlE+IhUBQc', '2019-07-14 00:26:48', '2020-01-21 19:20:43', '2020-01-21 19:20:43', 0, '[\"ROLE_ADMIN\"]', '012m.jpg', '1998-03-10 11:51:29'),
 (3, 'laetitia.lamy', 'Margot', 'Langlois', 'margot.langlois@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$LlBsUnRnUUE4SThlNzdCWQ$5dM8GvYvdZSK4U8QhaDzoyb2GwBTyh8tCsaMfUOB2kA', '2019-10-07 02:54:56', '2019-11-12 20:13:55', '2020-01-10 18:19:41', 1, '[\"ROLE_PROFESSOR\"]', '010f.jpg', '1979-07-26 21:41:50'),
 (4, 'eugene.arnaud', 'Thierry', 'Martinez', 'thierry.martinez@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$MmVQVldybEZySWVuNmNCYQ$muLmb7gmPDWrdcje8fyLX6jwbAkmACjlyviPj9vjGxM', '2019-08-25 18:36:24', '2019-12-14 09:48:54', '2020-01-10 18:19:41', 0, '[\"ROLE_ADMIN\"]', '010m.jpg', '2014-10-31 06:10:37'),
-(5, 'vincent.timothee', 'Patrick', 'Boucher', 'patrick.boucher@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$Q3RYNTJONGJQa2NQVW1Tdw$rFb5qCJnS9lRBPTw5w5ZJyNpU9BVFY1fRJYg8jzgc7M', '2019-08-12 19:23:50', '2019-12-26 16:12:03', '2020-01-10 18:19:41', 0, '[\"ROLE_USER\"]', '011m.jpg', '2017-09-02 19:29:26'),
+(5, 'vincent.timothee', 'Patrick', 'Boucher', 'patrick.boucher@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$Q3RYNTJONGJQa2NQVW1Tdw$rFb5qCJnS9lRBPTw5w5ZJyNpU9BVFY1fRJYg8jzgc7M', '2019-08-12 19:23:50', '2019-12-26 16:12:03', '2020-01-10 18:19:41', 0, '[\"ROLE_STUDENT\"]', '011m.jpg', '2017-09-02 19:29:26'),
 (6, 'amelie67', 'Victor', 'Bertin', 'victor.bertin@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$QmYuV0xGY2EwV0pDYjFySQ$kkD8JnFJrSCc5U6TTQoawwuZeOInwefqCD1+Q1Jqvi0', '2019-09-23 19:24:54', '2019-10-11 19:53:13', '2020-01-10 18:19:41', 1, '[\"ROLE_STUDENT\"]', '011m.jpg', '1991-11-30 21:48:38'),
 (7, 'gilbert39', 'Adrien', 'Garnier', 'adrien.garnier@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$d1dsLkNZMEc5UXliQTZnVw$sscZ7ZFx2aDvcq1MleYGQTY+2fM52+tDU4PRm/GWF/s', '2019-08-23 03:42:32', '2019-10-17 02:49:50', '2020-01-10 18:19:42', 0, '[\"ROLE_PROFESSOR\"]', '011m.jpg', '1972-10-16 12:16:42'),
 (8, 'ibailly', 'Alfred', 'Leduc', 'alfred.leduc@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$eXRGa1kyVS5McHlUckJRdw$62zTskNLIpxultpX9e/IKMCE+dyO3zBeH8fPMNuphJ0', '2019-07-14 15:49:34', '2019-10-31 07:30:10', '2020-01-10 18:19:42', 0, '[\"ROLE_ADMIN\"]', '011m.jpg', '2002-09-20 16:54:07'),
@@ -391,8 +391,7 @@ INSERT INTO `user` (`id`, `user_name`, `first_name`, `last_name`, `email`, `pass
 (77, 'User', 'User', 'User', 'user@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$dFJLdDIyYUlWREd1UTdLOQ$zVIpnyN/mvaaqIRT+qaRcGPXgRc1gkLnYHiwQOWBJnc', '2020-01-14 16:31:54', '2020-01-14 16:31:54', '2020-01-14 16:31:54', 1, '[\"ROLE_USER\"]', 'default.jpg', '2020-01-14 16:31:55'),
 (78, 'Professor', 'Professor', 'Professor', 'professor@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$cGx0LlZHSXRYMGxIS0UyWA$xTzWnpUoM4jRzDpMVV22WpTzB5x81ktkGw5Vfq2ECmU', '2020-01-14 16:38:33', '2020-01-14 16:38:33', '2020-01-14 16:38:33', 0, '[\"ROLE_USER\"]', 'default.jpg', NULL),
 (79, 'Quentin', 'Quentin', 'Degols', 'quentin@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$RnEuYi5HaFJTZVNYa003NA$377vI2isdWKzwaPu3I53utanEVWluNk9SFzCWLJ29G0', '2020-01-14 16:47:31', '2020-01-14 16:47:31', '2020-01-14 16:47:31', 0, '[\"ROLE_USER\"]', 'default.jpg', NULL),
-(82, 'Student', 'Student', 'Student', 'student@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$U2E4RE1TSzZXaHRjZkY3Tw$h62hWCC/9A17Tr9lMHIPf4hxDw8O6btBcqpAVU7NeVk', '2020-01-20 08:53:26', '2020-01-20 08:53:26', '2020-01-20 08:53:26', 0, '[\"ROLE_STUDENT\"]', 'default.jpg', NULL),
-(83, 'Testons', 'Testons', 'Testons', 'Testons@domain.ext', 'password', '2020-01-21 01:52:04', '2020-01-21 01:52:04', '2020-01-21 01:52:04', 0, '[\"ROLE_PROFESSOR\"]', '01986f04396ca502d3f020ea4ca2ddb8dc487d5f3d-5e2659443dcd9022642944.jpg', '2020-01-21 01:52:04');
+(82, 'Student', 'Student', 'Student', 'student@domain.ext', '$argon2i$v=19$m=65536,t=4,p=1$U2E4RE1TSzZXaHRjZkY3Tw$h62hWCC/9A17Tr9lMHIPf4hxDw8O6btBcqpAVU7NeVk', '2020-01-20 08:53:26', '2020-01-20 08:53:26', '2020-01-20 08:53:26', 0, '[\"ROLE_STUDENT\"]', 'default.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -497,7 +496,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- Constraints for dumped tables

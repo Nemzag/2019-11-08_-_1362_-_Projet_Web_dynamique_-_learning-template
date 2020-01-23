@@ -73,7 +73,10 @@ class AdminUserController extends AbstractController
 
 					// Message Flash
 					$this->addFlash('user_disabled', $userId->getId() == 0 ? 'Édition activation de compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+
+					return $this->redirectToRoute('admin_user_index');
 				}
+
 			} elseif ($userRole == ['ROLE_SUPER_ADMIN']) {
 
 				if ($_GET['disabled'] == 1) {
@@ -92,6 +95,8 @@ class AdminUserController extends AbstractController
 
 				// Message Flash
 				$this->addFlash('user_disabled', $userId->getId() == 0 ? 'Édition activation de compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+
+				return $this->redirectToRoute('admin_user_index');
 			}
 		}
 

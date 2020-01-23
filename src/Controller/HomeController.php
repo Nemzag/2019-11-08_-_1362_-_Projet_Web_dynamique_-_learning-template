@@ -27,7 +27,7 @@ class HomeController extends AbstractController
 	    $courses = $this
 		    ->getDoctrine()
 		    ->getRepository(Course::class )
-		    ->findBy(Array(), array('createdAt'=>'DESC'), 3);
+		    ->findBy(Array('isPublished'=> 1), array('createdAt'=>'DESC'), 3);
 
         return $this->render('public/home/index.html.twig', [
 	        "news" => $news,

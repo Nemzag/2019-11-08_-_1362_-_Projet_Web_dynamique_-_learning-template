@@ -39,6 +39,8 @@
             {% endfor %}
 
             <h2 class = "my-5" >Nos dernières formations</h2 >
+
+            {{ include('public/partials/alert.success.visibility.html.twig') }}
             <div class = "row" >
 
                 {% for course in courses %}

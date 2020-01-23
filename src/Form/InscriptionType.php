@@ -30,6 +30,10 @@ class InscriptionType extends AbstractType
 						->orderBy('c.name', 'ASC');
 				},
 
+				'choice_label' => function (Course $course) {
+					return rtrim($course->getName(), '.') . ' (' . $course->getPrice() . '€)';
+				},
+
 				'multiple' => true,
 				'expanded' => true,
 

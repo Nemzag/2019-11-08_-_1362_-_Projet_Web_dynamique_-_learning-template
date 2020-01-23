@@ -48,8 +48,10 @@ class CourseController extends AbstractController
 	// public function courses() // Version du prof au départ.
 	public function courses(CourseCategoryRepository $CourseCategoryRepository, CourseRepository $CourseRepository, CourseLevelRepository $CourseLevelRepository)
 	{
-		$courses = $CourseRepository->findAll();
+		$courses = $CourseRepository->findBy(Array('isPublished'=> 1));
+
 		$categories = $CourseCategoryRepository->findAll();
+
 		$levels = $CourseLevelRepository->findAll();
 
 		return $this->render('public/course/courses.html.twig', [

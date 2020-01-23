@@ -70,6 +70,8 @@ class AdminNewsController extends AbstractController
 
 			// Message Flash
 			$this->addFlash('news_visibility', $newsId->getIsPublished() == 0 ? 'Édition de visibilité caché réussi & accompli !' : 'Édition de visibilité affiché réussi & accompli !');
+
+			return $this->redirectToRoute('admin_news_index');
 		}
 
 		return $this->render('admin/news/news.index.html.twig', [

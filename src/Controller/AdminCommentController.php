@@ -63,8 +63,6 @@ class AdminCommentController extends AbstractController
 						// var_dump($_GET['visibility']);exit;
 						$commentId->setIsDisabled(1); // Vrai
 
-						$contactService->advertiseByMail();
-
 					} elseif ($_GET['disabled'] == 0) {
 
 						// var_dump($_GET['visibility']);exit;
@@ -76,6 +74,8 @@ class AdminCommentController extends AbstractController
 
 					// Message Flash
 					$this->addFlash('comment_disabled', $commentId->getId() == 0 ? 'Édition activation du commentaire compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+
+					return $this->redirectToRoute('admin_comment_index');
 				}
 			} elseif ($userRole == ['ROLE_SUPER_ADMIN']) {
 
@@ -83,6 +83,8 @@ class AdminCommentController extends AbstractController
 
 					// var_dump($_GET['visibility']);exit;
 					$commentId->setIsDisabled(1);
+
+					$contactService->advertiseByMail();
 
 				} elseif ($_GET['disabled'] == 0) {
 
@@ -95,6 +97,8 @@ class AdminCommentController extends AbstractController
 
 				// Message Flash
 				$this->addFlash('comment_disabled', $commentId->getId() == 0 ? 'Édition activation de commentaire réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
+
+				return $this->redirectToRoute('admin_comment_index');
 			}
 		}
 

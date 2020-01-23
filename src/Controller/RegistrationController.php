@@ -16,6 +16,7 @@ use App\Entity\Registration;
 use App\Form\InscriptionType;
 
 use App\Repository\CourseRepository;
+use App\Service\cart\CartService;
 use DateTime;
 
 use Exception;
@@ -39,10 +40,10 @@ class RegistrationController extends AbstractController
 	 * @param Request $request
 	 * @param CourseRepository $courseRepository
 	 * @param Security $security
+	 * @param CartService $cartService
 	 * @return Response
-	 * @throws Exception
 	 */
-	public function new(Request $request, CourseRepository $courseRepository, Security $security): Response
+	public function new(Request $request, CourseRepository $courseRepository, CartService $cartService): Response
 	{
 		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 		$this->denyAccessUnlessGranted(['ROLE_USER', 'ROLE_STUDENT']);
@@ -50,22 +51,13 @@ class RegistrationController extends AbstractController
 		$registration = new Registration();
 
 		$form = $this->createForm(InscriptionType::class, $registration);
-		$form->handleRequest($request);
-
-		if ($form->isSubmitted() && $form->isValid()) {
-
-			$registration->setUser($security->getUser()->getId());
-
-			// Avto‑daθə updaθə…
-			$now = new DateTime('now');
-
-			$registration->setCreatedAt($now);
-
-			$entityManager = $this->getDoctrine()->getManager();
-			$entityManager->persist($registration);
-			$entityManager->flush();
-
-			return $this->redirectToRoute('cart_total');
+		$courses = $request->request->all()['inscription']['course'] ?? null;
+		if($courses) {
+			foreach($courses as $course)
+			{
+				$cartService->add($course);
+			}
+			return $this->redirectToRoute('cart_index');
 		}
 
 		return $this->render('public/registration/registration.new.html.twig', [

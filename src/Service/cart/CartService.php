@@ -31,7 +31,6 @@ class CartService
 
 	public function add(int $id)
 	{
-
 		// Accéder à la session. Avec HttpFoundation par Request.
 		// php bin/console debug:autowiring session
 		// $request que je remplace par $session.

@@ -81,6 +81,8 @@ class AdminCourseController extends AbstractController
 
 			// Message Flash
 			$this->addFlash('course_visibility', $courseId->getIsPublished() == 0  ? 'Édition de visibilité caché réussi & accompli !' : 'Édition de visibilité affiché réussi & accompli !');
+
+			return $this->redirectToRoute('admin_course_index');
 		}
 
 		return $this->render('admin/course/course.index.html.twig', [

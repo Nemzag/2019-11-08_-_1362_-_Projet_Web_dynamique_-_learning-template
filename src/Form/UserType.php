@@ -140,7 +140,7 @@ class UserType extends AbstractType
 
 				'download_label' => "Télécharger l'image",
 				// 'asset_helper' => true,
-				'attr' => ['placeholder' => 'photo']
+				// 'attr' => ['placeholder' => 'photo']
 				// 'attr' => ['class' => 'form-control']
 			])
 			/*

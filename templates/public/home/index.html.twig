@@ -38,6 +38,13 @@
                 </div >
             {% endfor %}
 
+            {% for message in app.flashes('password_change_success') %}
+                <br ><br >
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             <h2 class = "my-5" >Nos dernières formations</h2 >
 
             {{ include('public/partials/alert.success.visibility.html.twig') }}

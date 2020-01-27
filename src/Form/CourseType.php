@@ -131,7 +131,8 @@ class CourseType extends AbstractType
 				'download_uri' => false,
 				'download_label' => "Télécharger l'image",
 				// 'asset_helper' => true,
-				'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['placeholder' => 'Photo']
+				// 'attr' => ['value' => 'Chercher']
 				// 'attr' => ['class' => 'form-control']
 
 				/*

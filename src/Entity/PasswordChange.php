@@ -10,13 +10,11 @@
 namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
-class PasswordUpdate
+class PasswordChange
 {
 	/**
-	 * @SecurityAssert\UserPassword(
-	 *     message = "Mauvaise valeur pour votre mot de passe actuel.",
-	 * )
 	 * @Assert\NotBlank(
 	 *     message = "S.V.P. inséré un mot de passe",
 	 * )
@@ -32,22 +30,27 @@ class PasswordUpdate
 	/**
 	 * @return mixed
 	 */
-	public function getNewPassword()
+	public function getNewPassword(): ?string
 	{
 		return $this->newPassword;
 	}
 
 	/**
 	 * @param mixed $newPassword
+	 * @return PasswordChange
 	 */
-	public function setNewPassword($newPassword): void
+	public function setNewPassword(string $newPassword): self
 	{
 		$this->newPassword = $newPassword;
-	}
 
+		return $this;
+	}
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
 	/**
+	 * @SecurityAssert\UserPassword(
+	 *     message = "Mauvaise valeur pour votre mot de passe actuel.",
+	 * )
 	 * @Assert\NotBlank(
 	 *      message = "S.V.P. inséré un mot de passe",
 	 * )
@@ -78,7 +81,6 @@ class PasswordUpdate
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
-	private $confirmPassword;
 	/**
 	 * @Assert\NotBlank(
 	 *     message = "S.V.P. inséré un mot de passe",
@@ -91,20 +93,21 @@ class PasswordUpdate
 	 *      maxMessage = "Le mot de passe doit contenir au maximum {{ limit }} caractères.",
 	 * )
 	 */
+	private $confirmNewPassword;
 
 	/**
 	 * @return mixed
 	 */
-	public function getConfirmPassword()
+	public function getConfirmNewPassword()
 	{
-		return $this->confirmPassword;
+		return $this->confirmNewPassword;
 	}
 
 	/**
-	 * @param mixed $confirmPassword
+	 * @param mixed $confirmNewPassword
 	 */
-	public function setConfirmPassword($confirmPassword): void
+	public function setConfirmNewPassword($confirmNewPassword): void
 	{
-		$this->confirmPassword = $confirmPassword;
+		$this->confirmNewPassword = $confirmNewPassword;
 	}
 }

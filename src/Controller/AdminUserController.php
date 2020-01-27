@@ -211,7 +211,7 @@ class AdminUserController extends AbstractController
 			} else {
 
 				// Si image existe, la garder, sinon image par image défaut.
-				if ($form->isSubmitted() /* && $form->isValid() */) {
+				if ($form->isSubmitted() && $form->isValid()) {
 					// Désactivation de isValid(), due à Vich car ce bundle caché empêche le fonctionnemênt norm‑al.
 
 					if (!empty($user->getImage())) {

@@ -350,6 +350,12 @@ class User implements UserInterface
 
 	/**
 	 * @ORM\Column(type="string", length=255)
+	 */
+	private $image;
+
+	/**
+	 * @Vich\UploadableField(mapping="user_img", fileNameProperty="image")
+	 * @var File
 	 * @Assert\Length(
 	 *     min = 3,
 	 *     max = 255,
@@ -366,13 +372,6 @@ class User implements UserInterface
 	 *     disallowEmptyMessage="Vous êtes obligé de choisir une image pour le utilisateur.",
 	 *     notFoundMessage="Vous êtes obligé de choisir une image pour le utilisateur.",
 	 * )
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $image;
-
-	/**
-	 * @Vich\UploadableField(mapping="user_img", fileNameProperty="image")
-	 * @var File
 	 */
 	private $imageFile;
 

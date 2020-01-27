@@ -95,19 +95,18 @@ class UserController extends AbstractController
 			$this->getDoctrine()->getManager()->flush();
 
 			// Message Flash
-			$this->addFlash('public_user_success', 'Modification réussi & accompli !');
+			$this->addFlash('public_user_success', 'Modification de profil réussi & accompli !');
 
 			return $this->redirectToRoute('home');
 
 		} elseif ($form->getErrors()->count() > 0) {
 
 			// Message Flash
-			$this->addFlash('admin_user_danger', 'Échec de la modification !');
+			$this->addFlash('admin_user_danger', 'Échec de la modification du profil !');
 		}
 
 		return $this->render('public/user/user.edit.html.twig', [
 			'user' => $user,
-			'placeHolder' => $imageFile,
 			'userForm' => $form->createView(),
 			'errors' => $form->getErrors(true, true),
 		]);

@@ -63,6 +63,8 @@ class AdminCommentController extends AbstractController
 						// var_dump($_GET['visibility']);exit;
 						$commentId->setIsDisabled(1); // Vrai
 
+						$contactService->advertiseByMail();
+
 					} elseif ($_GET['disabled'] == 0) {
 
 						// var_dump($_GET['visibility']);exit;

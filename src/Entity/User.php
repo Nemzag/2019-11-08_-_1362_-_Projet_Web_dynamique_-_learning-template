@@ -9,6 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Serializable;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Symfony\Component\HttpFoundation\File\File;
@@ -25,11 +27,40 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * )
  * @Vich\Uploadable
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
 	public function __toString(): string
 	{
 		return $this->userName;
+	}
+
+	/**
+	 * @see \Serializable::serialize()
+	 */
+	public function serialize()
+	{
+		return serialize(array(
+			$this->id,
+			$this->userName,
+			$this->password,
+			// see section on salt below
+			// $this->salt,
+		));
+	}
+
+	/**
+	 * @param $serialized
+	 * @see \Serializable::unserialize()
+	 */
+	public function unserialize($serialized)
+	{
+		list (
+			$this->id,
+			$this->userName,
+			$this->password,
+			// see section on salt below
+			// $this->salt
+			) = unserialize($serialized);
 	}
 
 	/**

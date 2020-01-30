@@ -40,6 +40,10 @@
                             >qui sont dans le ficher template <code >user.show.twig.html</code ></div >
                         #}
 
+                        <div class = "alert alert-info" >La promotion fonctionne, d'après mes tests.<br>
+                            Seul le super‑admin peut modifier le rôle de un admin,<br>et un admin ne peut changer le rôle de un autre admin ou de lui-même.<br>
+                            Un message flash apparait en cas de tentative.</div >
+
                         {{ include('admin/include/alert.info.html.twig') }}
 
                         {% for message in app.flashes('user_disabled') %}

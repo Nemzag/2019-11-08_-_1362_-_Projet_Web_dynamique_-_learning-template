@@ -49,6 +49,8 @@ class UserController extends AbstractController
 		]);
 	}
 
+	//=======================================================================================
+
 	/**
 	 * @Route("/{id}/edit", name="public_user_edit", methods={"GET","POST"})
 	 * @param Request $request

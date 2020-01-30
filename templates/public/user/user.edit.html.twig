@@ -24,6 +24,20 @@
 
                         <h1 >Éditer profil utilisateur</h1 >
 
+                        <div class = "alert alert-info" >Cette méthode est opérationnelle,<br>
+                            bien que j’aie galéré avec une erreur de type :<br>
+                            <code >"Serialization of 'Symfony\Component\HttpFoundation\File\File' is not allowed"</code >,<br > que j'ai mis des jours et solutionné grâce à ces pages :
+                            <ul >
+                                <li >
+                                    <a href = "https://www.grafikart.fr/forum/topics/30746" target = "_blank" >https://www.grafikart.fr/forum/topics/30746</a >
+                                </li >
+                                <li >
+                                    <a href = "https://symfony.com/doc/2.4/cookbook/security/entity_provider.html#the-data-model" target = "_blank" >https://symfony.com/doc/2.4/cookbook/security/entity_provider.html#the-data-model</a >
+                                </li >
+                            </ul >
+                        </div >
+
+
                         {% for message in app.flashes('public_user_danger') %}
                             <div class = "alert alert-danger" >
                                 {{ message }}

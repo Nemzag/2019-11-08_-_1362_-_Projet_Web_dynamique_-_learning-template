@@ -35,8 +35,7 @@
 
         <h1 >Gestion des professeurs</h1 >
 
-        <div class="alert alert-danger">Je n’ai pas eu le temps d’entamer et finir cette section et ses fonctionnalité,<br>ni sont contrôleur (les détails),<br>
-            je le ferais pour la seconde session.</div>
+        <div class="alert alert-info">Demandé le 2019‑12‑05 (voir dossier « Consigne ».)</div>
 
         {{ include('admin/include/alert.info.html.twig') }}
 
@@ -52,7 +51,7 @@
         {% endfor %}
 
         <p >
-            <a href = "{{ path('admin_user_new') }}" class = "btn btn-warning" ><b >Créer un nouvelle utilisateur</b ></a >
+            <a href = "{{ path('admin_professor_new') }}" class = "btn btn-warning" ><b >Créer un nouveau professor</b ></a >
         </p >
 
         {#
@@ -75,7 +74,7 @@
                 <th scope = "col" >Password</th >
                 #}
 
-                <th scope = "col" style="width: 60px;" >Rangué</th >
+                <th scope = "col" style="width: 60px;" >Éditer</th >
 
                 <th scope = "col" style="width: 85px;" >Date de<br >création</th >
 
@@ -121,7 +120,7 @@
                     </td >
 
                     <td title = "Action" style = "text-align: center;" >
-                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_professor_edit', {'id': user.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Rang</small ></a >
+                        <a class = "btn btn-info gaz-admin-btn-crud" href = "{{ path('admin_professor_edit', {'id': user.id}) }}" ><i class = "fas fa-edit" ></i ><br ><small >Édité</small ></a >
                     </td >
 
 
@@ -159,6 +158,6 @@
 
         <hr >
         <p >
-            <a href = "{{ path('admin_user_new') }}" class = "btn btn-warning" ><b >Créer un nouvelle utilisateur</b ></a >
+            <a href = "{{ path('admin_user_new') }}" class = "btn btn-warning" ><b >Créer un nouveau professor</b ></a >
         </p >
     {% endblock %}

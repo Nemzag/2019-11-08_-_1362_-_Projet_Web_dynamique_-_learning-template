@@ -19,6 +19,19 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    // 2020‑02‑04 ‒ FindBy : ROLE_PROFESSOR
+	public function findUsersByRole($role)
+	{
+		$qb = $this->createQueryBuilder('u');
+		$qb->select('u')
+			->where('u.role LIKE :role')
+			->setParameter('role', '%"'.$role.'"%')
+			->orderBy('u.createdAt', 'DESC');
+;
+
+		return $qb->getQuery()->getResult();
+	}
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

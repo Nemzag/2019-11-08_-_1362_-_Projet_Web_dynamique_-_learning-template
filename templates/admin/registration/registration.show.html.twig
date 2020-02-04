@@ -33,6 +33,12 @@
                         </tr>
 
                         <tr>
+                            <th class="gaz-table-show-th" >Professeur</th>
+                            <td>{{ registration.course.professor.firstName | capitalize }} {{ registration.course.professor.lastName | capitalize }}<br>
+                                <img src = "{{ asset('public/img/avatar/') }}{{ registration.course.professor.image }}" alt = "{{ registration.course.professor.firstName }}" title = "{{ registration.course.professor.firstName }}" class = "gaz-show-image" ></td>
+                        </tr>
+
+                        <tr>
                             <th class="gaz-table-show-th" >Utilisateur</th>
                             <td>{{ registration.user | capitalize }}</td>
                         </tr>
@@ -44,7 +50,7 @@
 
                             <tr>
                                 <th class="gaz-table-show-th" >Coût</th>
-                                <td>{{ registration.amount }}</td>
+                                <td>{{ registration.amount | number_format(2, ',', '.') }}€</td>
                             </tr>
 
                         </tbody>

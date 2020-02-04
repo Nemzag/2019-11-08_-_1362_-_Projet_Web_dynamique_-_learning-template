@@ -21,9 +21,11 @@ use Symfony\Component\Security\Core\Security;
  */
 class CommentController extends AbstractController
 {
-    /**
-     * @Route("/", name="comment_index", methods={"GET"})
-     */
+	/**
+	 * @Route("/", name="comment_index", methods={"GET"})
+	 * @param CommentRepository $commentRepository
+	 * @return Response
+	 */
     public function index(CommentRepository $commentRepository): Response
     {
         return $this->render('comment/admin.login.html.twig', [

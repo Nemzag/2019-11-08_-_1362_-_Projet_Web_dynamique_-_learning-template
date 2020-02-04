@@ -1,6 +1,6 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Promotionné un utilisateur{% endblock %}
+{% block title %}Éditer un professeur{% endblock %}
 
 {% block main %}
 
@@ -13,7 +13,7 @@
 
                     <div class = "product-payment-inner-st" >
 
-                        <h1 >Promotionné un utilisateur</h1 >
+                        <h1 >Éditer un professeur</h1 >
 
                         {% for message in app.flashes('admin_user_danger') %}
                             <div class = "alert alert-danger" >
@@ -23,34 +23,12 @@
 
                         {# ──────────────────────────────────────────────────────────────────────── #}
 
+                        {{ form_start(professorForm) }}
 
-                        {{ form_start(userForm) }}
-                        {{ form_widget(userForm) }}
-                        <button class="btn">{{ button_label|default('Save') }}</button>
-                        {{ form_end(userForm) }}
+                        {{ include('admin/professor/_form.edit.html.twig', {'button_label': 'Sauver'}) }}
 
+                        {{ form_end(professorForm) }}
 
-                        {# ──────────────────────────────────────────────────────────────────────── #}
-
-                        {# Form_Rest #}
-                        {#
-                        {{ form_start(userForm) }}
-
-                        {{ form_rest(userForm) }}
-
-                        <button class = "btn btn-success gaz-admin-form-button" >{{ button_label|default('Sauver') }}</button >
-
-                        {{ form_end(userForm) }}
-                        #}
-
-                        {# ──────────────────────────────────────────────────────────────────────── #}
-                        {#
-                        {{ form_start(userForm) }}
-
-                        {{ include('admin/user/_form.html.twig', {'button_label': 'Sauver'}) }}
-
-                        {{ form_end(userForm) }}
-                        #}
                         {# ──────────────────────────────────────────────────────────────────────── #}
 
                         {#

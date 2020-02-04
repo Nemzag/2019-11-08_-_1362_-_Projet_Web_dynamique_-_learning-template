@@ -111,6 +111,7 @@
 
 .gaz-show-image {
     height: 25em !important;
+    border: solid 1px gray;
 }
 
 .gaz-admin-form-button {

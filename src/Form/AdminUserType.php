@@ -87,6 +87,7 @@ class AdminUserType extends AbstractType
 				'attr' => [
 					'minlength' => '6',
 					'maxlength' => '255',
+
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬',
 				]
 			])
@@ -146,7 +147,7 @@ class AdminUserType extends AbstractType
 				'attr' => [
 					// 'placeholder' => 'Photo',
 					// 'style' => 'display:none;',
-					// 'class' => 'form-control',
+					'class' => 'form-control',
 					]
 			]);
 	}

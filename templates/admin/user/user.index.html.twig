@@ -33,18 +33,25 @@
 
                     <div class = "product-payment-inner-st" >
 
-                        <h1 >Gestion des utilisateurs</h1 >
+                        <details open >
+                            <summary style = "direction: rtl; text-align: left;" class = "h1" >
+                                <strong >Gestion des utilisateurs</strong ></summary >
 
-                        {#
-                        <div class = "alert alert-warning" >P.V.I., je ne suis pas parvenu à régler la promotion, car Vich interfère, j'ai beau désactivé celui dans le AdminUserType, il réclame une image,<br > ce bug est visible quand on utilise le Widget par défaut et pas le formatable,<br
-                            >qui sont dans le ficher template <code >user.show.twig.html</code ></div >
-                        #}
+                            <hr >
 
-                        <div class = "alert alert-info" >La promotion fonctionne, d'après mes tests.<br>
-                            Seul le super‑admin peut modifier le rôle de un admin,<br>et un admin ne peut changer le rôle de un autre admin ou de lui-même.<br>
-                            Un message flash apparait en cas de tentative.</div >
+                            {#
+                            <div class = "alert alert-warning" >P.V.I., je ne suis pas parvenu à régler la promotion, car Vich interfère, j'ai beau désactivé celui dans le AdminUserType, il réclame une image,<br > ce bug est visible quand on utilise le Widget par défaut et pas le formatable,<br
+                                >qui sont dans le ficher template <code >user.show.twig.html</code ></div >
+                            #}
 
-                        {{ include('admin/include/alert.info.html.twig') }}
+                            <div class = "alert alert-info" >La promotion fonctionne, d'après mes tests.<br > Seul le super‑admin peut modifier le rôle de un admin,<br >et un admin ne peut changer le rôle de un autre admin ou de lui-même.<br > Un message flash apparait en cas de tentative.
+                            </div >
+
+                            {{ include('admin/include/alert.info.html.twig') }}
+
+                        </details >
+
+                        <hr >
 
                         {% for message in app.flashes('user_disabled') %}
                             <div class = "alert alert-success" >
@@ -68,6 +75,8 @@
                             <a href = "{{ path('admin_user_new') }}" class = "btn btn-warning" ><b >Créer un nouvelle utilisateur</b ></a >
                         </p >
 
+                        <hr >
+
                         {#
                         <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
                         #}
@@ -84,27 +93,27 @@
                             <thead class = "thead-dark" >
 
                             <tr >
-                                <th scope = "col" style="width: 50px;" >Image</th >
+                                <th scope = "col" style = "width: 50px;" >Image</th >
 
-                                <th scope = "col" >Pseudo‑onyme<br>Courriel</th >
+                                <th scope = "col" >Pseudo‑onyme<br >Courriel</th >
 
-                                <th scope = "col" style="width: 70px;" >Prénom<br>Nom</th >
+                                <th scope = "col" style = "width: 70px;" >Prénom<br >Nom</th >
 
-                                <th scope = "col" style="width: 60px;"  >Actif</th >
+                                <th scope = "col" style = "width: 60px;" >Actif</th >
 
                                 {#
                                 <th scope = "col" >Password</th >
                                 #}
 
-                                <th scope = "col" style="width: 60px;" >Rangué</th >
+                                <th scope = "col" style = "width: 60px;" >Rangué</th >
 
-                                <th scope = "col" style="width: 85px;" >Date de<br >création</th >
+                                <th scope = "col" style = "width: 85px;" >Date de<br >création</th >
 
-                                <th scope = "col" style="width: 85px;">Date de<br >mise à jour</th >
+                                <th scope = "col" style = "width: 85px;" >Date de<br >mise à jour</th >
 
-                                <th scope = "col" style="width: 85px;">Dernier<br >connection</th >
+                                <th scope = "col" style = "width: 85px;" >Dernier<br >connection</th >
 
-                                <th scope = "col" style="width: 40px;" >ID</th >
+                                <th scope = "col" style = "width: 40px;" >ID</th >
                             </tr >
 
                             </thead >
@@ -169,7 +178,7 @@
                                         <small >{{ user.lastLogAt ? user.lastLogAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</small >
                                     </td >
 
-                                    <td title = "ID" style="text-align: right;" >{{ user.id }}</td >
+                                    <td title = "ID" style = "text-align: right;" >{{ user.id }}</td >
 
                                 </tr >
 

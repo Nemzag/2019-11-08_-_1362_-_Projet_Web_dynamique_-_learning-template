@@ -130,6 +130,12 @@ class CourseType extends AbstractType
 				'image_uri' => false,
 				'download_uri' => false,
 				'download_label' => "Télécharger l'image",
+
+				'attr' => [
+
+					'class' => 'form-control',
+				]
+
 				// 'asset_helper' => true,
 				// 'attr' => ['placeholder' => 'Photo']
 				// 'attr' => ['value' => 'Chercher']
@@ -173,6 +179,11 @@ class CourseType extends AbstractType
 				'required' => false,
 				'label' => "P.D.F. explicatif du cours",
 				'download_uri' => false,
+
+				'attr' => [
+
+					'class' => 'form-control',
+				]
 			])
 			/*
 			->add('program', FileType::class, [

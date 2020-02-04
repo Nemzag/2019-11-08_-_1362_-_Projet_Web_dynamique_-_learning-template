@@ -148,7 +148,7 @@ class AdminProfessorType extends AbstractType
 				'attr' => [
 					// 'placeholder' => 'Photo',
 					// 'style' => 'display:none;',
-					// 'class' => 'form-control',
+					'class' => 'form-control',
 					]
 			]);
 	}

@@ -2,6 +2,7 @@
 
     {% block title %}Créer un nouvelle utilisateur{% endblock %}
 
+
     {% block main %}
 
         <div class = "courses-area" style = "margin-bottom: 30px;" >
@@ -13,7 +14,9 @@
 
                         <div class = "product-payment-inner-st" >
 
-                            <h1 >Créer un nouvelle utilisateur</h1 >
+                            <h1 class="h1" ><strong>Créer un nouvelle utilisateur</strong></h1 >
+
+                            <hr >
 
                             {{ include('admin/user/_form.new.html.twig') }}
 

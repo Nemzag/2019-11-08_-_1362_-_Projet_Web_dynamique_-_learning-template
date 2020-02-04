@@ -31,13 +31,20 @@
 
         <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-       <div class = "product-payment-inner-st" >
+        <div class = "product-payment-inner-st" >
 
-        <h1 >Gestion des professeurs</h1 >
+        <details >
+            <summary style = "direction: rtl; text-align: left;" class = "h1" >
+                <strong >Gestion des professeurs</strong ></summary >
 
-        <div class="alert alert-info">Demandé le 2019‑12‑05 (voir dossier « Consigne ».)</div>
+            <hr >
 
-        {{ include('admin/include/alert.info.html.twig') }}
+            <div class = "alert alert-info" >Demandé le 2019‑12‑05 (voir dossier « Consigne ».)</div >
+
+            {{ include('admin/include/alert.info.html.twig') }}
+        </details >
+
+        <hr >
 
         {% for message in app.flashes('user_disabled') %}
             <div class = "alert alert-success" >
@@ -45,44 +52,45 @@
             </div >
         {% endfor %}
         {% for message in app.flashes('user_warning') %}
-            <div class="alert alert-warning">
+            <div class = "alert alert-warning" >
                 {{ message }}
-            </div>
+            </div >
         {% endfor %}
 
         <p >
             <a href = "{{ path('admin_professor_new') }}" class = "btn btn-warning" ><b >Créer un nouveau professor</b ></a >
         </p >
 
+        <hr >
         {#
         <table id="table" style="text-align: center" class="table-de-gazmen order-column hover stripe cell-border" data-order='[[ 2, "desc" ]]' <!-- data-column-defs='[{ "type": "html-num-fmt", "targets": 5 }]' --> data-page-length="25" data-filter="true" data-info="false" data-paging="true"> > <!-- data-page-length="-1" : pro all results… -->
         #}
 
-        <table id="table" class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen" data-order='[[ 9, "asc" ]]' style = "margin-left: 0; width: 100%;" data-page-length="25" data-filter="true" data-info="false" data-paging="true" >
+        <table id = "table" class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen" data-order = '[[ 9, "asc" ]]' style = "margin-left: 0; width: 100%;" data-page-length = "25" data-filter = "true" data-info = "false" data-paging = "true" >
 
             <thead class = "thead-dark" >
 
-                <th scope = "col" style="width: 50px;" >Image</th >
+            <th scope = "col" style = "width: 50px;" >Image</th >
 
-                <th scope = "col" >Pseudo‑onyme<br>Courriel</th >
+            <th scope = "col" >Pseudo‑onyme<br >Courriel</th >
 
-                <th scope = "col" style="width: 70px;" >Prénom<br>Nom</th >
+            <th scope = "col" style = "width: 70px;" >Prénom<br >Nom</th >
 
-                <th scope = "col" style="width: 60px;"  >Actif</th >
+            <th scope = "col" style = "width: 60px;" >Actif</th >
 
-                {#
-                <th scope = "col" >Password</th >
-                #}
+            {#
+            <th scope = "col" >Password</th >
+            #}
 
-                <th scope = "col" style="width: 60px;" >Éditer</th >
+            <th scope = "col" style = "width: 60px;" >Éditer</th >
 
-                <th scope = "col" style="width: 85px;" >Date de<br >création</th >
+            <th scope = "col" style = "width: 85px;" >Date de<br >création</th >
 
-                <th scope = "col" style="width: 85px;">Date de<br >mise à jour</th >
+            <th scope = "col" style = "width: 85px;" >Date de<br >mise à jour</th >
 
-                <th scope = "col" style="width: 85px;">Dernier<br >connection</th >
+            <th scope = "col" style = "width: 85px;" >Dernier<br >connection</th >
 
-                <th scope = "col" style="width: 40px;" >ID</th >
+            <th scope = "col" style = "width: 40px;" >ID</th >
             </tr >
 
             </thead >
@@ -98,11 +106,12 @@
                     </td >
 
                     <td title = "Pseudo‑onyme" >
-                        <a href = "{{ path('admin_professor_show', {'id': user.id}) }}" title="Pseudo‑onyme de l'utilisateur.">{{ user.userName }}</a ><br>
-                        <small><a href = "mailto:{{ user.email }}" title="Contacter par courriel.">{{ user.email | capitalize }}</a ></small><br>
-                        <span class="badge badge-primary" title="Rang de l'utilisateur.">{{ user.role[0] }}</span></td >
+                        <a href = "{{ path('admin_professor_show', {'id': user.id}) }}" title = "Pseudo‑onyme de l'utilisateur." >{{ user.userName }}</a ><br >
+                        <small ><a href = "mailto:{{ user.email }}" title = "Contacter par courriel." >{{ user.email | capitalize }}</a ></small ><br >
+                        <span class = "badge badge-primary" title = "Rang de l'utilisateur." >{{ user.role[0] }}</span >
+                    </td >
 
-                    <td title = "Prénom & nom" >{{ user.firstName }}<br>{{ user.lastName }}</td >
+                    <td title = "Prénom & nom" >{{ user.firstName }}<br >{{ user.lastName }}</td >
 
                     <td title = "Action" style = "text-align: center;" >
 

@@ -35,10 +35,7 @@ class AdminProfessorController extends AbstractController
 	{
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
 
-		/*
-		$user = $userRepository->findBy(Array('role'=> ["ROLE_PROFESSOR"]), array('createdAt'=>'DESC'), 6);
-		// 1. Paramètre, 2. Ordre, 3. Limite.
-		*/
+		$user = $userRepository->findAll();
 
 		// Pour accédé au role actuel il faut employer le module securité (dans use et cette fonction),
 		// pour pouvoir vérifier le rang.
@@ -53,51 +50,24 @@ class AdminProfessorController extends AbstractController
 			$userId = $userRepository->find($_GET['id']);
 			// var_dump($_GET['visibility']);exit;
 
-			if ($userRole == ['ROLE_ADMIN']) {
+			if ($_GET['disabled'] == 1) {
 
-				if ($userId->getRoles() == ['ROLE_ADMIN'] OR $userId->getRoles() == ['ROLE_SUPER_ADMIN']) {
+				// var_dump($_GET['visibility']);exit;
+				$userId->setIsDisabled(1);
 
-					// Message Flash
-					$this->addFlash('user_warning', "Un administrateur ne peut pas désactivé un autre administrateur ou le super‑administrateur.");
+			} elseif ($_GET['disabled'] == 0) {
 
-				} else {
-
-					if ($_GET['disabled'] == 1) {
-
-						// var_dump($_GET['visibility']);exit;
-						$userId->setIsDisabled(1);
-
-					} elseif ($_GET['disabled'] == 0) {
-
-						// var_dump($_GET['visibility']);exit;
-						$userId->setIsDisabled(0);
-					}
-					$entityManager = $this->getDoctrine()->getManager();
-					$entityManager->persist($userId);
-					$entityManager->flush();
-
-					// Message Flash
-					$this->addFlash('user_disabled', $userId->getId() == 0 ? 'Édition activation de compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
-				}
-			} elseif ($userRole == ['ROLE_SUPER_ADMIN']) {
-
-				if ($_GET['disabled'] == 1) {
-
-					// var_dump($_GET['visibility']);exit;
-					$userId->setIsDisabled(1);
-
-				} elseif ($_GET['disabled'] == 0) {
-
-					// var_dump($_GET['visibility']);exit;
-					$userId->setIsDisabled(0);
-				}
-				$entityManager = $this->getDoctrine()->getManager();
-				$entityManager->persist($userId);
-				$entityManager->flush();
-
-				// Message Flash
-				$this->addFlash('user_disabled', $userId->getId() == 0 ? 'Édition activation de compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+				// var_dump($_GET['visibility']);exit;
+				$userId->setIsDisabled(0);
 			}
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($userId);
+			$entityManager->flush();
+
+			// Message Flash
+			$this->addFlash('user_disabled', $userId->getId() == 0 ? 'Édition activation de compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+
+			return $this->redirectToRoute('admin_professor_index');
 		}
 
 		return $this->render('admin/professor/professor.index.html.twig', [

@@ -33,11 +33,19 @@
 
                     <div class = "product-payment-inner-st" >
 
-                        <h1 >Gestion des Cours</h1 >
+                        <details >
+                            <summary style = "direction: rtl; text-align: left;" class = "h1" >
+                                <strong >Gestion des Cours</strong ></summary >
+
+                            <hr >
 
                         <div class="alert alert-info">L'édition des cours et l'addition est fonctionnel dans mes tests.</div>
 
                         {{ include('admin/include/alert.info.html.twig') }}
+
+                        </details>
+
+                        <hr >
 
                         {% for message in app.flashes('course_success') %}
                             <div class="alert alert-success">
@@ -58,6 +66,8 @@
                         <p >
                             <a href = "{{ path('admin_course_new') }}" class = "btn btn-warning" ><b >Créer un nouveau cours</b ></a >
                         </p >
+
+                            <hr >
 
                         <table class = "table table-bordered table-sm table-hover table-striped gaz-table" style="margin-left: 0;" >
 

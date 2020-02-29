@@ -1,0 +1,25 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gaz‑mên Arifi (Shkypi, 1979-09-30) {https://github.com/Nemzag/}.
+ * Date: 29/02/2020
+ * Time: 22:05
+ * Updated:
+#}
+
+<p style="color: #3e4244">
+    De : Administrateur EasyLearning.Be : <a href = "mailto:contact@easylearning.be" target="_blank">contact@easylearning.be</a >
+</p>
+
+<h2 class="h5">{{ title }}</h2>
+
+<p><b>{{ createdAt ? createdAt|date('Y‑m‑d ') : '' }} ‒ {{ createdAt ? createdAt|date('H\\hi\\ms\\s') : '' }} ‒ {{ createdAt ? createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}</b></p>
+
+<div class = "alert alert-warning" style="background-color: rgba(229,57,53 ,0.5)" >
+
+   <p>L'image n'étant pas en ligne, elle n'apparait pas dans ce courriel, et c'est norm‑al {ΝΌΜΟΣ} !</p>
+
+</div>
+
+<p><img src = "{{ asset('public/img/news/') }}{{ image }}" alt = "{{ image }}" class = "img-thumbnail" ></p>
+
+<p>{{ text | nl2br }}</p>

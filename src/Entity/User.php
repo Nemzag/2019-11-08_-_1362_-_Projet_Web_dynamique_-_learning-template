@@ -30,38 +30,38 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class User implements UserInterface, \Serializable
 {
 	public function __toString(): string
-	{
-		return $this->userName;
-	}
+         	{
+         		return $this->userName;
+         	}
 
 	/**
 	 * @see \Serializable::serialize()
 	 */
 	public function serialize()
-	{
-		return serialize(array(
-			$this->id,
-			$this->userName,
-			$this->password,
-			// see section on salt below
-			// $this->salt,
-		));
-	}
+         	{
+         		return serialize(array(
+         			$this->id,
+         			$this->userName,
+         			$this->password,
+         			// see section on salt below
+         			// $this->salt,
+         		));
+         	}
 
 	/**
 	 * @param $serialized
 	 * @see \Serializable::unserialize()
 	 */
 	public function unserialize($serialized)
-	{
-		list (
-			$this->id,
-			$this->userName,
-			$this->password,
-			// see section on salt below
-			// $this->salt
-			) = unserialize($serialized);
-	}
+         	{
+         		list (
+         			$this->id,
+         			$this->userName,
+         			$this->password,
+         			// see section on salt below
+         			// $this->salt
+         			) = unserialize($serialized);
+         	}
 
 	/**
 	 * @ORM\Id()
@@ -76,15 +76,15 @@ class User implements UserInterface, \Serializable
 	private $Id;
 
 	public function __construct()
-	{
-		$this->comments = new ArrayCollection();
-		$this->Id = new ArrayCollection();
-	}
+         	{
+         		$this->comments = new ArrayCollection();
+         		$this->Id = new ArrayCollection();
+         	}
 
 	public function getId(): ?int
-	{
-		return $this->id;
-	}
+         	{
+         		return $this->id;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -100,19 +100,19 @@ class User implements UserInterface, \Serializable
 	private $userName;
 
 	public function getUsername(): ?string
-		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
-		// Dans le code du prof il ne l'a pash mit.
-	{
-		// return $this->userName;
-		return (string)$this->userName;
-	}
+         		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
+         		// Dans le code du prof il ne l'a pash mit.
+         	{
+         		// return $this->userName;
+         		return (string)$this->userName;
+         	}
 
 	public function setUserName(string $userName): self
-	{
-		$this->userName = $userName;
-
-		return $this;
-	}
+         	{
+         		$this->userName = $userName;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -136,20 +136,20 @@ class User implements UserInterface, \Serializable
 	 * @return mixed
 	 */
 	public function getFirstName(): ?string  // Martin Brognon, l'avait pash moi.
-	{
-		return $this->firstName;
-	}
+         	{
+         		return $this->firstName;
+         	}
 
 	/**
 	 * @param mixed $firstName
 	 * @return User
 	 */
 	public function setFirstName($firstName): self // void, pash le meme que Martin.
-	{
-		$this->firstName = $firstName;
-
-		return $this;
-	}
+         	{
+         		$this->firstName = $firstName;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -173,20 +173,20 @@ class User implements UserInterface, \Serializable
 	 * @return mixed
 	 */
 	public function getLastName(): ?string // Martin Brognon, l'avait pash moi.
-	{
-		return $this->lastName;
-	}
+         	{
+         		return $this->lastName;
+         	}
 
 	/**
 	 * @param mixed $lastName
 	 * @return User
 	 */
 	public function setLastName($lastName): self // void, pash le meme que Martin.
-	{
-		$this->lastName = $lastName;
-
-		return $this;
-	}
+         	{
+         		$this->lastName = $lastName;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -206,16 +206,16 @@ class User implements UserInterface, \Serializable
 	private $email;
 
 	public function getEmail(): ?string
-	{
-		return $this->email;
-	}
+         	{
+         		return $this->email;
+         	}
 
 	public function setEmail(string $email): self
-	{
-		$this->email = $email;
-
-		return $this;
-	}
+         	{
+         		$this->email = $email;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -231,16 +231,16 @@ class User implements UserInterface, \Serializable
 	private $password;
 
 	public function getPassword(): ?string
-	{
-		return $this->password;
-	}
+         	{
+         		return $this->password;
+         	}
 
 	public function setPassword(string $password): self
-	{
-		$this->password = $password;
-
-		return $this;
-	}
+         	{
+         		$this->password = $password;
+         
+         		return $this;
+         	}
 
 	/**
 	 * @Assert\EqualTo(propertyPath="password", message="Le mot de passe doit être identique")
@@ -261,16 +261,16 @@ class User implements UserInterface, \Serializable
 	private $createdAt;
 
 	public function getCreatedAt(): ?DateTimeInterface
-	{
-		return $this->createdAt;
-	}
+         	{
+         		return $this->createdAt;
+         	}
 
 	public function setCreatedAt(DateTimeInterface $createdAt): self
-	{
-		$this->createdAt = $createdAt;
-
-		return $this;
-	}
+         	{
+         		$this->createdAt = $createdAt;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -280,15 +280,15 @@ class User implements UserInterface, \Serializable
 	private $updatedAt;
 
 	public function getUpdatedAt(): ?DateTimeInterface
-	{
-		return $this->updatedAt;
-	}
+         	{
+         		return $this->updatedAt;
+         	}
 
 	public function setUpdatedAt(DateTimeInterface $updatedAt): self
-	{
-		$this->updatedAt = $updatedAt;
-		return $this;
-	}
+         	{
+         		$this->updatedAt = $updatedAt;
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -298,16 +298,16 @@ class User implements UserInterface, \Serializable
 	private $lastLogAt;
 
 	public function getLastLogAt(): ?DateTimeInterface
-	{
-		return $this->lastLogAt;
-	}
+         	{
+         		return $this->lastLogAt;
+         	}
 
 	public function setLastLogAt(DateTimeInterface $lastLogAt): self
-	{
-		$this->lastLogAt = $lastLogAt;
-
-		return $this;
-	}
+         	{
+         		$this->lastLogAt = $lastLogAt;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -317,16 +317,16 @@ class User implements UserInterface, \Serializable
 	private $isDisabled;
 
 	public function getIsDisabled(): ?bool
-	{
-		return $this->isDisabled;
-	}
+         	{
+         		return $this->isDisabled;
+         	}
 
 	public function setIsDisabled(bool $isDisabled): self
-	{
-		$this->isDisabled = $isDisabled;
-
-		return $this;
-	}
+         	{
+         		$this->isDisabled = $isDisabled;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -352,30 +352,30 @@ class User implements UserInterface, \Serializable
 	 * @return Role|string[] The user roles
 	 */
 	public function getRoles()
-	{
-		// TODO: Implement getRoles() method.
-		return $this->role;
-		/*
-		Return [
-			'ROLE_USER',
-			'ROLE_PROFESSOR',
-			'ROLE_ADMIN',
-			'ROLE_SUPER_ADMIN'
-		];
-		*/
-	}
+         	{
+         		// TODO: Implement getRoles() method.
+         		return $this->role;
+         		/*
+         		Return [
+         			'ROLE_USER',
+         			'ROLE_PROFESSOR',
+         			'ROLE_ADMIN',
+         			'ROLE_SUPER_ADMIN'
+         		];
+         		*/
+         	}
 
 	public function getRole(): ?array
-	{
-		return $this->role;
-	}
+         	{
+         		return $this->role;
+         	}
 
 	public function setRole(array $role): self
-	{
-		$this->role = $role;
-
-		return $this;
-	}
+         	{
+         		$this->role = $role;
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -415,48 +415,48 @@ class User implements UserInterface, \Serializable
 	// ...
 	// Getter & Setter Personnel ajouté.
 	public function getImageUpdatedAt(): ?DateTimeInterface
-	{
-		return $this->imageUpdatedAt;
-	}
+         	{
+         		return $this->imageUpdatedAt;
+         	}
 
 	public function setImageUpdatedAt(DateTimeInterface $imageUpdatedAt): self
-	{
-		$this->imageUpdatedAt = $imageUpdatedAt;
-
-		return $this;
-	}
+         	{
+         		$this->imageUpdatedAt = $imageUpdatedAt;
+         
+         		return $this;
+         	}
 
 	public function getImageFile()
-	{
-		return $this->imageFile;
-	}
+         	{
+         		return $this->imageFile;
+         	}
 
 	public function setImageFile(File $image = null)
-	{
-		$this->imageFile = $image;
-
-		// VERY IMPORTANT:
-		// It is required that at least one field changes if you are using Doctrine,
-		// otherwise the event listeners won't be called and the file is lost
-		if ($image) {
-			// if 'updatedAt' is not defined in your entity, use another property
-			$this->imageUpdatedAt = new DateTime('now');
-		}
-	}
+         	{
+         		$this->imageFile = $image;
+         
+         		// VERY IMPORTANT:
+         		// It is required that at least one field changes if you are using Doctrine,
+         		// otherwise the event listeners won't be called and the file is lost
+         		if ($image) {
+         			// if 'updatedAt' is not defined in your entity, use another property
+         			$this->imageUpdatedAt = new DateTime('now');
+         		}
+         	}
 
 	// 	public function getImage(): ?string
 	public function getImage()
-	{
-		return $this->image;
-	}
+         	{
+         		return $this->image;
+         	}
 
 	//public function setImage($image)
 	public function setImage(string $image): self
-	{
-		$this->image = $image;
-
-		return $this;
-	}
+         	{
+         		$this->image = $image;
+         
+         		return $this;
+         	}
 
 	/*
 	public function getImage(): ?string
@@ -479,36 +479,41 @@ class User implements UserInterface, \Serializable
 	 */
 	private $comments;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isNewsLetters;
+
 	/**
 	 * @return Collection|Comment[]
 	 */
 	public function getComments(): Collection
-	{
-		return $this->comments;
-	}
+         	{
+         		return $this->comments;
+         	}
 
 	public function addComment(Comment $comment): self
-	{
-		if (!$this->comments->contains($comment)) {
-			$this->comments[] = $comment;
-			$comment->setUser($this);
-		}
-
-		return $this;
-	}
+         	{
+         		if (!$this->comments->contains($comment)) {
+         			$this->comments[] = $comment;
+         			$comment->setUser($this);
+         		}
+         
+         		return $this;
+         	}
 
 	public function removeComment(Comment $comment): self
-	{
-		if ($this->comments->contains($comment)) {
-			$this->comments->removeElement($comment);
-			// set the owning side to null (unless already changed)
-			if ($comment->getUser() === $this) {
-				$comment->setUser(null);
-			}
-		}
-
-		return $this;
-	}
+         	{
+         		if ($this->comments->contains($comment)) {
+         			$this->comments->removeElement($comment);
+         			// set the owning side to null (unless already changed)
+         			if ($comment->getUser() === $this) {
+         				$comment->setUser(null);
+         			}
+         		}
+         
+         		return $this;
+         	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -520,9 +525,9 @@ class User implements UserInterface, \Serializable
 	 * @return string|null The salt
 	 */
 	public function getSalt()
-	{
-		// TODO: Implement getSalt() method.
-	}
+         	{
+         		// TODO: Implement getSalt() method.
+         	}
 
 	/**
 	 * Removes sensitive data from the user.
@@ -531,9 +536,21 @@ class User implements UserInterface, \Serializable
 	 * the plain-text password is stored on this object.
 	 */
 	public function eraseCredentials()
-	{
-		// TODO: Implement eraseCredentials() method.
-	}
+         	{
+         		// TODO: Implement eraseCredentials() method.
+         	}
+
+    public function getIsNewsLetters(): ?bool
+    {
+        return $this->isNewsLetters;
+    }
+
+    public function setIsNewsLetters(?bool $isNewsLetters): self
+    {
+        $this->isNewsLetters = $isNewsLetters;
+
+        return $this;
+    }
 
 	/*
 	public function addId(Course $id): self

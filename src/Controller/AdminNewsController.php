@@ -8,6 +8,7 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 use App\Repository\NewsRepository;
+use App\Service\ContactService;
 use DateTime;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -85,10 +86,12 @@ class AdminNewsController extends AbstractController
 	/**
 	 * @Route("/new", name="admin_news_new", methods={"GET","POST"})
 	 * @param Request $request
+	 * @param ContactService $contactService
 	 * @return Response
 	 * @throws Exception
 	 */
-	public function new(Request $request): Response
+	public function new(Request $request, ContactService $contactService): Response
+	// Ajout de ContactService $contactService pour la reception de email lors de la création de une nouvelle newsletters.
 	{
 		// Vérification de niveau afin d'accéder à la fonction.
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
@@ -108,6 +111,8 @@ class AdminNewsController extends AbstractController
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($news);
 			$entityManager->flush();
+
+			$contactService->newsLettersByMail();
 
 			// Message Flash
 			$this->addFlash('news_success', 'Édition réussi & accompli !');

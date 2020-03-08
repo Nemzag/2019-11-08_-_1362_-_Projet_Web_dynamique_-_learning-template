@@ -1,19 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre panier d'inscription{% endblock %}
+{% block title %}Déjà inscrit{% endblock %}
 
 {% block main %}
 
     <div class = "container" >
 
+
         <div class = "col-md-6 offset-md-3" >
+
+            {% for message in app.flashes('public_registration_danger') %}
+                <br ><br >
+                <div class = "alert alert-success" >
+                    {{ message }}
+                </div >
+            {% endfor %}
             <br >
 
-            <h2 >Votre panier d'inscription</h2 >
+            <h2 >Déjà inscrit à&nbsp;:</h2 >
 
             <br >
 
             {% if registrations | length > 0 %}
+
                 <table class = "table table-hover table-bordered table table-striped table-sm" >
                     <thead class = "table-dark" >
                     <tr class = "text-center" >
@@ -32,7 +41,7 @@
                             <td >{{ registration.course }}</td >
 
                             <td class = "text-center" >
-                                <a href = "{{ path("cart_remove", {'id': registration.course.id}) }}" class = "btn btn-primary btn-sm" ><i class = "fas fa-trash-alt" ></i ></a >
+                                <a href = "{{ path("public_cart_erase", {'id': registration.id }) }}" class = "btn btn-primary btn-sm" ><i class = "fas fa-trash-alt" ></i ></a >
                             </td >
 
                             <td class = "text-right" >{{ registration.course.price | replace({'.': ","}) }}€</td >
@@ -46,22 +55,27 @@
                     <tfoot class = "table-dark" >
                     <tr >
 
-                        <td colspan = "3" class = "text-right" ><b >Total : {{ total | replace({'.': ","}) }}€</b >
+                        {% set somme = 0 %}
+                        {% for registration in registrations %}
+                            {% set somme = somme + registration.course.price %}
+                        {% endfor %}
+
+
+                        <td colspan = "3" class = "text-right" ><b >Total : {{somme}}€</b >
                         </td >
                     </tr >
                     </tfoot >
                 </table >
+
             {% else %}
 
-                <div class = "alert alert-info" >Votre panier est vide pour le moment.</div >
+                <div class = "alert alert-info" >Vous ne avez accomplie aucune inscription jusqu'à present.</div >
 
             {% endif %}
 
             <div class="row">
 
                 <div class="col-auto mr-auto"><a class = "btn btn-primary" style="width: 13em;" href = "{{ path('home') }}" role = "button" >Revenir à l'accueil</a ></div>
-
-                <div class="col-auto"><a class = "btn btn-success" style="width: 13em;" href = "{{ path('cart_confirm_subscription') }}" >Confirmer l'inscription</a ></div>
 
             </div>
 

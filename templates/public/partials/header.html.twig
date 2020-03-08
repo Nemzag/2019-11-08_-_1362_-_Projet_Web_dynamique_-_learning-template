@@ -46,9 +46,11 @@
 
                             {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_USER') %} {# On va utiliser une fonctionnalité twig. #}
 
-                                <a class = "dropdown-item" href = "{{ path('registration_new') }}" ><i class = "fas fa-tools gaz-icon" ></i > Inscription aux cours</a >
+                                <a class = "dropdown-item" href = "{{ path('public_registration_new') }}" ><i class = "fas fa-tools gaz-icon" ></i > Inscription aux cours</a >
 
                                 <a class = "dropdown-item" href = "{{ path('cart_index') }}" ><i class = "fas fa-cart-arrow-down" style="margin-left: 2px;" ></i >&nbsp;&nbsp;Mon panier d'inscription</a >
+
+                                <a class = "dropdown-item" href = "{{ path('public_registration_index') }}" ><i class = "fas fa-angellist" style="margin-left: 3px;" ></i >&nbsp;&nbsp;Déjà inscrit</a >
 
                             {% elseif is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
 

@@ -71,8 +71,7 @@ class CartService
 		$this->session->set('panier', $panier);
 	}
 
-	public function getFullCart(): array
-	{
+	public function getFullCart() : array {
 		$panier = $this->session->get('panier', []);
 		// Tableau associatif vide afin de éviter les erreur si aucun inscription active.
 
@@ -80,6 +79,7 @@ class CartService
 		$panierWithData = [];
 
 		foreach ($panier as $id => $quantity) {
+
 			$panierWithData[] = [
 
 				'course' => $this->courseRepository->find($id),
@@ -110,4 +110,23 @@ class CartService
 			return $total;
 
 		}
+
+		public function getCartTotalToConfirm() : array {
+
+			$panier = $this->session->get('panier', []);
+			// Tableau associatif vide afin de éviter les erreur si aucun inscription active.
+
+			// Création de un second tableau qui va puiser dans le premier.
+			$panierWithData = [];
+
+			foreach ($panier as $id => $quantity) {
+
+				array_push($panierWithData, $this->courseRepository->find($id));
+			}
+
+			$this->session->invalidate();
+
+			return $panierWithData;
+		}
 }
+

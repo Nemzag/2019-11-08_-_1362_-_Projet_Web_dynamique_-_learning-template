@@ -16,6 +16,7 @@ use App\Entity\Registration;
 use App\Form\InscriptionType;
 
 use App\Repository\CourseRepository;
+use App\Repository\RegistrationRepository;
 use App\Service\cart\CartService;
 use DateTime;
 
@@ -36,10 +37,9 @@ use Symfony\Component\Security\Core\Security;
 class RegistrationController extends AbstractController
 {
 	/**
-	 * @Route("/new", name="registration_new", methods={"GET","POST"})
+	 * @Route("/new", name="public_registration_new", methods={"GET","POST"})
 	 * @param Request $request
 	 * @param CourseRepository $courseRepository
-	 * @param Security $security
 	 * @param CartService $cartService
 	 * @return Response
 	 */
@@ -65,5 +65,26 @@ class RegistrationController extends AbstractController
 			'course' => $courseRepository->findAll(),
 			'formCourseRegistration' => $form->createView(),
 		]);
+	}
+
+	/**
+	 * @Route("/index", name="public_registration_index")
+	 * @param RegistrationRepository $registrationRepository
+	 * @param Security $security
+	 * @return Response
+	 */
+	public function index(RegistrationRepository $registrationRepository, Security $security) {
+
+		// Vérification de niveau afin d'accéder à la fonction.
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$this->denyAccessUnlessGranted(['ROLE_USER', 'ROLE_STUDENT']);
+
+		$userId = $security->getUser()->getId();
+
+		return $this->render('public/registration/registration.index.html.twig', [
+			// 'registrations' => $registrationRepository->findAll(),
+			'registrations' => $registrationRepository->findBy(array('user' => $userId), array('course'=>'ASC')),
+		]);
+
 	}
 }

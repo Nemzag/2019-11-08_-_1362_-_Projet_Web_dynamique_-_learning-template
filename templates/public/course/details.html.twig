@@ -62,7 +62,15 @@
 
                         <p ><b >Niveau :</b > {{ course.level.name }}</p >
 
-                        <a href = "{{ path('cart_selection', {'id': course.id} ) }}" class = "btn btn-primary" >S'inscrire&nbsp;&nbsp;<i class="fas fa-cart-arrow-down"></i></a >
+                        {% if registration is empty %}
+
+                            <a href = "{{ path('cart_selection', {'id': course.id} ) }}" style="width: 8em;" class = "btn btn-primary" >S'inscrire&nbsp;&nbsp;<i class="fas fa-cart-arrow-down"></i></a >
+
+                        {% elseif course.id == registration.course.id %}
+
+                            <a href = "#" class = "btn btn-success" style="width: 8em;" >Déjà inscris</a >
+
+                        {% endif %}
                     </div >
                 </div >
             </div >

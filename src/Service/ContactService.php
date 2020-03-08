@@ -23,6 +23,7 @@ use App\Repository\UserRepository;
 
 use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment; // Mail en HTML → TWIG.
 
 class ContactService extends AbstractController
@@ -144,5 +145,23 @@ class ContactService extends AbstractController
 				'text/html');
 
 		$this->mailer->send($message); // Envoyer le mail
+	}
+
+	public function registrationByMail(string $email, string $subject, string $body) {
+
+		$message = (new \Swift_Message())
+
+			->setFrom('contact@easylearning.be') // Pour savoir qui a envoyé le message
+
+			->setTo($email) // Pour savoir à qui est envoyé le message
+
+			->setReplyTo('contact@easylearning.be')
+
+			->setSubject($subject)
+
+			->setBody($body); // Pour envoyer les données
+
+		$this->mailer->send($message); // Envoyer le mail
+
 	}
 }

@@ -18,7 +18,7 @@
                 <hr >
 
                 <table class = "table table-bordered table-sm table-hover table-striped gaz-table table-de-gazmen"
-                       data-order='[[ 2, "asc" ]]'
+                       data-order='[[ 1, "desc" ]]'
                        id = "table"
                        style = "margin-left: 0; width: 100%;" >
 
@@ -30,6 +30,7 @@
                         <th scope = "col" style="width: 150px;" >Date de inscription</th >
                         <th scope = "col" >Utilisateur</th >
                         <th scope = "col" style="width: 75px;" >Prix</th >
+                        <th scope = "col" style="width: 75px;" >Effacer</th >
 
                     </thead >
 
@@ -47,9 +48,27 @@
                                 <small >{{ registration.createdAt ? registration.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }}
                             </td >
 
-                            <td title = "Utilisateur">{{ registration.user | capitalize }}</td>
+                            <td title = "Utilisateur"><b>{{ registration.user.userName | capitalize }}</b><br>{{ registration.user.firstName | capitalize }} {{ registration.user.lastName | capitalize }}<br><span class="badge badge-secondary">{{ registration.user.email | capitalize }}</span></td>
 
                             <td title = "Prix" class="text-right">{{ registration.amount | number_format(2, ',', '.') }}€</td >
+
+                            <!-- Delete -->
+                            <td title = "Action" style = "text-align: center;" >
+
+                                <!--
+                                        <a class = "btn btn-danger gaz-admin-btn-crud" href="{# path('admin_course_delete', {'id': course.id}) #}" ><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></a >
+                                        -->
+
+                                <form method="post" action="{{ path('admin_registration_delete', {'id': registration.id}) }}" onsubmit="return confirm('Êtes‑vous sur que vous voulez effacer ceci ?');">
+
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ registration.id) }}">
+
+                                    <button class="btn btn-danger gaz-admin-btn-crud"><i class = "fas fa-trash-alt"></i ><br ><small >Bbiné</small ></button>
+
+                                </form>
+                            </td >
 
                         </tr >
 

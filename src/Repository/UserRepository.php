@@ -27,7 +27,6 @@ class UserRepository extends ServiceEntityRepository
 			->where('u.role LIKE :role')
 			->setParameter('role', '%"'.$role.'"%')
 			->orderBy('u.createdAt', 'DESC');
-;
 
 		return $qb->getQuery()->getResult();
 	}

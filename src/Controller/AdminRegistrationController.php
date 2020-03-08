@@ -26,10 +26,12 @@ class AdminRegistrationController extends AbstractController
 	public function index(RegistrationRepository $registrationRepository): Response
 	{
 		// Vérification de niveau afin d'accéder à la fonction.
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
 
 			return $this->render('admin/registration/registration.index.html.twig', [
-			'registrations' => $registrationRepository->findAll(),
+			// 'registrations' => $registrationRepository->findAll(),
+			'registrations' => $registrationRepository->findBy(Array(), array('createdAt'=>'DESC'))
 		]);
 	}
 
@@ -40,6 +42,10 @@ class AdminRegistrationController extends AbstractController
 	 */
 	public function show(Registration $registration): Response
 	{
+		// Vérification de niveau afin d'accéder à la fonction.
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
+
 		return $this->render('admin/registration/registration.show.html.twig', [
 			'registration' => $registration,
 		]);
@@ -53,6 +59,10 @@ class AdminRegistrationController extends AbstractController
 	 */
 	public function edit(Request $request, Registration $registration): Response
 	{
+		// Vérification de niveau afin d'accéder à la fonction.
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
+
 		$form = $this->createForm(InscriptionType::class, $registration);
 		$form->handleRequest($request);
 
@@ -76,6 +86,10 @@ class AdminRegistrationController extends AbstractController
 	 */
 	public function delete(Request $request, Registration $registration): Response
 	{
+		// Vérification de niveau afin d'accéder à la fonction.
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN"]);
+
 		if ($this->isCsrfTokenValid('delete' . $registration->getId(), $request->request->get('_token'))) {
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($registration);

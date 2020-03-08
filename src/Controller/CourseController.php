@@ -21,6 +21,7 @@ use App\Repository\CourseCategoryRepository;
 use App\Repository\CourseLevelRepository;
 use App\Repository\CourseRepository;
 
+use App\Repository\RegistrationRepository;
 use DateTime;
 
 use Exception;
@@ -79,10 +80,11 @@ class CourseController extends AbstractController
 	 * @param $id
 	 * @param Request $request
 	 * @param Security $security
+	 * @param RegistrationRepository $registrationRepository
 	 * @return Response
 	 * @throws Exception
 	 */
-	public function coursesDetails($id, Request $request, Security $security): Response
+	public function coursesDetails($id, Request $request, Security $security, RegistrationRepository $registrationRepository): Response
 	{
 
 		// Obtention des informations de la table / entité dans la data‑base.
@@ -198,8 +200,15 @@ class CourseController extends AbstractController
 			'level' => $level,
 			// 'user' => $user,
 			'comments' => $comments,
+
 			'commentForm' => $form->createView(),
+
 			'noComment' => $noComment,
+
+			'registration' => $registrationRepository->findOneBy(array(
+					'user' => $security->getUser()->getId(),
+					'course' => $id),
+				array('course'=>'ASC')),
 			'errors' => $form->getErrors(true, true),
 		]);
 	}

@@ -132,7 +132,7 @@ class AdminProfessorController extends AbstractController
 			$entityManager->flush();
 
 			// Message Flash
-			$this->addFlash('course_success', 'Ajout réussi & accômpli !');
+			$this->addFlash('admin_user_success', 'Ajout réussi & accômpli !');
 
 			return $this->redirectToRoute('admin_professor_index');
 		}

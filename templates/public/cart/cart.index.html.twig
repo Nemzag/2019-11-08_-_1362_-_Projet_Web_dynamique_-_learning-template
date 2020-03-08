@@ -11,9 +11,10 @@
 
             <h2 >Votre panier d'inscription</h2 >
 
-            <br >
-
             {% if registrations | length > 0 %}
+
+                <div class="alert alert-info">J'ai bien entendu prévu d'éviter la réinscription multiple (doublon) vers la data‑base, et ce au niveau du <code>CartController.php</code>.</div>
+
                 <table class = "table table-hover table-bordered table table-striped table-sm" >
                     <thead class = "table-dark" >
                     <tr class = "text-center" >
@@ -64,6 +65,8 @@
                 <div class="col-auto"><a class = "btn btn-success" style="width: 13em;" href = "{{ path('cart_confirm_subscription') }}" >Confirmer l'inscription</a ></div>
 
             </div>
+
+            <br >
 
         </div >
     </div >

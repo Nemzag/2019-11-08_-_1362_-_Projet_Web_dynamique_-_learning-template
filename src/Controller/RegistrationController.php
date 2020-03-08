@@ -83,7 +83,7 @@ class RegistrationController extends AbstractController
 
 		return $this->render('public/registration/registration.index.html.twig', [
 			// 'registrations' => $registrationRepository->findAll(),
-			'registrations' => $registrationRepository->findBy(array('user' => $userId), array('course'=>'ASC')),
+			'registrations' => $registrationRepository->findBy(array('user' => $userId), array('createdAt'=> 'DESC')),
 		]);
 
 	}

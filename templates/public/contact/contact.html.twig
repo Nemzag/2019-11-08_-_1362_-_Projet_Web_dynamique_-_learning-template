@@ -12,15 +12,15 @@
 
             <h2 class = "my-4" >Nous contacter</h2 >
 
-            <div class="alert alert-info">Pour votre information, pour vos tests,<br>
-                j'utilise « <b>Test Mail Server Tool</b> » (port 25),<br>
-                et pas « <b>MailDev</b> » (port 1080).</div>
-
             {% for message in app.flashes('contact_success') %}
                 <div class = "alert alert-success" >
                     {{ message }}
                 </div >
             {% endfor %}
+
+            <div class="alert alert-info">Pour votre information, pour vos tests,<br>
+                j'utilise « <b>Test Mail Server Tool</b> » (port 25),<br>
+                et pas « <b>MailDev</b> » (port 1080).</div>
 
             {# Débute le formulaire#}
             {{ form_start(form) }}

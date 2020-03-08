@@ -96,6 +96,11 @@ class User implements UserInterface, \Serializable
 	 *     minMessage="Le pseudonyme doit être de {{ limit }} caractères minimum.",
 	 *     maxMessage="Le pseudonyme doit être de {{ limit }} caractères maximum.",
 	 * )
+	 * @Assert\Regex(
+	 *     pattern = "/^[A-zÀ-ú]+$/",
+	 *     htmlPattern = "[A-zÀ-ú]",
+	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
+	 * )
 	 */
 	private $userName;
 
@@ -125,8 +130,8 @@ class User implements UserInterface, \Serializable
 	 *     maxMessage="Le prénom doit être de {{ limit }} caractères maximum.",
 	 * )
 	 * @Assert\Regex(
-	 *     pattern = "/^[a-zA-Z]+$/",
-	 *     htmlPattern = "[A-Za-z]",
+	 *     pattern = "/^[A-zÀ-ú]+$/",
+	 *     htmlPattern = "[A-zÀ-ú]",
 	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
 	 * )
 	 */
@@ -162,8 +167,8 @@ class User implements UserInterface, \Serializable
 	 *     maxMessage="Le nom de famille doit être de {{ limit}} caractères maximum.",
 	 * )
 	 * @Assert\Regex(
-	 *     pattern = "/^[a-zA-Z]+$/",
-	 *     htmlPattern = "[A-Za-z]",
+	 *     pattern = "/^[A-zÀ-ú]+$/",
+	 *     htmlPattern = "[A-zÀ-ú]",
 	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
 	 * )
 	 */

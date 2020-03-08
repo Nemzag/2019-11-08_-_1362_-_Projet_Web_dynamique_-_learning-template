@@ -191,6 +191,21 @@ class CourseController extends AbstractController
 			return $object1->score > $object2->score;
 		}
 
+		$registration = "";
+
+		if($security->getUser() != null) {
+
+			$RegistrationUser = $security->getUser()->getId();
+
+			if(isset($RegistrationUser)) {
+				$registration = $registrationRepository->findOneBy(
+					array(
+						'user' => $security->getUser()->getId(),
+						'course' => $id),
+					array('course'=>'ASC'));
+			}
+		}
+
 		return $this->render('public/course/details.html.twig', [
 			// Attention pash de double []
 			// ['course' => $course],
@@ -205,10 +220,8 @@ class CourseController extends AbstractController
 
 			'noComment' => $noComment,
 
-			'registration' => $registrationRepository->findOneBy(array(
-					'user' => $security->getUser()->getId(),
-					'course' => $id),
-				array('course'=>'ASC')),
+			'registration' => $registration,
+
 			'errors' => $form->getErrors(true, true),
 		]);
 	}

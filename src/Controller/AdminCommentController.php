@@ -75,7 +75,7 @@ class AdminCommentController extends AbstractController
 					$entityManager->flush();
 
 					// Message Flash
-					$this->addFlash('comment_disabled', $commentId->getId() == 0 ? 'Édition activation du commentaire compte réussi & accompli !' : 'Édition désactivation de compte réussi & accompli !');
+					$this->addFlash('comment_disabled', $commentId->getIsDisabled() == 0 ? 'Édition activation du commentaire compte réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
 
 					return $this->redirectToRoute('admin_comment_index');
 				}
@@ -98,7 +98,7 @@ class AdminCommentController extends AbstractController
 				$entityManager->flush();
 
 				// Message Flash
-				$this->addFlash('comment_disabled', $commentId->getId() == 0 ? 'Édition activation de commentaire réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
+				$this->addFlash('comment_disabled', $commentId->getIsDisabled() == 0 ? 'Édition activation de commentaire réussi & accompli !' : 'Édition désactivation de commentaire réussi & accompli !');
 
 				return $this->redirectToRoute('admin_comment_index');
 			}

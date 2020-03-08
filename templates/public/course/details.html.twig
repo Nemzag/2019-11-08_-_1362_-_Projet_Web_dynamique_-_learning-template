@@ -62,15 +62,24 @@
 
                         <p ><b >Niveau :</b > {{ course.level.name }}</p >
 
-                        {% if registration is empty %}
+                            {% if is_granted("ROLE_USER") or is_granted("ROLE_STUDENT") %}
 
-                            <a href = "{{ path('cart_selection', {'id': course.id} ) }}" style="width: 8em;" class = "btn btn-primary" >S'inscrire&nbsp;&nbsp;<i class="fas fa-cart-arrow-down"></i></a >
+                                {% if registration is empty %}
 
-                        {% elseif course.id == registration.course.id %}
+                                    <a href = "{{ path('cart_selection', {'id': course.id} ) }}" style = "width: 8em;" class = "btn btn-primary" >S'inscrire&nbsp;&nbsp;<i class = "fas fa-cart-arrow-down" ></i ></a >
 
-                            <a href = "#" class = "btn btn-success" style="width: 8em;" >Déjà inscris</a >
+                                {% elseif course.id == registration.course.id %}
+
+                                    <a href = "#" class = "btn btn-success" style = "width: 8em;" >Déjà inscris</a >
+
+                                {% endif %}
+
+                        {% else %}
+
+                            <div class="alert alert-info"><b>Au professeur Marthus :</b><br>pour se inscrire à un cours, il faut être logué en tant que rôle <code>user</code> ou <code>student</code>.<br><code>user@domain.ext</code> & <code>student@domain.ext</code></div>
 
                         {% endif %}
+
                     </div >
                 </div >
             </div >
@@ -116,7 +125,9 @@
                     {% if (comments|length) > 0 %}
                         <p >Note global :
                             <span class = "text-danger" >{% if (sumEvaluations / comments|length)|round == 0 %}☆☆☆☆☆{% elseif (sumEvaluations / comments|length)|round == 1 %}★☆☆☆☆{% elseif (sumEvaluations / comments|length)|round == 2 %}★★☆☆☆{% elseif (sumEvaluations / comments|length)|round == 3 %}★★★☆☆{% elseif (sumEvaluations / comments|length)|round == 4 %}★★★★☆{% elseif (sumEvaluations / comments|length)|round == 5 %}★★★★★{% endif %}</span ><br > Calculé sur
-                            <span class = "text-danger" >{{ comments|length }}</span > commentaires. </span > <span class = "text-danger" >{{ sumOfDisabled }}</span> désactivé <span class = "text-info" >à titre informatif pour le Téo‑cher‑Ône</span>.</p >
+                            <span class = "text-danger" >{{ comments|length }}</span > commentaires. </span >
+                            <span class = "text-danger" >{{ sumOfDisabled }}</span > désactivé
+                            <span class = "text-info" >à titre informatif pour le Téo‑cher‑Ône</span >.</p >
 
                         {# Si vide et pas de commentaire. #}
                     {% else %}
@@ -158,59 +169,59 @@
                     {# Boucle d'affichage de’s commentaire’s #}
                     {% for comment in comments | reverse %} {# | reverse %} #}
 
-                    {# Si disabled ne pas affiché, fonctionnel testé. #}
-                    {% if comment.isDisabled == 1 %} {# | reverse %} #}
+                        {# Si disabled ne pas affiché, fonctionnel testé. #}
+                        {% if comment.isDisabled == 1 %} {# | reverse %} #}
 
-                    {% elseif comment.isdisabled == 0 %}
-                        <li class = "list-group-item list-group-item-action flex-column align-items-start" >
+                        {% elseif comment.isdisabled == 0 %}
+                            <li class = "list-group-item list-group-item-action flex-column align-items-start" >
 
-                            <div class = "d-flex w-100 justify-content-between" >
+                                <div class = "d-flex w-100 justify-content-between" >
 
-                                <h5 class = "mb-1" >{{ comment.user.firstName }} {{ comment.user.lastName }}</h5 >
+                                    <h5 class = "mb-1" >{{ comment.user.firstName }} {{ comment.user.lastName }}</h5 >
 
-                                <small >
-                                    <time >{{ comment.dateAddedAt ? comment.dateAddedAt|date('Y-m-d H:i:s') }}</time >
-                                </small >
-
-                            </div >
-
-                            <div class = "row" >
-                                <div class = "col-1" >
-
-                                    <br >
-
-                                    <img class = "gaz-img-log-in" src = "{{ asset('public/img/avatar/') }}{{ comment.user.image }}" alt = "{{ comment.user.firstName }} {{ comment.user.lastName }}" style = "height: 4em;" >
+                                    <small >
+                                        <time >{{ comment.dateAddedAt ? comment.dateAddedAt|date('Y-m-d H:i:s') }}</time >
+                                    </small >
 
                                 </div >
 
-                                <div class = "col-11" role = "alert" >
+                                <div class = "row" >
+                                    <div class = "col-1" >
 
-                                    <br >
+                                        <br >
 
-                                    <p class = "mb-1" >{{ comment.comment | raw | nl2br }}</p >
+                                        <img class = "gaz-img-log-in" src = "{{ asset('public/img/avatar/') }}{{ comment.user.image }}" alt = "{{ comment.user.firstName }} {{ comment.user.lastName }}" style = "height: 4em;" >
 
-                                    <p >Ma note :
-                                        <span class = "text-danger" >{% if comment.evaluation == 0 %}☆☆☆☆☆{% elseif comment.evaluation == 1 %}★☆☆☆☆{% elseif comment.evaluation == 2 %}★★☆☆☆{% elseif comment.evaluation == 3 %}★★★☆☆{% elseif comment.evaluation == 4 %}★★★★☆{% elseif comment.evaluation == 5 %}★★★★★{% endif %}</span >
-                                    </p >
+                                    </div >
 
-                                    {% if app.user %}
+                                    <div class = "col-11" role = "alert" >
 
-                                        <!-- Si vous êtes les bon USER vous pouvez modifer votre commêntaires. -->
-                                        {% if path('comment_edit', {'id': app.user.id}) == path('comment_edit', {'id': comment.user.id}) %}
+                                        <br >
 
-                                            <a href = "{{ path( 'comment_edit', {'id': comment.id }) }}" class = "btn btn-primary text-left text-white" ><i class = "fas fa-edit" ></i ><b > Ré‑éditer votre cômmêntaire</b ></a >
+                                        <p class = "mb-1" >{{ comment.comment | raw | nl2br }}</p >
+
+                                        <p >Ma note :
+                                            <span class = "text-danger" >{% if comment.evaluation == 0 %}☆☆☆☆☆{% elseif comment.evaluation == 1 %}★☆☆☆☆{% elseif comment.evaluation == 2 %}★★☆☆☆{% elseif comment.evaluation == 3 %}★★★☆☆{% elseif comment.evaluation == 4 %}★★★★☆{% elseif comment.evaluation == 5 %}★★★★★{% endif %}</span >
+                                        </p >
+
+                                        {% if app.user %}
+
+                                            <!-- Si vous êtes les bon USER vous pouvez modifer votre commêntaires. -->
+                                            {% if path('comment_edit', {'id': app.user.id}) == path('comment_edit', {'id': comment.user.id}) %}
+
+                                                <a href = "{{ path( 'comment_edit', {'id': comment.id }) }}" class = "btn btn-primary text-left text-white" ><i class = "fas fa-edit" ></i ><b > Ré‑éditer votre cômmêntaire</b ></a >
+                                            {% endif %}
+
                                         {% endif %}
+                                    </div >
 
-                                    {% endif %}
+                                    <small ></small >
+
                                 </div >
 
-                                <small ></small >
+                            </li >
 
-                            </div >
-
-                        </li >
-
-                    {% endif %}
+                        {% endif %}
 
                     {% endfor %}
                 </ul >
@@ -240,10 +251,14 @@
 
                         <hr >
 
-                        <a class="btn btn-primary " href="{{ path('home') }}">Retour à l'accueil</a>
+                        <a class = "btn btn-primary " href = "{{ path('home') }}" >Retour à l'accueil</a >
 
 
                     {% endif %}
+
+                    {% else %}
+
+                        <p>Il faut être logué pour commenter.</p>
 
                 {% endif %}
 

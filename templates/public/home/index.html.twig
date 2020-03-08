@@ -71,9 +71,11 @@
             <h2 class = "my-5" >Nos dernières formations</h2 >
 
             {{ include('public/partials/alert.success.visibility.html.twig') }}
+
+            <div class="alert alert-info"><b>P.V.O.&nbsp;:</b> seul <code>student@domain.ext</code> & <code>user@domain.ext</code> ou un email de log‑in, ayant un rôle de <code>user</code> ou <code>student</code>, peuvent se inscrire au cours. Pas les admins.</div>
             <div class = "row" >
 
-                {% for course in courses %}
+            {% for course in courses %}
                     <div class = "col-md-4" >
                         <div class = "card" >
                             <img alt = "{{ course.name }}" title = "{{ course.name }}" src = "{{ asset('public/img/section/') }}{{ course.image }}" style = "height: 200px; width: 100%" >

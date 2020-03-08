@@ -15,6 +15,13 @@
                     {{ message }}
                 </div >
             {% endfor %}
+
+            {% for message in app.flashes('public_confirm_success') %}
+                <br ><br >
+                <div class = "alert alert-success" >
+                    {{ message }}
+                </div >
+            {% endfor %}
             <br >
 
             <h2 >Déjà inscrit à&nbsp;:</h2 >
@@ -27,6 +34,7 @@
                     <thead class = "table-dark" >
                     <tr class = "text-center" >
                         <th >Nom</th >
+                        <th >Date</th >
                         <th class = "col-1" >Effacé</th >
                         <th class = "col-2" >Prix</th >
                         {#
@@ -39,6 +47,8 @@
                     {% for registration in registrations %}
                         <tr >
                             <td >{{ registration.course }}</td >
+
+                            <td>{{ registration.createdAt ? registration.createdAt | localizeddate('none', 'none', null, null, 'EEEE') | capitalize }} {{ registration.createdAt ? registration.createdAt|date('Y-m-d ') : '' }} ‒ {{ registration.createdAt ? registration.createdAt|date('H\\Hi\\') : '' }}</h6 ></td >
 
                             <td class = "text-center" >
                                 <a href = "{{ path("public_cart_erase", {'id': registration.id }) }}" class = "btn btn-primary btn-sm" ><i class = "fas fa-trash-alt" ></i ></a >
@@ -61,7 +71,7 @@
                         {% endfor %}
 
 
-                        <td colspan = "3" class = "text-right" ><b >Total : {{somme}}€</b >
+                        <td colspan = "4" class = "text-right" ><b >Total : {{somme}}€</b >
                         </td >
                     </tr >
                     </tfoot >

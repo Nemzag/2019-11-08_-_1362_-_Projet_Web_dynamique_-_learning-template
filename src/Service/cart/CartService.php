@@ -107,8 +107,7 @@ class CartService
 				$total += $item['course']->getPrice() /* * $time['quantity'] */;
 			}
 
-			return $total;
-
+		return $total;
 		}
 
 		public function getCartTotalToConfirm() : array {
@@ -124,9 +123,12 @@ class CartService
 				array_push($panierWithData, $this->courseRepository->find($id));
 			}
 
-			$this->session->invalidate();
-
 			return $panierWithData;
+		}
+
+		public function destroySession() {
+
+			$this->session->invalidate();
 		}
 }
 

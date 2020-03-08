@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -108,10 +109,11 @@ class AdminUserController extends AbstractController
 	/**
 	 * @Route("/new", name="admin_user_new", methods={"GET","POST"})
 	 * @param Request $request
+	 * @param UserPasswordEncoderInterface $passwordEncoder
 	 * @return Response
 	 * @throws Exception
 	 */
-	public function new(Request $request): Response
+	public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
 	{
 
 		$this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_SUPER_ADMIN']);
@@ -144,12 +146,20 @@ class AdminUserController extends AbstractController
 
 			if (empty($user->getImageFile())) $user->setImage('default.jpg');
 
+			$hash = $passwordEncoder->encodePassword(
+				$user,
+				$user->getPassword()
+			);
+
+			// encode the plain password
+			$user->setPassword($hash);
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($user);
 			$entityManager->flush();
 
 			// Message Flash
-			$this->addFlash('course_success', 'Ajout réussi & accômpli !');
+			$this->addFlash('admin_user_success', 'Ajout réussi & accômpli !');
 
 			return $this->redirectToRoute('admin_user_index');
 		}

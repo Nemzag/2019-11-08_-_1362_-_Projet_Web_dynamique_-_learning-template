@@ -226,11 +226,6 @@ class CartController extends AbstractController
 				$registrationMessage .= $item->getName() . " " . $item->getPrice() . "€. ";
 			}
 		}
-		$this->addFlash(
-			'public_confirm_success',
-			'Le panier a été correctemênt sauvegardé !'
-		);
-
 		// Envoyer un message de confirmation d'inscription
 		$mainMessage = "Vous avez été inscrit à ce(s) cour(s) : " . $registrationMessage;
 		$mainMessage .= "Coût total à payer : " . $cartService->getCartTotal() . " €";
@@ -241,6 +236,13 @@ class CartController extends AbstractController
 			$contactService->registrationByMail($this->getUser()->getEmail(), "Confirmation d'inscription", $mainMessage);
 		}
 
-		return $this->redirectToRoute("home");
+		$cartService->destroySession();
+
+		$this->addFlash(
+			'public_confirm_success',
+			'Le panier a été correctemênt sauvegardé !'
+		);
+
+		return $this->redirectToRoute("public_registration_index");
 	}
 }

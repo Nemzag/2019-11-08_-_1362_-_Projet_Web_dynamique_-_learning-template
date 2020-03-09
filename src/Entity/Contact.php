@@ -59,7 +59,7 @@ class Contact
 	/**
 	 * @var string|null
 	 * @Assert\NotBlank()
-	 * @Assert\email
+	 * @Assert\Email
 	 */
 	// Fonctionnalité spécifique de’s contrainte’s.
 	private $email;

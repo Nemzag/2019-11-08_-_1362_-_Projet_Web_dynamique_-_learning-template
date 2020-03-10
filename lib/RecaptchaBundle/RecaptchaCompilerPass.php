@@ -19,9 +19,11 @@ class RecaptchaCompilerPass implements CompilerPassInterface
 
 	public function process(ContainerBuilder $container)
 	{
-		if($container->hasParameter('twig.form.resources')) { // TODO: Implement process() method.
+		if($container->hasParameter('twig.form.resources')) {
 
+			// ?: définit ça comme tableau vide.
 			$resources = $container->getParameter('twig.form.resources') ?: [];
+
 			array_unshift($resources, '@Recaptcha/fields.html.twig');
 
 			// On peut lui dire redéfinir cette nouvelle variable.

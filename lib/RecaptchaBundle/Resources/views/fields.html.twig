@@ -13,11 +13,11 @@
     <script >
         function {{ id }}RecaptchaSubmit(token) {
 
-            var elem = document.getElementById("{{ id }}");
+            var elem = document.getElementById('{{ id }}');
 
             while(elem.parentElement !== null) {
 
-                // Si fomulaire.
+                // Si formulaire.
                 if (elem.tagName === 'FORM') {
 
                     elem.submit()
@@ -34,6 +34,6 @@
     {# definition de attribut par fusion des attributs du Recaptcha #}
     {% set attr = attr | merge ({class: (attr.class | default('')) ~ ' ' ~ 'g-recaptcha', 'data-sitekey' : key, 'data-callback': id ~ 'RecaptchaSubmit'}) %}
 
-    {% block submit_widget %}{% endblock%}
+{% block submit_widget %}{% endblock%}
 
 {% endblock %}

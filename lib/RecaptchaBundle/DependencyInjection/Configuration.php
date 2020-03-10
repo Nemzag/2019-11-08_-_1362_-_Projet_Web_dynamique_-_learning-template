@@ -24,18 +24,21 @@ class Configuration implements ConfigurationInterface
 		$treeBuilder = new TreeBuilder('recaptcha');
 		// convention snake_case minuscule, nom du bundle, sans bundle. Ignoré si par réspécté.
 
-		$treeBuilder->getRootNode()
+		// $treeBuilder->getRootNode()
+		$rootNode = $treeBuilder->getRootNode();
+
+		$rootNode
 			->children()
 
-			->scalarNode('key')
-			->isRequired()
-			->cannotBeEmpty()
-			->end()
+				->scalarNode('key')
+				->isRequired()
+				->cannotBeEmpty()
+				->end()
 
-			->scalarNode('secret')
-			->cannotBeEmpty()
-			->isRequired()
-			->end()
+				->scalarNode('secret')
+				->cannotBeEmpty()
+				->isRequired()
+				->end()
 
 			->end();
 

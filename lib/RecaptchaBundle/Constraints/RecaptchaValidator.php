@@ -38,10 +38,9 @@ class RecaptchaValidator extends ConstraintValidator {
 	 */
 	public function validate($value, Constraint $constraint)
 	{
-		// TODO: Implement validate() method.
 		$request = $this->requestStack->getCurrentRequest();
 
-		$recaptchaResponse = $this->requestStack->getCurrentRequest()->request->get('g-recaptcha-response');
+		$recaptchaResponse = $request->get('g-recaptcha-response');
 
 		if(empty($recaptchaResponse)) {
 
@@ -55,16 +54,19 @@ class RecaptchaValidator extends ConstraintValidator {
 
 			->verify($recaptchaResponse, $request->getClientIp());
 
+		// Success ou non ?
 		if(!$response->isSuccess()) {
 
-			dump($response->getErrorCodes());
+			// dump($response->getErrorCodes());
 			$this->addViolation($constraint);
 		}
 	}
 
 	private function addViolation(Constraint $constraint) {
 
-		$this->context->addViolation($constraint->message); // Causait problème de désactivation des @Assert, HTML constraint.
+		// Causait problème de désactivation des @Assert, HTML constraint.
 		// $this->context->buildViolation($constraint->message)->addViolation();
+		$this->context->addViolation($constraint->message);
+
 	}
 }

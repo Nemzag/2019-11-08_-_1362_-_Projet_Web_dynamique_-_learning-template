@@ -24,7 +24,7 @@ class RecaptchaSubmitType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults([
-			'mapped' => false,
+			'mapped' => false, // Ce champ la n'est pas lié à un champ de notre DB.
 			'constraints' => new Recaptcha()
 		]);
 	}
@@ -40,7 +40,7 @@ class RecaptchaSubmitType extends AbstractType
 		$view->vars['button'] = $options['label'];
 	}
 
-	// Permet de donnser un prefixe à nos bloques.
+	// Permet de donner un préfixe à nos bloques.
 	public function getBlockPrefix()
 	{
 		return 'recaptcha_submit';

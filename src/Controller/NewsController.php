@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\News;
 
+use App\Entity\User;
 use App\Form\NewsType;
 
 use App\Repository\NewsRepository;
@@ -37,16 +38,22 @@ class NewsController extends AbstractController
 
 	/**
 	 * @Route("/", name="news")
+	 * @param Security $security
+	 * @param UserRepository $userRepository
+	 * @return Response
 	 */
-	public function home()
+	public function home(Security $security, UserRepository $userRepository)
 	{
 		$news = $this
 			->getDoctrine()
 			->getRepository(News::class)
 			->findAll();
 
+		$userId = $security->getUser()->getId();
+
 		return $this->render('public/news/news.index.html.twig', [
-			"news" => $news
+			"news" => $news,
+			'user' => $userRepository->find($userId),
 		]);
 	}
 

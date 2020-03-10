@@ -65,8 +65,17 @@
 
             <p>
             <div class="row">
-                <div class="col-auto mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
-                <div class="col-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
+
+                {% if user.isNewsLetters == 1 %}
+
+                    <div class="col-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
+
+                {% else %}
+
+                    <div class="col-auto mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
+
+                {% endif %}
+
             </div>
             </p>
 

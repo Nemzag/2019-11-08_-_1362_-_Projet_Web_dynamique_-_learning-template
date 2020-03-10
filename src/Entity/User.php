@@ -101,17 +101,25 @@ class User implements UserInterface, \Serializable
 	 *     htmlPattern = "[A-zÀ-ú]",
 	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
 	 * )
+	 * @Assert\NotBlank()
 	 */
 	private $userName;
 
+	/**
+	 * @return string|null
+	 */
 	public function getUsername(): ?string
          		// Le point de interrogation ?string signifie que il peut être nul. 7.2.
          		// Dans le code du prof il ne l'a pash mit.
          	{
-         		// return $this->userName;
-         		return (string)$this->userName;
+         		return $this->userName;
+         		// return (string)$this->userName;
          	}
 
+	/**
+	 * @param string $userName
+	 * @return $this
+	 */
 	public function setUserName(string $userName): self
          	{
          		$this->userName = $userName;
@@ -134,6 +142,7 @@ class User implements UserInterface, \Serializable
 	 *     htmlPattern = "[A-zÀ-ú]",
 	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
 	 * )
+	 * @Assert\NotBlank()
 	 */
 	private $firstName;
 
@@ -163,14 +172,15 @@ class User implements UserInterface, \Serializable
 	 * @Assert\Length(
 	 *     min="2",
 	 *     max="255",
-	 *     minMessage="Le nom de famille doit être de {{ limit}} caractères minimum.",
-	 *     maxMessage="Le nom de famille doit être de {{ limit}} caractères maximum.",
+	 *     minMessage="Le nom de famille doit être de {{ limit }} caractères minimum.",
+	 *     maxMessage="Le nom de famille doit être de {{ limit }} caractères maximum.",
 	 * )
 	 * @Assert\Regex(
 	 *     pattern = "/^[A-zÀ-ú]+$/",
 	 *     htmlPattern = "[A-zÀ-ú]",
 	 *     message = "Vous devez utilisé des lettres de l'alpha‑beta et vous pouvez aussi utiliser des hyphens ou trait de unions (-, ‑).",
 	 * )
+	 * @Assert\NotBlank()
 	 */
 	private $lastName;
 
@@ -207,6 +217,7 @@ class User implements UserInterface, \Serializable
 	 *     mode = "html5",
 	 *     message = "Inséré une addresse valide.",
 	 * )
+	 * @Assert\NotBlank()
 	 */
 	private $email;
 

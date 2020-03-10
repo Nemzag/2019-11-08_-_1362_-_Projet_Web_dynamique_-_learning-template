@@ -20,6 +20,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
@@ -32,63 +35,90 @@ class UserType extends AbstractType
 
 				'label' => 'Pseudo‑onyme',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '3',
 					'maxlength' => '255',
-					'placeholder' => '3 caractères minimum, 255 maximum.‬'
-				]
+					'placeholder' => '3 caractères minimum, 255 maximum.‬',
+					'required'
+				],
 			])
 			/* Prénom */
 			->add('firstName', TextType::class, [
 
 				'label' => 'Prénom',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '2 caractères minimum, 255 maximum.‬'
-				]
+					'placeholder' => '2 caractères minimum, 255 maximum.‬',
+					'required'
+				],
 			])
 			/* Nom */
 			->add('lastName', TextType::class, [
 
 				'label' => 'Nom',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '255',
-					'placeholder' => '2 caractères minimum, 255 maximum.‬'
-				]
+					'placeholder' => '2 caractères minimum, 255 maximum.‬',
+					'required'
+				],
 			])
 			->add('email', EmailType::class, [
 
 				'label' => 'Courriel',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '8',
 					'maxlength' => '255',
-					'placeholder' => '8 caractères minimum & 255 caractères maximum.‬'
-				]
+					'placeholder' => '8 caractères minimum & 255 caractères maximum.‬',
+					'required'
+				],
 			])
 			->add('password', PasswordType::class, [
 
 				'label' => 'Mot de passe',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '6',
 					'maxlength' => '255',
-					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬'
-				]
+					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬',
+					'required'
+				],
+
+				'constraints' => [
+					new NotBlank(),
+					new Length(['min' => 6]),
+				],
 			])
 			->add('confirmPassword', PasswordType::class, [
 
 				'label' => 'Confirmer le mot de passe',
 
+				'required' => true,
+
 				'attr' => [
 					'minlength' => '6',
 					'maxlength' => '255',
 					'placeholder' => '6 caractères minimum & 255 caractères maximum.‬'
-				]
+				],
+
+				'constraints' => [
+					new NotBlank(),
+					new Length(['min' => 6]),
+				],
 			])
 			/*
 			->add('createdAt', DateTimeType::class, [

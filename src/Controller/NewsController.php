@@ -49,11 +49,23 @@ class NewsController extends AbstractController
 			->getRepository(News::class)
 			->findAll();
 
-		$userId = $security->getUser()->getId();
+		$AnonymousUser = "";
+
+		if($security->getUser() != null) {
+
+			$userId = $security->getUser()->getId();
+
+			if(isset($userId)) {
+				$AnonymousUser = $userRepository->findOneBy(
+					array(
+						'id' => $security->getUser()->getId()
+					));
+			}
+		}
 
 		return $this->render('public/news/news.index.html.twig', [
 			"news" => $news,
-			'user' => $userRepository->find($userId),
+			'user' => $AnonymousUser,
 		]);
 	}
 

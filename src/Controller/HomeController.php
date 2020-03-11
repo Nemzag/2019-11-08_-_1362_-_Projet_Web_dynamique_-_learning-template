@@ -31,12 +31,26 @@ class HomeController extends AbstractController
 		    ->getRepository(Course::class )
 		    ->findBy(Array('isPublished'=> 1), array('createdAt'=>'DESC'), 3);
 
-	    $userId = $security->getUser()->getId();
+
+
+	    $AnonymousUser = "";
+
+	    if($security->getUser() != null) {
+
+		    $userId = $security->getUser()->getId();
+
+		    if(isset($userId)) {
+			    $AnonymousUser = $userRepository->findOneBy(
+				    array(
+					    'id' => $security->getUser()->getId()
+				    ));
+		    }
+	    }
 
         return $this->render('public/home/index.html.twig', [
 	        "news" => $news,
 	        "courses" => $courses,
-	        'user' => $userRepository->find($userId),
+	        'user' => $AnonymousUser,
         ]);
     }
 }

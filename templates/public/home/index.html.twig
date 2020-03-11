@@ -125,23 +125,28 @@
             <h2 class = "my-5" id="titleH2IndexNosDernieresActualites" >Nos dernières actualités</h2 >
 
             <div class="alert alert-info">
-                <p>Le fait de cacher une news dans l'administration, cache bien son affichage, j'ai vérifié.</p>
-
-                <p >Message pour le professeur Marthus. Six dernier message, le reste dans la page dédié. Pour éviter de trop long listage.</p ></div>
+                <p><b>Message pour le professeur Marthus&nbsp;:</b><br>
+                    Le fait de cacher une news dans l'administration, cache bien son affichage, j'ai vérifié.<br>
+                    Affiche les six dernier message uniquement, le reste dans la page dédié. Pour éviter de trop long listage.<br>Pour se inscrire à la News‑letters il faut être logué.</p ></div>
 
             <p>
             <div class="row">
-                {% if user.isNewsLetters == 1 %}
 
-                    <div class="col mr-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
+                {% if app.user %}
 
-                {% else %}
+                    {% if user.isNewsLetters == 1 %}
 
-                    <div class="col mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
+                        <div class="col mr-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
+
+                    {% else %}
+
+                        <div class="col mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
+
+                    {% endif %}
 
                 {% endif %}
 
-                <div class="col-auto mr-auto"><a class = "btn btn-primary" style="width: 20em;" href = "{{ path('news') }}" >All News</a ></div>
+                <div class="col-auto ml-auto"><a class = "btn btn-primary" style="width: 20em;" href = "{{ path('news') }}" >All News</a ></div>
 
             </p>
 

@@ -66,20 +66,24 @@
             <p>
             <div class="row">
 
-                {% if user.isNewsLetters == 1 %}
+                {% if app.user %}
 
-                    <div class="col-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
+                    {% if user.isNewsLetters == 1 %}
 
-                {% else %}
+                        <div class="col-auto"><a class = "btn btn-danger" style="width: 20em;" href = "{{ path('news_unsubscribe_in_newsletters_page') }}" >Se désinscrire des actualités</a ></div>
 
-                    <div class="col-auto mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
+                    {% else %}
+
+                        <div class="col-auto mr-auto"><a class = "btn btn-success" style="width: 20em;" href = "{{ path('news_subscribe_in_newsletters_page') }}" >S'inscrire aux actualités</a ></div>
+
+                    {% endif %}
 
                 {% endif %}
 
             </div>
             </p>
 
-            <div class="alert alert-info">Le fait de cacher une News dans l'administration, cache bien son affichage, j'ai vérifié.</div>
+            <div class="alert alert-info"><b>Message pour le professeur Marthus&nbsp;:</b><br>Le fait de cacher une News dans l'administration, cache bien son affichage, j'ai vérifié.<br>Pour se inscrire à la News‑letters il faut être logué.</div>
 
             <div class="row row-flex">
 

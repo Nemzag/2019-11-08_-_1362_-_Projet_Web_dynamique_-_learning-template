@@ -119,7 +119,7 @@ class AdminProfessorEditType extends AbstractType
 				'required' => false,
 				'download_uri' => false,
 				'image_uri' => false,
-				'allow_delete' => false,
+				'allow_delete' => true,
 
 				'download_label' => "Télécharger l'image",
 				// 'asset_helper' => true,

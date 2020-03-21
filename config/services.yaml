@@ -38,3 +38,11 @@ services:
     App\DataFixtures\:
         resource: '../src/DataFixtures'
         tags: ['doctrine.fixture.orm']
+
+    # 2020-03-21 : Ajout du EventListener
+    App\LoginEvent\UserLoginEvent:
+      # arguments: ['%kernel.default_locale%']
+      # uncomment the next line if you are not using autoconfigure
+      # tags: [kernel.event_subscriber]
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }

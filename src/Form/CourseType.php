@@ -112,7 +112,9 @@ class CourseType extends AbstractType
 				],
 			])
 
+			/*
 			->add('slug')
+			*/
 
 			/*
 			->add('image', FileType::class, [
@@ -126,9 +128,13 @@ class CourseType extends AbstractType
 			->add('imageFile', VichImageType::class, [
 
 				'label' => "Inséré une image",
+
 				'required' => false,
+
 				'image_uri' => false,
+
 				'download_uri' => false,
+
 				'download_label' => "Télécharger l'image",
 
 				'attr' => [

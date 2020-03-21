@@ -17,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-
 class AdminProfessorType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
@@ -138,10 +137,12 @@ class AdminProfessorType extends AbstractType
 			->add('imageFile', VichImageType::class, [
 
 				'label' => "Inséré une image",
+
 				'required' => false,
-				'download_uri' => false,
+
 				'image_uri' => false,
-				'allow_delete' => false,
+
+				'download_uri' => false,
 
 				'download_label' => "Télécharger l'image",
 				// 'asset_helper' => true,

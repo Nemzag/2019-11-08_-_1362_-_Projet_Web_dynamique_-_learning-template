@@ -42,7 +42,7 @@ class AdminCourseController extends AbstractController
 
 	// Affichage de la liste complete de’s cours’s.
 	/**
-	 * @Route("/courses/all-Course", name="admin_course_index", methods={"GET"})
+	 * @Route("/courses/all-course", name="admin_course_index", methods={"GET"})
 	 * @param CourseCategoryRepository $courseCategoryRepository
 	 * @param CourseRepository $courseRepository
 	 * @param CourseLevelRepository $courseLevelRepository

@@ -14,16 +14,16 @@ use App\Entity\User;
 use App\Form\UserEditType;
 use App\Repository\UserRepository;
 
-use DateTime;
 use Exception;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use Symfony\Component\Routing\Annotation\Route;
+
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * Class AccountController
@@ -34,12 +34,11 @@ class AccountController extends AbstractController
 	/**
 	 * @Route("/login", name="login")
 	 * @param AuthenticationUtils $utils
-	 * @param UserRepository $userRepository
 	 * @return Response
 	 */
-	public function login(AuthenticationUtils $utils, UserRepository $userRepository)
+	public function login(AuthenticationUtils $utils)
 	{
-		$user = $userRepository->findOneBy(Array('email' => $_POST['_username']));
+		// $user = $userRepository->findOneBy(Array('email' => $_POST['_username']));
 
 		/*
 		$user = $this->getDoctrine()

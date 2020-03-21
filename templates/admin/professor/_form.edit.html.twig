@@ -128,7 +128,7 @@
     {{ form_widget(professorForm.imageFile) }}
 
     {# Boucle de affichage si non vide. #}
-    {#
+
     {% if user.image is empty %}
 
     {% else %}
@@ -137,7 +137,6 @@
 
         <img src = "{{ asset('public/img/avatar/') }}{{ user.image }}" alt = "{{ user.image }}" class = "img-thumbnail" >
     {% endif %}
-    #}
 
 </div >
 

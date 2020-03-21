@@ -48,5 +48,5 @@ vich_uploader:
 
           inject_on_load: false
           delete_on_update: false
-          delete_on_remove: false
+          delete_on_remove: true
           # J'ai activé false afin de éviter des images utilisé de multiple fois dans plusieurs profile par les fixtures.

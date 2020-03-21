@@ -15,8 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+use Cocur\Slugify\Slugify;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CourseRepository")
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
  */
 class Course
@@ -238,6 +241,15 @@ class Course
 		$this->slug = $slug;
 
 		return $this;
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
+	 */
+	public function createSlug() {
+		$slugify = new Slugify();
+		$this->slug = $slugify->slugify($this->name);
 	}
 
 	//══════════════════════════════════════════════════════════════════════════════════════════════

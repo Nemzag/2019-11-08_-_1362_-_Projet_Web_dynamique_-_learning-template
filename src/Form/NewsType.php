@@ -30,7 +30,7 @@ class NewsType extends AbstractType
 
             ->add('imageFile', VichImageType::class, [
 
-	            'label' => false,
+	            'label' => "Inséré une image",
 
 	            'required' => false,
 
